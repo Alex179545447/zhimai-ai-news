@@ -1,0 +1,37 @@
+name: Daily News Update
+
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - run: pip install requests
+
+      - name: Update news with Zhipu AI
+        env:
+          API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+        run: python generate_news.py
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add index.html
+          git diff --staged --quiet && exit 0
+          git commit -m "Auto update $(date +'%Y-%m-%d') - powered by 智脉AI"
+          git push

@@ -20,9 +20,6 @@
         .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
         .market-summary p { font-size: 0.95rem; color: #333; font-weight: 500; }
         
-        /* 标签说明 - 已隐藏 */
-        .tag-legend { display: none; }
-        
         /* 自动生成状态 */
         .auto-gen-info { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .auto-gen-info .icon { width: 36px; height: 36px; background: #4caf50; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
@@ -105,7 +102,6 @@
         /* 底部 */
         .footer { text-align: center; padding: 30px 0 20px; color: #999; font-size: 0.8rem; }
         
-        /* 移动端优化 */
         @media (max-width: 480px) {
             .header h1 { font-size: 1.3rem; }
             .keyword-input-wrapper { flex-direction: column; }
@@ -118,14 +114,14 @@
         <!-- 头部 -->
         <div class="header">
             <h1>📰 每日早报</h1>
-            <div class="date" id="currentDate">2026年03月27日 · 星期四</div>
+            <div class="date" id="currentDate">2026年03月28日 · 星期五</div>
             <div class="brand">智脉AI · 每日热点新闻</div>
         </div>
         
         <!-- 市场基调 -->
         <div class="market-summary">
             <h2>📊 今日市场基调</h2>
-            <p>A股震荡反弹，AI科技持续活跃；政策面利好频出，市场情绪回暖</p>
+            <p>A股震荡反弹，科技股领涨；AI大模型持续火热，政策面释放积极信号</p>
         </div>
         
         <!-- 第一部分：AI与科技前沿 -->
@@ -133,7 +129,7 @@
             <div class="section-header cyan">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 <h2>🤖 AI与科技前沿</h2>
-                <span class="count" id="count-ai">4条</span>
+                <span class="count" id="count-ai">5条</span>
             </div>
             <div class="section-content" id="section-ai"></div>
         </div>
@@ -166,14 +162,14 @@
                 <span class="count" id="count-career">3条</span>
             </div>
             <div class="section-content" id="section-career"></div>
-</div>
+        </div>
         
         <!-- 第五部分：国内外其他热点 -->
         <div class="section">
             <div class="section-header purple">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <h2>🌍 国内外其他热点</h2>
-                <span class="count" id="count-global">3条</span>
+                <span class="count" id="count-global">4条</span>
             </div>
             <div class="section-content" id="section-global"></div>
         </div>
@@ -231,41 +227,43 @@
         // 新闻数据 - 由智脉AI自动生成
         const newsData = {
             ai: [
-                { title: "英伟达发布新一代AI芯片，性能提升50%", tag: "tech", tagName: "AI芯片", date: "2026-03-27", source: "澎湃新闻", url: "https://www.thepaper.cn/", desc: "英伟达发布新一代AI芯片，性能大幅提升，预计将推动AI领域的发展。新芯片采用全新架构，功耗效率显著优化。", highlight: "性能提升50%" },
-                { title: "谷歌推出新型AI语言模型LaMDA", tag: "news", tagName: "大模型", date: "2026-03-27", source: "华尔街日报", url: "https://www.wsj.com/", desc: "谷歌宣布推出新的AI语言模型LaMDA，具备更高级的自然语言处理能力，能够进行更自然的对话交互。", highlight: "LaMDA新型号" },
-                { title: "华为发布新型芯片昇腾9000", tag: "tech", tagName: "国产芯片", date: "2026-03-27", source: "人民日报", url: "https://paper.people.com.cn/", desc: "华为发布新型芯片昇腾9000，性能大幅提升，用于人工智能计算，标志着国产AI芯片的新突破。", highlight: "昇腾9000发布" },
-                { title: "2026年或成智能体AI元年", tag: "news", tagName: "AI趋势", date: "2026-03-27", source: "中新社", url: "https://www.chinanews.com.cn/", desc: "中国工程院院士张亚勤将2026年定义为智能体AI元年，人机协作将重塑未来产业发展格局。", highlight: "智能体AI元年" }
+                { title: "GPT-4 Turbo发布，性能再创新高", tag: "tech", tagName: "大模型", date: "2026-03-28", source: "OpenAI官网", url: "https://openai.com", desc: "OpenAI发布新一代GPT-4 Turbo，在多项测试中表现优异，推理能力大幅提升，支持更长的上下文窗口。", highlight: "GPT-4 Turbo" },
+                { title: "华为发布全新5G芯片，性能提升50%", tag: "tech", tagName: "5G芯片", date: "2026-03-28", source: "电子时报", url: "https://www.digitimes.com.cn/", desc: "华为推出全新5G芯片，较上一代芯片性能提升50%，支持更高速度和更低功耗，将用于新一代智能手机和基站设备。", highlight: "5G芯片性能+50%" },
+                { title: "人形机器人进入白宫展示", tag: "news", tagName: "机器人", date: "2026-03-28", source: "央视新闻", url: "https://www.cctv.com/", desc: "Figure AI公司的Figure 03人形机器人在白宫AI教育峰会上亮相，这是人形机器人首次进入国家政治舞台，展示AI教育应用。", highlight: "人形机器人白宫首秀" },
+                { title: "国产AI模型词元调用量连续超美国", tag: "news", tagName: "AI大模型", date: "2026-03-28", source: "新浪科技", url: "https://tech.sina.com.cn/", desc: "全球AI大模型聚合平台OpenRouter数据显示，中国AI大模型词元调用量连续第三周超越美国，上海MiniMax与阶跃Step多次登顶。", highlight: "国产AI全球登顶" },
+                { title: "博鳌论坛：2026年或成智能体AI元年", tag: "news", tagName: "AI趋势", date: "2026-03-28", source: "中新社", url: "https://www.chinanews.com.cn/", desc: "中国工程院院士张亚勤在博鳌亚洲论坛上表示，2026年或成智能体AI元年，人机协作将重塑未来产业发展格局。", highlight: "智能体AI元年" }
             ],
             market: [
-                { title: "A股三大指数集体上涨，沪指涨0.63%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/", desc: "A股三大指数低开后翻红，沪指涨0.63%报4103.73点，深成指涨1.13%，创业板指涨0.71%。全市场超4300只个股飘红。", highlight: "沪指 4103点 | 成交额1.86万亿" },
-                { title: "创新药板块大爆发，多股涨停", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "A股创新药板块强势上涨，能源金属、减肥药、贵金属等板块涨幅居前。市场炒作创新药概念，多重利好共振。", highlight: "创新药板块爆发" },
-                { title: "1-2月规上工业企业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "国家统计局数据显示，1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%。计算机通信行业利润增2倍。", highlight: "利润同比增长15.2%" },
-                { title: "市场预期：下周有望迎来反弹", tag: "expect", tagName: "市场预期", date: "2026-03-27", source: "和讯网", url: "https://www.hexun.com/", desc: "市场预期下周有望迎来反弹，部分分析师看好科技板块。市场情绪整体回暖，大盘或震荡上行。", highlight: "市场预期：下周反弹" },
-                { title: "94只个股涨停，主要集中在医药生物、有色金属", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/", desc: "Choice统计显示，3月27日共有94只个股涨停，主要集中在医药生物、有色金属、化工、电力设备等行业。", highlight: "涨停94只" }
+                { title: "A股震荡反弹，沪指收复4100点", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "证券时报", url: "https://www.stcn.com/", desc: "A股三大指数集体收涨，沪指涨0.63%报4103.73点，深成指涨1.13%，创业板指涨0.71%。全市场超4300只个股飘红。", highlight: "沪指 4103点" },
+                { title: "创新药板块大爆发，多股涨停", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "A股创新药板块强势上涨，能源金属、减肥药、贵金属等板块涨幅居前。94只个股涨停，主要集中在医药生物、有色金属行业。", highlight: "创新药板块爆发" },
+                { title: "1-2月规上工业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "国家统计局数据显示，1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%，计算机通信行业利润增2倍。", highlight: "利润同比+15.2%" },
+                { title: "京东大涨8.3%，中概股多数上涨", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "新浪财经", url: "https://finance.sina.com.cn/", desc: "热门中概股多数上涨，纳斯达克中国金龙指数收高1.86%。京东涨8.30%、拼多多涨4.61%、阿里巴巴涨3.51%。", highlight: "京东 +8.3%" },
+                { title: "市场预期：下周有望迎来反弹", tag: "expect", tagName: "市场预期", date: "2026-03-28", source: "和讯网", url: "https://www.hexun.com/", desc: "市场预期下周有望迎来反弹，部分分析师看好科技板块。市场情绪整体回暖，大盘或震荡上行。", highlight: "市场预期：下周反弹" }
             ],
             policy: [
-                { title: "八部门联合发布长期护理保险制度实施方案", tag: "policy", tagName: "重要政策", date: "2026-03-27", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "国家医保局等八部门联合发布《加快建立长期护理保险制度实施方案》，对资金筹集、待遇保障等进行细化，国家建立基准费率制度。", highlight: "长护险实施方案发布" },
-                { title: "特朗普表示将于5月中旬访华", tag: "news", tagName: "外交动态", date: "2026-03-27", source: "外交部", url: "https://www.mfa.gov.cn/", desc: "美国总统特朗普表示将于5月中旬访华。外交部表示元首外交对中美关系发挥战略引领作用，双方就访华事保持着沟通。", highlight: "特朗普5月中旬访华" },
-                { title: "市场监管总局整治内卷式竞争", tag: "policy", tagName: "监管动态", date: "2026-03-27", source: "市场监管总局", url: "https://www.samr.gov.cn/", desc: "市场监管总局召开企业公平竞争座谈会，表示将加强反垄断监管执法，深入整治内卷式竞争，支持企业开拓国际市场。", highlight: "整治内卷式竞争" },
-                { title: "2026中关村论坛人工智能主题日开幕", tag: "news", tagName: "行业活动", date: "2026-03-27", source: "中关村管委会", url: "https://www.zgc.gov.cn/", desc: "2026中关村论坛人工智能主题日正式开幕，主题为AI新范式下的全球创新与产业融合，会上发布众智FlagOS 2.0开源系统。", highlight: "FlagOS 2.0发布" }
+                { title: "八部门联合发布长护险实施方案", tag: "policy", tagName: "重要政策", date: "2026-03-28", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "国家医保局等八部门联合发布《加快建立长期护理保险制度实施方案》，对资金筹集、待遇保障等进行细化，国家建立基准费率制度。", highlight: "长护险实施方案落地" },
+                { title: "特朗普表示将于5月中旬访华", tag: "policy", tagName: "外交动态", date: "2026-03-28", source: "外交部", url: "https://www.mfa.gov.cn/", desc: "美国总统特朗普表示将于5月中旬访华。外交部表示元首外交对中美关系发挥战略引领作用，双方就访华事保持着沟通。", highlight: "特朗普5月访华" },
+                { title: "市场监管总局整治内卷式竞争", tag: "policy", tagName: "监管动态", date: "2026-03-28", source: "市场监管总局", url: "https://www.samr.gov.cn/", desc: "市场监管总局召开企业公平竞争座谈会，表示将加强反垄断监管执法，深入整治内卷式竞争，支持企业开拓国际市场。", highlight: "整治内卷式竞争" },
+                { title: "中关村论坛AI主题日开幕", tag: "news", tagName: "行业活动", date: "2026-03-28", source: "中关村管委会", url: "https://www.zgc.gov.cn/", desc: "2026中关村论坛人工智能主题日正式开幕，会上发布众智FlagOS 2.0开源系统、全球首个通用智能体等重磅成果。", highlight: "FlagOS 2.0发布" }
             ],
             career: [
-                { title: "就业市场持续回暖，应届生就业率提高", tag: "career", tagName: "职场趋势", date: "2026-03-27", source: "央视新闻", url: "https://www.cctv.com/", desc: "就业市场持续回暖，应届生就业率提高，部分行业需求旺盛。人工智能、新能源等领域人才缺口较大。", highlight: "应届生就业率提高" },
+                { title: "就业市场持续回暖，应届生就业率提高", tag: "career", tagName: "职场趋势", date: "2026-03", source: "央视新闻", url: "https://www.cctv.com/", desc: "就业市场持续回暖，应届生就业率提高，部分行业需求旺盛。人工智能、新能源等领域人才缺口较大。", highlight: "应届生就业率提高" },
                 { title: "AI将引发2026年永久性裁员潮", tag: "career", tagName: "职场趋势", date: "2026-03", source: "人人都是产品经理", url: "https://www.woshipm.com/", desc: "研究显示AI正在冲击白领群体，高学历、高收入群体面临更大风险。但薪资增长势头依然良好，AI也在创造新的就业机会。", highlight: "白领群体受冲击" },
-                { title: "谷歌计划2026年大幅恢复PERM申请", tag: "career", tagName: "职场动态", date: "2026-03", source: "Expand CAREER", url: "https://rexpandcareer.com/", desc: "谷歌内部邮件透露，公司计划在2026年大幅恢复绿卡申请（PERM），科技巨头人才战略正在调整。", highlight: "PERM申请将恢复" }
+                { title: "谷歌计划大幅恢复PERM申请", tag: "career", tagName: "职场动态", date: "2026-03", source: "Expand CAREER", url: "https://rexpandcareer.com/", desc: "谷歌内部邮件透露，公司计划在2026年大幅恢复绿卡申请（PERM），科技巨头人才战略正在调整。", highlight: "PERM申请将恢复" }
             ],
             global: [
-                { title: "乌克兰局势紧张，国际社会呼吁和平解决", tag: "expect", tagName: "地缘政治", date: "2026-03-27", source: "环球时报", url: "https://www.huanqiu.com/", desc: "乌克兰局势紧张持续，俄乌双方进行谈判。国际社会呼吁和平解决冲突，能源市场保持关注。", highlight: "俄乌局势持续" },
-                { title: "美国限制对中国高科技企业的投资", tag: "news", tagName: "中美关系", date: "2026-03-27", source: "路透社", url: "https://www.reuters.com/", desc: "美国发布新政策，限制对中国高科技企业的投资，引发市场关注。中国外交部表示坚决反对。", highlight: "美限制对华投资" },
-                { title: "中东局势：美国推迟对伊朗能源设施打击", tag: "news", tagName: "地缘政治", date: "2026-03-27", source: "新华社", url: "https://www.xinhua.net/", desc: "特朗普将针对伊朗能源设施的摧毁行动推迟10天，期限延至4月6日，相关谈判正在进行中。", highlight: "美伊谈判进行中" }
+                { title: "中东局势：美国推迟对伊朗能源打击", tag: "expect", tagName: "地缘政治", date: "2026-03-28", source: "新华社", url: "https://www.xinhua.net/", desc: "特朗普将针对伊朗能源设施的摧毁行动推迟10天，期限延至4月6日，相关谈判正在进行中，霍尔木兹海峡局势紧张。", highlight: "美伊谈判进行中" },
+                { title: "俄乌战场出现人形机器人士兵", tag: "news", tagName: "地缘政治", date: "2026-03-28", source: "新浪新闻", url: "https://news.sina.cn/", desc: "据美媒报道，上个月两台人形机器人士兵抵达乌克兰战场。机器人身高180cm，体重80公斤，可AI评估战场并侦察射击。", highlight: "人形机器人上战场" },
+                { title: "G7财长会议讨论全球经济和金融议题", tag: "news", tagName: "国际财经", date: "2026-03-28", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "七国集团（G7）财长举行会议，讨论全球经济和金融议题。在地缘政治紧张背景下，会议备受关注。", highlight: "G7财长会议" },
+                { title: "印尼关注动力煤和镍价格走势", tag: "news", tagName: "国际商品", date: "2026-03-28", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "印尼政府密切关注动力煤和镍的价格走势，若国际市场价格持续高位，将适度放松生产配额。", highlight: "印尼政策调整预期" }
             ],
             table: [
-                { event: "A股震荡反弹", sectors: ["沪指4100+", "创业板+0.7%"], logic: "成交额1.86万亿，市场情绪回暖", url: "https://www.stcn.com/" },
+                { event: "A股震荡反弹", sectors: ["沪指4100+", "创业板+0.7%"], logic: "成交额放量，市场情绪回暖", url: "https://www.stcn.com/" },
                 { event: "创新药板块爆发", sectors: ["医药生物", "创新药"], logic: "政策红利+出海BD超预期", url: "https://finance.eastmoney.com/" },
-                { event: "长护险实施方案发布", sectors: ["保险", "医疗健康"], logic: "'第六险'制度建设细化", url: "https://finance.xinhua08.com/" },
+                { event: "长护险实施方案落地", sectors: ["保险", "医疗健康"], logic: "'第六险'制度建设细化", url: "https://finance.xinhua08.com/" },
                 { event: "中美外交动态", sectors: ["外贸", "科技"], logic: "特朗普5月访华预期", url: "https://www.mfa.gov.cn/" },
-                { event: "英伟达新芯片发布", sectors: ["AI芯片", "半导体"], logic: "性能提升50%，推动AI发展", url: "https://www.thepaper.cn/" },
-                { event: "规上工业利润增长", sectors: ["制造业", "计算机"], logic: "1-2月利润同比+15.2%", url: "http://www.stats.gov.cn/" }
+                { event: "人形机器人热点", sectors: ["机器人", "AI"], logic: "Figure 03白宫首秀", url: "https://www.cctv.com/" },
+                { event: "工业利润增长", sectors: ["制造业", "计算机"], logic: "1-2月利润同比+15.2%", url: "http://www.stats.gov.cn/" }
             ]
         };
         
@@ -309,17 +307,11 @@
             updateFilterResult();
         }
         
-        // 绑定添加按钮事件
         document.getElementById('addBtn').addEventListener('click', addKeyword);
-        
-        // 回车添加关键词
         document.getElementById('keywordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                addKeyword();
-            }
+            if (e.key === 'Enter') { addKeyword(); }
         });
         
-        // 检查新闻是否匹配关键词
         function checkKeywordMatch(text) {
             if (userKeywords.length === 0) return [];
             var matches = [];
@@ -331,7 +323,6 @@
             return matches;
         }
         
-        // 更新筛选结果
         function updateFilterResult() {
             var resultDiv = document.getElementById('filterResult');
             var itemsDiv = document.getElementById('filterItems');
@@ -369,7 +360,6 @@
             }
         }
         
-        // 渲染新闻
         function renderNews(news) {
             var highlightHtml = '';
             if (news.highlight) {
@@ -385,14 +375,12 @@
             document.getElementById('section-career').innerHTML = newsData.career.map(renderNews).join('');
             document.getElementById('section-global').innerHTML = newsData.global.map(renderNews).join('');
             
-            // 更新计数
             document.getElementById('count-ai').textContent = newsData.ai.length + '条';
             document.getElementById('count-market').textContent = newsData.market.length + '条';
             document.getElementById('count-policy').textContent = newsData.policy.length + '条';
             document.getElementById('count-career').textContent = newsData.career.length + '条';
             document.getElementById('count-global').textContent = newsData.global.length + '条';
             
-            // 渲染表格
             var tableHtml = '';
             for (var i = 0; i < newsData.table.length; i++) {
                 var row = newsData.table[i];
@@ -405,7 +393,6 @@
             document.getElementById('tableBody').innerHTML = tableHtml;
         }
         
-        // 初始化
         renderKeywords();
         renderAllNews();
         updateFilterResult();
