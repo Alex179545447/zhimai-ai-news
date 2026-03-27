@@ -1,23 +1,10 @@
-# Python
+# Core files to ignore
+.agent/
+.minimax/
+GitHub*/
+generate_daily_report.py
+news_raw.txt
+定时任务设置说明.md
 __pycache__/
 *.pyc
-*.egg-info/
-
-# OS
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Temp
-*.tmp
-*.log
-
-# Node (if any)
-node_modules/
-package-lock.json
-
-# Backup
-*.bak
