@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>每日早报 | 每日热点新闻</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif; background: #f5f6f7; color: #1a1a1a; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 680px; margin: 0 auto; padding: 0 16px 40px; }
+        
+        /* 头部 */
+        .header { padding: 24px 0 20px; text-align: center; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); margin: 0 -16px 20px; border-radius: 0 0 24px 24px; }
+        .header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .header .date { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
+        .header .brand { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+        
+        /* 市场基调 */
+        .market-summary { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #ff9800; padding: 16px 18px; border-radius: 0 12px 12px 0; margin-bottom: 20px; }
+        .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .market-summary p { font-size: 0.95rem; color: #333; font-weight: 500; }
+        
+        /* 标签说明 - 已隐藏 */
+        .tag-legend { display: none; }
+        
+        /* 自动生成状态 */
+        .auto-gen-info { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .auto-gen-info .icon { width: 36px; height: 36px; background: #4caf50; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .auto-gen-info .icon svg { width: 20px; height: 20px; color: #fff; }
+        .auto-gen-info .text { flex: 1; }
+        .auto-gen-info .title { font-size: 0.9rem; font-weight: 600; color: #2e7d32; }
+        .auto-gen-info .desc { font-size: 0.8rem; color: #558b2f; }
+        
+        /* 关键词订阅 */
+        .keyword-subscribe { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .keyword-subscribe h3 { font-size: 1rem; color: #1565c0; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .keyword-subscribe .desc { font-size: 0.85rem; color: #555; margin-bottom: 14px; }
+        .keyword-input-wrapper { display: flex; gap: 10px; margin-bottom: 12px; }
+        .keyword-input { flex: 1; padding: 12px 16px; border: 2px solid #e3f2fd; border-radius: 25px; font-size: 0.9rem; outline: none; background: #fff; }
+        .keyword-input:focus { border-color: #2196f3; }
+        .add-btn { padding: 12px 24px; background: #1565c0; color: #fff; border: none; border-radius: 25px; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+        .add-btn:hover { background: #1976d2; }
+        .keyword-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; min-height: 30px; }
+        .keyword-tag { background: #fff; color: #1565c0; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+        .keyword-tag .remove { width: 18px; height: 18px; background: #ffcdd2; color: #c62828; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.7rem; }
+        .keyword-tag .remove:hover { background: #ef5350; color: #fff; }
+        .no-keywords { font-size: 0.85rem; color: #999; text-align: center; padding: 10px; }
+        .filter-result { background: #fff; border-radius: 12px; padding: 14px; margin-top: 14px; border-left: 3px solid #4caf50; display: none; }
+        .filter-result.show { display: block; }
+        .filter-result .title { font-size: 0.85rem; color: #2e7d32; font-weight: 600; margin-bottom: 8px; }
+        .filter-result .item { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
+        .filter-result .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .filter-result .item a { color: #1565c0; text-decoration: none; font-weight: 600; }
+        .filter-result .item a:hover { text-decoration: underline; }
+        .filter-result .kw-list { margin-top: 4px; }
+        .filter-result .kw { display: inline-block; background: #1565c0; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin: 2px 4px 2px 0; }
+        
+        /* 板块 */
+        .section { margin-bottom: 16px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-header { padding: 16px 18px; display: flex; align-items: center; gap: 10px; }
+        .section-header.cyan { background: linear-gradient(135deg, #00bcd4, #26c6da); }
+        .section-header.blue { background: linear-gradient(135deg, #1976d2, #2196f3); }
+        .section-header.red { background: linear-gradient(135deg, #d32f2f, #f44336); }
+        .section-header.purple { background: linear-gradient(135deg, #7b1fa2, #9c27b0); }
+        .section-header.orange { background: linear-gradient(135deg, #e65100, #ff9800); }
+        .section-header h2 { color: #fff; font-size: 1rem; font-weight: 600; }
+        .section-header .count { margin-left: auto; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; color: #fff; }
+        .section-content { padding: 4px 0; }
+        
+        /* 新闻项 */
+        .news-item { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
+        .news-item:last-child { border-bottom: none; }
+        .news-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+        .news-title { font-size: 1rem; font-weight: 600; color: #1a1a1a; flex: 1; line-height: 1.4; text-decoration: none; }
+        .news-title:hover { color: #1565c0; }
+        .news-title .link-icon { display: inline-block; margin-left: 6px; opacity: 0.5; font-size: 0.8rem; }
+        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+        .tag.fact { background: #e8f5e9; color: #2e7d32; }
+        .tag.expect { background: #fff3e0; color: #e65100; }
+        .tag.news { background: #e3f2fd; color: #1565c0; }
+        .tag.policy { background: #fce4ec; color: #c2185b; }
+        .tag.tech { background: #f3e5f5; color: #7b1fa2; }
+        .tag.career { background: #fff3e0; color: #e65100; }
+        .news-meta { font-size: 0.75rem; color: #999; margin-bottom: 6px; }
+        .news-meta a { color: #1565c0; text-decoration: none; }
+        .news-desc { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 8px; }
+        .news-highlight { background: #fff9e6; border-radius: 8px; padding: 12px; margin-top: 10px; border-left: 3px solid #ff9800; }
+        .news-highlight .label { font-size: 0.75rem; color: #e65100; font-weight: 600; margin-bottom: 4px; }
+        .news-highlight .value { font-size: 0.9rem; color: #d32f2f; font-weight: 700; }
+        .read-more { display: inline-block; margin-top: 8px; color: #1565c0; font-size: 0.85rem; text-decoration: none; font-weight: 500; }
+        .read-more:hover { text-decoration: underline; }
+        
+        /* 表格 */
+        .table-section { background: #fff; border-radius: 16px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .table-header { background: linear-gradient(135deg, #455a64, #607d8b); padding: 16px 18px; }
+        .table-header h2 { color: #fff; font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        table { width: 100%; }
+        th { text-align: left; padding: 12px 14px; background: #fafafa; color: #666; font-weight: 600; font-size: 0.8rem; border-bottom: 1px solid #eee; }
+        td { padding: 12px 14px; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; color: #444; vertical-align: top; }
+        td a { color: #1565c0; text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        tr:last-child td { border-bottom: none; }
+        .asset-tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px 4px 2px 0; font-weight: 500; }
+        
+        /* 底部 */
+        .footer { text-align: center; padding: 30px 0 20px; color: #999; font-size: 0.8rem; }
+        
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.3rem; }
+            .keyword-input-wrapper { flex-direction: column; }
+            .add-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📰 每日早报</h1>
+            <div class="date" id="currentDate">2026年03月27日 · 星期四</div>
+            <div class="brand">智脉AI · 每日热点新闻</div>
+        </div>
+        
+        <!-- 市场基调 -->
+        <div class="market-summary">
+            <h2>📊 今日市场基调</h2>
+            <p>A股震荡反弹，AI科技持续活跃；政策面利好频出，市场情绪回暖</p>
+        </div>
+        
+        <!-- 第一部分：AI与科技前沿 -->
+        <div class="section">
+            <div class="section-header cyan">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <h2>🤖 AI与科技前沿</h2>
+                <span class="count" id="count-ai">4条</span>
+            </div>
+            <div class="section-content" id="section-ai"></div>
+        </div>
+        
+        <!-- 第二部分：A股与金融市场 -->
+        <div class="section">
+            <div class="section-header blue">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+                <h2>📈 A股与金融市场</h2>
+                <span class="count" id="count-market">5条</span>
+            </div>
+            <div class="section-content" id="section-market"></div>
+        </div>
+        
+        <!-- 第三部分：北京政策与宏观 -->
+        <div class="section">
+            <div class="section-header red">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-6h6v6"/></svg>
+                <h2>🏛️ 北京政策与宏观风向</h2>
+                <span class="count" id="count-policy">4条</span>
+            </div>
+            <div class="section-content" id="section-policy"></div>
+        </div>
+        
+        <!-- 第四部分：职场动态 -->
+        <div class="section">
+            <div class="section-header orange">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7h-4V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v4H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                <h2>💼 职场动态</h2>
+                <span class="count" id="count-career">3条</span>
+            </div>
+            <div class="section-content" id="section-career"></div>
+</div>
+        
+        <!-- 第五部分：国内外其他热点 -->
+        <div class="section">
+            <div class="section-header purple">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <h2>🌍 国内外其他热点</h2>
+                <span class="count" id="count-global">3条</span>
+            </div>
+            <div class="section-content" id="section-global"></div>
+        </div>
+        
+        <!-- 资本市场关键点梳理 -->
+        <div class="table-section">
+            <div class="table-header">
+                <h2>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h6"/></svg>
+                    资本市场关键点梳理
+                </h2>
+            </div>
+            <table>
+                <thead><tr><th>事件</th><th>关联板块</th><th>影响逻辑</th></tr></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        
+        <!-- 自动生成状态 -->
+        <div class="auto-gen-info">
+            <div class="icon">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="text">
+                <div class="title">⏰ 智脉AI自动生成</div>
+                <div class="desc">每天早晨 7:00 自动更新最新早报</div>
+            </div>
+        </div>
+        
+        <!-- 关键词订阅 -->
+        <div class="keyword-subscribe">
+            <h3>🔖 我的关键词订阅</h3>
+            <div class="desc">添加您关心的关键词，我们会高亮显示相关内容</div>
+            <div class="keyword-input-wrapper">
+                <input type="text" class="keyword-input" id="keywordInput" placeholder="例如：半导体、AI、新能源...">
+                <button type="button" class="add-btn" id="addBtn">添加</button>
+            </div>
+            <div class="keyword-list" id="keywordList"></div>
+            <div class="no-keywords" id="noKeywords">还没有添加关键词，试试输入上面的关键词吧</div>
+            <div class="filter-result" id="filterResult">
+                <div class="title">🎯 匹配到以下内容：</div>
+                <div id="filterItems"></div>
+            </div>
+        </div>
+        
+        <!-- 底部 -->
+        <div class="footer">
+            <p>📰 每日早报由智脉AI自动生成</p>
+            <p style="margin-top: 4px;">数据来源：智谱GLM-4联网搜索</p>
+            <p style="margin-top: 8px;">免责声明：本报告仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+    
+    <script>
+        // 新闻数据 - 由智脉AI自动生成
+        const newsData = {
+            ai: [
+                { title: "英伟达发布新一代AI芯片，性能提升50%", tag: "tech", tagName: "AI芯片", date: "2026-03-27", source: "澎湃新闻", url: "https://www.thepaper.cn/", desc: "英伟达发布新一代AI芯片，性能大幅提升，预计将推动AI领域的发展。新芯片采用全新架构，功耗效率显著优化。", highlight: "性能提升50%" },
+                { title: "谷歌推出新型AI语言模型LaMDA", tag: "news", tagName: "大模型", date: "2026-03-27", source: "华尔街日报", url: "https://www.wsj.com/", desc: "谷歌宣布推出新的AI语言模型LaMDA，具备更高级的自然语言处理能力，能够进行更自然的对话交互。", highlight: "LaMDA新型号" },
+                { title: "华为发布新型芯片昇腾9000", tag: "tech", tagName: "国产芯片", date: "2026-03-27", source: "人民日报", url: "https://paper.people.com.cn/", desc: "华为发布新型芯片昇腾9000，性能大幅提升，用于人工智能计算，标志着国产AI芯片的新突破。", highlight: "昇腾9000发布" },
+                { title: "2026年或成智能体AI元年", tag: "news", tagName: "AI趋势", date: "2026-03-27", source: "中新社", url: "https://www.chinanews.com.cn/", desc: "中国工程院院士张亚勤将2026年定义为智能体AI元年，人机协作将重塑未来产业发展格局。", highlight: "智能体AI元年" }
+            ],
+            market: [
+                { title: "A股三大指数集体上涨，沪指涨0.63%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/", desc: "A股三大指数低开后翻红，沪指涨0.63%报4103.73点，深成指涨1.13%，创业板指涨0.71%。全市场超4300只个股飘红。", highlight: "沪指 4103点 | 成交额1.86万亿" },
+                { title: "创新药板块大爆发，多股涨停", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "A股创新药板块强势上涨，能源金属、减肥药、贵金属等板块涨幅居前。市场炒作创新药概念，多重利好共振。", highlight: "创新药板块爆发" },
+                { title: "1-2月规上工业企业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "国家统计局数据显示，1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%。计算机通信行业利润增2倍。", highlight: "利润同比增长15.2%" },
+                { title: "市场预期：下周有望迎来反弹", tag: "expect", tagName: "市场预期", date: "2026-03-27", source: "和讯网", url: "https://www.hexun.com/", desc: "市场预期下周有望迎来反弹，部分分析师看好科技板块。市场情绪整体回暖，大盘或震荡上行。", highlight: "市场预期：下周反弹" },
+                { title: "94只个股涨停，主要集中在医药生物、有色金属", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/", desc: "Choice统计显示，3月27日共有94只个股涨停，主要集中在医药生物、有色金属、化工、电力设备等行业。", highlight: "涨停94只" }
+            ],
+            policy: [
+                { title: "八部门联合发布长期护理保险制度实施方案", tag: "policy", tagName: "重要政策", date: "2026-03-27", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "国家医保局等八部门联合发布《加快建立长期护理保险制度实施方案》，对资金筹集、待遇保障等进行细化，国家建立基准费率制度。", highlight: "长护险实施方案发布" },
+                { title: "特朗普表示将于5月中旬访华", tag: "news", tagName: "外交动态", date: "2026-03-27", source: "外交部", url: "https://www.mfa.gov.cn/", desc: "美国总统特朗普表示将于5月中旬访华。外交部表示元首外交对中美关系发挥战略引领作用，双方就访华事保持着沟通。", highlight: "特朗普5月中旬访华" },
+                { title: "市场监管总局整治内卷式竞争", tag: "policy", tagName: "监管动态", date: "2026-03-27", source: "市场监管总局", url: "https://www.samr.gov.cn/", desc: "市场监管总局召开企业公平竞争座谈会，表示将加强反垄断监管执法，深入整治内卷式竞争，支持企业开拓国际市场。", highlight: "整治内卷式竞争" },
+                { title: "2026中关村论坛人工智能主题日开幕", tag: "news", tagName: "行业活动", date: "2026-03-27", source: "中关村管委会", url: "https://www.zgc.gov.cn/", desc: "2026中关村论坛人工智能主题日正式开幕，主题为AI新范式下的全球创新与产业融合，会上发布众智FlagOS 2.0开源系统。", highlight: "FlagOS 2.0发布" }
+            ],
+            career: [
+                { title: "就业市场持续回暖，应届生就业率提高", tag: "career", tagName: "职场趋势", date: "2026-03-27", source: "央视新闻", url: "https://www.cctv.com/", desc: "就业市场持续回暖，应届生就业率提高，部分行业需求旺盛。人工智能、新能源等领域人才缺口较大。", highlight: "应届生就业率提高" },
+                { title: "AI将引发2026年永久性裁员潮", tag: "career", tagName: "职场趋势", date: "2026-03", source: "人人都是产品经理", url: "https://www.woshipm.com/", desc: "研究显示AI正在冲击白领群体，高学历、高收入群体面临更大风险。但薪资增长势头依然良好，AI也在创造新的就业机会。", highlight: "白领群体受冲击" },
+                { title: "谷歌计划2026年大幅恢复PERM申请", tag: "career", tagName: "职场动态", date: "2026-03", source: "Expand CAREER", url: "https://rexpandcareer.com/", desc: "谷歌内部邮件透露，公司计划在2026年大幅恢复绿卡申请（PERM），科技巨头人才战略正在调整。", highlight: "PERM申请将恢复" }
+            ],
+            global: [
+                { title: "乌克兰局势紧张，国际社会呼吁和平解决", tag: "expect", tagName: "地缘政治", date: "2026-03-27", source: "环球时报", url: "https://www.huanqiu.com/", desc: "乌克兰局势紧张持续，俄乌双方进行谈判。国际社会呼吁和平解决冲突，能源市场保持关注。", highlight: "俄乌局势持续" },
+                { title: "美国限制对中国高科技企业的投资", tag: "news", tagName: "中美关系", date: "2026-03-27", source: "路透社", url: "https://www.reuters.com/", desc: "美国发布新政策，限制对中国高科技企业的投资，引发市场关注。中国外交部表示坚决反对。", highlight: "美限制对华投资" },
+                { title: "中东局势：美国推迟对伊朗能源设施打击", tag: "news", tagName: "地缘政治", date: "2026-03-27", source: "新华社", url: "https://www.xinhua.net/", desc: "特朗普将针对伊朗能源设施的摧毁行动推迟10天，期限延至4月6日，相关谈判正在进行中。", highlight: "美伊谈判进行中" }
+            ],
+            table: [
+                { event: "A股震荡反弹", sectors: ["沪指4100+", "创业板+0.7%"], logic: "成交额1.86万亿，市场情绪回暖", url: "https://www.stcn.com/" },
+                { event: "创新药板块爆发", sectors: ["医药生物", "创新药"], logic: "政策红利+出海BD超预期", url: "https://finance.eastmoney.com/" },
+                { event: "长护险实施方案发布", sectors: ["保险", "医疗健康"], logic: "'第六险'制度建设细化", url: "https://finance.xinhua08.com/" },
+                { event: "中美外交动态", sectors: ["外贸", "科技"], logic: "特朗普5月访华预期", url: "https://www.mfa.gov.cn/" },
+                { event: "英伟达新芯片发布", sectors: ["AI芯片", "半导体"], logic: "性能提升50%，推动AI发展", url: "https://www.thepaper.cn/" },
+                { event: "规上工业利润增长", sectors: ["制造业", "计算机"], logic: "1-2月利润同比+15.2%", url: "http://www.stats.gov.cn/" }
+            ]
+        };
+        
+        // 关键词管理
+        let userKeywords = JSON.parse(localStorage.getItem('userKeywords') || '[]');
+        
+        function renderKeywords() {
+            var list = document.getElementById('keywordList');
+            var noKeywords = document.getElementById('noKeywords');
+            
+            if (userKeywords.length === 0) {
+                list.style.display = 'none';
+                noKeywords.style.display = 'block';
+            } else {
+                list.style.display = 'flex';
+                noKeywords.style.display = 'none';
+                var html = '';
+                for (var i = 0; i < userKeywords.length; i++) {
+                    html += '<span class="keyword-tag">' + userKeywords[i] + ' <span class="remove" onclick="removeKeyword(' + i + ')">×</span></span>';
+                }
+                list.innerHTML = html;
+            }
+        }
+        
+        function addKeyword() {
+            var input = document.getElementById('keywordInput');
+            var kw = input.value.trim();
+            if (kw && userKeywords.indexOf(kw) === -1) {
+                userKeywords.push(kw);
+                localStorage.setItem('userKeywords', JSON.stringify(userKeywords));
+                input.value = '';
+                renderKeywords();
+                updateFilterResult();
+            }
+        }
+        
+        function removeKeyword(index) {
+            userKeywords.splice(index, 1);
+            localStorage.setItem('userKeywords', JSON.stringify(userKeywords));
+            renderKeywords();
+            updateFilterResult();
+        }
+        
+        // 绑定添加按钮事件
+        document.getElementById('addBtn').addEventListener('click', addKeyword);
+        
+        // 回车添加关键词
+        document.getElementById('keywordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addKeyword();
+            }
+        });
+        
+        // 检查新闻是否匹配关键词
+        function checkKeywordMatch(text) {
+            if (userKeywords.length === 0) return [];
+            var matches = [];
+            for (var i = 0; i < userKeywords.length; i++) {
+                if (text.toLowerCase().indexOf(userKeywords[i].toLowerCase()) !== -1) {
+                    matches.push(userKeywords[i]);
+                }
+            }
+            return matches;
+        }
+        
+        // 更新筛选结果
+        function updateFilterResult() {
+            var resultDiv = document.getElementById('filterResult');
+            var itemsDiv = document.getElementById('filterItems');
+            
+            if (userKeywords.length === 0) {
+                resultDiv.classList.remove('show');
+                return;
+            }
+            
+            var allNews = [].concat(newsData.ai, newsData.market, newsData.policy, newsData.career, newsData.global);
+            var matchedNews = [];
+            for (var i = 0; i < allNews.length; i++) {
+                var text = allNews[i].title + ' ' + allNews[i].desc + ' ' + allNews[i].tagName;
+                if (checkKeywordMatch(text).length > 0) {
+                    matchedNews.push(allNews[i]);
+                }
+            }
+            
+            if (matchedNews.length === 0) {
+                resultDiv.classList.add('show');
+                itemsDiv.innerHTML = '<div style="color: #999; text-align: center; padding: 15px;">暂无匹配内容，明天早7点更新后可能会有哦~</div>';
+            } else {
+                resultDiv.classList.add('show');
+                var html = '';
+                for (var j = 0; j < matchedNews.length; j++) {
+                    var n = matchedNews[j];
+                    var matches = checkKeywordMatch(n.title + ' ' + n.desc + ' ' + n.tagName);
+                    var kwHtml = '';
+                    for (var k = 0; k < matches.length; k++) {
+                        kwHtml += '<span class="kw">' + matches[k] + '</span>';
+                    }
+                    html += '<div class="item"><a href="' + n.url + '" target="_blank">' + n.title + '</a><div style="font-size:0.8rem;color:#666;margin-top:4px;">' + n.tagName + ' | ' + n.date + '</div><div class="kw-list">' + kwHtml + '</div></div>';
+                }
+                itemsDiv.innerHTML = '<div style="margin-bottom:10px;color:#666;font-size:0.85rem;">为您找到 ' + matchedNews.length + ' 条相关新闻：</div>' + html;
+            }
+        }
+        
+        // 渲染新闻
+        function renderNews(news) {
+            var highlightHtml = '';
+            if (news.highlight) {
+                highlightHtml = '<div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">' + news.highlight + '</div></div>';
+            }
+            return '<div class="news-item"><div class="news-header"><span class="tag ' + news.tag + '">' + news.tagName + '</span><a href="' + news.url + '" target="_blank" class="news-title">' + news.title + '<span class="link-icon">↗</span></a></div><div class="news-meta">📅 ' + news.date + ' | <a href="' + news.url + '" target="_blank">🗞️ ' + news.source + '</a></div><div class="news-desc">' + news.desc + '</div>' + highlightHtml + '<a href="' + news.url + '" target="_blank" class="read-more">📖 阅读原文全文 →</a></div>';
+        }
+        
+        function renderAllNews() {
+            document.getElementById('section-ai').innerHTML = newsData.ai.map(renderNews).join('');
+            document.getElementById('section-market').innerHTML = newsData.market.map(renderNews).join('');
+            document.getElementById('section-policy').innerHTML = newsData.policy.map(renderNews).join('');
+            document.getElementById('section-career').innerHTML = newsData.career.map(renderNews).join('');
+            document.getElementById('section-global').innerHTML = newsData.global.map(renderNews).join('');
+            
+            // 更新计数
+            document.getElementById('count-ai').textContent = newsData.ai.length + '条';
+            document.getElementById('count-market').textContent = newsData.market.length + '条';
+            document.getElementById('count-policy').textContent = newsData.policy.length + '条';
+            document.getElementById('count-career').textContent = newsData.career.length + '条';
+            document.getElementById('count-global').textContent = newsData.global.length + '条';
+            
+            // 渲染表格
+            var tableHtml = '';
+            for (var i = 0; i < newsData.table.length; i++) {
+                var row = newsData.table[i];
+                var sectorsHtml = '';
+                for (var j = 0; j < row.sectors.length; j++) {
+                    sectorsHtml += '<span class="asset-tag">' + row.sectors[j] + '</span>';
+                }
+                tableHtml += '<tr><td><a href="' + row.url + '" target="_blank">' + row.event + '</a></td><td>' + sectorsHtml + '</td><td>' + row.logic + '</td></tr>';
+            }
+            document.getElementById('tableBody').innerHTML = tableHtml;
+        }
+        
+        // 初始化
+        renderKeywords();
+        renderAllNews();
+        updateFilterResult();
+    </script>
+</body>
+</html>
