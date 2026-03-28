@@ -55,11 +55,12 @@ def get_news_from_glm(prompt):
 
 def generate_news_prompt():
     """生成获取新闻的提示词"""
-    today = datetime.now().strftime('%Y年%m月%d日')
+    today = datetime.now()
+    date_str = today.strftime('%Y年%m月%d日')
     weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-    weekday = weekdays[datetime.now().weekday()]
+    weekday = weekdays[today.weekday()]
     
-    return f"""请搜索今天({today} {weekday})的最新新闻，生成一份每日早报。
+    return f"""请搜索今天({date_str} {weekday})的最新新闻，生成一份每日早报。
 
 要求：
 1. 只搜索最近24小时内的新闻
@@ -81,12 +82,33 @@ def generate_news_prompt():
 【类别5：国内外其他热点】
 - 国际地缘政治、国外新政、海外市场、社会热点
 
-每条新闻必须包含：category(类别)、title(标题)、date(日期)、source(来源)、desc(摘要50字内)、highlight(关键数据如无则省略)。
+请按以下JSON格式返回（只返回JSON，不要其他内容）：
+{{
+  "market": "今日市场基调的一句话总结",
+  "ai": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要50字内", "url": "链接", "tag": "fact|expect"}}],
+  "market": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "fact|expect"}}],
+  "policy": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "policy"}}],
+  "career": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
+  "global": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
+  "table": [{{"event": "事件", "sectors": ["板块1", "板块2"], "logic": "影响逻辑", "url": "链接"}}]
+}}"""
 
-最后输出JSON数组格式，方便程序处理，不要输出其他内容。"""
+def extract_json_from_response(content):
+    """从API响应中提取JSON"""
+    # 尝试提取JSON代码块
+    match = re.search(r'```json\s*([\s\S]*?)\s*```', content)
+    if match:
+        return match.group(1)
+    
+    # 尝试提取普通JSON
+    match = re.search(r'\{[\s\S]*\}', content)
+    if match:
+        return match.group(0)
+    
+    return None
 
-def update_html_date():
-    """更新HTML文件中的日期"""
+def update_html_file(news_data):
+    """更新HTML文件"""
     try:
         with open('index.html', 'r', encoding='utf-8') as f:
             content = f.read()
@@ -97,17 +119,38 @@ def update_html_date():
         weekday = weekdays[today.weekday()]
         full_date = f"{date_str} · {weekday}"
         
+        # 更新日期
         pattern = r'id="currentDate">[^<]+'
         replacement = f'id="currentDate">{full_date}'
+        content = re.sub(pattern, replacement, content)
+        
+        # 更新市场基调
+        if 'market_summary' in news_data:
+            pattern = r'<div class="market-summary">[\s\S]*?<p>[^<]*</p>'
+            match = re.search(pattern, content)
+            if match:
+                content = content.replace(
+                    match.group(0),
+                    f'<div class="market-summary">\n            <h2>📊 今日市场基调</h2>\n            <p>{news_data["market_summary"]}</p>'
+                )
+        
+        # 更新新闻数据
+        news_json = json.dumps(news_data, ensure_ascii=False, indent=2)
+        
+        # 替换 newsData 对象
+        pattern = r'var newsData = \{[\s\S]*?\};'
+        replacement = f'var newsData = {news_json};'
         content = re.sub(pattern, replacement, content)
         
         with open('index.html', 'w', encoding='utf-8') as f:
             f.write(content)
         
-        print(f"✅ 日期已更新: {full_date}")
+        print(f"✅ HTML已更新: {full_date}")
         return True
     except Exception as e:
-        print(f"❌ 更新日期失败: {e}")
+        print(f"❌ 更新HTML失败: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def main():
@@ -116,9 +159,6 @@ def main():
     print("=" * 50)
     print(f"执行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("-" * 50)
-    
-    # 更新日期
-    update_html_date()
     
     # 获取新闻
     print("📡 正在调用智谱GLM-4获取最新新闻...")
@@ -133,13 +173,33 @@ def main():
         with open('news_raw.txt', 'w', encoding='utf-8') as f:
             f.write(news_content)
         print("📄 原始内容已保存到 news_raw.txt")
-        print("-" * 50)
-        print("✅ 更新完成!")
+        
+        # 解析JSON
+        json_str = extract_json_from_response(news_content)
+        if json_str:
+            try:
+                news_data = json.loads(json_str)
+                print(f"✅ 解析JSON成功")
+                print(f"   AI新闻: {len(news_data.get('ai', []))}条")
+                print(f"   市场新闻: {len(news_data.get('market', []))}条")
+                print(f"   政策新闻: {len(news_data.get('policy', []))}条")
+                print(f"   职场新闻: {len(news_data.get('career', []))}条")
+                print(f"   全球新闻: {len(news_data.get('global', []))}条")
+                print(f"   表格数据: {len(news_data.get('table', []))}条")
+                
+                # 更新HTML
+                if update_html_file(news_data):
+                    print("-" * 50)
+                    print("✅ 更新完成!")
+                    return True
+            except json.JSONDecodeError as e:
+                print(f"❌ JSON解析失败: {e}")
+        else:
+            print("❌ 未找到JSON数据")
     else:
         print("❌ 获取新闻失败")
-        return False
     
-    return True
+    return False
 
 if __name__ == '__main__':
     success = main()
