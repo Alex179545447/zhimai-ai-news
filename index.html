@@ -114,14 +114,14 @@
         <!-- 头部 -->
         <div class="header">
             <h1>📰 每日早报</h1>
-            <div class="date" id="currentDate">2026年03月28日 · 星期五</div>
+            <div class="date" id="currentDate">2026年03月28日 · 星期六（最新）</div>
             <div class="brand">智脉AI · 每日热点新闻</div>
         </div>
         
         <!-- 市场基调 -->
         <div class="market-summary">
             <h2>📊 今日市场基调</h2>
-            <p>A股震荡反弹，科技股领涨；AI大模型持续火热，政策面释放积极信号</p>
+            <p>A股低开高走集体收涨，沪指涨0.63%；中国AI大模型周调用量连续两周超美国，市场避险情绪高企</p>
         </div>
         
         <!-- 第一部分：AI与科技前沿 -->
@@ -224,27 +224,27 @@
     </div>
     
     <script>
-        // 新闻数据 - 由智脉AI自动生成
+        // 新闻数据 - 由智脉AI自动生成（更新时间：2026-03-28）
         const newsData = {
             ai: [
-                { title: "GPT-4 Turbo发布，性能再创新高", tag: "tech", tagName: "大模型", date: "2026-03-28", source: "OpenAI官网", url: "https://openai.com", desc: "OpenAI发布新一代GPT-4 Turbo，在多项测试中表现优异，推理能力大幅提升，支持更长的上下文窗口。", highlight: "GPT-4 Turbo" },
-                { title: "华为发布全新5G芯片，性能提升50%", tag: "tech", tagName: "5G芯片", date: "2026-03-28", source: "电子时报", url: "https://www.digitimes.com.cn/", desc: "华为推出全新5G芯片，较上一代芯片性能提升50%，支持更高速度和更低功耗，将用于新一代智能手机和基站设备。", highlight: "5G芯片性能+50%" },
-                { title: "人形机器人进入白宫展示", tag: "news", tagName: "机器人", date: "2026-03-28", source: "央视新闻", url: "https://www.cctv.com/", desc: "Figure AI公司的Figure 03人形机器人在白宫AI教育峰会上亮相，这是人形机器人首次进入国家政治舞台，展示AI教育应用。", highlight: "人形机器人白宫首秀" },
-                { title: "国产AI模型词元调用量连续超美国", tag: "news", tagName: "AI大模型", date: "2026-03-28", source: "新浪科技", url: "https://tech.sina.com.cn/", desc: "全球AI大模型聚合平台OpenRouter数据显示，中国AI大模型词元调用量连续第三周超越美国，上海MiniMax与阶跃Step多次登顶。", highlight: "国产AI全球登顶" },
-                { title: "博鳌论坛：2026年或成智能体AI元年", tag: "news", tagName: "AI趋势", date: "2026-03-28", source: "中新社", url: "https://www.chinanews.com.cn/", desc: "中国工程院院士张亚勤在博鳌亚洲论坛上表示，2026年或成智能体AI元年，人机协作将重塑未来产业发展格局。", highlight: "智能体AI元年" }
+                { title: "OpenAI发布GPT-5.3和GPT-5.4模型，优化搜索与推理能力", tag: "tech", tagName: "大模型", date: "2026-03-27", source: "腾讯云开发者社区", url: "https://cloud.tencent.com/developer/article/2640849", desc: "OpenAI发布GPT-5.3 Instant和GPT-5.4 Thinking模型，进一步优化搜索与推理能力，提升用户体验。", highlight: "GPT-5.3/5.4发布" },
+                { title: "中国AI大模型周调用量4.69万亿Token，连续两周超美国", tag: "news", tagName: "AI大模型", date: "2026-03-27", source: "什么值得买", url: "https://post.smzdm.com/p/a5ree4m3/", desc: "2026年3月9日至15日，中国AI大模型周调用量达4.69万亿Token，连续两周超越美国（同期为3.294万亿Token），由OpenRouter发布。", highlight: "中国AI周调用量4.69万亿" },
+                { title: "月之暗面杨植麟：大模型训练进入第三个阶段", tag: "news", tagName: "AI趋势", date: "2026-03-25", source: "网易订阅", url: "https://www.163.com/dy/article/KOS8196K05198CJN.html", desc: "2026中关村论坛年会上，月之暗面创始人杨植麟表示，大模型训练进入第三个阶段——AI主导研究阶段，AI研发将逐渐加速。", highlight: "AI主导研究阶段" },
+                { title: "2026年AI大模型市场预计达680亿元", tag: "tech", tagName: "行业数据", date: "2026-03-27", source: "报告大厅", url: "https://m.chinabgao.com/info/1298827.html", desc: "中国AI大模型市场预计2026年达680亿元，到2030年增长至3250亿元。多模态融合与AI Agent技术拓展应用场景。", highlight: "市场规模680亿元" },
+                { title: "国内生成式AI普及率达42.8%", tag: "news", tagName: "AI普及", date: "2026-03-27", source: "中商情报网", url: "https://www.askci.com/news/chanye/20260312/094622277327998102647870_4.shtml", desc: "截至2025年12月，我国生成式AI普及率达42.8%，同比大幅提高25.2个百分点。AI大模型正逐渐走进大众生活。", highlight: "AI普及率42.8%" }
             ],
             market: [
-                { title: "A股震荡反弹，沪指收复4100点", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "证券时报", url: "https://www.stcn.com/", desc: "A股三大指数集体收涨，沪指涨0.63%报4103.73点，深成指涨1.13%，创业板指涨0.71%。全市场超4300只个股飘红。", highlight: "沪指 4103点" },
-                { title: "创新药板块大爆发，多股涨停", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "A股创新药板块强势上涨，能源金属、减肥药、贵金属等板块涨幅居前。94只个股涨停，主要集中在医药生物、有色金属行业。", highlight: "创新药板块爆发" },
-                { title: "1-2月规上工业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "国家统计局数据显示，1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%，计算机通信行业利润增2倍。", highlight: "利润同比+15.2%" },
-                { title: "京东大涨8.3%，中概股多数上涨", tag: "fact", tagName: "已落地", date: "2026-03-28", source: "新浪财经", url: "https://finance.sina.com.cn/", desc: "热门中概股多数上涨，纳斯达克中国金龙指数收高1.86%。京东涨8.30%、拼多多涨4.61%、阿里巴巴涨3.51%。", highlight: "京东 +8.3%" },
-                { title: "市场预期：下周有望迎来反弹", tag: "expect", tagName: "市场预期", date: "2026-03-28", source: "和讯网", url: "https://www.hexun.com/", desc: "市场预期下周有望迎来反弹，部分分析师看好科技板块。市场情绪整体回暖，大盘或震荡上行。", highlight: "市场预期：下周反弹" }
+                { title: "A股三大指数集体上涨，沪指涨0.63%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "今日头条", url: "https://www.toutiao.com/article/7621864086434873890/", desc: "A股三大指数今日集体上涨，沪指报3913.72点涨0.63%，深成指报13760.37点涨1.13%，创业板指报3295.88点涨0.71%。", highlight: "沪指3913.72点" },
+                { title: "A股低开高走，医药、化工、有色金属板块涨幅居前", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "中华网", url: "https://news.china.com/socialgd/10000169/20260327/49362267.html", desc: "3月27日A股主要指数低开高走，医药、化工、有色金属等板块涨幅居前，沪深京三市上涨个股接近3800只。", highlight: "3800只个股上涨" },
+                { title: "央行开展5000亿元MLF操作，净投放500亿元", tag: "fact", tagName: "已落地", date: "2026-03-25", source: "同花顺", url: "https://m.10jqka.com.cn/20260324/c675515860.shtml", desc: "央行宣布开展5000亿元MLF操作，期限1年，为连续第13个月加量续做MLF，实现净投放500亿元。", highlight: "MLF净投放500亿" },
+                { title: "1-2月规上工业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%，计算机通信行业利润增2倍。", highlight: "利润同比+15.2%" },
+                { title: "市场情绪回暖，大盘或震荡上行", tag: "expect", tagName: "市场预期", date: "2026-03-27", source: "虎扑", url: "https://bbs.hupu.com/638139563.html", desc: "A股三大指数低开高走集体走强，多头趋势明显，但量能持续萎缩，短期不要期待连续大涨，慢牛格局仍在。", highlight: "市场预期：震荡上行" }
             ],
             policy: [
-                { title: "八部门联合发布长护险实施方案", tag: "policy", tagName: "重要政策", date: "2026-03-28", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "国家医保局等八部门联合发布《加快建立长期护理保险制度实施方案》，对资金筹集、待遇保障等进行细化，国家建立基准费率制度。", highlight: "长护险实施方案落地" },
-                { title: "特朗普表示将于5月中旬访华", tag: "policy", tagName: "外交动态", date: "2026-03-28", source: "外交部", url: "https://www.mfa.gov.cn/", desc: "美国总统特朗普表示将于5月中旬访华。外交部表示元首外交对中美关系发挥战略引领作用，双方就访华事保持着沟通。", highlight: "特朗普5月访华" },
-                { title: "市场监管总局整治内卷式竞争", tag: "policy", tagName: "监管动态", date: "2026-03-28", source: "市场监管总局", url: "https://www.samr.gov.cn/", desc: "市场监管总局召开企业公平竞争座谈会，表示将加强反垄断监管执法，深入整治内卷式竞争，支持企业开拓国际市场。", highlight: "整治内卷式竞争" },
-                { title: "中关村论坛AI主题日开幕", tag: "news", tagName: "行业活动", date: "2026-03-28", source: "中关村管委会", url: "https://www.zgc.gov.cn/", desc: "2026中关村论坛人工智能主题日正式开幕，会上发布众智FlagOS 2.0开源系统、全球首个通用智能体等重磅成果。", highlight: "FlagOS 2.0发布" }
+                { title: "央行：坚定维护股票、债券、外汇等金融市场平稳运行", tag: "policy", tagName: "重要政策", date: "2026-03-19", source: "中财网", url: "https://www.cfi.net.cn/p20260319001442.html", desc: "央行召开扩大会议，强调继续实施适度宽松的货币政策，把促进经济稳定增长、物价合理回升作为重要考量。", highlight: "适度宽松货币政策" },
+                { title: "证监会召开投资机构座谈会，听取资本市场建议", tag: "policy", tagName: "监管动态", date: "2026-03-19", source: "证券之星", url: "https://news.qq.com/rain/a/20260320A032HQ00", desc: "证监会主席吴清召开座谈会，与社保基金、保险资管、公募私募基金等投资机构代表深入交流，听取深化投资端改革建议。", highlight: "投资端改革座谈" },
+                { title: "金融法草案向社会公开征求意见", tag: "policy", tagName: "重要政策", date: "2026-03-20", source: "证券时报", url: "https://www.stcn.com/article/detail/3688635.html", desc: "司法部、央行、金融监管总局、证监会、国家外汇局联合公布《中华人民共和国金融法（草案）》向社会公开征求意见。", highlight: "金融法草案征求意见" },
+                { title: "发改委：六大新兴支柱产业产值预计达10万亿", tag: "policy", tagName: "产业政策", date: "2026-03-09", source: "腾讯新闻", url: "https://news.qq.com/rain/a/20260309A02X5U00", desc: "国家发改委主任郑栅洁表示，集成电路、航空航天、生物医药等六大新兴支柱产业相关产值到2030年有望扩大到10万亿元以上。", highlight: "六大产业10万亿" }
             ],
             career: [
                 { title: "就业市场持续回暖，应届生就业率提高", tag: "career", tagName: "职场趋势", date: "2026-03", source: "央视新闻", url: "https://www.cctv.com/", desc: "就业市场持续回暖，应届生就业率提高，部分行业需求旺盛。人工智能、新能源等领域人才缺口较大。", highlight: "应届生就业率提高" },
@@ -252,17 +252,17 @@
                 { title: "谷歌计划大幅恢复PERM申请", tag: "career", tagName: "职场动态", date: "2026-03", source: "Expand CAREER", url: "https://rexpandcareer.com/", desc: "谷歌内部邮件透露，公司计划在2026年大幅恢复绿卡申请（PERM），科技巨头人才战略正在调整。", highlight: "PERM申请将恢复" }
             ],
             global: [
-                { title: "中东局势：美国推迟对伊朗能源打击", tag: "expect", tagName: "地缘政治", date: "2026-03-28", source: "新华社", url: "https://www.xinhua.net/", desc: "特朗普将针对伊朗能源设施的摧毁行动推迟10天，期限延至4月6日，相关谈判正在进行中，霍尔木兹海峡局势紧张。", highlight: "美伊谈判进行中" },
-                { title: "俄乌战场出现人形机器人士兵", tag: "news", tagName: "地缘政治", date: "2026-03-28", source: "新浪新闻", url: "https://news.sina.cn/", desc: "据美媒报道，上个月两台人形机器人士兵抵达乌克兰战场。机器人身高180cm，体重80公斤，可AI评估战场并侦察射击。", highlight: "人形机器人上战场" },
-                { title: "G7财长会议讨论全球经济和金融议题", tag: "news", tagName: "国际财经", date: "2026-03-28", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "七国集团（G7）财长举行会议，讨论全球经济和金融议题。在地缘政治紧张背景下，会议备受关注。", highlight: "G7财长会议" },
-                { title: "印尼关注动力煤和镍价格走势", tag: "news", tagName: "国际商品", date: "2026-03-28", source: "新华财经", url: "https://finance.xinhua08.com/", desc: "印尼政府密切关注动力煤和镍的价格走势，若国际市场价格持续高位，将适度放松生产配额。", highlight: "印尼政策调整预期" }
+                { title: "中东地缘政治紧张，霍尔木兹海峡局势升级", tag: "expect", tagName: "地缘政治", date: "2026-03-27", source: "我的钢铁网", url: "https://nenghua.mysteel.com/a/26032716/93AF42EC453EA46D.html", desc: "中东地缘政治摩擦升级，霍尔木兹海峡关闭，影响未来市场供应以及心态，国际原油价格呈大幅上涨态势。", highlight: "霍尔木兹海峡关闭" },
+                { title: "全球市场避险情绪高企，金价获得支撑", tag: "news", tagName: "国际商品", date: "2026-03-27", source: "新浪基金", url: "https://finance.sina.com.cn/money/fund/etf/2026-03-27/doc-inhsmxri9358387.shtml", desc: "地缘政治方面，热点地区局势难以缓和，市场避险情绪高企，为金价带来一定支撑，人民币资产与海外市场风险相关性较低。", highlight: "避险情绪高企" },
+                { title: "G7财长会议讨论全球经济和金融议题", tag: "news", tagName: "国际财经", date: "2026-03-27", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "七国集团（G7）财长举行会议，讨论全球经济和金融议题。在地缘政治紧张背景下，会议备受关注。", highlight: "G7财长会议" },
+                { title: "丁二烯市场延续上行态势，出口增量", tag: "news", tagName: "国际商品", date: "2026-03-27", source: "我的钢铁网", url: "https://nenghua.m.mysteel.com/a/26032718/106DB3ACC90E36D4_abc.html", desc: "中东地缘政治影响发酵，大宗商品价格大幅上涨，丁二烯成本端支撑偏强，出口增量商家惜售情绪浓厚。", highlight: "丁二烯价格上行" }
             ],
             table: [
-                { event: "A股震荡反弹", sectors: ["沪指4100+", "创业板+0.7%"], logic: "成交额放量，市场情绪回暖", url: "https://www.stcn.com/" },
-                { event: "创新药板块爆发", sectors: ["医药生物", "创新药"], logic: "政策红利+出海BD超预期", url: "https://finance.eastmoney.com/" },
-                { event: "长护险实施方案落地", sectors: ["保险", "医疗健康"], logic: "'第六险'制度建设细化", url: "https://finance.xinhua08.com/" },
-                { event: "中美外交动态", sectors: ["外贸", "科技"], logic: "特朗普5月访华预期", url: "https://www.mfa.gov.cn/" },
-                { event: "人形机器人热点", sectors: ["机器人", "AI"], logic: "Figure 03白宫首秀", url: "https://www.cctv.com/" },
+                { event: "A股震荡反弹", sectors: ["沪指3913", "创业板+0.71%"], logic: "低开高走，情绪回暖", url: "https://www.stcn.com/" },
+                { event: "医药化工板块领涨", sectors: ["医药", "化工", "有色"], logic: "避险资金流入", url: "https://news.china.com/" },
+                { event: "央行MLF净投放", sectors: ["银行", "金融"], logic: "流动性保持充裕", url: "https://www.cfi.net.cn/" },
+                { event: "金融法草案征求意见", sectors: ["金融", "法律"], logic: "制度建设完善", url: "https://www.stcn.com/" },
+                { event: "中东局势紧张", sectors: ["原油", "黄金"], logic: "避险情绪升温", url: "https://finance.sina.com.cn/" },
                 { event: "工业利润增长", sectors: ["制造业", "计算机"], logic: "1-2月利润同比+15.2%", url: "http://www.stats.gov.cn/" }
             ]
         };
