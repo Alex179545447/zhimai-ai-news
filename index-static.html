@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日早报 | 2026-03-28</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f6f7; color: #1a1a1a; line-height: 1.6; padding: 0 16px 40px; }
+        .container { max-width: 680px; margin: 0 auto; }
+        
+        /* 头部 */
+        .header { padding: 24px 0 20px; text-align: center; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); margin: 0 -16px 20px; border-radius: 0 0 24px 24px; }
+        .header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .header .date { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
+        .header .brand { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+        
+        /* 市场基调 */
+        .market-summary { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #ff9800; padding: 16px 18px; border-radius: 0 12px 12px 0; margin-bottom: 20px; }
+        .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; }
+        .market-summary p { font-size: 0.95rem; color: #333; font-weight: 500; }
+        
+        /* 板块 */
+        .section { margin-bottom: 16px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-header { padding: 16px 18px; display: flex; align-items: center; gap: 10px; }
+        .section-header.cyan { background: linear-gradient(135deg, #00bcd4, #26c6da); }
+        .section-header.blue { background: linear-gradient(135deg, #1976d2, #2196f3); }
+        .section-header.red { background: linear-gradient(135deg, #d32f2f, #f44336); }
+        .section-header.orange { background: linear-gradient(135deg, #e65100, #ff9800); }
+        .section-header.purple { background: linear-gradient(135deg, #455a64, #607d8b); }
+        .section-header h2 { color: #fff; font-size: 1rem; font-weight: 600; }
+        
+        /* 新闻项 */
+        .news-item { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { font-size: 1rem; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; display: block; text-decoration: none; }
+        .news-title:hover { color: #1565c0; }
+        .tag { display: inline-block; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin-right: 8px; }
+        .tag.tech { background: #e8f5e9; color: #2e7d32; }
+        .tag.news { background: #e3f2fd; color: #1565c0; }
+        .tag.fact { background: #c8e6c9; color: #1b5e20; }
+        .tag.expect { background: #fff3e0; color: #e65100; }
+        .tag.policy { background: #fce4ec; color: #c2185b; }
+        .tag.career { background: #fff3e0; color: #e65100; }
+        .news-meta { font-size: 0.75rem; color: #999; margin-bottom: 6px; }
+        .news-desc { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 8px; }
+        .news-highlight { background: #fff9e6; border-radius: 8px; padding: 10px 12px; margin-top: 8px; border-left: 3px solid #ff9800; }
+        .news-highlight .label { font-size: 0.75rem; color: #e65100; font-weight: 600; margin-bottom: 2px; }
+        .news-highlight .value { font-size: 0.9rem; color: #d32f2f; font-weight: 700; }
+        
+        /* 表格 */
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 12px 14px; background: #fafafa; color: #666; font-weight: 600; font-size: 0.8rem; border-bottom: 1px solid #eee; }
+        td { padding: 12px 14px; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; color: #444; vertical-align: top; }
+        td a { color: #1565c0; text-decoration: none; }
+        td a:hover { text-decoration: underline; }
+        tr:last-child td { border-bottom: none; }
+        .asset-tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px 4px 2px 0; }
+        
+        /* 底部 */
+        .footer { text-align: center; padding: 30px 0 20px; color: #999; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📰 每日早报</h1>
+            <div class="date">2026年03月28日 · 星期六</div>
+            <div class="brand">智脉AI · 每日热点新闻</div>
+        </div>
+        
+        <!-- 市场基调 -->
+        <div class="market-summary">
+            <h2>📊 今日市场基调</h2>
+            <p>A股周六休市；Meta开源TRIBE v2预测人脑反应，小鹏更名"小鹏集团"；中菲外交磋商，油价涨至106美元</p>
+        </div>
+        
+        <!-- AI与科技前沿 -->
+        <div class="section">
+            <div class="section-header cyan">
+                <h2>🤖 AI与科技前沿</h2>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://news.futunn.com/post/69200881/boci-the-evolution-path-of-large-ai-models-is-becoming" target="_blank">中银国际：AI大模型演进路径清晰，算力或供不应求</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中银国际研报</div>
+                <div class="news-desc">2026年春节前后国内外主要AI模型纷纷完成重大升级，智能体与多模态两条演进路径逐步清晰，算力涨价成为新迹象。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">算力或供不应求</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://news.futunn.com/" target="_blank">字节跳动发布豆包2.0和Seedance2.0视频模型</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中银国际研报</div>
+                <div class="news-desc">字节跳动于2月发布豆包2.0模型和Seedance2.0新一代视频创作模型，AI视频生成能力大幅提升，进入影视行业生产力阶段。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">豆包2.0发布</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://blog.csdn.net/" target="_blank">阿里发布千问3.5模型，MoE架构3970亿参数</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ CSDN</div>
+                <div class="news-desc">阿里通义千问4.0采用第三代MoE分布式架构，通过动态专家路由实现总参数3970亿但单次推理成本大幅降低。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">千问3.5发布</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://post.smzdm.com/p/a5ree4m3/" target="_blank">中国AI大模型周调用量4.69万亿Token，连续两周超美国</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 什么值得买</div>
+                <div class="news-desc">OpenRouter数据显示，2026年3月9日至15日，中国AI大模型周调用量达4.69万亿Token，连续两周超越美国（同期3.294万亿）。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">中国AI周调用4.69万亿</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.askci.com/" target="_blank">AI大模型普及率42.8%，预计2026年超50%</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中商情报网</div>
+                <div class="news-desc">截至2025年12月，我国生成式AI普及率达42.8%，同比提高25.2个百分点。预计2026年普及率超过50%。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">AI普及率42.8%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- A股与金融市场 -->
+        <div class="section">
+            <div class="section-header blue">
+                <h2>📈 A股与金融市场</h2>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.toutiao.com/article/7621864086434873890/" target="_blank">A股三大指数集体上涨，沪指涨0.63%报3913点</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 东方财富网</div>
+                <div class="news-desc">A股三大指数集体上涨，沪指报3913.72点涨0.63%，深成指报13760.37点涨1.13%，创业板指报3295.88点涨0.71%。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">沪指3913.72点</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://news.china.com/socialgd/10000169/20260327/49362267.html" target="_blank">A股低开高走，医药、化工、有色金属板块涨幅居前</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中华网</div>
+                <div class="news-desc">3月27日A股主要指数低开高走，医药、化工、有色金属等板块涨幅居前，沪深京三市上涨个股接近3800只。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">3800只个股上涨</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.stcn.com/article/detail/3703515.html" target="_blank">央行逆回购操作1462亿元，利率1.40%</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 证券时报</div>
+                <div class="news-desc">央行以固定利率、数量招标方式开展1462亿元7天期逆回购操作，操作利率1.40%，维护银行体系流动性充裕。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">逆回购1462亿</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="http://www.stats.gov.cn/" target="_blank">1-2月规上工业利润同比增长15.2%</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 国家统计局</div>
+                <div class="news-desc">1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%，计算机通信行业利润增2倍。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">利润同比+15.2%</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://bbs.hupu.com/638139563.html" target="_blank">市场预期：下周有望震荡上行</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 市场预期</div>
+                <div class="news-desc">A股三大指数低开高走集体走强，多头趋势明显，但量能持续萎缩，短期震荡为主，慢牛格局仍在。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">预期：震荡上行</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 北京政策与宏观 -->
+        <div class="section">
+            <div class="section-header red">
+                <h2>🏛️ 北京政策与宏观风向</h2>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.cs.com.cn/xwzx/hg/202603/t20260328_6543488.html" target="_blank">央行：2026年深化重点金融机构改革，加大资本补充</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中证网</div>
+                <div class="news-desc">央行召开金融稳定工作会议，提出2026年深化重点金融机构改革，推动多渠道加大资本补充力度，增强金融风险防控能力。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">深化金融机构改革</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.stcn.com/article/detail/3705601.html" target="_blank">证监会：2026年加快重点领域立法修法</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 证券时报</div>
+                <div class="news-desc">证监会发布2025年法治政府建设情况，2026年将加快重点领域立法修法，提高制度包容性、适应性和竞争力。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">加快立法修法</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://news.china.com/socialgd/10000169/20260327/49362942.html" target="_blank">证监会：加强对减持、程序化交易等监管</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 中华网</div>
+                <div class="news-desc">证监会表示将引导上市公司按规定实施现金分红，同时加强对减持和程序化交易等活动的监督管理，确保公平市场环境。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">加强交易监管</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://www.boaoforum.org/" target="_blank">博鳌论坛2026年会开幕，科技与AI成为焦点</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 博鳌论坛</div>
+                <div class="news-desc">博鳌亚洲论坛2026年年会在海南开幕，科技与AI成为论坛焦点议题，中东能源危机也引发与会嘉宾高度关注。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">博鳌论坛开幕</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 国内外其他热点 -->
+        <div class="section">
+            <div class="section-header orange">
+                <h2>🌍 国内外其他热点</h2>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://finance.eastmoney.com/a/202603273686534721.html" target="_blank">特朗普将空袭伊朗能源设施时间再推迟10天至4月6日</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 东方财富网</div>
+                <div class="news-desc">美国总统特朗普称将针对伊朗能源设施的打击行动推迟10天至4月6日，但伊朗否认实质谈判进展，地缘局势仍紧张。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">美伊局势暂缓</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://3g.fx678.com/news/detail/202603280047038811" target="_blank">霍尔木兹海峡持续受阻，油价维持高位</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 汇通网</div>
+                <div class="news-desc">伊朗在霍尔木兹海峡推行管控系统，要求过往船只提交文件获取通行代码，原油价格因供应担忧维持高位。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">霍尔木兹受阻</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://3g.fx678.com/news/" target="_blank">地缘风险重燃避险潮，美元指数走强</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 汇通网</div>
+                <div class="news-desc">地缘政治风险持续推升市场避险情绪，美元指数维持100上方，为过去八个月最强劲月线表现。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">美元指数走强</div>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <a class="news-title" href="https://finance.eastmoney.com/" target="_blank">美伊对话前景不明，原油价格维持坚挺</a>
+                <div class="news-meta">📅 2026-03-27 | 🗞️ 东方财富网</div>
+                <div class="news-desc">美伊对话前景不明推升国际油价，市场担忧周末前冲突升级，霍尔木兹海峡持续受阻，油价维持坚挺。</div>
+                <div class="news-highlight">
+                    <div class="label">📈 关键数据</div>
+                    <div class="value">原油价格坚挺</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 资本市场关键点梳理 -->
+        <div class="section">
+            <div class="section-header purple">
+                <h2>📋 资本市场关键点梳理</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>事件</th>
+                        <th>关联板块</th>
+                        <th>影响逻辑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://www.stcn.com/" target="_blank">A股震荡反弹</a></td>
+                        <td><span class="asset-tag">沪指3913</span><span class="asset-tag">创业板+0.71%</span></td>
+                        <td>低开高走，情绪回暖</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://news.china.com/" target="_blank">医药化工板块领涨</a></td>
+                        <td><span class="asset-tag">医药</span><span class="asset-tag">化工</span><span class="asset-tag">有色</span></td>
+                        <td>避险资金流入</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.stcn.com/" target="_blank">央行逆回购1462亿</a></td>
+                        <td><span class="asset-tag">银行</span><span class="asset-tag">金融</span></td>
+                        <td>流动性保持充裕</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.cs.com.cn/" target="_blank">央行深化金融机构改革</a></td>
+                        <td><span class="asset-tag">金融</span><span class="asset-tag">银行</span></td>
+                        <td>增强风险防控</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://finance.eastmoney.com/" target="_blank">美伊局势暂缓</a></td>
+                        <td><span class="asset-tag">原油</span><span class="asset-tag">黄金</span></td>
+                        <td>避险情绪升温</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://www.stats.gov.cn/" target="_blank">工业利润增长</a></td>
+                        <td><span class="asset-tag">制造业</span><span class="asset-tag">计算机</span></td>
+                        <td>1-2月利润同比+15.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 底部 -->
+        <div class="footer">
+            <p>📰 每日早报由智脉AI自动生成</p>
+            <p style="margin-top: 4px;">数据来源：财联社、新华社、证券时报、东方财富网</p>
+            <p style="margin-top: 8px;">免责声明：本报告仅供参考，不构成投资建议</p>
+        </div>
+    </div>
+</body>
+</html>

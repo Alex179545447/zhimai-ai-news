@@ -2,194 +2,404 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>每日早报 | 每日热点新闻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日早报 | 2026-03-28</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif; background: #f5f6f7; color: #1a1a1a; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 680px; margin: 0 auto; padding: 0 16px 40px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f6f7; color: #1a1a1a; line-height: 1.6; padding: 0 16px 40px; }
+        .container { max-width: 680px; margin: 0 auto; }
         
-        /* 头部 */
         .header { padding: 24px 0 20px; text-align: center; background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); margin: 0 -16px 20px; border-radius: 0 0 24px 24px; }
         .header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
         .header .date { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
         .header .brand { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
         
-        /* 市场基调 */
         .market-summary { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #ff9800; padding: 16px 18px; border-radius: 0 12px 12px 0; margin-bottom: 20px; }
-        .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; }
         .market-summary p { font-size: 0.95rem; color: #333; font-weight: 500; }
         
-        /* 关键词订阅 */
-        .keyword-subscribe { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-        .keyword-subscribe h3 { font-size: 1rem; color: #1565c0; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .keyword-subscribe .desc { font-size: 0.85rem; color: #555; margin-bottom: 14px; }
-        .keyword-input-wrapper { display: flex; gap: 10px; margin-bottom: 12px; }
-        .keyword-input { flex: 1; padding: 12px 16px; border: 2px solid #e3f2fd; border-radius: 25px; font-size: 0.9rem; outline: none; background: #fff; }
-        .keyword-input:focus { border-color: #2196f3; }
-        .add-btn { padding: 12px 24px; background: #1565c0; color: #fff; border: none; border-radius: 25px; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
-        .add-btn:hover { background: #1976d2; }
-        .keyword-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; min-height: 30px; }
-        .keyword-tag { background: #fff; color: #1565c0; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-        .keyword-tag .remove { width: 18px; height: 18px; background: #ffcdd2; color: #c62828; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.7rem; }
-        .keyword-tag .remove:hover { background: #ef5350; color: #fff; }
-        .no-keywords { font-size: 0.85rem; color: #999; text-align: center; padding: 10px; }
-        .filter-result { background: #fff; border-radius: 12px; padding: 14px; margin-top: 14px; border-left: 3px solid #4caf50; display: none; }
-        .filter-result.show { display: block; }
-        .filter-result .title { font-size: 0.85rem; color: #2e7d32; font-weight: 600; margin-bottom: 8px; }
-        .filter-result .item { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
-        .filter-result .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .filter-result .item a { color: #1565c0; text-decoration: none; font-weight: 600; }
-        .filter-result .item a:hover { text-decoration: underline; }
-        .filter-result .kw-list { margin-top: 4px; }
-        .filter-result .kw { display: inline-block; background: #1565c0; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; margin: 2px 4px 2px 0; }
+        .category-tabs { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .category-tabs h3 { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+        .tabs-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tab-btn { padding: 6px 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: #666; }
+        .tab-btn:hover { border-color: #2196f3; color: #2196f3; }
+        .tab-btn.active { background: #2196f3; color: #fff; border-color: #2196f3; }
+        .tab-btn.inactive { background: #f5f5f5; color: #999; border-color: #eee; }
         
-        /* 板块 */
         .section { margin-bottom: 16px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-        .section-header { padding: 16px 18px; display: flex; align-items: center; gap: 10px; }
+        .section.hidden { display: none; }
+        .section-header { padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
         .section-header.cyan { background: linear-gradient(135deg, #00bcd4, #26c6da); }
         .section-header.blue { background: linear-gradient(135deg, #1976d2, #2196f3); }
         .section-header.red { background: linear-gradient(135deg, #d32f2f, #f44336); }
-        .section-header.purple { background: linear-gradient(135deg, #7b1fa2, #9c27b0); }
         .section-header.orange { background: linear-gradient(135deg, #e65100, #ff9800); }
+        .section-header.purple { background: linear-gradient(135deg, #455a64, #607d8b); }
+        .section-header.green { background: linear-gradient(135deg, #00897b, #26a69a); }
+        .section-header.pink { background: linear-gradient(135deg, #c2185b, #e91e63); }
         .section-header h2 { color: #fff; font-size: 1rem; font-weight: 600; }
-        .section-header .count { margin-left: auto; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; color: #fff; }
-        .section-content { padding: 4px 0; }
+        .collapse-icon { color: #fff; font-size: 1.2rem; transition: transform 0.3s; }
+        .section.collapsed .collapse-icon { transform: rotate(-90deg); }
+        .section.collapsed .section-content { display: none; }
         
-        /* 新闻项 */
+        .section-content { }
         .news-item { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
         .news-item:last-child { border-bottom: none; }
-        .news-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
-        .news-title { font-size: 1rem; font-weight: 600; color: #1a1a1a; flex: 1; line-height: 1.4; text-decoration: none; }
-        .news-title:hover { color: #1565c0; }
-        .news-title .link-icon { display: inline-block; margin-left: 6px; opacity: 0.5; font-size: 0.8rem; }
-        .tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-        .tag.fact { background: #e8f5e9; color: #2e7d32; }
-        .tag.expect { background: #fff3e0; color: #e65100; }
+        .news-title { font-size: 1rem; font-weight: 600; color: #1565c0; margin-bottom: 6px; display: block; text-decoration: none; cursor: pointer; }
+        .news-title:hover { color: #1976d2; text-decoration: underline; }
+        .tag { display: inline-block; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin-right: 8px; }
+        .tag.tech { background: #e8f5e9; color: #2e7d32; }
         .tag.news { background: #e3f2fd; color: #1565c0; }
+        .tag.fact { background: #c8e6c9; color: #1b5e20; }
+        .tag.expect { background: #fff3e0; color: #e65100; }
         .tag.policy { background: #fce4ec; color: #c2185b; }
-        .tag.tech { background: #f3e5f5; color: #7b1fa2; }
         .tag.career { background: #fff3e0; color: #e65100; }
+        .tag.hot { background: #ffebee; color: #c62828; }
+        .tag.game { background: #f3e5f5; color: #7b1fa2; }
+        .tag.entertainment { background: #fce4ec; color: #e91e63; }
+        .tag.edu { background: #e8f5e9; color: #388e3c; }
+        .tag.social { background: #e3f2fd; color: #1976d2; }
         .news-meta { font-size: 0.75rem; color: #999; margin-bottom: 6px; }
-        .news-meta a { color: #1565c0; text-decoration: none; }
         .news-desc { font-size: 0.9rem; color: #555; line-height: 1.6; margin-bottom: 8px; }
-        .news-highlight { background: #fff9e6; border-radius: 8px; padding: 12px; margin-top: 10px; border-left: 3px solid #ff9800; }
-        .news-highlight .label { font-size: 0.75rem; color: #e65100; font-weight: 600; margin-bottom: 4px; }
+        .news-highlight { background: #fff9e6; border-radius: 8px; padding: 10px 12px; margin-top: 8px; border-left: 3px solid #ff9800; }
+        .news-highlight .label { font-size: 0.75rem; color: #e65100; font-weight: 600; margin-bottom: 2px; }
         .news-highlight .value { font-size: 0.9rem; color: #d32f2f; font-weight: 700; }
-        .read-more { display: inline-block; margin-top: 8px; color: #1565c0; font-size: 0.85rem; text-decoration: none; font-weight: 500; }
-        .read-more:hover { text-decoration: underline; }
         
-        /* 表格 */
-        .table-section { background: #fff; border-radius: 16px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-        .table-header { background: linear-gradient(135deg, #455a64, #607d8b); padding: 16px 18px; }
-        .table-header h2 { color: #fff; font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-        table { width: 100%; }
+        table { width: 100%; border-collapse: collapse; }
         th { text-align: left; padding: 12px 14px; background: #fafafa; color: #666; font-weight: 600; font-size: 0.8rem; border-bottom: 1px solid #eee; }
         td { padding: 12px 14px; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; color: #444; vertical-align: top; }
         td a { color: #1565c0; text-decoration: none; }
         td a:hover { text-decoration: underline; }
         tr:last-child td { border-bottom: none; }
-        .asset-tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px 4px 2px 0; font-weight: 500; }
+        .asset-tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px 4px 2px 0; }
         
-        /* 底部 */
         .footer { text-align: center; padding: 30px 0 20px; color: #999; font-size: 0.8rem; }
         
         @media (max-width: 480px) {
             .header h1 { font-size: 1.3rem; }
-            .keyword-input-wrapper { flex-direction: column; }
-            .add-btn { width: 100%; }
+            .tabs-wrapper { gap: 6px; }
+            .tab-btn { padding: 5px 10px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 头部 -->
         <div class="header">
             <h1>📰 每日早报</h1>
-            <div class="date" id="currentDate">2026年03月28日 · 星期六（最新）</div>
+            <div class="date">2026年03月28日 · 星期六</div>
             <div class="brand">智脉AI · 每日热点新闻</div>
         </div>
         
-        <!-- 市场基调 -->
         <div class="market-summary">
             <h2>📊 今日市场基调</h2>
-            <p>A股周六休市；Meta开源TRIBE v2预测人脑反应，小鹏更名"小鹏集团"；中菲外交磋商，油价涨至106美元</p>
+            <p>美股大跌道指失守800点；华为盘古大模型负责人王云鹤离职；菲律宾南海挑衅；教育部发布20条教育禁令</p>
         </div>
         
-        <!-- 关键词订阅 -->
-        <div class="keyword-subscribe">
-            <h3>🔖 我的关键词订阅</h3>
-            <div class="desc">添加您关心的关键词，我们会高亮显示相关内容</div>
-            <div class="keyword-input-wrapper">
-                <input type="text" class="keyword-input" id="keywordInput" placeholder="例如：半导体、AI、新能源...">
-                <button type="button" class="add-btn" id="addBtn">添加</button>
-            </div>
-            <div class="keyword-list" id="keywordList"></div>
-            <div class="no-keywords" id="noKeywords">还没有添加关键词，试试输入上面的关键词吧</div>
-            <div class="filter-result" id="filterResult">
-                <div class="title">🎯 匹配到以下内容：</div>
-                <div id="filterItems"></div>
+        <div class="category-tabs">
+            <h3>🏷️ 显示/隐藏类目（点击切换）</h3>
+            <div class="tabs-wrapper">
+                <button class="tab-btn active" onclick="toggleCategory('ai')">🤖 AI科技</button>
+                <button class="tab-btn active" onclick="toggleCategory('market')">📈 金融</button>
+                <button class="tab-btn active" onclick="toggleCategory('policy')">🏛️ 政策</button>
+                <button class="tab-btn active" onclick="toggleCategory('global')">🌍 国际</button>
+                <button class="tab-btn active" onclick="toggleCategory('game')">🎮 游戏</button>
+                <button class="tab-btn active" onclick="toggleCategory('edu')">📚 教育</button>
+                <button class="tab-btn active" onclick="toggleCategory('entertainment')">🎬 影视</button>
+                <button class="tab-btn active" onclick="toggleCategory('table')">📋 关键点</button>
             </div>
         </div>
         
-        <!-- 第一部分：AI与科技前沿 -->
-        <div class="section">
-            <div class="section-header cyan">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <!-- AI与科技前沿 -->
+        <div class="section" id="section-ai">
+            <div class="section-header cyan" onclick="collapseSection('section-ai')">
                 <h2>🤖 AI与科技前沿</h2>
-                <span class="count" id="count-ai">5条</span>
+                <span class="collapse-icon">▼</span>
             </div>
-            <div class="section-content" id="section-ai"></div>
+            <div class="section-content">
+                <div class="news-item">
+                    <span class="tag hot">🔥 突发</span>
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903q3sq.html" target="_blank">华为盘古大模型负责人王云鹤宣布离职，任职9年</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 新浪科技</div>
+                    <div class="news-desc">华为诺亚方舟实验室主任、华为盘古大模型负责人王云鹤今日在朋友圈发文宣布离职。他表示，"8年了，准确来说是9年了"。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">任职9年</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://finance.sina.com.cn/tech/digi/2026-03-28/doc-inhsnzca1461275.shtml" target="_blank">Meta开源TRIBE v2模型，精准预测人类大脑多模态反应</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ IT之家</div>
+                    <div class="news-desc">Meta基础人工智能研究团队(FAIR)开源全新AI模型TRIBE v2，可精准预测人类大脑对图像、声音和文本的反应。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">TRIBE v2开源</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903ov86.html" target="_blank">国产AI算力"超级底座"上线，FlagOS 2.0支持18家厂商32款AI芯片</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 北京青年报</div>
+                    <div class="news-desc">2026中关村论坛年会上，由23家顶尖科研机构、高校及科技企业联合打造的众智FlagOS 2.0正式上线。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">FlagOS 2.0发布</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903oyva.html" target="_blank">马斯克母亲游览长城：实在令人惊叹</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 新浪网</div>
+                    <div class="news-desc">马斯克母亲梅耶·马斯克打卡长城，年过七旬身姿矫健，发布照片并配文"实在令人惊叹"。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">马斯克母亲游长城</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://finance.sina.com.cn/jjxw/2026-03-28/doc-inhsnzay4678427.shtml" target="_blank">国安部提醒：员工用搜索引擎下载软件险落入境外组织窃密陷阱</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 国家安全部</div>
+                    <div class="news-desc">国家安全机关工作发现，有不法分子通过给搜索结果添加恶意模块等方式，窃取敏感文件资料，威胁国家安全。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">网络安全警示</div></div>
+                </div>
+            </div>
         </div>
         
-        <!-- 第二部分：A股与金融市场 -->
-        <div class="section">
-            <div class="section-header blue">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+        <!-- A股与金融市场 -->
+        <div class="section" id="section-market">
+            <div class="section-header blue" onclick="collapseSection('section-market')">
                 <h2>📈 A股与金融市场</h2>
-                <span class="count" id="count-market">5条</span>
+                <span class="collapse-icon">▼</span>
             </div>
-            <div class="section-content" id="section-market"></div>
+            <div class="section-content">
+                <div class="news-item">
+                    <span class="tag hot">🔥 突发</span>
+                    <a class="news-title" href="https://finance.sina.com.cn/headline/2026-03-28/doc-inhspwhu5713686.shtml" target="_blank">美股大跳水！道指大跌近800点确认进入回调区间</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 芝麻AI</div>
+                    <div class="news-desc">北京时间3月28日凌晨，美股三大指数集体下挫，道指大跌近800点，确认进入回调区间。油价飙升加剧市场担忧。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">道指-800点</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903q5so.html" target="_blank">特斯拉全新SUV曝光，市场预期持续低迷</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 新浪网</div>
+                    <div class="news-desc">韦德布什分析师下调特斯拉目标价，特斯拉全新SUV曝光，市场对特斯拉电动车销量回升期待降低。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">特斯拉预期下调</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.stcn.com/article/detail/3703515.html" target="_blank">央行逆回购操作1462亿元，利率1.40%</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 证券时报</div>
+                    <div class="news-desc">央行以固定利率、数量招标方式开展1462亿元7天期逆回购操作，维护银行体系流动性充裕。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">逆回购1462亿</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="http://www.stats.gov.cn/" target="_blank">1-2月规上工业利润同比增长15.2%</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 国家统计局</div>
+                    <div class="news-desc">1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">利润+15.2%</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.eeo.com.cn/2026/0328/820349.shtml" target="_blank">1-2月社会物流总额58.6万亿元，同比增长6.7%</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">1-2月份，我国社会物流总额58.6万亿元，按可比价格计算同比增长6.7%。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">物流总额+6.7%</div></div>
+                </div>
+            </div>
         </div>
         
-        <!-- 第三部分：北京政策与宏观 -->
-        <div class="section">
-            <div class="section-header red">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-6h6v6"/></svg>
+        <!-- 北京政策与宏观 -->
+        <div class="section" id="section-policy">
+            <div class="section-header red" onclick="collapseSection('section-policy')">
                 <h2>🏛️ 北京政策与宏观风向</h2>
-                <span class="count" id="count-policy">4条</span>
+                <span class="collapse-icon">▼</span>
             </div>
-            <div class="section-content" id="section-policy"></div>
+            <div class="section-content">
+                <div class="news-item">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E246BE4C77" target="_blank">中共中央政治局召开会议，审议《中国共产党地方委员会工作条例》</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 央视新闻</div>
+                    <div class="news-desc">中共中央总书记习近平主持会议，地方党委要坚决维护党中央权威和集中统一领导。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">政治局会议</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.eeo.com.cn/2026/0328/820349.shtml" target="_blank">商务部对美启动两项贸易壁垒调查</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 商务部</div>
+                    <div class="news-desc">商务部针对美对华两起301调查，对等发起两项贸易壁垒调查，坚决维护中国相关产业利益。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">中美贸易摩擦</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.boaoforum.org/" target="_blank">博鳌论坛2026年会闭幕，50多场论坛探讨亚洲与世界挑战</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 博鳌论坛</div>
+                    <div class="news-desc">博鳌亚洲论坛2026年年会在海南闭幕，为期4天的年会共举办了50多场论坛活动。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">博鳌论坛闭幕</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.kankanews.com/detail/djQKKVA6vQO" target="_blank">国家重大科技基础设施"远海浮动岛"在沪启动建设</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 看看新闻</div>
+                    <div class="news-desc">国家重大科技基础设施"远海浮动岛"在沪启动建设，预计2030年建成，助力海洋强国战略。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">远海浮动岛启动</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.eeo.com.cn/2026/0328/820349.shtml" target="_blank">2025年中国科幻产业总营收1261亿元，连续三年破千亿</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">2026中国科幻大会发布报告显示，2025年中国科幻产业总营收1261亿元，同比增长15.7%。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">科幻产业1261亿</div></div>
+                </div>
+            </div>
         </div>
         
-        <!-- 第四部分：国内外其他热点 -->
-        <div class="section">
-            <div class="section-header orange">
-                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        <!-- 国内外其他热点 -->
+        <div class="section" id="section-global">
+            <div class="section-header orange" onclick="collapseSection('section-global')">
                 <h2>🌍 国内外其他热点</h2>
-                <span class="count" id="count-global">4条</span>
+                <span class="collapse-icon">▼</span>
             </div>
-            <div class="section-content" id="section-global"></div>
+            <div class="section-content">
+                <div class="news-item">
+                    <span class="tag hot">🔥 突发</span>
+                    <a class="news-title" href="https://www.kankanews.com/detail/djQKKVA6vQO" target="_blank">菲律宾舰艇危险接近中方舰艇，南部战区公布现场视频</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 南部战区</div>
+                    <div class="news-desc">菲律宾舰艇危险接近中方舰艇，南部战区公布现场视频，正告菲方立即停止挑衅冒险行为。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">南海局势</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://big5.sputniknews.cn/20260328/" target="_blank">伊朗称一铀浓缩厂遭美国和以色列打击，伤者超2.2万人</a>
+                    <div class="news-meta">�� 2026-03-28 | 🗞️ 卫星通讯社</div>
+                    <div class="news-desc">伊朗媒体称，与美以冲突致伊朗伤者总数超2.2万人，英媒称英国因国内原因不愿支持美国在伊朗的行动。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">中东局势升级</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.kankanews.com/detail/djQKKVA6vQO" target="_blank">美籍"华人神探"李昌钰逝世，享年87岁</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 看看新闻</div>
+                    <div class="news-desc">美籍"华人神探"李昌钰逝世，享年87岁，首开科学证据定罪先河，曾参与审理辛普森案等重大案件。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">李昌钰逝世</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.kankanews.com/detail/djQKKVA6vQO" target="_blank">上海邮轮口岸迎来"超级周末"，单日入境外国旅客创2020年以来新高</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 看看新闻</div>
+                    <div class="news-desc">上海邮轮口岸迎来"超级周末"，两船一同靠港，单日入境外国旅客人次创2020年以来新高。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">邮轮客流新高</div></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 游戏与电竞 -->
+        <div class="section" id="section-game">
+            <div class="section-header purple" onclick="collapseSection('section-game')">
+                <h2>🎮 游戏与电竞</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="news-item">
+                    <a class="news-title" href="https://news.qq.com/rain/a/20260328A05H8P00" target="_blank">3月133款游戏获批版号，一季度版号总量超460</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 触乐网</div>
+                    <div class="news-desc">国家出版总署公布3月国产、进口网络游戏审批信息，本月获批版号国产游戏共130款。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">133款游戏获批</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://news.qq.com/rain/a/20260328A05H8P00" target="_blank">腾讯《洛克王国：世界》公测首日登顶iOS免费榜</a>
+                    <div class="news-meta">📅 2026-03-26 | 🗞️ 腾讯新闻</div>
+                    <div class="news-desc">腾讯旗下魔方工作室群研发的《洛克王国：世界》正式开启公测，开服13小时新进用户突破1500万。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">1500万新用户</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://business.china.com/game/13004842/20260328/49364726.html" target="_blank">《ARC Raiders》全球销量突破1400万，大型更新3月31日上线</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 中华网</div>
+                    <div class="news-desc">Nexon旗下超火搜打撤游戏《ARC Raiders》全球销量已突破1400万。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">销量1400万</div></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 教育与社会 -->
+        <div class="section" id="section-edu">
+            <div class="section-header green" onclick="collapseSection('section-edu')">
+                <h2>📚 教育与社会</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="news-item">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E246BE4C77" target="_blank">教育部发布20条"严禁"清单，规范基础教育办学行为</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 教育部</div>
+                    <div class="news-desc">教育部发布《关于开展基础教育规范管理巩固年行动的通知》，提出20条负面清单，严禁超标超前教学、强制购买校服等行为。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">20条禁令</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E247B04D70" target="_blank">长护险覆盖全民，费率控制在0.3%左右</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 顶端新闻</div>
+                    <div class="news-desc">国家医保局发布长期护理保险制度，参保对象覆盖全民，费率统一控制在0.3%左右。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">长护险0.3%</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.sohu.com/a/1002060127_121106908" target="_blank">长沙市教育局招聘226名教师，有编制</a>
+                    <div class="news-meta">📅 2026-03-26 | 🗞️ 搜狐</div>
+                    <div class="news-desc">长沙市教育局发布2026年所属事业单位第二轮公开招聘教职工公告，计划招聘226名。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">招聘226名教师</div></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 影视与娱乐 -->
+        <div class="section" id="section-entertainment">
+            <div class="section-header pink" onclick="collapseSection('section-entertainment')">
+                <h2>🎬 影视与娱乐</h2>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="news-item">
+                    <a class="news-title" href="https://k.sina.com.cn/article_1623886424_60ca8a5804001gn9g.html" target="_blank">2026年3月票房破20亿，《飞驰人生3》领跑</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 猫眼专业版</div>
+                    <div class="news-desc">据猫眼专业版数据，3月28日17时20分，2026年3月总票房破20亿，《飞驰人生3》领跑票房榜。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">票房破20亿</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://news.china.com/socialgd/10000169/20260328/49364444.html" target="_blank">《乘风2026》4月2日开启直播，33位女性嘉宾阵容公布</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 中华网</div>
+                    <div class="news-desc">芒果TV宣布《乘风2026》将于4月2日开启直播，首次公布33位女性嘉宾阵容。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">乘风2026开播</div></div>
+                </div>
+                <div class="news-item">
+                    <a class="news-title" href="https://www.toutiao.com/article/7621914144078168612/" target="_blank">古装剧《白日提灯》今日开播，迪丽热巴、陈飞宇主演</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 今日头条</div>
+                    <div class="news-desc">古装剧《白日提灯》今日开播，鹅厂首更5集共40集，主演迪丽热巴、陈飞宇。</div>
+                    <div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">白日提灯开播</div></div>
+                </div>
+            </div>
         </div>
         
         <!-- 资本市场关键点梳理 -->
-        <div class="table-section">
-            <div class="table-header">
+        <div class="section" id="section-table">
+            <div class="section-header purple" onclick="collapseSection('section-table')">
                 <h2>📋 资本市场关键点梳理</h2>
+                <span class="collapse-icon">▼</span>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>事件</th>
-                        <th>关联板块</th>
-                        <th>影响逻辑</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>事件</th>
+                            <th>关联板块</th>
+                            <th>影响逻辑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://finance.sina.com.cn/headline/2026-03-28/doc-inhspwhu5713686.shtml" target="_blank">美股大跌道指-800点</a></td>
+                            <td><span class="asset-tag">美股</span><span class="asset-tag">道指</span></td>
+                            <td>确认进入回调区间</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://k.sina.com.cn/article_7857201856_1d45362c001903q3sq.html" target="_blank">华为王云鹤离职</a></td>
+                            <td><span class="asset-tag">AI</span><span class="asset-tag">华为</span></td>
+                            <td>盘古大模型负责人变动</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.kankanews.com/detail/djQKKVA6vQO" target="_blank">菲律宾南海挑衅</a></td>
+                            <td><span class="asset-tag">南海</span><span class="asset-tag">地缘</span></td>
+                            <td>区域紧张局势</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.topnews.cn/news/145CD5E246BE4C77" target="_blank">教育部发布20条禁令</a></td>
+                            <td><span class="asset-tag">教育</span><span class="asset-tag">政策</span></td>
+                            <td>规范基础教育</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://k.sina.com.cn/article_1623886424_60ca8a5804001gn9g.html" target="_blank">3月票房破20亿</a></td>
+                            <td><span class="asset-tag">影视</span><span class="asset-tag">票房</span></td>
+                            <td>消费市场回暖</td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://www.stats.gov.cn/" target="_blank">工业利润+15.2%</a></td>
+                            <td><span class="asset-tag">工业</span><span class="asset-tag">经济</span></td>
+                            <td>企业盈利改善</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         
-        <!-- 底部 -->
         <div class="footer">
             <p>📰 每日早报由智脉AI自动生成</p>
             <p style="margin-top: 4px;">数据来源：财联社、新华社、证券时报、东方财富网</p>
@@ -198,178 +408,59 @@
     </div>
     
     <script>
-        // 新闻数据 - 由智脉AI自动生成（更新时间：2026-03-28）
-        const newsData = {
-            ai: [
-                { title: "中银国际：AI大模型演进路径清晰，算力或供不应求", tag: "tech", tagName: "AI行业", date: "2026-03-27", source: "中银国际研报", url: "https://news.futunn.com/post/69200881/boci-the-evolution-path-of-large-ai-models-is-becoming", desc: "2026年春节前后国内外主要AI模型纷纷完成重大升级，智能体与多模态两条演进路径逐步清晰，算力涨价成为新迹象。", highlight: "算力或供不应求" },
-                { title: "字节跳动发布豆包2.0和Seedance2.0视频模型", tag: "tech", tagName: "大模型", date: "2026-03-27", source: "中银国际研报", url: "https://news.futunn.com/", desc: "字节跳动于2月发布豆包2.0模型和Seedance2.0新一代视频创作模型，AI视频生成能力大幅提升，进入影视行业生产力阶段。", highlight: "豆包2.0发布" },
-                { title: "阿里发布千问3.5模型，MoE架构3970亿参数", tag: "news", tagName: "AI大模型", date: "2026-03-27", source: "CSDN", url: "https://blog.csdn.net/", desc: "阿里通义千问4.0采用第三代MoE分布式架构，通过动态专家路由实现总参数3970亿但单次推理成本大幅降低。", highlight: "千问3.5发布" },
-                { title: "中国AI大模型周调用量4.69万亿Token，连续两周超美国", tag: "news", tagName: "AI大模型", date: "2026-03-27", source: "什么值得买", url: "https://post.smzdm.com/p/a5ree4m3/", desc: "OpenRouter数据显示，2026年3月9日至15日，中国AI大模型周调用量达4.69万亿Token，连续两周超越美国（同期3.294万亿）。", highlight: "中国AI周调用4.69万亿" },
-                { title: "AI大模型普及率42.8%，预计2026年超50%", tag: "tech", tagName: "行业数据", date: "2026-03-27", source: "中商情报网", url: "https://www.askci.com/", desc: "截至2025年12月，我国生成式AI普及率达42.8%，同比提高25.2个百分点。预计2026年普及率超过50%。", highlight: "AI普及率42.8%" }
-            ],
-            market: [
-                { title: "A股三大指数集体上涨，沪指涨0.63%报3913点", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "东方财富网", url: "https://www.toutiao.com/article/7621864086434873890/", desc: "A股三大指数集体上涨，沪指报3913.72点涨0.63%，深成指报13760.37点涨1.13%，创业板指报3295.88点涨0.71%。", highlight: "沪指3913.72点" },
-                { title: "A股低开高走，医药、化工、有色金属板块涨幅居前", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "中华网", url: "https://news.china.com/socialgd/10000169/20260327/49362267.html", desc: "3月27日A股主要指数低开高走，医药、化工、有色金属等板块涨幅居前，沪深京三市上涨个股接近3800只。", highlight: "3800只个股上涨" },
-                { title: "央行逆回购操作1462亿元，利率1.40%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/article/detail/3703515.html", desc: "央行以固定利率、数量招标方式开展1462亿元7天期逆回购操作，操作利率1.40%，维护银行体系流动性充裕。", highlight: "逆回购1462亿" },
-                { title: "1-2月规上工业利润同比增长15.2%", tag: "fact", tagName: "已落地", date: "2026-03-27", source: "国家统计局", url: "http://www.stats.gov.cn/", desc: "1-2月全国规模以上工业企业利润总额10245.6亿元，同比增长15.2%，计算机通信行业利润增2倍。", highlight: "利润同比+15.2%" },
-                { title: "市场预期：下周有望震荡上行", tag: "expect", tagName: "市场预期", date: "2026-03-27", source: "虎扑", url: "https://bbs.hupu.com/638139563.html", desc: "A股三大指数低开高走集体走强，多头趋势明显，但量能持续萎缩，短期震荡为主，慢牛格局仍在。", highlight: "预期：震荡上行" }
-            ],
-            policy: [
-                { title: "央行：2026年深化重点金融机构改革，加大资本补充", tag: "policy", tagName: "重要政策", date: "2026-03-27", source: "中证网", url: "https://www.cs.com.cn/xwzx/hg/202603/t20260328_6543488.html", desc: "央行召开金融稳定工作会议，提出2026年深化重点金融机构改革，推动多渠道加大资本补充力度，增强金融风险防控能力。", highlight: "深化金融机构改革" },
-                { title: "证监会：2026年加快重点领域立法修法", tag: "policy", tagName: "监管动态", date: "2026-03-27", source: "证券时报", url: "https://www.stcn.com/article/detail/3705601.html", desc: "证监会发布2025年法治政府建设情况，2026年将加快重点领域立法修法，提高制度包容性、适应性和竞争力。", highlight: "加快立法修法" },
-                { title: "证监会：加强对减持、程序化交易等监管", tag: "policy", tagName: "监管动态", date: "2026-03-27", source: "中华网", url: "https://news.china.com/socialgd/10000169/20260327/49362942.html", desc: "证监会表示将引导上市公司按规定实施现金分红，同时加强对减持和程序化交易等活动的监督管理，确保公平市场环境。", highlight: "加强交易监管" },
-                { title: "博鳌论坛2026年会开幕，科技与AI成为焦点", tag: "policy", tagName: "行业活动", date: "2026-03-27", source: "博鳌论坛", url: "https://www.boaoforum.org/", desc: "博鳌亚洲论坛2026年年会在海南开幕，科技与AI成为论坛焦点议题，中东能源危机也引发与会嘉宾高度关注。", highlight: "博鳌论坛开幕" }
-            ],
-            career: [
-                { title: "博鳌论坛：两位发达国家前首脑表示想换中国电动车", tag: "career", tagName: "职场趋势", date: "2026-03-28", source: "新浪财经", url: "https://finance.sina.com.cn/", desc: "博鳌论坛上，斯洛文尼亚前总统图尔克、新西兰前总理希普利表示，中东能源危机推动能源转型，高度认可中国新能源汽车领先地位。", highlight: "前政要认可中国电车" },
-                { title: "AI人才需求旺盛，算法工程师薪资持续走高", tag: "career", tagName: "职场趋势", date: "2026-03-27", source: "猎聘网", url: "https://www.liepin.com/", desc: "AI大模型快速发展推动相关人才需求激增，算法工程师、自然语言处理工程师薪资持续走高，招聘需求同比增长超30%。", highlight: "AI人才薪资上涨" },
-                { title: "特斯拉调整在华战略，加大自动驾驶研发投入", tag: "career", tagName: "职场动态", date: "2026-03-27", source: "汽车马力", url: "https://k.sina.com.cn/", desc: "特斯拉加大在华自动驾驶研发投入，计划在中国建立更多研发中心，本土化人才招聘规模扩大。", highlight: "特斯拉加大在华研发" }
-            ],
-            global: [
-                { title: "特朗普将空袭伊朗能源设施时间再推迟10天至4月6日", tag: "expect", tagName: "地缘政治", date: "2026-03-27", source: "东方财富网", url: "https://finance.eastmoney.com/a/202603273686534721.html", desc: "美国总统特朗普称将针对伊朗能源设施的打击行动推迟10天至4月6日，但伊朗否认实质谈判进展，地缘局势仍紧张。", highlight: "美伊局势暂缓" },
-                { title: "霍尔木兹海峡持续受阻，油价维持高位", tag: "news", tagName: "国际商品", date: "2026-03-27", source: "汇通网", url: "https://3g.fx678.com/news/detail/202603280047038811", desc: "伊朗在霍尔木兹海峡推行管控系统，要求过往船只提交文件获取通行代码，原油价格因供应担忧维持高位。", highlight: "霍尔木兹受阻" },
-                { title: "地缘风险重燃避险潮，美元指数走强", tag: "news", tagName: "国际财经", date: "2026-03-27", source: "汇通网", url: "https://3g.fx678.com/news/", desc: "地缘政治风险持续推升市场避险情绪，美元指数维持100上方，为过去八个月最强劲月线表现。", highlight: "美元指数走强" },
-                { title: "美伊对话前景不明，原油价格维持坚挺", tag: "expect", tagName: "国际商品", date: "2026-03-27", source: "东方财富网", url: "https://finance.eastmoney.com/", desc: "美伊对话前景不明推升国际油价，市场担忧周末前冲突升级，霍尔木兹海峡持续受阻，油价维持坚挺。", highlight: "原油价格坚挺" }
-            ],
-            table: [
-                { event: "A股震荡反弹", sectors: ["沪指3913", "创业板+0.71%"], logic: "低开高走，情绪回暖", url: "https://www.stcn.com/" },
-                { event: "医药化工板块领涨", sectors: ["医药", "化工", "有色"], logic: "避险资金流入", url: "https://news.china.com/" },
-                { event: "央行逆回购1462亿", sectors: ["银行", "金融"], logic: "流动性保持充裕", url: "https://www.stcn.com/" },
-                { event: "央行深化金融机构改革", sectors: ["金融", "银行"], logic: "增强风险防控", url: "https://www.cs.com.cn/" },
-                { event: "美伊局势暂缓", sectors: ["原油", "黄金"], logic: "避险情绪升温", url: "https://finance.eastmoney.com/" },
-                { event: "工业利润增长", sectors: ["制造业", "计算机"], logic: "1-2月利润同比+15.2%", url: "http://www.stats.gov.cn/" }
-            ]
-        };
-        
-        // 关键词管理
-        let userKeywords = JSON.parse(localStorage.getItem('userKeywords') || '[]');
-        
-        function renderKeywords() {
-            var list = document.getElementById('keywordList');
-            var noKeywords = document.getElementById('noKeywords');
-            
-            if (userKeywords.length === 0) {
-                list.style.display = 'none';
-                noKeywords.style.display = 'block';
+        function toggleCategory(id) {
+            const section = document.getElementById('section-' + id);
+            const btn = event.target;
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+                btn.classList.add('active');
+                btn.classList.remove('inactive');
             } else {
-                list.style.display = 'flex';
-                noKeywords.style.display = 'none';
-                var html = '';
-                for (var i = 0; i < userKeywords.length; i++) {
-                    html += '<span class="keyword-tag">' + userKeywords[i] + ' <span class="remove" onclick="removeKeyword(' + i + ')">×</span></span>';
-                }
-                list.innerHTML = html;
+                section.classList.add('hidden');
+                btn.classList.remove('active');
+                btn.classList.add('inactive');
             }
+            savePreferences();
         }
         
-        function addKeyword() {
-            var input = document.getElementById('keywordInput');
-            var kw = input.value.trim();
-            if (kw && userKeywords.indexOf(kw) === -1) {
-                userKeywords.push(kw);
-                localStorage.setItem('userKeywords', JSON.stringify(userKeywords));
-                input.value = '';
-                renderKeywords();
-                updateFilterResult();
-            }
+        function collapseSection(id) {
+            const section = document.getElementById(id);
+            section.classList.toggle('collapsed');
         }
         
-        function removeKeyword(index) {
-            userKeywords.splice(index, 1);
-            localStorage.setItem('userKeywords', JSON.stringify(userKeywords));
-            renderKeywords();
-            updateFilterResult();
+        function savePreferences() {
+            const preferences = {};
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => {
+                const id = s.id.replace('section-', '');
+                preferences[id] = !s.classList.contains('hidden');
+            });
+            localStorage.setItem('newsPreferences', JSON.stringify(preferences));
         }
         
-        document.getElementById('addBtn').addEventListener('click', addKeyword);
-        document.getElementById('keywordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') { addKeyword(); }
-        });
-        
-        function checkKeywordMatch(text) {
-            if (userKeywords.length === 0) return [];
-            var matches = [];
-            for (var i = 0; i < userKeywords.length; i++) {
-                if (text.toLowerCase().indexOf(userKeywords[i].toLowerCase()) !== -1) {
-                    matches.push(userKeywords[i]);
-                }
-            }
-            return matches;
-        }
-        
-        function updateFilterResult() {
-            var resultDiv = document.getElementById('filterResult');
-            var itemsDiv = document.getElementById('filterItems');
-            
-            if (userKeywords.length === 0) {
-                resultDiv.classList.remove('show');
-                return;
-            }
-            
-            var allNews = [].concat(newsData.ai, newsData.market, newsData.policy, newsData.career, newsData.global);
-            var matchedNews = [];
-            for (var i = 0; i < allNews.length; i++) {
-                var text = allNews[i].title + ' ' + allNews[i].desc + ' ' + allNews[i].tagName;
-                if (checkKeywordMatch(text).length > 0) {
-                    matchedNews.push(allNews[i]);
-                }
-            }
-            
-            if (matchedNews.length === 0) {
-                resultDiv.classList.add('show');
-                itemsDiv.innerHTML = '<div style="color: #999; text-align: center; padding: 15px;">暂无匹配内容，明天早7点更新后可能会有哦~</div>';
-            } else {
-                resultDiv.classList.add('show');
-                var html = '';
-                for (var j = 0; j < matchedNews.length; j++) {
-                    var n = matchedNews[j];
-                    var matches = checkKeywordMatch(n.title + ' ' + n.desc + ' ' + n.tagName);
-                    var kwHtml = '';
-                    for (var k = 0; k < matches.length; k++) {
-                        kwHtml += '<span class="kw">' + matches[k] + '</span>';
+        function loadPreferences() {
+            const saved = localStorage.getItem('newsPreferences');
+            if (saved) {
+                const preferences = JSON.parse(saved);
+                Object.keys(preferences).forEach(id => {
+                    const section = document.getElementById('section-' + id);
+                    const btn = document.querySelector(`[onclick="toggleCategory('${id}')"]`);
+                    if (section && btn) {
+                        if (preferences[id]) {
+                            section.classList.remove('hidden');
+                            btn.classList.add('active');
+                            btn.classList.remove('inactive');
+                        } else {
+                            section.classList.add('hidden');
+                            btn.classList.remove('active');
+                            btn.classList.add('inactive');
+                        }
                     }
-                    html += '<div class="item"><a href="' + n.url + '" target="_blank">' + n.title + '</a><div style="font-size:0.8rem;color:#666;margin-top:4px;">' + n.tagName + ' | ' + n.date + '</div><div class="kw-list">' + kwHtml + '</div></div>';
-                }
-                itemsDiv.innerHTML = '<div style="margin-bottom:10px;color:#666;font-size:0.85rem;">为您找到 ' + matchedNews.length + ' 条相关新闻：</div>' + html;
+                });
             }
         }
         
-function renderNews(news) {
-            var highlightHtml = '';
-            if (news.highlight) {
-                highlightHtml = '<div class="news-highlight"><div class="label">📈 关键数据</div><div class="value">' + news.highlight + '</div></div>';
-            }
-            return '<div class="news-item"><div class="news-header"><span class="tag ' + news.tag + '">' + news.tagName + '</span><a href="' + news.url + '" target="_blank" class="news-title">' + news.title + '<span class="link-icon">↗</span></a></div><div class="news-meta">📅 ' + news.date + ' | <a href="' + news.url + '" target="_blank">🗞️ ' + news.source + '</a></div><div class="news-desc">' + news.desc + '</div>' + highlightHtml + '<a href="' + news.url + '" target="_blank" class="read-more">📖 阅读原文全文 →</a></div>';
-        }
-        
-        function renderAllNews() {
-            document.getElementById('section-ai').innerHTML = newsData.ai.map(renderNews).join('');
-            document.getElementById('section-market').innerHTML = newsData.market.map(renderNews).join('');
-            document.getElementById('section-policy').innerHTML = newsData.policy.map(renderNews).join('');
-            document.getElementById('section-career').innerHTML = newsData.career.map(renderNews).join('');
-            document.getElementById('section-global').innerHTML = newsData.global.map(renderNews).join('');
-            
-            document.getElementById('count-ai').textContent = newsData.ai.length + '条';
-            document.getElementById('count-market').textContent = newsData.market.length + '条';
-            document.getElementById('count-policy').textContent = newsData.policy.length + '条';
-            document.getElementById('count-career').textContent = newsData.career.length + '条';
-            document.getElementById('count-global').textContent = newsData.global.length + '条';
-            
-            var tableHtml = '';
-            for (var i = 0; i < newsData.table.length; i++) {
-                var row = newsData.table[i];
-                var sectorsHtml = '';
-                for (var j = 0; j < row.sectors.length; j++) {
-                    sectorsHtml += '<span class="asset-tag">' + row.sectors[j] + '</span>';
-                }
-                tableHtml += '<tr><td><a href="' + row.url + '" target="_blank">' + row.event + '</a></td><td>' + sectorsHtml + '</td><td>' + row.logic + '</td></tr>';
-            }
-            document.getElementById('tableBody').innerHTML = tableHtml;
-        }
-        
-        renderKeywords();
-        renderAllNews();
-        updateFilterResult();
+        document.addEventListener('DOMContentLoaded', loadPreferences);
     </script>
 </body>
 </html>
