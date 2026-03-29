@@ -342,6 +342,113 @@
             color: var(--accent-blue);
         }
 
+        /* 自定义标签高亮 */
+        .news-item.tag-matched {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, #f0fdff 0%, #ffffff 100%);
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+        }
+
+        .news-item.tag-matched::before {
+            content: '✨ 匹配您的兴趣';
+            display: block;
+            font-size: 11px;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* 我的推荐版块 */
+        .recommendation-section {
+            margin: 16px 20px;
+            padding: 16px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid var(--accent-cyan);
+            border-radius: var(--radius-lg);
+        }
+
+        .recommendation-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .recommendation-header svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-cyan);
+        }
+
+        .recommendation-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .recommendation-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        .recommendation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .recommendation-tag {
+            padding: 4px 10px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--accent-cyan);
+        }
+
+        .recommendation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .recommendation-item {
+            padding: 12px;
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .recommendation-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .recommendation-item-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .recommendation-item-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .no-recommendation {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
         .news-title {
             font-size: 15px;
             font-weight: 600;
@@ -1558,6 +1665,21 @@
                 </div>
                 <p class="custom-tag-hint">添加关键词后，我们将为您推送相关内容</p>
             </div>
+
+            <!-- 我的推荐版块 -->
+            <div class="recommendation-section" id="recommendationSection" style="display: none;">
+                <div class="recommendation-header">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="recommendation-title">为您推荐</span>
+                    <span class="recommendation-subtitle" id="recommendationCount">0条</span>
+                </div>
+                <div class="recommendation-tags" id="recommendationTags">
+                    <!-- 匹配标签显示 -->
+                </div>
+                <div class="recommendation-list" id="recommendationList">
+                    <!-- 匹配的新闻列表 -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2528,9 +2650,113 @@
         initIndexPage();
 
         // ============================================
-        // 自定义标签管理功能
+        // 自定义标签管理功能 + 推荐系统
         // ============================================
         let customTags = JSON.parse(localStorage.getItem('zhimai_custom_tags')) || [];
+
+        // 检查新闻标题/内容是否匹配标签
+        function isTagMatch(newsItem, tags) {
+            if (!tags || tags.length === 0) return { matched: false, matchedTags: [] };
+            const matchedTags = [];
+            const searchText = (newsItem.title + ' ' + newsItem.content).toLowerCase();
+            tags.forEach(tag => {
+                if (searchText.includes(tag.toLowerCase())) {
+                    matchedTags.push(tag);
+                }
+            });
+            return { matched: matchedTags.length > 0, matchedTags: matchedTags };
+        }
+
+        // 获取所有新闻列表
+        function getAllNews() {
+            const news = [];
+            // 从fullNewsData获取所有新闻
+            Object.keys(fullNewsData).forEach(key => {
+                const item = fullNewsData[key];
+                if (item && item.title) {
+                    news.push({ id: key, ...item });
+                }
+            });
+            return news;
+        }
+
+        // 更新推荐版块
+        function updateRecommendation() {
+            const section = document.getElementById('recommendationSection');
+            const tagsContainer = document.getElementById('recommendationTags');
+            const listContainer = document.getElementById('recommendationList');
+            const countEl = document.getElementById('recommendationCount');
+            
+            if (!section) return;
+            
+            // 如果没有自定义标签，隐藏推荐版块
+            if (customTags.length === 0) {
+                section.style.display = 'none';
+                // 移除所有高亮
+                document.querySelectorAll('.news-item.tag-matched').forEach(el => {
+                    el.classList.remove('tag-matched');
+                });
+                return;
+            }
+            
+            // 显示推荐版块
+            section.style.display = 'block';
+            
+            // 显示匹配标签
+            tagsContainer.innerHTML = customTags.map(tag => 
+                `<span class="recommendation-tag">${tag}</span>`
+            ).join('');
+            
+            // 获取所有新闻并匹配
+            const allNews = getAllNews();
+            const matchedNews = [];
+            
+            allNews.forEach(news => {
+                const match = isTagMatch(news, customTags);
+                if (match.matched) {
+                    matchedNews.push({ ...news, matchedTags: match.matchedTags });
+                }
+            });
+            
+            // 更新计数
+            countEl.textContent = matchedNews.length + '条';
+            
+            // 渲染匹配的新闻
+            if (matchedNews.length === 0) {
+                listContainer.innerHTML = '<div class="no-recommendation">暂无匹配内容，明日更新后为您推荐</div>';
+            } else {
+                listContainer.innerHTML = matchedNews.map(news => `
+                    <div class="recommendation-item" onclick="openNewsDetail('${news.id}')">
+                        <div class="recommendation-item-title">${news.title}</div>
+                        <div class="recommendation-item-meta">
+                            <span>${news.date || ''}</span>
+                            <span>${news.source || ''}</span>
+                            <span>匹配: ${news.matchedTags.join(', ')}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // 高亮新闻列表中的匹配项
+            document.querySelectorAll('.news-item').forEach(el => {
+                const newsId = el.dataset.newsId;
+                const newsItem = fullNewsData[newsId];
+                if (newsItem) {
+                    const match = isTagMatch(newsItem, customTags);
+                    if (match.matched) {
+                        el.classList.add('tag-matched');
+                    } else {
+                        el.classList.remove('tag-matched');
+                    }
+                }
+            });
+            
+            // 记录推荐查看
+            trackAction('recommendation_view', { 
+                tagCount: customTags.length, 
+                matchCount: matchedNews.length 
+            });
+        }
 
         function renderCustomTags() {
             const container = document.getElementById('customTagsList');
@@ -2542,6 +2768,9 @@
                     <span class="remove-tag" onclick="removeCustomTag('${tag}')">×</span>
                 </div>
             `).join('');
+            
+            // 更新推荐
+            updateRecommendation();
         }
 
         function addCustomTag(tag) {
@@ -2549,6 +2778,7 @@
                 customTags.push(tag);
                 localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
                 renderCustomTags();
+                trackAction('add_custom_tag', { tag: tag, total: customTags.length });
             }
         }
 
@@ -2556,6 +2786,7 @@
             customTags = customTags.filter(t => t !== tag);
             localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
             renderCustomTags();
+            trackAction('remove_custom_tag', { tag: tag, total: customTags.length });
         }
 
         // 初始化自定义标签
