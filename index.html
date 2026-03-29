@@ -2809,9 +2809,10 @@
         }
 
         // ============================================
-        // 实时新闻搜索API（阿里云函数计算）
+        // 实时新闻搜索API（直接调用智谱AI）
         // ============================================
-        const API_BASE = 'https://zhimai-news-api-lsavddbznn.cn-hangzhou.fcapp.run';
+        const ZHIPU_API_KEY = '28133690e57f4ba9902b4015f21404bb.L3eQw0LRHCFM7N9f';
+        const ZHIPU_API_URL = 'https://open.bigmodel.cn/api/paas/v4/chat/completions';
 
         let isSearching = false;
 
@@ -2842,29 +2843,71 @@
             }
             
             try {
-                const response = await fetch(`${API_BASE}/api/news`, {
+                const today = new Date();
+                const dateStr = today.getFullYear() + '年' + (today.getMonth()+1).toString().padStart(2,'0') + '月' + today.getDate().toString().padStart(2,'0') + '日';
+                const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+                const weekday = weekdays[today.getDay()];
+                const tagsStr = customTags.slice(0, 10).join('、');
+                
+                const prompt = `请搜索今天(${dateStr} ${weekday})的最新新闻，重点关注以下用户兴趣标签：${tagsStr}
+
+要求：
+1. 只搜索最近24小时内的新闻
+2. 返回与用户兴趣标签相关的新闻
+3. 每条新闻需包含：标题、日期、来源、摘要(50字内)、原文链接
+
+请按以下JSON格式返回（只返回JSON，不要其他内容）：
+\`\`\`json
+{
+  "success": true,
+  "count": 数量,
+  "news": [
+    {"title": "新闻标题", "date": "日期时间", "source": "来源", "desc": "摘要", "url": "链接", "matchedTag": "匹配的标签"}
+  ]
+}
+\`\`\``;
+
+                const response = await fetch(ZHIPU_API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tags: customTags })
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${ZHIPU_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'glm-4-flash',
+                        messages: [{ role: 'user', content: prompt }],
+                        tools: [{ type: 'web_search', web_search: { search_engine: 'bing' } }],
+                        stream: false
+                    })
                 });
                 
                 if (!response.ok) throw new Error('API请求失败');
                 
                 const result = await response.json();
+                const content = result.choices?.[0]?.message?.content || '';
                 
-                if (result.success && result.news && result.news.length > 0) {
+                // 提取JSON
+                let newsData = null;
+                const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    try {
+                        newsData = JSON.parse(jsonMatch[0]);
+                    } catch (e) {}
+                }
+                
+                if (newsData?.success && newsData.news?.length > 0) {
                     // 更新计数
                     const countEl = document.getElementById('recommendationCount');
-                    if (countEl) countEl.textContent = `${result.news.length}条（实时）`;
+                    if (countEl) countEl.textContent = `${newsData.news.length}条（实时）`;
                     
                     // 显示实时新闻
-                    listContainer.innerHTML = result.news.map(news => `
-                        <div class="recommendation-item realtime-news" onclick="window.open('${news.url}', '_blank')">
+                    listContainer.innerHTML = newsData.news.map(news => `
+                        <div class="recommendation-item realtime-news" onclick="window.open('${news.url || '#'}', '_blank')">
                             <div class="recommendation-item-title">${news.title}</div>
                             <div class="recommendation-item-meta">
                                 <span>${news.date || ''}</span>
                                 <span>${news.source || ''}</span>
-                                <span class="matched-tag">匹配: ${news.matchedTag || ''}</span>
+                                ${news.matchedTag ? `<span class="matched-tag">匹配: ${news.matchedTag}</span>` : ''}
                             </div>
                             <div class="recommendation-desc">${news.desc || ''}</div>
                         </div>
@@ -2873,14 +2916,14 @@
                     // 记录搜索结果
                     trackAction('realtime_search', { 
                         tags: customTags, 
-                        results: result.news.length 
+                        results: newsData.news.length 
                     });
                 } else {
                     listContainer.innerHTML = '<div class="no-recommendation">😔 暂未找到匹配的实时新闻，明日早报将为您推送</div>';
                 }
             } catch (error) {
                 console.error('实时搜索失败:', error);
-                listContainer.innerHTML = '<div class="no-recommendation">⚠️ 搜索服务暂时不可用，请稍后再试<br><small>或联系管理员检查API配置</small></div>';
+                listContainer.innerHTML = '<div class="no-recommendation">⚠️ 搜索服务暂时不可用，请稍后再试</div>';
             } finally {
                 isSearching = false;
                 if (btn) {
