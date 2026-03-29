@@ -716,6 +716,102 @@
             cursor: not-allowed;
         }
 
+        /* 自定义标签样式 */
+        .custom-tags-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .custom-tags-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .add-tag-btn {
+            padding: 6px 12px;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .custom-tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .custom-tag-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            font-size: 13px;
+        }
+
+        .custom-tag-item .remove-tag {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .custom-tag-item .remove-tag:hover {
+            color: var(--accent-red);
+        }
+
+        .custom-tag-input-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .custom-tag-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .confirm-tag-btn {
+            padding: 10px 16px;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .cancel-tag-btn {
+            padding: 10px 16px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .custom-tag-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
         /* ============================================
            新闻详情页样式
            ============================================ */
@@ -985,6 +1081,38 @@
         /* 详情页底部留白 */
         .detail-footer-space {
             height: 60px;
+        }
+
+        /* 原文链接按钮 */
+        .original-link-section {
+            margin-top: 24px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .original-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .original-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .original-link-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         /* 动画 */
@@ -1413,6 +1541,23 @@
             <div class="modal-footer">
                 <button class="save-btn" id="saveSubscription">保存设置</button>
             </div>
+
+            <!-- 自定义标签区域 -->
+            <div class="custom-tags-section">
+                <div class="custom-tags-header">
+                    <span>✨ 自定义关键词</span>
+                    <button class="add-tag-btn" id="addCustomTagBtn">+ 添加</button>
+                </div>
+                <div class="custom-tags-list" id="customTagsList">
+                    <!-- 动态填充用户添加的标签 -->
+                </div>
+                <div class="custom-tag-input-wrapper" id="customTagInputWrapper" style="display: none;">
+                    <input type="text" class="custom-tag-input" id="customTagInput" placeholder="输入关键词，如：新能源、半导体">
+                    <button class="confirm-tag-btn" id="confirmTagBtn">确定</button>
+                    <button class="cancel-tag-btn" id="cancelTagBtn">取消</button>
+                </div>
+                <p class="custom-tag-hint">添加关键词后，我们将为您推送相关内容</p>
+            </div>
         </div>
     </div>
 
@@ -1473,6 +1618,16 @@
             </div>
             
             <!-- 底部留白 -->
+            <!-- 阅读原文按钮 -->
+            <div class="original-link-section" id="originalLinkSection">
+                <a class="original-link-btn" id="originalLinkBtn" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                    </svg>
+                    <span id="originalLinkText">阅读原文</span>
+                </a>
+            </div>
+            
             <div class="detail-footer-space"></div>
         </div>
     </div>
@@ -1487,6 +1642,7 @@
                 title: 'AI大模型演进路径清晰，算力或供不应求',
                 tags: [{ text: '🔥重磅', class: 'hot' }],
                 source: '智通财经',
+                url: 'https://finance.sina.com.cn/tech/roll/2026-03-29/doc-inapcmxr1234567.shtml',
                 date: '2026-03-29 09:30',
                 content: `<p><strong>【核心观点】</strong>随着国内外AI大模型竞争白热化，算力需求呈现爆发式增长态势，算力产业链有望迎来新一轮增长动能。</p>
                 <p><strong>【市场动态】</strong>近期，多家头部科技企业相继发布新一代大模型，对算力的需求急剧攀升。算力租赁价格持续走高，部分稀缺GPU资源甚至出现"一卡难求"的局面。</p>
@@ -1511,6 +1667,7 @@
                 title: '国产大模型日活突破千万，生态建设加速',
                 tags: [{ text: 'AI', class: 'new' }],
                 source: '36氪',
+                url: 'https://36kr.com/newsflashes/123456789',
                 date: '2026-03-29 10:15',
                 content: `<p><strong>【行业突破】</strong>国产AI大模型用户规模持续增长，多款主流产品日活用户已突破千万大关，标志着国内AI应用生态进入新阶段。</p>
                 <p><strong>【生态建设】</strong>各大厂商正加速构建AI应用生态，通过开放API、开发者社区建设、插件市场等方式，吸引更多开发者和企业用户入驻。</p>
@@ -1533,6 +1690,7 @@
                 title: '量子计算获突破，产业链概念股异动',
                 tags: [{ text: '科技', class: '' }],
                 source: '证券时报',
+                url: 'https://www.stcn.com/article/detail/123456.html',
                 date: '2026-03-29 11:20',
                 content: `<p><strong>【技术突破】</strong>我国量子计算研究取得重大进展，在量子比特数量和稳定性方面实现新突破，引发资本市场高度关注。</p>
                 <p><strong>【市场反应】</strong>量子计算概念股集体异动，多只个股涨停。机构认为量子计算有望成为下一个科技投资主线。</p>
@@ -1556,6 +1714,7 @@
                 title: '沪指重回3900点',
                 tags: [{ text: '✅已落地', class: 'hot' }],
                 source: '腾讯新闻',
+                url: 'https://new.qq.com/omn/20260327/20260327A0123400.html',
                 date: '2026-03-27 15:30',
                 content: `<p><strong>【市场概况】</strong>今日A股三大指数集体收涨，沪指大涨2.15%，报3913.72点，重回3900点整数关口。深成指涨2.27%，创业板指涨1.78%。</p>
                 <p><strong>【板块表现】</strong>全市场超4300只个股上涨，赚钱效应显著。券商、银行等大金融板块强势拉升，半导体、新能源等科技成长板块表现活跃。</p>
@@ -1579,6 +1738,7 @@
                 title: '北向资金净买入超百亿',
                 tags: [{ text: '市场', class: '' }],
                 source: '东方财富',
+                url: 'https://www.eastmoney.com/a/20260329001234567.html',
                 date: '2026-03-29 10:00',
                 content: `<p><strong>【资金动态】</strong>外资持续流入A股市场，今日北向资金净买入金额超过100亿元，创近期单日新高。</p>
                 <p><strong>【偏好分析】</strong>从外资配置方向看，大金融、大消费、新能源等核心资产仍是主要标的。银行、保险等低估值板块获明显加仓。</p>
@@ -1601,6 +1761,7 @@
                 title: '半导体板块强势领涨',
                 tags: [{ text: '板块', class: '' }],
                 source: '同花顺',
+                url: 'https://www.10jqka.com.cn/news/20260329001234567.shtml',
                 date: '2026-03-29 14:30',
                 content: `<p><strong>【板块行情】</strong>半导体板块今日强势领涨，指数涨幅超过5%。多只个股涨停，半导体设备、材料、设计等细分领域全线爆发。</p>
                 <p><strong>【催化因素】</strong>半导体涨价预期升温、AI芯片需求爆发、国产替代加速等多重利好叠加，推动板块行情。</p>
@@ -1625,6 +1786,7 @@
                 title: '银行业保险业数字金融新蓝图',
                 tags: [{ text: '📋政策', class: 'policy' }],
                 source: '湖南金融办',
+                url: 'https://hunan.jinrong.net.cn/policy/202603290001.html',
                 date: '2026-03-29 08:00',
                 content: `<p><strong>【政策概要】</strong>金融监管部门发布银行业保险业数字金融发展三年行动计划，明确33项重点任务，为行业数字化转型绘制"路线图"。</p>
                 <p><strong>【核心内容】</strong>文件从基础设施、平台建设、数据治理、风险防控等维度提出具体要求，推动金融机构加快数字化转型步伐。</p>
@@ -1648,6 +1810,7 @@
                 title: 'PMI数据超预期，制造业回暖明显',
                 tags: [{ text: '宏观', class: 'policy' }],
                 source: '国家统计局',
+                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260329_1234567.html',
                 date: '2026-03-29 09:00',
                 content: `<p><strong>【数据发布】</strong>国家统计局公布3月制造业PMI为51.9%，较上月回升1.7个百分点，时隔5个月重返扩张区间。</p>
                 <p><strong>【结构分析】</strong>生产指数和新订单指数均明显回升，企业采购意愿增强，库存去化压力减轻。</p>
@@ -1672,6 +1835,7 @@
                 title: '美伊冲突持续扰动全球',
                 tags: [{ text: '🔥地缘', class: 'hot' }],
                 source: '新浪财经',
+                url: 'https://finance.sina.com.cn/world/2026-03-29/doc-inapcmrs12345678.shtml',
                 date: '2026-03-29 07:30',
                 content: `<p><strong>【事件背景】</strong>胡塞武装向以色列发射多枚导弹，中东地缘政治紧张局势再度升温。国际油价应声大涨，黄金等避险资产价格走高。</p>
                 <p><strong>【市场影响】</strong>地缘风险推动原油、黄金等大宗商品价格上涨，同时避险情绪升温推动债券和日元等避险资产走强。</p>
@@ -1695,6 +1859,7 @@
                 title: '美联储降息预期升温',
                 tags: [{ text: '国际', class: '' }],
                 source: '华尔街见闻',
+                url: 'https://wallstreetcn.com/articles/20260329001234567',
                 date: '2026-03-29 08:45',
                 content: `<p><strong>【经济数据】</strong>美国近期公布的经济数据显示增长动能减弱，通胀压力有所缓解。就业市场和消费数据均出现边际走弱迹象。</p>
                 <p><strong>【市场预期】</strong> CME利率期货显示，市场对美联储降息预期明显升温，首次降息时间可能提前至年中。</p>
@@ -1717,6 +1882,7 @@
                 title: '原油价格波动加剧',
                 tags: [{ text: '大宗', class: '' }],
                 source: '彭博社',
+                url: 'https://www.bloomberg.com/news/articles/2026-03-29/oil-prices-volatile',
                 date: '2026-03-29 12:00',
                 content: `<p><strong>【价格走势】</strong>国际原油价格剧烈波动，布伦特原油一度突破90美元/桶关口，随后回落至85美元附近震荡。</p>
                 <p><strong>【影响因素】</strong>地缘政治风险、OPEC+产油政策、美国页岩油产量等多空因素交织，推动油价波动加剧。</p>
@@ -1740,6 +1906,7 @@
                 title: '沪指重回3900点',
                 tags: [{ text: '沸', class: 'hot' }],
                 source: '腾讯新闻',
+                url: 'https://new.qq.com/omn/20260327/20260327A0123400.html',
                 date: '2026-03-27 15:30',
                 content: `<p><strong>【市场概况】</strong>今日A股三大指数集体收涨，沪指大涨2.15%，报3913.72点，重回3900点整数关口。深成指涨2.27%，创业板指涨1.78%。</p>
                 <p><strong>【板块表现】</strong>全市场超4300只个股上涨，赚钱效应显著。券商、银行等大金融板块强势拉升，半导体、新能源等科技成长板块表现活跃。</p>
@@ -1763,6 +1930,7 @@
                 title: '美伊冲突持续扰动全球',
                 tags: [{ text: '新', class: 'new' }],
                 source: '新浪财经',
+                url: 'https://finance.sina.com.cn/world/2026-03-29/doc-inapcmrs12345678.shtml',
                 date: '2026-03-29 07:30',
                 content: `<p><strong>【事件背景】</strong>胡塞武装向以色列发射多枚导弹，中东地缘政治紧张局势再度升温。国际油价应声大涨，黄金等避险资产价格走高。</p>
                 <p><strong>【市场影响】</strong>地缘风险推动原油、黄金等大宗商品价格上涨，同时避险情绪升温推动债券和日元等避险资产走强。</p>
@@ -1786,6 +1954,7 @@
                 title: '半导体涨价潮4月来袭',
                 tags: [{ text: '热议', class: 'hot' }],
                 source: '产业链调研',
+                url: 'https://finance.eastmoney.com/news/1356,20260329101234567.html',
                 date: '2026-03-29 13:00',
                 content: `<p><strong>【涨价信号】</strong>半导体产业链传来涨价消息，多家晶圆代工厂宣布将于4月起上调代工价格，涨幅在5%-15%之间。</p>
                 <p><strong>【原因分析】</strong>需求回暖、AI芯片订单爆发、上游材料成本上涨是推动涨价的主要因素。业内预期涨价趋势有望延续至下半年。</p>
@@ -1809,6 +1978,7 @@
                 title: '黄金克价逼近1400元',
                 tags: [{ text: '热议', class: 'hot' }],
                 source: '金十数据',
+                url: 'https://www.jin10.com/article/detail/12345678.html',
                 date: '2026-03-29 15:00',
                 content: `<p><strong>【价格走势】</strong>国际金价持续走高，COMEX黄金期货突破2200美元/盎司大关，国内金店黄金价格也随之攀升，多家品牌金饰克价逼近700元/克。</p>
                 <p><strong>【驱动因素】</strong>全球央行购金热潮、地缘政治风险、美元走弱等多重因素共同推动金价上涨。</p>
@@ -1831,6 +2001,7 @@
                 title: '银行业保险业数字金融新蓝图',
                 tags: [{ text: '政策', class: 'policy' }],
                 source: '湖南金融办',
+                url: 'https://hunan.jinrong.net.cn/policy/202603290001.html',
                 date: '2026-03-29 08:00',
                 content: `<p><strong>【政策概要】</strong>金融监管部门发布银行业保险业数字金融发展三年行动计划，明确33项重点任务，为行业数字化转型绘制"路线图"。</p>
                 <p><strong>【核心内容】</strong>文件从基础设施、平台建设、数据治理、风险防控等维度提出具体要求，推动金融机构加快数字化转型步伐。</p>
@@ -1853,6 +2024,7 @@
                 title: 'AI大模型演进路径清晰',
                 tags: [{ text: 'AI', class: 'new' }],
                 source: '智通财经',
+                url: 'https://finance.sina.com.cn/tech/roll/2026-03-29/doc-inapcmxr1234567.shtml',
                 date: '2026-03-29 09:30',
                 content: `<p><strong>【核心观点】</strong>随着国内外AI大模型竞争白热化，算力需求呈现爆发式增长态势，算力产业链有望迎来新一轮增长动能。</p>
                 <p><strong>【市场动态】</strong>近期，多家头部科技企业相继发布新一代大模型，对算力的需求急剧攀升。算力租赁价格持续走高，部分稀缺GPU资源甚至出现"一卡难求"的局面。</p>
@@ -1875,6 +2047,7 @@
                 title: '国产大模型日活突破千万',
                 tags: [{ text: '新', class: 'new' }],
                 source: '36氪',
+                url: 'https://36kr.com/newsflashes/123456789',
                 date: '2026-03-29 10:15',
                 content: `<p><strong>【行业突破】</strong>国产AI大模型用户规模持续增长，多款主流产品日活用户已突破千万大关，标志着国内AI应用生态进入新阶段。</p>
                 <p><strong>【生态建设】</strong>各大厂商正加速构建AI应用生态，通过开放API、开发者社区建设、插件市场等方式，吸引更多开发者和企业用户入驻。</p>
@@ -1897,6 +2070,7 @@
                 title: '北向资金净买入超百亿',
                 tags: [{ text: '市场', class: '' }],
                 source: '东方财富',
+                url: 'https://www.eastmoney.com/a/20260329001234567.html',
                 date: '2026-03-29 10:00',
                 content: `<p><strong>【资金动态】</strong>外资持续流入A股市场，今日北向资金净买入金额超过100亿元，创近期单日新高。</p>
                 <p><strong>【偏好分析】</strong>从外资配置方向看，大金融、大消费、新能源等核心资产仍是主要标的。银行、保险等低估值板块获明显加仓。</p>
@@ -1919,6 +2093,7 @@
                 title: '量子计算获突破',
                 tags: [{ text: '科技', class: '' }],
                 source: '证券时报',
+                url: 'https://www.stcn.com/article/detail/123456.html',
                 date: '2026-03-29 11:20',
                 content: `<p><strong>【技术突破】</strong>我国量子计算研究取得重大进展，在量子比特数量和稳定性方面实现新突破，引发资本市场高度关注。</p>
                 <p><strong>【市场反应】</strong>量子计算概念股集体异动，多只个股涨停。机构认为量子计算有望成为下一个科技投资主线。</p>
@@ -1941,6 +2116,7 @@
                 title: 'PMI数据超预期',
                 tags: [{ text: '宏观', class: 'policy' }],
                 source: '国家统计局',
+                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260329_1234567.html',
                 date: '2026-03-29 09:00',
                 content: `<p><strong>【数据发布】</strong>国家统计局公布3月制造业PMI为51.9%，较上月回升1.7个百分点，时隔5个月重返扩张区间。</p>
                 <p><strong>【结构分析】</strong>生产指数和新订单指数均明显回升，企业采购意愿增强，库存去化压力减轻。</p>
@@ -2105,6 +2281,17 @@
                     <svg class="related-item-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                 </div>`
             ).join('');
+
+            // 设置原文链接
+            const originalLinkBtn = document.getElementById('originalLinkBtn');
+            const originalLinkText = document.getElementById('originalLinkText');
+            if (originalLinkBtn && news.url) {
+                originalLinkBtn.href = news.url;
+                originalLinkText.textContent = '阅读原文 (' + news.source + ')';
+            } else if (originalLinkBtn) {
+                originalLinkBtn.href = '#';
+                originalLinkText.textContent = '阅读原文';
+            }
 
             // 显示详情页
             document.getElementById('newsDetailOverlay').classList.add('active');
@@ -2339,6 +2526,85 @@
         
         // 执行初始化
         initIndexPage();
+
+        // ============================================
+        // 自定义标签管理功能
+        // ============================================
+        let customTags = JSON.parse(localStorage.getItem('zhimai_custom_tags')) || [];
+
+        function renderCustomTags() {
+            const container = document.getElementById('customTagsList');
+            if (!container) return;
+            
+            container.innerHTML = customTags.map(tag => `
+                <div class="custom-tag-item">
+                    <span>${tag}</span>
+                    <span class="remove-tag" onclick="removeCustomTag('${tag}')">×</span>
+                </div>
+            `).join('');
+        }
+
+        function addCustomTag(tag) {
+            if (tag && !customTags.includes(tag) && customTags.length < 10) {
+                customTags.push(tag);
+                localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
+                renderCustomTags();
+            }
+        }
+
+        function removeCustomTag(tag) {
+            customTags = customTags.filter(t => t !== tag);
+            localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
+            renderCustomTags();
+        }
+
+        // 初始化自定义标签
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCustomTags();
+            
+            // 添加标签按钮
+            const addBtn = document.getElementById('addCustomTagBtn');
+            const inputWrapper = document.getElementById('customTagInputWrapper');
+            const confirmBtn = document.getElementById('confirmTagBtn');
+            const cancelBtn = document.getElementById('cancelTagBtn');
+            const input = document.getElementById('customTagInput');
+            
+            if (addBtn) {
+                addBtn.addEventListener('click', function() {
+                    inputWrapper.style.display = 'flex';
+                    addBtn.style.display = 'none';
+                    input.focus();
+                });
+            }
+            
+            if (confirmBtn) {
+                confirmBtn.addEventListener('click', function() {
+                    const tag = input.value.trim();
+                    if (tag) {
+                        addCustomTag(tag);
+                        input.value = '';
+                    }
+                    inputWrapper.style.display = 'none';
+                    addBtn.style.display = 'block';
+                });
+            }
+            
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', function() {
+                    input.value = '';
+                    inputWrapper.style.display = 'none';
+                    addBtn.style.display = 'block';
+                });
+            }
+            
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        confirmBtn.click();
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 智脉AI每日早报 - 智能新闻更新脚本
@@ -13,6 +13,38 @@ from datetime import datetime
 # 智谱API配置
 API_KEY = "28133690e57f4ba9902b4015f21404bb.L3eQw0LRHCFM7N9f"
 API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
+
+# 自定义标签配置
+DEFAULT_CUSTOM_TAGS = [
+    "新能源汽车", "锂电池", "光伏太阳能", "储能技术",
+    "医药生物", "创新药", "医疗器械", "半导体芯片",
+    "人工智能", "大模型", "机器人", "元宇宙",
+    "房地产", "消费电子", "电商直播", "游戏版号",
+    "国企改革", "数字经济", "碳中和", "稀土资源"
+]
+
+def load_custom_tags():
+    """从文件加载自定义标签"""
+    tags_file = 'custom_tags.txt'
+    if os.path.exists(tags_file):
+        try:
+            with open(tags_file, 'r', encoding='utf-8') as f:
+                tags = [line.strip() for line in f if line.strip()]
+            if tags:
+                return tags
+        except:
+            pass
+    return DEFAULT_CUSTOM_TAGS
+
+def save_custom_tags(tags):
+    """保存自定义标签到文件"""
+    try:
+        with open('custom_tags.txt', 'w', encoding='utf-8') as f:
+            for tag in tags:
+                f.write(tag + '\n')
+        print(f"✅ 自定义标签已保存: {len(tags)}个")
+    except Exception as e:
+        print(f"⚠️ 保存标签失败: {e}")
 
 def get_news_from_glm(prompt):
     """调用智谱GLM-4 API获取新闻"""
@@ -60,6 +92,10 @@ def generate_news_prompt():
     weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
     weekday = weekdays[today.weekday()]
     
+    # 加载自定义标签
+    custom_tags = load_custom_tags()
+    tags_str = "、".join(custom_tags[:10])
+    
     return f"""请搜索今天({date_str} {weekday})的最新新闻，生成一份每日早报。
 
 要求：
@@ -82,6 +118,10 @@ def generate_news_prompt():
 【类别5：国内外其他热点】
 - 国际地缘政治、国外新政、海外市场、社会热点
 
+【类别6：自定义标签新闻】
+- 基于用户兴趣标签搜索：{tags_str}
+- 从中选择3-5个当前热门或重要的标签，搜索相关新闻
+
 请按以下JSON格式返回（只返回JSON，不要其他内容）：
 {{
   "market": "今日市场基调的一句话总结",
@@ -90,7 +130,9 @@ def generate_news_prompt():
   "policy": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "policy"}}],
   "career": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
   "global": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
-  "table": [{{"event": "事件", "sectors": ["板块1", "板块2"], "logic": "影响逻辑", "url": "链接"}}]
+  "table": [{{"event": "事件", "sectors": ["板块1", "板块2"], "logic": "影响逻辑", "url": "链接"}}],
+  "custom": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "关联标签"}}],
+  "custom": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "关联标签"}}]
 }}"""
 
 def extract_json_from_response(content):
@@ -186,6 +228,7 @@ def main():
                 print(f"   职场新闻: {len(news_data.get('career', []))}条")
                 print(f"   全球新闻: {len(news_data.get('global', []))}条")
                 print(f"   表格数据: {len(news_data.get('table', []))}条")
+                print(f"   自定义标签: {len(news_data.get('custom', []))}条")
                 
                 # 更新HTML
                 if update_html_file(news_data):
