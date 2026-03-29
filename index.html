@@ -39,6 +39,7 @@
         .collapse-icon { color: #fff; font-size: 1.2rem; transition: transform 0.3s; }
         .section.collapsed .collapse-icon { transform: rotate(-90deg); }
         .section.collapsed .section-content { display: none; }
+        .section.collapsed .load-more { display: none; }
         
         .news-item { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
         .news-item:last-child { border-bottom: none; }
@@ -369,7 +370,16 @@
     <script>
         // 折叠/展开栏目
         function toggleSection(id) {
-            document.getElementById(id).classList.toggle('collapsed');
+            const section = document.getElementById(id);
+            section.classList.toggle('collapsed');
+        }
+        
+        // 展开栏目的函数（供筛选和加载更多调用）
+        function expandSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.remove('collapsed');
+            }
         }
         
         // 标签筛选
@@ -390,6 +400,11 @@
         });
         
         function filterNews(tag) {
+            // 筛选时展开所有折叠的栏目
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('collapsed');
+            });
+            
             document.querySelectorAll('.news-item, tbody tr').forEach(item => {
                 if (tag === 'all') {
                     item.classList.remove('hidden');
@@ -402,6 +417,21 @@
                     }
                 }
             });
+            
+            // 筛选后根据可见内容调整加载更多按钮显示
+            document.querySelectorAll('.section').forEach(section => {
+                const loadMoreBtn = section.querySelector('.load-more-btn');
+                if (loadMoreBtn) {
+                    const allExtra = section.querySelectorAll('.news-item.extra');
+                    const hiddenExtra = section.querySelectorAll('.news-item.extra.hidden');
+                    if (hiddenExtra.length === 0) {
+                        // 全部加载完毕，隐藏按钮
+                        section.querySelector('.load-more').style.display = 'none';
+                    } else {
+                        section.querySelector('.load-more').style.display = 'block';
+                    }
+                }
+            });
         }
         
         // 加载更多新闻
@@ -409,11 +439,16 @@
             btn.classList.add('loading');
             btn.textContent = '⏳ 加载中...';
             
+            // 先展开栏目
+            expandSection(sectionId);
+            
             setTimeout(() => {
                 const section = document.getElementById(sectionId);
                 const extraItems = section.querySelectorAll('.news-item.extra.hidden');
+                let shownCount = 0;
                 extraItems.forEach(item => {
                     item.classList.remove('hidden');
+                    shownCount++;
                 });
                 
                 btn.textContent = '👍 已加载全部内容';
@@ -421,10 +456,15 @@
                 btn.style.opacity = '0.6';
                 
                 // 更新栏目计数
-                const totalItems = section.querySelectorAll('.news-item:not(.extra)').length + extraItems.length;
+                const allItems = section.querySelectorAll('.news-item');
                 const countSpan = section.querySelector('.count');
-                countSpan.textContent = totalItems + '条';
-            }, 800);
+                countSpan.textContent = allItems.length + '条';
+                
+                // 滚动到新加载的内容位置
+                if (shownCount > 0) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
         }
     </script>
 </body>
