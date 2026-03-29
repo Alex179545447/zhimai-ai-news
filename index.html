@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日早报 | 2026-03-29</title>
+    <title>智脉AI每日热点新闻 | 2026-03-29</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f5f6f7; color: #1a1a1a; line-height: 1.6; padding: 0 16px 40px; }
@@ -15,8 +15,23 @@
         .market-summary { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #ff9800; padding: 16px 18px; border-radius: 0 12px 12px 0; margin-bottom: 20px; }
         .market-summary h2 { font-size: 0.9rem; color: #e65100; font-weight: 600; margin-bottom: 6px; }
         .market-summary p { font-size: 0.95rem; color: #333; font-weight: 500; }
+        
+        /* 兴趣标签 */
+        .interest-tags { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .interest-tags h3 { font-size: 0.9rem; color: #666; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .tags-wrapper { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-btn { padding: 8px 16px; border: 1px solid #e0e0e0; border-radius: 20px; background: #fff; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: #666; }
+        .tag-btn:hover { border-color: #1976d2; color: #1976d2; }
+        .tag-btn.active { background: #1976d2; color: #fff; border-color: #1976d2; }
+        .tag-btn.selected { background: #e3f2fd; color: #1565c0; border-color: #1565c0; }
+        
+        /* 隐藏/显示 */
+        .news-item.hidden { display: none; }
+        .section-content.hidden { display: none; }
+        
+        /* 栏目样式 */
         .section { margin-bottom: 16px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-        .section-header { padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; }
+        .section-header { padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
         .section-header.cyan { background: linear-gradient(135deg, #00bcd4, #26c6da); }
         .section-header.blue { background: linear-gradient(135deg, #1976d2, #2196f3); }
         .section-header.red { background: linear-gradient(135deg, #d32f2f, #f44336); }
@@ -24,6 +39,10 @@
         .section-header.purple { background: linear-gradient(135deg, #455a64, #607d8b); }
         .section-header h2 { color: #fff; font-size: 1rem; font-weight: 600; }
         .section-header .count { background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; color: #fff; }
+        .collapse-icon { color: #fff; font-size: 1.2rem; transition: transform 0.3s; }
+        .section.collapsed .collapse-icon { transform: rotate(-90deg); }
+        .section.collapsed .section-content { display: none; }
+        
         .news-item { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
         .news-item:last-child { border-bottom: none; }
         .news-title { font-size: 1rem; font-weight: 600; color: #1565c0; margin-bottom: 6px; display: block; text-decoration: none; cursor: pointer; }
@@ -39,11 +58,17 @@
         .news-highlight { background: #fff9e6; border-radius: 8px; padding: 10px 12px; margin-top: 8px; border-left: 3px solid #ff9800; }
         .news-highlight .label { font-size: 0.75rem; color: #e65100; font-weight: 600; margin-bottom: 2px; }
         .news-highlight .value { font-size: 0.9rem; color: #d32f2f; font-weight: 700; }
+        
+        /* 查看更多 */
+        .load-more { padding: 14px 18px; text-align: center; border-top: 1px solid #f0f0f0; }
+        .load-more-btn { display: inline-block; padding: 10px 24px; background: #f5f5f5; color: #666; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .load-more-btn:hover { background: #e0e0e0; color: #333; }
+        
         .table-section { background: #fff; border-radius: 16px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.table-header { background: linear-gradient(135deg, #455a64, #607d8b); padding: 16px 18px; }
+        .table-header { background: linear-gradient(135deg, #455a64, #607d8b); padding: 16px 18px; }
         .table-header h2 { color: #fff; font-size: 1rem; font-weight: 600; }
         table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 12px 14px; background: #fafafa; color: #666; font-weight: 600; font-size: 0.8rem; border-bottom: 1px solid #eee; }
+        th { text-align: left; padding: 12px 14px; background: #fafafa; color: #666; font-weight: 600; font-size: 0.8rem; border-bottom:1px solid #eee; }
         td { padding: 12px 14px; border-bottom: 1px solid #f5f5f5; font-size: 0.85rem; color: #444; vertical-align: top; }
         td a { color: #1565c0; text-decoration: none; }
         td a:hover { text-decoration: underline; }
@@ -56,73 +81,276 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📰 每日早报</h1>
+            <h1>智脉AI每日热点新闻</h1>
             <div class="date">2026年03月29日 · 星期日</div>
-            <div class="brand">智脉AI · 每日热点新闻</div>
+            <div class="brand">AI智能早报 · 每日更新</div>
         </div>
+        
         <div class="market-summary">
             <h2>📊 今日市场基调</h2>
             <p>美伊冲突持续扰动市场；半导体涨价潮4月来袭；黄金克价逼近1400元；下周关注美国非农与中国PMI</p>
         </div>
-        <div class="section">
-            <div class="section-header cyan"><h2>🤖 AI与科技前沿</h2><span class="count">5条</span></div>
-            <div class="section-content">
-                <div class="news-item"><span class="tag tech">🔥 重磅</span><a class="news-title" href="https://news.qq.com/rain/a/20260225A0419O00" target="_blank">中银国际：AI大模型演进路径清晰，算力或供不应求</a><div class="news-meta">📅 2026-03-29 | 🗞️ 智通财经</div><div class="news-desc">春节前后国内外主要AI模型密集升级，智谱GLM Coding Plan涨价预示需求旺盛，算力产业链望迎新一轮增长动能。</div></div>
-                <div class="news-item"><span class="tag news">📢 行业</span><a class="news-title" href="https://www.stcn.com/article/detail/3627286.html" target="_blank">AI芯片巨头密集发布新模型，千问3-Max、DeepSeek、Kimi集中更新</a><div class="news-meta">📅 2026-03-28 | 🗞️ 证券时报</div><div class="news-desc">阿里发布千问旗舰推理模型Qwen3-Max，DeepSeek与Kimi再次"撞档"更新，国产大模型竞争白热化。</div></div>
-                <div class="news-item"><span class="tag news">📢 涨价</span><a class="news-title" href="https://www.163.com/dy/article/KP6BE05S05198NMR.html" target="_blank">4月1日起半导体与元器件掀涨价潮，德州仪器、英飞凌、村田全线上调</a><div class="news-meta">📅 2026-03-29 | 🗞️ 网易财经</div><div class="news-desc">产业链景气度回升，多家巨头全线上调价格，印证半导体行业复苏态势。</div></div>
-                <div class="news-item"><span class="tag news">📢 科技</span><a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903qv0k.html" target="_blank">周鸿祎对话刘慈欣：未来全球可能只有1%的公司能用好AI</a><div class="news-meta">📅 2026-03-29 | 🗞️ 新浪科技</div><div class="news-desc">360创始人周鸿祎与科幻作家刘慈欣对话，探讨AI时代企业如何抓住机遇。</div></div>
-                <div class="news-item"><span class="tag news">📢 智能</span><a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903r49m.html" target="_blank">全球首个通用智能人"通通"再升级，住进AI小镇</a><div class="news-meta">📅 2026-03-29 | 🗞️ 新浪AI</div><div class="news-desc">通用智能人"通通"3.0版本发布，具备更强的环境适应和任务执行能力。</div></div>
+        
+        <!-- 兴趣标签筛选 -->
+        <div class="interest-tags">
+            <h3>🏷️ 兴趣标签（点击筛选你关心的内容）</h3>
+            <div class="tags-wrapper">
+                <button class="tag-btn active" data-tag="all">全部</button>
+                <button class="tag-btn" data-tag="ai">AI科技</button>
+                <button class="tag-btn" data-tag="market">金融股市</button>
+                <button class="tag-btn" data-tag="policy">政策宏观</button>
+                <button class="tag-btn" data-tag="global">国际热点</button>
+                <button class="tag-btn" data-tag="hot">🔥 热点</button>
+                <button class="tag-btn" data-tag="data">📈 数据</button>
+                <button class="tag-btn" data-tag="expect">🔮 预期</button>
             </div>
         </div>
-        <div class="section">
-            <div class="section-header blue"><h2>📈 A股与金融市场</h2><span class="count">5条</span></div>
+        
+        <!-- AI与科技前沿 -->
+        <div class="section" id="section-ai" data-category="ai">
+            <div class="section-header cyan" onclick="toggleSection('section-ai')">
+                <h2>🤖 AI与科技前沿</h2>
+                <span class="count">5条</span>
+                <span class="collapse-icon">▼</span>
+            </div>
             <div class="section-content">
-                <div class="news-item"><span class="tag fact">✅ 已落地</span><a class="news-title" href="https://news.qq.com/rain/a/20260327A05TRV00" target="_blank">A股三大指数集体收涨，沪指涨0.63%重回3900点</a><div class="news-meta">📅 2026-03-27 | 🗞️ 腾讯新闻</div><div class="news-desc">3月27日A股低开高走，沪指报3913.72点，深成指涨1.13%，创业板指涨0.71%，全市场超4300只个股上涨。</div><div class="news-highlight"><div class="label">📈 收盘数据</div><div class="value">沪指3913.72点 +0.63%</div></div></div>
-                <div class="news-item"><span class="tag fact">✅ 本周</span><a class="news-title" href="https://stock.eastmoney.com/a/cdpfx.html" target="_blank">本周A股震荡调整，全A指数下跌0.73%</a><div class="news-meta">📅 2026-03-29 | 🗞️ 东方财富</div><div class="news-desc">本周（3月23日-27日）市场重心下移，主要宽基指数均下跌，北证50跌超3%。</div></div>
-                <div class="news-item"><span class="tag expect">🔮 预期</span><a class="news-title" href="https://www.toutiao.com/article/7622462026740253234/" target="_blank">外围战火扰动，A股观望情绪浓，保本为上</a><div class="news-meta">📅 2026-03-29 | 🗞️ 今日头条</div><div class="news-desc">美伊冲突持续扰动市场，资金做多意愿低迷，建议控制仓位在低位，优先选择防御性板块。</div></div>
-                <div class="news-item"><span class="tag news">📢 下周</span><a class="news-title" href="https://www.163.com/dy/article/KP6OCSN805198NMR.html" target="_blank">下周重磅：4月3日美国非农数据、3月31日中国PMI</a><div class="news-meta">📅 2026-03-29 | 🗞️ 网易财经</div><div class="news-desc">美国3月非农预期新增8万人，中国3月官方PMI将验证节后复苏成色。</div></div>
-                <div class="news-item"><span class="tag fact">✅ 财报</span><a class="news-title" href="http://www.eeo.com.cn/2026/0329/821462.shtml" target="_blank">中国中冶3月30日审议2025年业绩，财报季进入高峰</a><div class="news-meta">📅 2026-03-29 | 🗞️ 经济观察网</div><div class="news-desc">智谱、壁仞科技、中际旭创等硬科技与AI板块将密集发榜。</div></div>
+                <div class="news-item" data-tags="ai,hot,data">
+                    <span class="tag tech">🔥 重磅</span><span class="tag news">📈 数据</span>
+                    <a class="news-title" href="https://news.qq.com/rain/a/20260225A0419O00" target="_blank">中银国际：AI大模型演进路径清晰，算力或供不应求</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 智通财经</div>
+                    <div class="news-desc">春节前后国内外主要AI模型密集升级，智谱GLM Coding Plan涨价预示需求旺盛，算力产业链望迎新一轮增长动能。</div>
+                </div>
+                <div class="news-item" data-tags="ai">
+                    <span class="tag news">行业</span>
+                    <a class="news-title" href="https://www.stcn.com/article/detail/3627286.html" target="_blank">AI芯片巨头密集发布新模型，千问3-Max、DeepSeek、Kimi集中更新</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 证券时报</div>
+                    <div class="news-desc">阿里发布千问旗舰推理模型Qwen3-Max，DeepSeek与Kimi再次"撞档"更新，国产大模型竞争白热化。</div>
+                </div>
+                <div class="news-item" data-tags="ai,hot,data">
+                    <span class="tag news">📈 数据</span>
+                    <a class="news-title" href="https://www.163.com/dy/article/KP6BE05S05198NMR.html" target="_blank">4月1日起半导体与元器件掀涨价潮，德州仪器、英飞凌、村田全线上调</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 网易财经</div>
+                    <div class="news-desc">产业链景气度回升，多家巨头全线上调价格，印证半导体行业复苏态势。</div>
+                </div>
+                <div class="news-item" data-tags="ai">
+                    <span class="tag news">科技</span>
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903qv0k.html" target="_blank">周鸿祎对话刘慈欣：未来全球可能只有1%的公司能用好AI</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 新浪科技</div>
+                    <div class="news-desc">360创始人周鸿祎与科幻作家刘慈欣对话，探讨AI时代企业如何抓住机遇。</div>
+                </div>
+                <div class="news-item" data-tags="ai">
+                    <a class="news-title" href="https://k.sina.com.cn/article_7857201856_1d45362c001903r49m.html" target="_blank">全球首个通用智能人"通通"再升级，住进AI小镇</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 新浪AI</div>
+                    <div class="news-desc">通用智能人"通通"3.0版本发布，具备更强的环境适应和任务执行能力。</div>
+                </div>
+            </div>
+            <div class="load-more">
+                <a class="load-more-btn" href="#" onclick="loadMore(this); return false;">↓ 查看更多AI科技新闻</a>
             </div>
         </div>
-        <div class="section">
-            <div class="section-header red"><h2>🏛️ 北京政策与宏观风向</h2><span class="count">5条</span></div>
+        
+        <!-- A股与金融市场 -->
+        <div class="section" id="section-market" data-category="market">
+            <div class="section-header blue" onclick="toggleSection('section-market')">
+                <h2>📈 A股与金融市场</h2>
+                <span class="count">5条</span>
+                <span class="collapse-icon">▼</span>
+            </div>
             <div class="section-content">
-                <div class="news-item"><span class="tag policy">📋 政策</span><a class="news-title" href="https://dfjrjgj.hunan.gov.cn/dfjrjgj/jrbk/jrzs/202603/t20260326_33941942.html" target="_blank">银行业保险业数字金融迎来新蓝图，33项任务明确"路线图"</a><div class="news-meta">📅 2026-03-29 | 🗞️ 湖南金融办</div><div class="news-desc">国家金融监督管理总局发布《数字金融高质量发展实施方案》，明确未来五年发展路径。</div></div>
-<div class="news-item"><span class="tag policy">📋 监管</span><a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">证监会2025年罚没款154.74亿元，查办违法案件701件</a><div class="news-meta">📅 2026-03-29 | 🗞️ 经济观察网</div><div class="news-desc">中国证监会发布2025年法治政府建设情况，持续"长牙带刺"加强监管。</div></div>
-                <div class="news-item"><span class="tag news">📢 税务</span><a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">九部门开展"春雨润苗"专项行动，15项50条服务小微主体</a><div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div><div class="news-desc">国家税务总局等九部门联合发文，聚焦助企纾困，推动小微经营主体高质量发展。</div></div>
-                <div class="news-item"><span class="tag news">📢 海南</span><a class="news-title" href="https://finance.eastmoney.com/a/chgjj.html" target="_blank">海南自贸港封关百日，洋浦港集装箱吞吐量超103万标箱</a><div class="news-meta">📅 2026-03-29 | 🗞️ 东方财富</div><div class="news-desc">外贸集装箱同比增长210.3%，实现翻倍增长，自贸港建设成效显著。</div></div>
-                <div class="news-item"><span class="tag news">📢 食安</span><a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">国务院食安办督办"3·15"晚会曝光问题整改</a><div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div><div class="news-desc">市场监管总局约谈相关地方市级人民政府负责人，督办问题整改。</div></div>
+                <div class="news-item" data-tags="market,data">
+                    <span class="tag fact">✅ 已落地</span><span class="tag news">📈 数据</span>
+                    <a class="news-title" href="https://news.qq.com/rain/a/20260327A05TRV00" target="_blank">A股三大指数集体收涨，沪指涨0.63%重回3900点</a>
+                    <div class="news-meta">📅 2026-03-27 | 🗞️ 腾讯新闻</div>
+                    <div class="news-desc">3月27日A股低开高走，沪指报3913.72点，深成指涨1.13%，创业板指涨0.71%，全市场超4300只个股上涨。</div>
+                    <div class="news-highlight"><div class="label">📈 收盘数据</div><div class="value">沪指3913.72点 +0.63%</div></div>
+                </div>
+                <div class="news-item" data-tags="market,data">
+                    <span class="tag fact">✅ 本周</span>
+                    <a class="news-title" href="https://stock.eastmoney.com/a/cdpfx.html" target="_blank">本周A股震荡调整，全A指数下跌0.73%</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 东方财富</div>
+                    <div class="news-desc">本周（3月23日-27日）市场重心下移，主要宽基指数均下跌，北证50跌超3%。</div>
+                </div>
+                <div class="news-item" data-tags="market,expect">
+                    <span class="tag expect">🔮 预期</span>
+                    <a class="news-title" href="https://www.toutiao.com/article/7622462026740253234/" target="_blank">外围战火扰动，A股观望情绪浓，保本为上</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 今日头条</div>
+                    <div class="news-desc">美伊冲突持续扰动市场，资金做多意愿低迷，建议控制仓位在低位，优先选择防御性板块。</div>
+                </div>
+                <div class="news-item" data-tags="market,hot,data">
+                    <span class="tag news">📢 下周</span><span class="tag hot">🔥 热点</span>
+                    <a class="news-title" href="https://www.163.com/dy/article/KP6OCSN805198NMR.html" target="_blank">下周重磅：4月3日美国非农数据、3月31日中国PMI</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 网易财经</div>
+                    <div class="news-desc">美国3月非农预期新增8万人，中国3月官方PMI将验证节后复苏成色。</div>
+                </div>
+                <div class="news-item" data-tags="market,data">
+                    <span class="tag fact">✅ 财报</span>
+                    <a class="news-title" href="http://www.eeo.com.cn/2026/0329/821462.shtml" target="_blank">中国中冶3月30日审议2025年业绩，财报季进入高峰</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">智谱、壁仞科技、中际旭创等硬科技与AI板块将密集发榜。</div>
+                </div>
+            </div>
+            <div class="load-more">
+                <a class="load-more-btn" href="#" onclick="loadMore(this); return false;">↓ 查看更多金融市场新闻</a>
             </div>
         </div>
-        <div class="section">
-            <div class="section-header orange"><h2>🌍 国内外其他热点</h2><span class="count">5条</span></div>
+        
+        <!-- 北京政策与宏观风向 -->
+        <div class="section" id="section-policy" data-category="policy">
+            <div class="section-header red" onclick="toggleSection('section-policy')">
+                <h2>🏛️ 北京政策与宏观风向</h2>
+                <span class="count">5条</span>
+                <span class="collapse-icon">▼</span>
+            </div>
             <div class="section-content">
-                <div class="news-item"><span class="tag news">🔥 地缘</span><a class="news-title" href="https://finance.sina.com.cn/wm/2026-03-29/doc-inhsrkka5029270.shtml" target="_blank">美伊冲突持续扰动全球，胡塞武装向以色列发射导弹</a><div class="news-meta">📅 2026-03-29 | 🗞️ 新浪财经</div><div class="news-desc">也门胡塞武装向以色列南部发射导弹，伊朗武装部队打击美军支援船只，美军"布什"号航母将部署中东。</div></div>
-                <div class="news-item"><span class="tag news">📢 黄金</span><a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">国内黄金饰品克价逼近1400元，多品牌价格上调</a><div class="news-meta">📅 2026-03-28 | 🗞️ 经济观察网</div><div class="news-desc">地缘风险加剧避险需求，黄金饰品价格持续走高。</div></div>
-                <div class="news-item"><span class="tag news">📢 外交</span><a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">中菲举行南海问题双边磋商，中方提出严正交涉</a><div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div><div class="news-desc">中非举行南海问题双边磋商机制第十一次会议，中方就菲方涉海侵权挑衅提出严正交涉。</div></div>
-                <div class="news-item"><span class="tag news">📢 科技</span><a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">我国启动建设"远海浮动岛"，预计2030年建成</a><div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div><div class="news-desc">世界首创超大型海上科研平台，可同时承载海洋装备、海洋资源、海洋科学等领域研究需求。</div></div>
-                <div class="news-item"><span class="tag news">📢 会展</span><a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">第六届消博会境外展品集中入展正式启动</a><div class="news-meta">📅 2026-03-28 | 🗞️ 经济观察网</div><div class="news-desc">海口海关验放首批货物，标志消博会筹备工作进入关键阶段。</div></div>
+                <div class="news-item" data-tags="policy,hot">
+                    <span class="tag policy">📋 政策</span><span class="tag hot">🔥 重磅</span>
+                    <a class="news-title" href="https://dfjrjgj.hunan.gov.cn/dfjrjgj/jrbk/jrzs/202603/t20260326_33941942.html" target="_blank">银行业保险业数字金融迎来新蓝图，33项任务明确"路线图"</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 湖南金融办</div>
+                    <div class="news-desc">国家金融监督管理总局发布《数字金融高质量发展实施方案》，明确未来五年发展路径。</div>
+                </div>
+                <div class="news-item" data-tags="policy,data">
+                    <span class="tag policy">📋 监管</span><span class="tag news">📈 数据</span>
+                    <a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">证监会2025年罚没款154.74亿元，查办违法案件701件</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">中国证监会发布2025年法治政府建设情况，持续"长牙带刺"加强监管。</div>
+                </div>
+                <div class="news-item" data-tags="policy">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">九部门开展"春雨润苗"专项行动，15项50条服务小微主体</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div>
+                    <div class="news-desc">国家税务总局等九部门联合发文，聚焦助企纾困，推动小微经营主体高质量发展。</div>
+                </div>
+                <div class="news-item" data-tags="policy,data">
+                    <a class="news-title" href="https://finance.eastmoney.com/a/chgjj.html" target="_blank">海南自贸港封关百日，洋浦港集装箱吞吐量超103万标箱</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 东方财富</div>
+                    <div class="news-desc">外贸集装箱同比增长210.3%，实现翻倍增长，自贸港建设成效显著。</div>
+                </div>
+                <div class="news-item" data-tags="policy">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">国务院食安办督办"3·15"晚会曝光问题整改</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div>
+                    <div class="news-desc">市场监管总局约谈相关地方市级人民政府负责人，督办问题整改。</div>
+                </div>
+            </div>
+            <div class="load-more">
+                <a class="load-more-btn" href="#" onclick="loadMore(this); return false;">↓ 查看更多政策新闻</a>
             </div>
         </div>
+        
+        <!-- 国内外其他热点 -->
+        <div class="section" id="section-global" data-category="global">
+            <div class="section-header orange" onclick="toggleSection('section-global')">
+                <h2>🌍 国内外其他热点</h2>
+                <span class="count">5条</span>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="news-item" data-tags="global,hot">
+                    <span class="tag news">🔥 地缘</span><span class="tag hot">🔥 热点</span>
+                    <a class="news-title" href="https://finance.sina.com.cn/wm/2026-03-29/doc-inhsrkka5029270.shtml" target="_blank">美伊冲突持续扰动全球，胡塞武装向以色列发射导弹</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 新浪财经</div>
+                    <div class="news-desc">也门胡塞武装向以色列南部发射导弹，伊朗武装部队打击美军支援船只，美军"布什"号航母将部署中东。</div>
+                </div>
+                <div class="news-item" data-tags="global,data">
+                    <span class="tag news">📈 数据</span>
+                    <a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">国内黄金饰品克价逼近1400元，多品牌价格上调</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">地缘风险加剧避险需求，黄金饰品价格持续走高。</div>
+                </div>
+                <div class="news-item" data-tags="global">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">中菲举行南海问题双边磋商，中方提出严正交涉</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div>
+                    <div class="news-desc">中非举行南海问题双边磋商机制第十一次会议，中方就菲方涉海侵权挑衅提出严正交涉。</div>
+                </div>
+                <div class="news-item" data-tags="global">
+                    <a class="news-title" href="https://www.topnews.cn/news/145CD5E348B84974" target="_blank">我国启动建设"远海浮动岛"，预计2030年建成</a>
+                    <div class="news-meta">📅 2026-03-29 | 🗞️ 顶端新闻</div>
+                    <div class="news-desc">世界首创超大型海上科研平台，可同时承载海洋装备、海洋资源、海洋科学等领域研究需求。</div>
+                </div>
+                <div class="news-item" data-tags="global">
+                    <a class="news-title" href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">第六届消博会境外展品集中入展正式启动</a>
+                    <div class="news-meta">📅 2026-03-28 | 🗞️ 经济观察网</div>
+                    <div class="news-desc">海口海关验放首批货物，标志消博会筹备工作进入关键阶段。</div>
+                </div>
+            </div>
+            <div class="load-more">
+                <a class="load-more-btn" href="#" onclick="loadMore(this); return false;">↓ 查看更多国际热点</a>
+            </div>
+        </div>
+        
+        <!-- 资本市场关键点梳理 -->
         <div class="table-section">
-            <div class="table-header"><h2>📋 资本市场关键点梳理</h2></div>
+            <div class="table-header">
+                <h2>📋 资本市场关键点梳理</h2>
+            </div>
             <table>
                 <thead><tr><th>事件</th><th>关联板块</th><th>影响逻辑</th></tr></thead>
                 <tbody>
-                    <tr><td><a href="https://www.stcn.com/article/detail/3627286.html" target="_blank">半导体涨价潮4月来袭</a></td><td><span class="asset-tag">半导体</span><span class="asset-tag">元器件</span></td><td>德州仪器、英飞凌、村田全线上调，印证景气度回升</td></tr>
-                    <tr><td><a href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">黄金克价逼近1400元</a></td><td><span class="asset-tag">黄金</span><span class="asset-tag">贵金属</span></td><td>地缘风险加剧避险需求，价格持续走高</td></tr>
-                    <tr><td><a href="https://finance.sina.com.cn/wm/2026-03-29/doc-inhsrkka5029270.shtml" target="_blank">美伊冲突持续扰动</a></td><td><span class="asset-tag">原油</span><span class="asset-tag">军工</span></td><td>胡塞武装发射导弹，油价波动加剧</td></tr>
-                    <tr><td><a href="https://news.qq.com/rain/a/20260327A05TRV00" target="_blank">A股沪指重回3900点</a></td><td><span class="asset-tag">A股</span><span class="asset-tag">沪指</span></td><td>低开高走收涨0.63%，但全周仍下跌0.73%</td></tr>
-                    <tr><td><a href="https://dfjrjgj.hunan.gov.cn/dfjrjgj/jrbk/jrzs/202603/t20260326_33941942.html" target="_blank">数字金融新蓝图发布</a></td><td><span class="asset-tag">金融科技</span><span class="asset-tag">银行</span></td><td>33项任务明确路线图，行业发展提速</td></tr>
-                    <tr><td><a href="https://www.163.com/dy/article/KP6OCSN805198NMR.html" target="_blank">下周关注美非农与中国PMI</a></td><td><span class="asset-tag">全球市场</span></td><td>数据将左右美联储政策预期和中国复苏成色</td></tr>
+                    <tr data-tags="ai,market,hot"><td><a href="https://www.stcn.com/article/detail/3627286.html" target="_blank">半导体涨价潮4月来袭</a></td><td><span class="asset-tag">半导体</span><span class="asset-tag">元器件</span></td><td>德州仪器、英飞凌，村田全线上调，印证景气度回升</td></tr>
+                    <tr data-tags="global,data,hot"><td><a href="http://www.eeo.com.cn/2026/0329/821206.shtml" target="_blank">黄金克价逼近1400元</a></td><td><span class="asset-tag">黄金</span><span class="asset-tag">贵金属</span></td><td>地缘风险加剧避险需求，价格持续走高</td></tr>
+                    <tr data-tags="global,hot"><td><a href="https://finance.sina.com.cn/wm/2026-03-29/doc-inhsrkka5029270.shtml" target="_blank">美伊冲突持续扰动</a></td><td><span class="asset-tag">原油</span><span class="asset-tag">军工</span></td><td>胡塞武装发射导弹，油价波动加剧</td></tr>
+                    <tr data-tags="market,data"><td><a href="https://news.qq.com/rain/a/20260327A05TRV00" target="_blank">A股沪指重回3900点</a></td><td><span class="asset-tag">A股</span><span class="asset-tag">沪指</span></td><td>低开高走收涨0.63%，但全周仍下跌0.73%</td></tr>
+                    <tr data-tags="policy,hot"><td><a href="https://dfjrjgj.hunan.gov.cn/dfjrjgj/jrbk/jrzs/202603/t20260326_33941942.html" target="_blank">数字金融新蓝图发布</a></td><td><span class="asset-tag">金融科技</span><span class="asset-tag">银行</span></td><td>33项任务明确路线图，行业发展提速</td></tr>
+                    <tr data-tags="market,expect,hot"><td><a href="https://www.163.com/dy/article/KP6OCSN805198NMR.html" target="_blank">下周关注美非农与中国PMI</a></td><td><span class="asset-tag">全球市场</span></td><td>数据将左右美联储政策预期和中国复苏成色</td></tr>
                 </tbody>
             </table>
         </div>
+        
         <div class="footer">
             <p>📰 每日早报由智脉AI自动生成</p>
             <p>数据来源：财联社、新华社、证券时报、东方财富网</p>
             <p style="margin-top: 10px; color: #ccc;">免责声明：本报告仅供参考，不构成投资建议</p>
         </div>
     </div>
+    
+    <script>
+        // 折叠/展开栏目
+        function toggleSection(id) {
+            document.getElementById(id).classList.toggle('collapsed');
+        }
+        
+        // 标签筛选
+        let currentFilter = 'all';
+        document.querySelectorAll('.tag-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tag = this.dataset.tag;
+                currentFilter = tag;
+                
+                // 更新按钮状态
+                document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active', 'selected'));
+                this.classList.add('active');
+                if (tag !== 'all') {
+                    this.classList.add('selected');
+                }
+                
+                // 筛选新闻
+                filterNews(tag);
+            });
+        });
+        
+        function filterNews(tag) {
+            document.querySelectorAll('.news-item, tbody tr').forEach(item => {
+                if (tag === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    const tags = item.dataset.tags || '';
+                    if (tags.includes(tag)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        }
+        
+        // 查看更多（模拟功能）
+        function loadMore(btn) {
+            const section = btn.closest('.section');
+            const category = section.dataset.category;
+            btn.innerHTML = '👍 已加载全部内容';
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.5';
+            // 这里可以链接到该分类的完整新闻页面
+            // window.location.href = '/category/' + category;
+        }
+    </script>
 </body>
 </html>
