@@ -1962,6 +1962,103 @@
         };
 
         // ============================================
+        // 数据存储键名（与dashboard.html一致）
+        // ============================================
+        const STORAGE_KEYS = {
+            PAGE_VIEWS: 'zhimai_page_views',
+            USER_ACTIONS: 'zhimai_user_actions',
+            NEWS_CLICKS: 'zhimai_news_clicks',
+            SUBSCRIPTIONS: 'zhimai_subscriptions',
+            SESSION_START: 'zhimai_session_start'
+        };
+
+        // ============================================
+        // 数据存储辅助函数
+        // ============================================
+        function getStoredData(key, defaultValue) {
+            try {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : (defaultValue || []);
+            } catch (e) {
+                console.error('读取localStorage失败:', e);
+                return defaultValue || [];
+            }
+        }
+
+        function saveStoredData(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+            } catch (e) {
+                console.error('写入localStorage失败:', e);
+            }
+        }
+
+        // ============================================
+        // 记录页面访问
+        // ============================================
+        function trackPageView() {
+            const views = getStoredData(STORAGE_KEYS.PAGE_VIEWS);
+            views.push({
+                timestamp: new Date().toISOString(),
+                path: window.location.pathname,
+                type: 'index'
+            });
+            // 只保留最近1000条
+            if (views.length > 1000) views.shift();
+            saveStoredData(STORAGE_KEYS.PAGE_VIEWS, views);
+            console.log('[Track] Page view recorded:', views.length);
+        }
+
+        // ============================================
+        // 记录新闻点击
+        // ============================================
+        function trackNewsClick(newsId, newsTitle) {
+            const clicks = getStoredData(STORAGE_KEYS.NEWS_CLICKS);
+            clicks.push({
+                newsId: newsId,
+                title: newsTitle,
+                timestamp: new Date().toISOString()
+            });
+            if (clicks.length > 500) clicks.shift();
+            saveStoredData(STORAGE_KEYS.NEWS_CLICKS, clicks);
+            console.log('[Track] News click:', newsTitle);
+        }
+
+        // ============================================
+        // 记录用户行为
+        // ============================================
+        function trackAction(type, data) {
+            const actions = getStoredData(STORAGE_KEYS.USER_ACTIONS);
+            actions.push({
+                type: type,
+                data: data,
+                timestamp: new Date().toISOString()
+            });
+            if (actions.length > 1000) actions.shift();
+            saveStoredData(STORAGE_KEYS.USER_ACTIONS, actions);
+            console.log('[Track]', type, data);
+        }
+
+        // ============================================
+        // 记录订阅设置
+        // ============================================
+        function saveSubscriptionsToStorage(categories) {
+            saveStoredData(STORAGE_KEYS.SUBSCRIPTIONS, categories);
+            trackAction('subscription_change', { categories: categories });
+            console.log('[Track] Subscriptions saved:', categories);
+        }
+
+        // ============================================
+        // 记录会话开始
+        // ============================================
+        function initSession() {
+            const sessionStart = localStorage.getItem(STORAGE_KEYS.SESSION_START);
+            if (!sessionStart) {
+                localStorage.setItem(STORAGE_KEYS.SESSION_START, new Date().toISOString());
+            }
+        }
+
+        // ============================================
         // 新闻详情功能
         // ============================================
         
@@ -2016,7 +2113,8 @@
             // 滚动到顶部
             document.getElementById('newsDetailOverlay').scrollTop = 0;
 
-            // 记录点击
+            // 记录新闻点击（同时记录到localStorage）
+            trackNewsClick(newsId, news.title);
             trackAction('news_click', { newsId: newsId, title: news.title });
         }
 
@@ -2026,11 +2124,9 @@
             document.body.style.overflow = '';
         }
 
-        // 埋点函数（可根据实际情况扩展）
+        // 埋点函数（记录到localStorage）
         function trackAction(action, params) {
             console.log('[Track]', action, params);
-            // 这里可以接入实际的埋点服务
-            // 例如：baidu统计、神策数据、友盟等
         }
 
         // ============================================
@@ -2121,7 +2217,9 @@
             const selected = document.querySelectorAll('.subscription-item.selected');
             const categories = Array.from(selected).map(item => item.dataset.category);
             
-            localStorage.setItem('subscriptions', JSON.stringify(categories));
+            // 保存到localStorage（同时更新dashboard数据）
+            saveSubscriptionsToStorage(categories);
+            
             settingsModal.classList.remove('active');
             
             // 更新标签栏显示
@@ -2181,14 +2279,66 @@
             console.log('[Data] Hot news saved:', hotNews.length, 'items');
         }
         
-        // 初始化
-        loadSubscriptions();
-        saveHotNewsData();
+        // ==========================================
+        // 初始化：页面加载时执行
+        // ==========================================
+        function initIndexPage() {
+            // 初始化会话
+            initSession();
+            
+            // 记录页面访问
+            trackPageView();
+            
+            // 恢复订阅设置
+            loadSubscriptions();
+            
+            // 保存热搜数据
+            saveHotNewsData();
+            
+            // 追踪标签切换
+            document.querySelectorAll('.tag-item').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    trackAction('tag_change', { tag: this.dataset.tag });
+                });
+            });
+            
+            // 追踪新闻项点击
+            document.querySelectorAll('.news-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const newsId = this.dataset.newsId;
+                    const title = this.querySelector('.news-title');
+                    if (newsId && title) {
+                        trackNewsClick(newsId, title.textContent);
+                    }
+                });
+            });
+            
+            // 每次点击热搜项时更新数据
+            document.querySelectorAll('.hot-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    saveHotNewsData();
+                    const title = this.querySelector('.hot-title');
+                    if (title) {
+                        trackNewsClick('hot-' + Date.now(), title.textContent);
+                    }
+                });
+            });
+            
+            // 追踪滚动行为
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(function() {
+                    trackAction('scroll', { position: window.scrollY });
+                }, 500);
+            });
+            
+            console.log('[Init] Index page initialized with data tracking');
+            console.log('[Data] 所有用户行为将被记录到localStorage供Dashboard使用');
+        }
         
-        // 每次点击热搜项时更新数据
-        document.querySelectorAll('.hot-item').forEach(item => {
-            item.addEventListener('click', saveHotNewsData);
-        });
+        // 执行初始化
+        initIndexPage();
     </script>
 </body>
 </html>
