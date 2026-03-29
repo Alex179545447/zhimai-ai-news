@@ -2,7 +2,9 @@ name: Daily News Update
 
 on:
   schedule:
+    # 每天早晨7点自动更新
     - cron: '0 7 * * *'
+  # 支持手动触发
   workflow_dispatch:
 
 permissions:
@@ -23,15 +25,28 @@ jobs:
       - run: pip install requests
 
       - name: Update news with Zhipu AI
-        env:
-          API_KEY: ${{ secrets.ZHIPU_API_KEY }}
         run: python generate_news.py
+
+      - name: Update admin dashboard
+        run: |
+          mkdir -p admin
+          cp dashboard.html admin/index.html
 
       - name: Commit and push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add index.html
-          git diff --staged --quiet && exit 0
+          git add index.html dashboard.html admin/
+          # 检查是否有变更
+          if git diff --staged --quiet; then
+            echo "No changes, skip commit"
+            exit 0
+          fi
           git commit -m "Auto update $(date +'%Y-%m-%d') - powered by 智脉AI"
           git push
+
+      - name: Verify deployment
+        run: |
+          echo "✅ 新闻已更新并推送到GitHub"
+          echo "📅 更新日期: $(date +'%Y-%m-%d')"
+          echo "🌐 访问地址: https://daily.zhimai-ai.cn"
