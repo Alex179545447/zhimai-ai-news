@@ -72,6 +72,13 @@
         td a:hover { text-decoration: underline; }
         tr:last-child td { border-bottom: none; }
         .asset-tag { display: inline-block; background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin: 2px 4px 2px 0; }
+        
+        /* 热搜排名样式 */
+        .hot-rank { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-right: 10px; color: #fff; background: #c0c0c0; }
+        .hot-rank.rank-1 { background: linear-gradient(135deg, #ff4757, #ff6b81); }
+        .hot-rank.rank-2 { background: linear-gradient(135deg, #ffa502, #ffbe00); }
+        .hot-rank.rank-3 { background: linear-gradient(135deg, #7bed9f, #2ed573); }
+        .news-title { display: flex; align-items: center; }
         .footer { text-align: center; padding: 30px 0 20px; color: #999; font-size: 0.8rem; }
         @media (max-width: 480px) { .header h1 { font-size: 1.3rem; } }
     </style>
@@ -337,6 +344,70 @@
             </div>
             <div class="load-more">
                 <button class="load-more-btn" onclick="loadMoreNews(this, 'section-global')">↓ 点击加载更多国际热点</button>
+            </div>
+        </div>
+        
+        <!-- 🔥 热搜榜 -->
+        <div class="section" id="section-hot" data-category="hot">
+            <div class="section-header purple" onclick="toggleSection('section-hot')">
+                <h2>🔥 热搜榜</h2>
+                <span class="count">10条</span>
+                <span class="collapse-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="news-item" data-tags="hot">
+                    <span class="hot-rank rank-1">1</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">全美3000多城市举行大规模抗议活动</a>
+                    <div class="news-meta">📅 今日热搜 | 🔴 百度热搜第1</div>
+                </div>
+                <div class="news-item" data-tags="hot">
+                    <span class="hot-rank rank-2">2</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">"住建局"改名有何深意</a>
+                    <div class="news-meta">📅 今日热搜 | 🔴 百度热搜第2</div>
+                </div>
+                <div class="news-item" data-tags="hot">
+                    <span class="hot-rank rank-3">3</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">山西太原火灾已致1死25伤</a>
+                    <div class="news-meta">📅 3月28日 | 🔴 微博热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">4</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">苹果选中阿里合作人工智能</a>
+                    <div class="news-meta">📅 今日热搜 | 🟠 微博热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">5</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">副部级高官落马多名前下属被查</a>
+                    <div class="news-meta">📅 今日热搜 | 🔴 百度热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">6</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">中方向菲方提出严正交涉</a>
+                    <div class="news-meta">📅 今日热搜 | 🔴 百度热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">7</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">罗技关停多平台直播口碑崩了</a>
+                    <div class="news-meta">📅 3月29日 | 🟠 微博热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">8</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">苏翊鸣获世界杯赛季总冠军</a>
+                    <div class="news-meta">📅 3月29日 | 🔵 体育</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">9</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">Google AI论文遭指控学术不端</a>
+                    <div class="news-meta">📅 3月29日 | 🔴 知乎热搜</div>
+                </div>
+                <div class="news-item extra hidden" data-tags="hot">
+                    <span class="hot-rank">10</span>
+                    <a class="news-title" href="https://top.baidu.com/board?tab=realtime" target="_blank">高三学生请求拆除鸟巢校长写信回应</a>
+                    <div class="news-meta">📅 今日热搜 | 🟠 微博热搜</div>
+                </div>
+            </div>
+            <div class="load-more">
+                <button class="load-more-btn" onclick="loadMoreNews(this, 'section-hot')">↓ 点击查看更多热搜</button>
             </div>
         </div>
         
