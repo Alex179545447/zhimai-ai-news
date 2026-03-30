@@ -216,6 +216,56 @@
         .tag-item:hover {
             background: var(--border-color);
         }
+        /* 自定义标签样式 */
+        .custom-tag-item {
+            flex-shrink: 0;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        .custom-tag-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .custom-tag-item.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            box-shadow: 0 2px 8px rgba(245, 87, 108, 0.4);
+        }
+
+        /* 搜索按钮样式 */
+        .search-btn {
+            flex-shrink: 0;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 8px;
+            display: none;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(56, 239, 125, 0.4);
+        }
+
+        .search-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
 
         .tag-item.active {
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
@@ -2526,4 +2576,16 @@
         init();
     </script>
 </body>
+
+<script>
+function rCTB(){var c=document.getElementById('customTagsBar'),s=document.getElementById('searchBtn');if(!c)return;if(typeof customTags!=='undefined'&&customTags.length>0){c.innerHTML=customTags.map(function(t){return'<span class="custom-tag-item" data-ct="'+t+'">'+t+'</span>'}).join('');c.querySelectorAll('.custom-tag-item').forEach(function(it){it.onclick=function(){fCT(this.getAttribute('data-ct'))}});if(s)s.style.display='inline-block'}else{c.innerHTML='';if(s)s.style.display='none'}}}
+function fCT(t){document.querySelectorAll('.custom-tag-item').forEach(function(it){it.classList.remove('active')});if(event.target)event.target.classList.add('active');var n=typeof customTagNews!=='undefined'?(customTagNews[t]||[]):[];if(n.length>0)sCTNM(t,n)}
+function sCTNM(t,n){var m=document.getElementById('ctm');if(!m){m=document.createElement('div');m.id='ctm';m.className='modal';document.body.appendChild(m)}m.innerHTML='<div class="modal-content"><div class="modal-h"><h3>'+t+'</h3><span onclick="clM()">x</span></div><div>'+n.map(function(i){return'<div class="ni"><div>'+i.title+'</div><div>'+i.date+'|'+i.source+'</div></div>'}).join('')+'</div></div>';m.style.display='block'}
+function clM(){var m=document.getElementById('ctm');if(m)m.style.display='none'}
+function pS(){if(typeof customTags==='undefined'||customTags.length===0){alert('请先添加关键词');return}var s=document.getElementById('searchBtn');if(s){s.disabled=true;s.textContent='搜索中'}searchRealtimeNews(customTags.join(' '),function(r){if(r&&r.length>0){r.forEach(function(i){var t=i.relatedTag||customTags[0];if(!customTagNews[t])customTagNews[t]=[];customTagNews[t].push(i)});sSRM(r)}else alert('未找到');if(s){s.disabled=false;s.textContent='实时'}})}
+function sSRM(r){var m=document.getElementById('srm');if(!m){m=document.createElement('div');m.id='srm';m.className='modal';document.body.appendChild(m)}m.innerHTML='<div class="modal-content"><div class="modal-h"><h3>搜索结果</h3><span onclick="clS()">x</span></div><div>'+r.map(function(i){return'<div class="ni"><div>'+i.title+'</div><div>'+i.date+'|'+i.source+'</div><div>'+(i.summary||'')+'</div></div>'}).join('')+'</div></div>';m.style.display='block'}
+function clS(){var m=document.getElementById('srm');if(m)m.style.display='none'}
+rCTB();
+</script>
+
 </html>
