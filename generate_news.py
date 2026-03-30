@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 智脉AI每日早报 - 智能新闻更新脚本
@@ -36,117 +36,87 @@ def load_custom_tags():
             pass
     return DEFAULT_CUSTOM_TAGS
 
-def save_custom_tags(tags):
-    """保存自定义标签到文件"""
-    try:
-        with open('custom_tags.txt', 'w', encoding='utf-8') as f:
-            for tag in tags:
-                f.write(tag + '\n')
-        print(f"✅ 自定义标签已保存: {len(tags)}个")
-    except Exception as e:
-        print(f"⚠️ 保存标签失败: {e}")
+def generate_news_prompt():
+    """生成新闻获取提示词"""
+    tags = load_custom_tags()
+    tags_str = '、'.join(tags[:15])
+    today = datetime.now()
+    date_str = today.strftime('%Y年%m月%d日')
+    
+    return f"""请搜索今天({date_str})的最新财经新闻，要求：
+1. 只搜索最近24小时内的新闻
+2. 按以下类别返回JSON格式：
+
+返回格式（只返回JSON，不要其他内容）：
+{{
+  "date": "{today.strftime('%Y-%m-%d')}",
+  "marketTitle": "今日市场基调一句话",
+  "marketDesc": "市场基调详细说明",
+  "ai": [
+    {{"id": "ai-1", "title": "标题", "date": "YYYY-MM-DD HH:MM", "source": "来源", "desc": "摘要", "url": "链接", "tag": "fact|expect", "tagText": "标签文字"}}
+  ],
+  "market": [
+    {{"id": "market-1", "title": "标题", "date": "YYYY-MM-DD", "source": "来源", "desc": "摘要", "url": "链接", "tag": "fact|expect"}}
+  ],
+  "policy": [
+    {{"id": "policy-1", "title": "标题", "date": "YYYY-MM-DD", "source": "来源", "desc": "摘要", "url": "链接"}}
+  ],
+  "global": [
+    {{"id": "global-1", "title": "标题", "date": "YYYY-MM-DD", "source": "来源", "desc": "摘要", "url": "链接"}}
+  ],
+  "hot": ["热搜1", "热搜2", "热搜3", "热搜4", "热搜5"],
+  "table": [
+    {{"event": "事件", "sectors": ["板块1", "板块2"], "logic": "影响逻辑", "url": "链接"}}
+  ],
+  "custom": [
+    {{"title": "标题", "date": "YYYY-MM-DD", "source": "来源", "desc": "摘要", "url": "链接", "tag": "标签"}}
+  ]
+}}"""
 
 def get_news_from_glm(prompt):
     """调用智谱GLM-4 API获取新闻"""
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json"
-    }
-    
-    data = {
-        "model": "glm-4-flash",
-        "messages": [
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        "tools": [
-            {
-                "type": "web_search",
-                "web_search": {
-                    "search_engine": "bing"
-                }
-            }
-        ],
-        "stream": False
-    }
-    
     try:
-        response = requests.post(API_URL, headers=headers, json=data, timeout=120)
+        response = requests.post(
+            API_URL,
+            headers={
+                "Authorization": f"Bearer {API_KEY}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "model": "glm-4-flash",
+                "messages": [
+                    {"role": "user", "content": prompt}
+                ],
+                "tools": [
+                    {
+                        "type": "web_search",
+                        "web_search": {"search_engine": "bing"}
+                    }
+                ],
+                "stream": False
+            },
+            timeout=180
+        )
+        
         if response.status_code == 200:
             result = response.json()
-            return result.get("choices", [{}])[0].get("message", {}).get("content", "")
+            content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+            return content
         else:
             print(f"API错误: {response.status_code}")
-            print(response.text)
             return None
     except Exception as e:
         print(f"请求失败: {e}")
         return None
 
-def generate_news_prompt():
-    """生成获取新闻的提示词"""
-    today = datetime.now()
-    date_str = today.strftime('%Y年%m月%d日')
-    weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-    weekday = weekdays[today.weekday()]
-    
-    # 加载自定义标签
-    custom_tags = load_custom_tags()
-    tags_str = "、".join(custom_tags[:10])
-    
-    return f"""请搜索今天({date_str} {weekday})的最新新闻，生成一份每日早报。
-
-要求：
-1. 只搜索最近24小时内的新闻
-2. 按以下5个类别整理，返回JSON数组格式：
-
-【类别1：AI与科技前沿】
-- AI行业动态、大模型进展、机器人、半导体、算力、科技巨头动向
-
-【类别2：A股与金融市场】  
-- A股行情、板块热点、基金市场、融资并购、金融监管、宏观经济数据
-- 区分"已落地事实"与"市场预期/传闻"
-
-【类别3：北京政策与宏观风向】
-- 国家层面新政、国务院/部委重要会议、证监会/央行发声
-
-【类别4：职场动态】
-- 就业市场、招聘动态、职场趋势
-
-【类别5：国内外其他热点】
-- 国际地缘政治、国外新政、海外市场、社会热点
-
-【类别6：自定义标签新闻】
-- 基于用户兴趣标签搜索：{tags_str}
-- 从中选择3-5个当前热门或重要的标签，搜索相关新闻
-
-请按以下JSON格式返回（只返回JSON，不要其他内容）：
-{{
-  "market": "今日市场基调的一句话总结",
-  "ai": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要50字内", "url": "链接", "tag": "fact|expect"}}],
-  "market": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "fact|expect"}}],
-  "policy": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "policy"}}],
-  "career": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
-  "global": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接"}}],
-  "table": [{{"event": "事件", "sectors": ["板块1", "板块2"], "logic": "影响逻辑", "url": "链接"}}],
-  "custom": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "关联标签"}}],
-  "custom": [{{"title": "新闻标题", "date": "日期", "source": "来源", "desc": "摘要", "url": "链接", "tag": "关联标签"}}]
-}}"""
-
 def extract_json_from_response(content):
     """从API响应中提取JSON"""
-    # 尝试提取JSON代码块
     match = re.search(r'```json\s*([\s\S]*?)\s*```', content)
     if match:
         return match.group(1)
-    
-    # 尝试提取普通JSON
     match = re.search(r'\{[\s\S]*\}', content)
     if match:
         return match.group(0)
-    
     return None
 
 def update_html_file(news_data):
@@ -166,23 +136,31 @@ def update_html_file(news_data):
         replacement = f'id="currentDate">{full_date}'
         content = re.sub(pattern, replacement, content)
         
-        # 更新市场基调
-        if 'market_summary' in news_data:
-            pattern = r'<div class="market-summary">[\s\S]*?<p>[^<]*</p>'
+        # 更新市场基调标题
+        if 'marketTitle' in news_data:
+            pattern = r'<div class="market-title">[^<]+'
+            content = re.sub(pattern, f'<div class="market-title">{news_data["marketTitle"]}', content)
+        
+        # 更新市场基调描述
+        if 'marketDesc' in news_data:
+            pattern = r'<div class="market-desc">[\s\S]*?</div>\s*</div>\s*</div>\s*<!-- 标签栏 -->'
             match = re.search(pattern, content)
             if match:
-                content = content.replace(
-                    match.group(0),
-                    f'<div class="market-summary">\n            <h2>📊 今日市场基调</h2>\n            <p>{news_data["market_summary"]}</p>'
-                )
+                new_desc = f'''<div class="market-desc">
+                {news_data["marketDesc"]}
+            </div>
+        </div>
+
+        <!-- 标签栏 -->'''
+                content = content.replace(match.group(0), new_desc)
         
-        # 更新新闻数据
-        news_json = json.dumps(news_data, ensure_ascii=False, indent=2)
+        # 更新新闻日期
+        news_date = news_data.get('date', today.strftime('%Y-%m-%d'))
+        content = re.sub(r'(\d{{4}}-\d{{2}}-\d{{2}})\s*<!-- AI与科技前沿 -->', 
+                        f'{news_date}<!-- AI与科技前沿 -->', content)
         
-        # 替换 newsData 对象
-        pattern = r'var newsData = \{[\s\S]*?\};'
-        replacement = f'var newsData = {news_json};'
-        content = re.sub(pattern, replacement, content)
+        # 更新fullNewsData中的日期
+        content = re.sub(r"date: '(\d{4}-\d{2}-\d{2})", f"date: '{news_date}", content)
         
         with open('index.html', 'w', encoding='utf-8') as f:
             f.write(content)
@@ -218,6 +196,7 @@ def main():
         
         # 解析JSON
         json_str = extract_json_from_response(news_content)
+        
         if json_str:
             try:
                 news_data = json.loads(json_str)
@@ -225,10 +204,8 @@ def main():
                 print(f"   AI新闻: {len(news_data.get('ai', []))}条")
                 print(f"   市场新闻: {len(news_data.get('market', []))}条")
                 print(f"   政策新闻: {len(news_data.get('policy', []))}条")
-                print(f"   职场新闻: {len(news_data.get('career', []))}条")
                 print(f"   全球新闻: {len(news_data.get('global', []))}条")
-                print(f"   表格数据: {len(news_data.get('table', []))}条")
-                print(f"   自定义标签: {len(news_data.get('custom', []))}条")
+                print(f"   热搜: {len(news_data.get('hot', []))}条")
                 
                 # 更新HTML
                 if update_html_file(news_data):
