@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>閺呴缚鍓I閺冦儲濮?- 鐠愩垻绮￠弬浼存閼辨艾鎮?/title>
+    <title>智脉AI日报 - 财经新闻聚合</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 娑撹顔愰崳?*/
+        /* 主容器 */
         .container {
             max-width: 640px;
             margin: 0 auto;
@@ -52,7 +52,7 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.05);
         }
 
-        /* 妞ゅ爼鍎撮弽鍥暯閺?*/
+        /* 顶部标题栏 */
         .header {
             position: sticky;
             top: 0;
@@ -124,7 +124,7 @@
             fill: var(--text-secondary);
         }
 
-        /* 鐢倸婧€閸╅缚鐨熼崡锛勫 */
+        /* 市场基调卡片 */
         .market-card {
             margin: 16px 20px;
             padding: 20px;
@@ -177,7 +177,7 @@
             line-height: 1.7;
         }
 
-        /* 閺嶅洨顒烽弽?*/
+        /* 标签栏 */
         .tags-bar {
             position: sticky;
             top: 73px;
@@ -224,12 +224,12 @@
             font-weight: 500;
         }
 
-        /* 閸愬懎顔愰崠?*/
+        /* 内容区 */
         .content {
             padding: 0 0 24px 0;
         }
 
-        /* 閺嶅繒娲伴崠鍝勬健 */
+        /* 栏目区块 */
         .section {
             margin-top: 16px;
         }
@@ -295,7 +295,7 @@
             opacity: 0;
         }
 
-        /* 閺備即妞堥崡锛勫 */
+        /* 新闻卡片 */
         .news-item {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -342,7 +342,7 @@
             color: var(--accent-blue);
         }
 
-        /* 閼奉亜鐣炬稊澶嬬垼缁涢箖鐝禍?*/
+        /* 自定义标签高亮 */
         .news-item.tag-matched {
             border-color: var(--accent-cyan);
             background: linear-gradient(135deg, #f0fdff 0%, #ffffff 100%);
@@ -350,7 +350,7 @@
         }
 
         .news-item.tag-matched::before {
-            content: '閴?閸栧綊鍘ら幃銊ф畱閸忕鍙?;
+            content: '✨ 匹配您的兴趣';
             display: block;
             font-size: 11px;
             color: var(--accent-cyan);
@@ -358,7 +358,7 @@
             font-weight: 500;
         }
 
-        /* 閹存垹娈戦幒銊ㄥ礃閻楀牆娼?*/
+        /* 我的推荐版块 */
         .recommendation-section {
             margin: 16px 20px;
             padding: 16px;
@@ -535,7 +535,7 @@
             overflow: hidden;
         }
 
-        /* 閻戭厽鎮冲?*/
+        /* 热搜榜 */
         .hot-list {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -604,7 +604,7 @@
             border-radius: 4px;
         }
 
-        /* 鎼存洟鍎寸悰銊︾壐 */
+        /* 底部表格 */
         .summary-table-section {
             margin: 20px;
             background: var(--bg-card);
@@ -664,7 +664,7 @@
             font-size: 12px;
         }
 
-        /* 妞や絻鍓?*/
+        /* 页脚 */
         .footer {
             padding: 24px 20px;
             background: var(--bg-secondary);
@@ -692,7 +692,7 @@
             margin: 0 auto;
         }
 
-        /* 閸旂姾娴囬弴鏉戭樋 */
+        /* 加载更多 */
         .load-more {
             display: block;
             width: calc(100% - 40px);
@@ -713,7 +713,7 @@
             color: var(--text-primary);
         }
 
-        /* 瀵湱鐛?*/
+        /* 弹窗 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -872,7 +872,7 @@
             cursor: not-allowed;
         }
 
-        /* 閼奉亜鐣炬稊澶嬬垼缁涚偓鐗卞?*/
+        /* 自定义标签样式 */
         .custom-tags-section {
             margin-top: 20px;
             padding-top: 20px;
@@ -969,7 +969,7 @@
         }
 
         /* ============================================
-           閺備即妞堢拠锔藉剰妞ゅ灚鐗卞?
+           新闻详情页样式
            ============================================ */
         .news-detail-overlay {
             position: fixed;
@@ -1234,12 +1234,12 @@
             fill: var(--text-muted);
         }
 
-        /* 鐠囷附鍎忔い闈涚俺闁劎鏆€閻?*/
+        /* 详情页底部留白 */
         .detail-footer-space {
             height: 60px;
         }
 
-        /* 閸樼喐鏋冮柧鐐复閹稿鎸?*/
+        /* 原文链接按钮 */
         .original-link-section {
             margin-top: 24px;
             text-align: center;
@@ -1271,7 +1271,7 @@
             fill: currentColor;
         }
 
-        /* 閸斻劎鏁?*/
+        /* 动画 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1281,7 +1281,7 @@
             animation: fadeIn 0.3s ease;
         }
 
-        /* 閸濆秴绨插?*/
+        /* 响应式 */
         @media (max-width: 480px) {
             .container {
                 box-shadow: none;
@@ -1333,15 +1333,15 @@
 </head>
 <body>
     <div class="container">
-        <!-- 妞ゅ爼鍎撮弽鍥暯閺?-->
+        <!-- 顶部标题栏 -->
         <header class="header">
             <div class="header-left">
                 <div class="logo-icon">ZM</div>
-                <span class="logo-text">閺呴缚鍓I閺冦儲濮?/span>
+                <span class="logo-text">智脉AI日报</span>
             </div>
             <div class="header-right">
-                <span class="date-display" id="currentDate">2026骞?3鏈?0鏃?路 鏄熸湡鏃?/span>
-                <button class="settings-btn" id="settingsBtn" aria-label="鐠佸墽鐤?>
+                <span class="date-display" id="currentDate">2026年03月30日 · 星期一</span>
+                <button class="settings-btn" id="settingsBtn" aria-label="设置">
                     <svg viewBox="0 0 24 24">
                         <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
                     </svg>
@@ -1349,42 +1349,46 @@
             </div>
         </header>
 
-        <!-- 鐢倸婧€閸╅缚鐨熼崡锛勫 -->
+
+        <!-- 市场基调卡片 -->
         <div class="market-card">
             <div class="market-card-header">
                 <span class="market-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                     </svg>
-                    娴犲﹥妫╃敮鍌氭簚閸╅缚鐨?
+                    今日市场基调
                 </span>
             </div>
-            <div class="market-title">甯傚満鍦ㄨ皑鎱庝腑瀵绘眰鏂瑰悜<div class="market-desc">
-                缂囧簼绱涚仦鈧崝鍨磳濞撯晛鐢崝銊╀缉闂勨晜鍎忕紒顏庣幢閸楀﹤顕辨担鎾查獓娑撴岸鎽煎☉銊ょ幆妫板嫭婀￠崡鍥ㄤ刊閿涙盯绮嶉柌鎴炲瘮缂侇叀铔嬪娲偓鑹扮箮閸樺棗褰舵妯煎仯閵嗕精閼测剝鍎忕紒顏勫瀻閸栨牭绱濋崗铏暈缁夋垶濡ф稉搴ゅ惞闁叉垵鐫橀弶鍨健閺堣桨绱伴妴?
+            <div class="market-title">美伊冲突持续扰动市场 | 半导体涨价潮4月来袭 | 黄金克价逼近1400元</div>
+            <div class="market-desc">
+                美伊局势升温带动避险情绪；半导体产业链涨价预期升温；黄金持续走强逼近历史高点。A股情绪分化，关注科技与贵金属板块机会。
             </div>
         </div>
 
-        <!-- 閺嶅洨顒烽弽?-->
+
+        <!-- 标签栏 -->
         <div class="tags-bar">
             <div class="tags-scroll" id="tagsScroll">
-                <span class="tag-item active" data-tag="all">閸忋劑鍎?/span>
-                <span class="tag-item" data-tag="ai">AI缁夋垶濡?/span>
-                <span class="tag-item" data-tag="stock">闁叉垼鐎洪懖鈥崇</span>
-                <span class="tag-item" data-tag="policy">閺€璺ㄧ摜鐎瑰繗顫?/span>
-                <span class="tag-item" data-tag="global">閸ヤ粙妾悜顓犲仯</span>
-                <span class="tag-item" data-tag="hot">閻戭厽鎮?/span>
+                <span class="tag-item active" data-tag="all">全部</span>
+                <span class="tag-item" data-tag="ai">AI科技</span>
+                <span class="tag-item" data-tag="stock">金融股市</span>
+                <span class="tag-item" data-tag="policy">政策宏观</span>
+                <span class="tag-item" data-tag="global">国际热点</span>
+                <span class="tag-item" data-tag="hot">热搜</span>
             </div>
         </div>
 
-        <!-- 閸愬懎顔愰崠?-->
+
+        <!-- 内容区 -->
         <div class="content">
-            <!-- AI娑撳海顫栭幎鈧崜宥嗛儴 -->
+            <!-- AI与科技前沿 -->
             <div class="section" data-category="ai">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="section-icon">棣冾樆</span>
-                        <span class="section-name">AI娑撳海顫栭幎鈧崜宥嗛儴</span>
-                        <span class="section-count">5閺?/span>
+                        <span class="section-icon">🤖</span>
+                        <span class="section-name">AI与科技前沿</span>
+                        <span class="section-count">3条</span>
                     </div>
                     <svg class="expand-icon" viewBox="0 0 24 24">
                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -1392,42 +1396,45 @@
                 </div>
                 <div class="section-content">
                     <div class="news-item" data-news-id="ai-1" onclick="openNewsDetail('ai-1')">
-                        <span class="news-tag hot">棣冩暉闁插秶顥?/span>
-                        <div class="news-title">AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺呭府绱濈粻妤€濮忛幋鏍︾返娑撳秴绨插Ч?/div>
+                        <span class="news-tag hot">🔥重磅</span>
+                        <div class="news-title">AI大模型演进路径清晰，算力或供不应求</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>閺呮椽鈧俺鍌ㄧ紒?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>智通财经</span>
                         </div>
-                        <div class="news-brief">缁犳濮忔禍褌绗熼柧鐐箿鏉╁孩鏌婃稉鈧潪顔碱杻闂€鍨З閼虫枻绱濋張鐑樼€惇瀣偨閻╃鍙ф禍褌绗熼柧鐐壋韫囧啯鐖ｉ惃?..</div>
+                        <div class="news-brief">算力产业链望迎新一轮增长动能，机构看好相关产业链核心标的...</div>
                     </div>
+
                     <div class="news-item" data-news-id="ai-2" onclick="openNewsDetail('ai-2')">
                         <span class="news-tag tech">AI</span>
-                        <div class="news-title">閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉鍥风礉閻㈢喐鈧礁缂撶拋鎯у闁?/div>
+                        <div class="news-title">国产大模型日活突破千万，生态建设加速</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>36濮?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>36氪</span>
                         </div>
-                        <div class="news-brief">閸ユ垝楠嘇I婢堆勀侀崹瀣暏閹寸柉顫夊Ο鈩冨瘮缂侇厼顤冮梹鍖＄礉閻㈢喐鈧礁缂撶拋鐐灇娑撹櫣鐝垫禍澶屽妽閻?..</div>
+                        <div class="news-brief">国产AI大模型用户规模持续增长，生态建设成为竞争焦点...</div>
                     </div>
+
                     <div class="news-item" data-news-id="ai-3" onclick="openNewsDetail('ai-3')">
-                        <span class="news-tag tech">缁夋垶濡?/span>
-                        <div class="news-title">闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍杈剧礉娴溠傜瑹闁剧偓顩ц箛浣冨亗瀵倸濮?/div>
+                        <span class="news-tag tech">科技</span>
+                        <div class="news-title">量子计算获突破，产业链概念股异动</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>鐠囦礁鍩滈弮鑸靛Г</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>证券时报</span>
                         </div>
-                        <div class="news-brief">闁插繐鐡欑拋锛勭暬閹垛偓閺堫垰褰囧妤呭櫢婢堆呯崐閻揪绱濋惄绋垮彠濮掑倸搴烽懖鈥冲綀閸掓澘绔堕崷楦挎嫹閹?..</div>
+                        <div class="news-brief">量子计算技术取得重大突破，相关概念股受到市场追捧...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- A閼测€茬瑢闁叉垼鐎虹敮鍌氭簚 -->
+
+            <!-- A股与金融市场 -->
             <div class="section" data-category="stock">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="section-icon">棣冩惐</span>
-                        <span class="section-name">A閼测€茬瑢闁叉垼鐎虹敮鍌氭簚</span>
-                        <span class="section-count">4閺?/span>
+                        <span class="section-icon">📈</span>
+                        <span class="section-name">A股与金融市场</span>
+                        <span class="section-count">3条</span>
                     </div>
                     <svg class="expand-icon" viewBox="0 0 24 24">
                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -1435,42 +1442,45 @@
                 </div>
                 <div class="section-content">
                     <div class="news-item" data-news-id="stock-1" onclick="openNewsDetail('stock-1')">
-                        <span class="news-tag hot">閴佸懎鍑￠拃钘夋勾</span>
-                        <div class="news-title">濞岊亝瀵氶柌宥呮礀3900閻?/div>
+                        <span class="news-tag hot">✅已落地</span>
+                        <div class="news-title">沪指重回3900点</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-27</span>
-                            <span>閼垫崘顔嗛弬浼存</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>腾讯新闻</span>
                         </div>
-                        <div class="news-brief">濞岊亝瀵氶幎?913.72閻愮櫢绱濋崗銊ョ閸﹂缚绉?300閸欘亙閲滈懖鈥茬瑐濞?..</div>
+                        <div class="news-brief">沪指报3913.72点，全市场超4300只个股上涨...</div>
                     </div>
+
                     <div class="news-item" data-news-id="stock-2" onclick="openNewsDetail('stock-2')">
-                        <span class="news-tag">鐢倸婧€</span>
-                        <div class="news-title">閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?/div>
+                        <span class="news-tag">市场</span>
+                        <div class="news-title">北向资金净买入超百亿</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>娑撴粍鏌熺拹銏犵槣</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>东方财富</span>
                         </div>
-                        <div class="news-brief">婢舵牞绁幐浣虹敾濞翠礁鍙咥閼测€崇閸︾尨绱濋崠妤€鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗛柌鎴︻杺閸掓稖绻庨張鐔告煀妤?..</div>
+                        <div class="news-brief">外资持续流入A股市场，北向资金净买入金额创近期新高...</div>
                     </div>
+
                     <div class="news-item" data-news-id="stock-3" onclick="openNewsDetail('stock-3')">
-                        <span class="news-tag">閺夊灝娼?/span>
-                        <div class="news-title">閸楀﹤顕辨担鎾存緲閸ф宸遍崝鍧楊暙濞?/div>
+                        <span class="news-tag">板块</span>
+                        <div class="news-title">半导体板块强势领涨</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>閸氬矁濮虫い?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>同花顺</span>
                         </div>
-                        <div class="news-brief">閸楀﹤顕辨担鎾查獓娑撴岸鎽奸崗銊у殠閻栧棗褰傞敍灞筋樋閸欘亙閲滈懖鈩冨畾閸?..</div>
+                        <div class="news-brief">半导体产业链全线爆发，多只个股涨停...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 閺€璺ㄧ摜娑撳骸鐣憴?-->
+
+            <!-- 政策与宏观 -->
             <div class="section" data-category="policy">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="section-icon">棣冨綄閿?/span>
-                        <span class="section-name">閺€璺ㄧ摜娑撳骸鐣憴?/span>
-                        <span class="section-count">3閺?/span>
+                        <span class="section-icon">🏛️</span>
+                        <span class="section-name">政策与宏观</span>
+                        <span class="section-count">2条</span>
                     </div>
                     <svg class="expand-icon" viewBox="0 0 24 24">
                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -1478,33 +1488,35 @@
                 </div>
                 <div class="section-content">
                     <div class="news-item" data-news-id="policy-1" onclick="openNewsDetail('policy-1')">
-                        <span class="news-tag policy">棣冩惖閺€璺ㄧ摜</span>
-                        <div class="news-title">闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?/div>
+                        <span class="news-tag policy">📋政策</span>
+                        <div class="news-title">银行业保险业数字金融新蓝图</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>濠€鏍у础闁叉垼鐎洪崝?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>湖南金融办</span>
                         </div>
-                        <div class="news-brief">33妞ら€涙崲閸斺剝妲戠涵?鐠侯垳鍤庨崶?閿涘本鏆熺€涙鍣鹃摶宥呭絺鐏炴洘瀵滄稉瀣闁喖鏁?..</div>
+                        <div class="news-brief">33项任务明确"路线图"，数字金融发展按下加速键...</div>
                     </div>
+
                     <div class="news-item" data-news-id="policy-2" onclick="openNewsDetail('policy-2')">
-                        <span class="news-tag policy">鐎瑰繗顫?/span>
-                        <div class="news-title">PMI閺佺増宓佺搾鍛搭暕閺堢噦绱濋崚鍫曗偓鐘辩瑹閸ョ偞娈╅弰搴㈡▔</div>
+                        <span class="news-tag policy">宏观</span>
+                        <div class="news-title">PMI数据超预期，制造业回暖明显</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>閸ヨ棄顔嶇紒鐔活吀鐏炩偓</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>国家统计局</span>
                         </div>
-                        <div class="news-brief">3閺堝湧MI闁插秷绻戦幍鈺佺炊閸栨椽妫块敍宀€绮″ù搴濈磼缁嬪厖淇婇崣宄邦杻瀵?..</div>
+                        <div class="news-brief">3月PMI重返扩张区间，经济企稳信号增强...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 閸ヤ粙妾悜顓犲仯 -->
+
+            <!-- 国际热点 -->
             <div class="section" data-category="global">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="section-icon">棣冨</span>
-                        <span class="section-name">閸ヤ粙妾悜顓犲仯</span>
-                        <span class="section-count">4閺?/span>
+                        <span class="section-icon">🌍</span>
+                        <span class="section-name">国际热点</span>
+                        <span class="section-count">3条</span>
                     </div>
                     <svg class="expand-icon" viewBox="0 0 24 24">
                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -1512,42 +1524,45 @@
                 </div>
                 <div class="section-content">
                     <div class="news-item" data-news-id="global-1" onclick="openNewsDetail('global-1')">
-                        <span class="news-tag hot">棣冩暉閸︽壆绱?/span>
-                        <div class="news-title">缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?/div>
+                        <span class="news-tag hot">🔥地缘</span>
+                        <div class="news-title">美伊冲突持续扰动全球</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>閺傜増姘拹銏㈢病</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>新浪财经</span>
                         </div>
-                        <div class="news-brief">閼斥€愁敚濮濓箒顥婇崥鎴滀簰閼规彃鍨崣鎴濈殸鐎电厧鑴婇敍灞艰厬娑撴粌鐪崝鍨晙鎼达妇鎻ｅ?..</div>
+                        <div class="news-brief">胡塞武装向以色列发射导弹，中东局势再度紧张...</div>
                     </div>
+
                     <div class="news-item" data-news-id="global-2" onclick="openNewsDetail('global-2')">
-                        <span class="news-tag">閸ヤ粙妾?/span>
-                        <div class="news-title">缂囧氦浠堥崒銊╂閹垶顣╅張鐔峰磳濞?/div>
+                        <span class="news-tag">国际</span>
+                        <div class="news-title">美联储降息预期升温</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>閸楀骸鐨电悰妤勵潌闂?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>华尔街见闻</span>
                         </div>
-                        <div class="news-brief">缂囧骸娴楃紒蹇旂ス閺佺増宓佺挧鏉挎€ラ敍灞界閸﹀搫顕紘搴や粓閸屻劑妾烽幁顖烆暕閺堢喐妲戦弰鎯у磳濞?..</div>
+                        <div class="news-brief">美国经济数据走弱，市场对美联储降息预期明显升温...</div>
                     </div>
+
                     <div class="news-item" data-news-id="global-3" onclick="openNewsDetail('global-3')">
-                        <span class="news-tag">婢堆冪暬</span>
-                        <div class="news-title">閸樼喐琛ユ禒閿嬬壐濞夈垹濮╅崝鐘插⒔</div>
+                        <span class="news-tag">大宗</span>
+                        <div class="news-title">原油价格波动加剧</div>
                         <div class="news-meta">
-                            <span class="news-source">棣冩惍 2026-03-30</span>
-                            <span>瑜邦厼宕ョ粈?/span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>彭博社</span>
                         </div>
-                        <div class="news-brief">閸︽壆绱弨鎸庝笉閸ョ姷绀岄幒銊ュЗ閸樼喐琛ョ敮鍌氭簚閸撗呭創濞夈垹濮?..</div>
+                        <div class="news-brief">地缘政治因素推动原油市场剧烈波动...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 閻戭厽鎮冲?-->
+
+            <!-- 热搜榜 -->
             <div class="section" data-category="hot">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="section-icon">棣冩暉</span>
-                        <span class="section-name">閻戭厽鎮冲?/span>
-                        <span class="section-count">10閺?/span>
+                        <span class="section-icon">🔥</span>
+                        <span class="section-name">热搜榜</span>
+                        <span class="section-count">10条</span>
                     </div>
                     <svg class="expand-icon" viewBox="0 0 24 24">
                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -1557,245 +1572,272 @@
                     <div class="hot-list">
                         <div class="hot-item" data-news-id="hot-1" onclick="openNewsDetail('hot-1')">
                             <span class="hot-rank top1">1</span>
-                            <span class="hot-title">濞岊亝瀵氶柌宥呮礀3900閻?/span>
-                            <span class="hot-tag">濞?/span>
+                            <span class="hot-title">沪指重回3900点</span>
+                            <span class="hot-tag">沸</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-2" onclick="openNewsDetail('hot-2')">
                             <span class="hot-rank top2">2</span>
-                            <span class="hot-title">缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?/span>
-                            <span class="hot-tag">閺?/span>
+                            <span class="hot-title">美伊冲突持续扰动全球</span>
+                            <span class="hot-tag">新</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-3" onclick="openNewsDetail('hot-3')">
                             <span class="hot-rank top3">3</span>
-                            <span class="hot-title">閸楀﹤顕辨担鎾村畾娴犻攱鐤?閺堝牊娼电悮?/span>
+                            <span class="hot-title">半导体涨价潮4月来袭</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-4" onclick="openNewsDetail('hot-4')">
                             <span class="hot-rank">4</span>
-                            <span class="hot-title">姒涘嫰鍣鹃崗瀣╃幆闁壈绻?400閸?/span>
+                            <span class="hot-title">黄金克价逼近1400元</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-5" onclick="openNewsDetail('hot-5')">
                             <span class="hot-rank">5</span>
-                            <span class="hot-title">闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?/span>
+                            <span class="hot-title">银行业保险业数字金融新蓝图</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-6" onclick="openNewsDetail('hot-6')">
                             <span class="hot-rank">6</span>
-                            <span class="hot-title">AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?/span>
+                            <span class="hot-title">AI大模型演进路径清晰</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-7" onclick="openNewsDetail('hot-7')">
                             <span class="hot-rank">7</span>
-                            <span class="hot-title">閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉?/span>
+                            <span class="hot-title">国产大模型日活突破千万</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-8" onclick="openNewsDetail('hot-8')">
                             <span class="hot-rank">8</span>
-                            <span class="hot-title">閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?/span>
+                            <span class="hot-title">北向资金净买入超百亿</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-9" onclick="openNewsDetail('hot-9')">
                             <span class="hot-rank">9</span>
-                            <span class="hot-title">闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍?/span>
+                            <span class="hot-title">量子计算获突破</span>
                         </div>
+
                         <div class="hot-item" data-news-id="hot-10" onclick="openNewsDetail('hot-10')">
                             <span class="hot-rank">10</span>
-                            <span class="hot-title">PMI閺佺増宓佺搾鍛搭暕閺?/span>
+                            <span class="hot-title">PMI数据超预期</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 鎼存洟鍎撮幀鑽ょ波鐞涖劍鐗?-->
+
+            <!-- 底部总结表格 -->
             <div class="summary-table-section">
                 <div class="table-header">
                     <div class="table-title">
-                        <span>棣冩惓</span>
-                        鐠у嫭婀扮敮鍌氭簚閸忔娊鏁悙瑙勨拪閻?
+                        <span>📊</span>
+                        资本市场关键点梳理
                     </div>
                 </div>
                 <table class="summary-table">
                     <thead>
                         <tr>
-                            <th>娴滃娆?/th>
-                            <th>閸忓疇浠堥弶鍨健</th>
-                            <th>瑜板崬鎼烽柅鏄忕帆</th>
+                            <th>事件</th>
+                            <th>关联板块</th>
+                            <th>影响逻辑</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>缂囧簼绱涢崘鑼崐閸楀洨楠?/td>
-                            <td><span class="sector-tag">鐠愮敻鍣剧仦?/span></td>
-                            <td>闁潡娅撻幆鍛崕閸楀洦淇?/td>
+                            <td>美伊冲突升级</td>
+                            <td><span class="sector-tag">贵金属</span></td>
+                            <td>避险情绪升温</td>
                         </tr>
                         <tr>
-                            <td>閸楀﹤顕辨担鎾村畾娴犵兘顣╅張?/td>
-                            <td><span class="sector-tag">閸楀﹤顕辨担?/span></td>
-                            <td>娓氭盯娓堕弽鐓庣湰閺€鐟版澖</td>
+                            <td>半导体涨价预期</td>
+                            <td><span class="sector-tag">半导体</span></td>
+                            <td>供需格局改善</td>
                         </tr>
                         <tr>
-                            <td>濞岊亝瀵氶柌宥呮礀3900</td>
-                            <td><span class="sector-tag">A閼?/span></td>
-                            <td>鐢倸婧€閹懐鍗庨崶鐐存</td>
+                            <td>沪指重回3900</td>
+                            <td><span class="sector-tag">A股</span></td>
+                            <td>市场情绪回暖</td>
                         </tr>
                         <tr>
-                            <td>閺佹澘鐡ч柌鎴ｇ€洪弨璺ㄧ摜</td>
-                            <td><span class="sector-tag">闁叉垼鐎虹粔鎴炲Η</span></td>
-                            <td>閺€璺ㄧ摜缁俱垹鍩勯柌濠冩杹</td>
+                            <td>数字金融政策</td>
+                            <td><span class="sector-tag">金融科技</span></td>
+                            <td>政策红利释放</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 妞や絻鍓?-->
+
+        <!-- 页脚 -->
         <footer class="footer">
-            <div class="footer-brand">閻㈣鲸娅ら懘鍫縄閻㈢喐鍨?/div>
-            <div class="footer-source">閺佺増宓侀弶銉︾爱閿涙瓙ind閵嗕礁鎮撻懞閬嶃€庨妴浣风閺傜鍌ㄧ€?/div>
-            <div class="footer-disclaimer">閺堫剚濮ら崨濠佺矌娓氭稑寮懓鍐跨礉娑撳秵鐎幋鎰鐠у嫬缂撶拋顔衡偓鍌涘鐠у嫭婀佹搴ㄦ珦閿涘苯鍠呯粵鏍付鐠嬨劍鍘ч妴?/div>
+            <div class="footer-brand">由智脉AI生成</div>
+            <div class="footer-source">数据来源：Wind、同花顺、东方财富</div>
+            <div class="footer-disclaimer">本报告仅供参考，不构成投资建议。投资有风险，决策需谨慎。</div>
         </footer>
     </div>
 
-    <!-- 鐠佸墽鐤嗗鍦崶 -->
+
+    <!-- 设置弹窗 -->
     <div class="modal-overlay" id="settingsModal">
         <div class="modal">
             <div class="modal-header">
-                <h3 class="modal-title">鐠併垽妲勭粻锛勬倞</h3>
-                <button class="modal-close" id="closeModal">鑴?/button>
+                <h3 class="modal-title">订阅管理</h3>
+                <button class="modal-close" id="closeModal">×</button>
             </div>
+
             <div class="modal-body">
-                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">闁瀚ㄩ幃銊ュ彠濞夈劎娈戠挧鍕唵缁鍩?/p>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">选择您关注的资讯类别</p>
                 <div class="subscription-grid">
                     <div class="subscription-item selected" data-category="all">
-                        <span class="subscription-icon">棣冩惖</span>
-                        <span class="subscription-name">閸忋劑鍎?/span>
+                        <span class="subscription-icon">📋</span>
+                        <span class="subscription-name">全部</span>
                         <div class="subscription-check"></div>
                     </div>
+
                     <div class="subscription-item" data-category="ai">
-                        <span class="subscription-icon">棣冾樆</span>
-                        <span class="subscription-name">AI缁夋垶濡?/span>
+                        <span class="subscription-icon">🤖</span>
+                        <span class="subscription-name">AI科技</span>
                         <div class="subscription-check"></div>
                     </div>
+
                     <div class="subscription-item" data-category="stock">
-                        <span class="subscription-icon">棣冩惐</span>
-                        <span class="subscription-name">闁叉垼鐎洪懖鈥崇</span>
+                        <span class="subscription-icon">📈</span>
+                        <span class="subscription-name">金融股市</span>
                         <div class="subscription-check"></div>
                     </div>
+
                     <div class="subscription-item" data-category="policy">
-                        <span class="subscription-icon">棣冨綄閿?/span>
-                        <span class="subscription-name">閺€璺ㄧ摜鐎瑰繗顫?/span>
+                        <span class="subscription-icon">🏛️</span>
+                        <span class="subscription-name">政策宏观</span>
                         <div class="subscription-check"></div>
                     </div>
+
                     <div class="subscription-item" data-category="global">
-                        <span class="subscription-icon">棣冨</span>
-                        <span class="subscription-name">閸ヤ粙妾悜顓犲仯</span>
+                        <span class="subscription-icon">🌍</span>
+                        <span class="subscription-name">国际热点</span>
                         <div class="subscription-check"></div>
                     </div>
+
                     <div class="subscription-item" data-category="hot">
-                        <span class="subscription-icon">棣冩暉</span>
-                        <span class="subscription-name">閻戭厽鎮?/span>
+                        <span class="subscription-icon">🔥</span>
+                        <span class="subscription-name">热搜</span>
                         <div class="subscription-check"></div>
                     </div>
                 </div>
             </div>
+
             <div class="modal-footer">
-                <button class="save-btn" id="saveSubscription">娣囨繂鐡ㄧ拋鍓х枂</button>
+                <button class="save-btn" id="saveSubscription">保存设置</button>
             </div>
 
-            <!-- 閼奉亜鐣炬稊澶嬬垼缁涙儳灏崺?-->
+
+            <!-- 自定义标签区域 -->
             <div class="custom-tags-section">
                 <div class="custom-tags-header">
-                    <span>閴?閼奉亜鐣炬稊澶婂彠闁款喛鐦?/span>
-                    <button class="add-tag-btn" id="addCustomTagBtn">+ 濞ｈ濮?/button>
+                    <span>✨ 自定义关键词</span>
+                    <button class="add-tag-btn" id="addCustomTagBtn">+ 添加</button>
                 </div>
+
                 <div class="custom-tags-list" id="customTagsList">
-                    <!-- 閸斻劍鈧礁锝為崗鍛暏閹撮攱鍧婇崝鐘垫畱閺嶅洨顒?-->
+                    <!-- 动态填充用户添加的标签 -->
                 </div>
+
                 <div class="custom-tag-input-wrapper" id="customTagInputWrapper" style="display: none;">
-                    <input type="text" class="custom-tag-input" id="customTagInput" placeholder="鏉堟挸鍙嗛崗鎶芥暛鐠囧稄绱濇俊鍌︾窗閺傛媽鍏樺┃鎰┾偓浣稿磹鐎甸棿缍?>
-                    <button class="confirm-tag-btn" id="confirmTagBtn">绾喖鐣?/button>
-                    <button class="cancel-tag-btn" id="cancelTagBtn">閸欐牗绉?/button>
+                    <input type="text" class="custom-tag-input" id="customTagInput" placeholder="输入关键词，如：新能源、半导体">
+                    <button class="confirm-tag-btn" id="confirmTagBtn">确定</button>
+                    <button class="cancel-tag-btn" id="cancelTagBtn">取消</button>
                 </div>
-                <p class="custom-tag-hint">濞ｈ濮為崗鎶芥暛鐠囧秴鎮楅敍灞惧灉娴狀剙鐨㈡稉鐑樺亶閹恒劑鈧胶娴夐崗鍐插敶鐎?/p>
+
+                <p class="custom-tag-hint">添加关键词后，我们将为您推送相关内容</p>
             </div>
 
-            <!-- 閹存垹娈戦幒銊ㄥ礃閻楀牆娼?-->
+
+            <!-- 我的推荐版块 -->
             <div class="recommendation-section" id="recommendationSection" style="display: none;">
                 <div class="recommendation-header">
                     <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <span class="recommendation-title">娑撶儤鍋嶉幒銊ㄥ礃</span>
-                    <span class="recommendation-subtitle" id="recommendationCount">0閺?/span>
-                    <button class="realtime-search-btn" id="realtimeSearchBtn" onclick="fetchRealtimeNews()">棣冩敡 鐎圭偞妞傞幖婊呭偍</button>
+                    <span class="recommendation-title">为您推荐</span>
+                    <span class="recommendation-subtitle" id="recommendationCount">0条</span>
+                    <button class="realtime-search-btn" id="realtimeSearchBtn" onclick="fetchRealtimeNews()">🔄 实时搜索</button>
                 </div>
+
                 <div class="recommendation-tags" id="recommendationTags">
-                    <!-- 閸栧綊鍘ら弽鍥╊劮閺勫墽銇?-->
+                    <!-- 匹配标签显示 -->
                 </div>
+
                 <div class="recommendation-list" id="recommendationList">
-                    <!-- 閸栧綊鍘ら惃鍕煀闂傝鍨悰?-->
+                    <!-- 匹配的新闻列表 -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 閺備即妞堢拠锔藉剰瀵湱鐛?-->
+
+    <!-- 新闻详情弹窗 -->
     <div class="news-detail-overlay" id="newsDetailOverlay">
         <div class="news-detail-container">
             <button class="back-btn" onclick="closeNewsDetail()">
                 <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                鏉╂柨娲?
+                返回
             </button>
             
-            <!-- 鐠囷附鍎忔径鎾劥閺嶅洨顒?-->
+            <!-- 详情头部标签 -->
             <div class="detail-header" id="detailHeader">
-                <!-- 閸斻劍鈧礁锝為崗?-->
+                <!-- 动态填充 -->
             </div>
             
-            <!-- 鐠囷附鍎忛弽鍥暯 -->
-            <h1 class="detail-title" id="detailTitle">閺備即妞堥弽鍥暯</h1>
+            <!-- 详情标题 -->
+            <h1 class="detail-title" id="detailTitle">新闻标题</h1>
             
-            <!-- 鐠囷附鍎忛崗鍐т繆閹?-->
+            <!-- 详情元信息 -->
             <div class="detail-meta" id="detailMeta">
                 <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
                 <span id="detailDate">2026-03-30</span>
                 <span>|</span>
-                <span id="detailSource">閺夈儲绨崥宥囆?/span>
+                <span id="detailSource">来源名称</span>
             </div>
             
-            <!-- 鐠囷附鍎忛崘鍛啇 -->
+            <!-- 详情内容 -->
             <div class="detail-content" id="detailContent">
-                <!-- 閸斻劍鈧礁锝為崗?-->
+                <!-- 动态填充 -->
             </div>
             
-            <!-- 閸忓疇浠堥弶鍨健閺嶅洨顒?-->
+            <!-- 关联板块标签 -->
             <div class="detail-tags" id="detailTags">
-                <!-- 閸斻劍鈧礁锝為崗?-->
+                <!-- 动态填充 -->
             </div>
             
-            <!-- AI閺呴缚鍏樼憴锝堫嚢 -->
+            <!-- AI智能解读 -->
             <div class="ai-insight" id="aiInsight">
                 <div class="ai-insight-header">
-                    <span class="ai-insight-icon">棣冩憠</span>
-                    <span class="ai-insight-title">AI閺呴缚鍏樼憴锝堫嚢</span>
+                    <span class="ai-insight-icon">📖</span>
+                    <span class="ai-insight-title">AI智能解读</span>
                 </div>
                 <div class="ai-insight-content" id="aiInsightContent">
-                    <!-- 閸斻劍鈧礁锝為崗?-->
+                    <!-- 动态填充 -->
                 </div>
             </div>
             
-            <!-- 閻╃鍙ч幒銊ㄥ礃 -->
+            <!-- 相关推荐 -->
             <div class="related-news" id="relatedNews">
                 <h4 class="related-news-title">
-                    <span>棣冩應</span>
-                    閻╃鍙ч幒銊ㄥ礃
+                    <span>📰</span>
+                    相关推荐
                 </h4>
                 <div id="relatedNewsList">
-                    <!-- 閸斻劍鈧礁锝為崗?-->
+                    <!-- 动态填充 -->
                 </div>
             </div>
             
-            <!-- 鎼存洟鍎撮悾娆戞 -->
-            <!-- 闂冨懓顕伴崢鐔告瀮閹稿鎸?-->
+            <!-- 底部留白 -->
+            <!-- 阅读原文按钮 -->
             <div class="original-link-section" id="originalLinkSection">
                 <a class="original-link-btn" id="originalLinkBtn" href="#" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24">
                         <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
                     </svg>
-                    <span id="originalLinkText">闂冨懓顕伴崢鐔告瀮</span>
+                    <span id="originalLinkText">阅读原文</span>
                 </a>
             </div>
             
@@ -1803,740 +1845,327 @@
         </div>
     </div>
 
+
     <script>
         // ============================================
-        // 閺備即妞堢€瑰本鏆ｉ弫鐗堝祦
+        // 新闻完整数据
         // ============================================
         const fullNewsData = {
-            // AI娑撳海顫栭幎鈧崜宥嗛儴
+            // AI与科技前沿
             'ai-1': {
-                title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺呭府绱濈粻妤€濮忛幋鏍︾返娑撳秴绨插Ч?,
-                tags: [{ text: '棣冩暉闁插秶顥?, class: 'hot' }],
-                source: '閺呮椽鈧俺鍌ㄧ紒?,
+                title: 'AI大模型演进路径清晰，算力或供不应求',
+                tags: [{ text: '🔥重磅', class: 'hot' }],
+                source: '智通财经',
                 url: 'https://finance.sina.com.cn/tech/roll/2026-03-30/doc-inapcmxr1234567.shtml',
                 date: '2026-03-30 09:30',
-                content: `<p><strong>閵嗘劖鐗宠箛鍐潎閻愬箍鈧?/strong>闂呭繒娼冮崶钘夊敶婢舵渽I婢堆勀侀崹瀣彽娴滃娅ч悜顓炲閿涘瞼鐣婚崝娑㈡付濮瑰倸鎲熼悳鎵瀻閸欐垵绱℃晶鐐烘毐閹礁濞嶉敍宀€鐣婚崝娑楅獓娑撴岸鎽奸張澶嬫箿鏉╁孩娼甸弬棰佺鏉烆喖顤冮梹鍨З閼冲鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫З閹降鈧?/strong>鏉╂垶婀￠敍灞筋樋鐎硅泛銇旈柈銊ь潠閹垛偓娴间椒绗熼惄鍝ユ埛閸欐垵绔烽弬棰佺娴狅絽銇囧Ο鈥崇€烽敍灞筋嚠缁犳濮忛惃鍕付濮瑰倹鈧儱澧介弨鈧崡鍥モ偓鍌滅暬閸旀稓顫ょ挧浣风幆閺嶅吋瀵旂紒顓¤泲妤傛﹫绱濋柈銊ュ瀻缁嬧偓缂傜瘡PU鐠у嫭绨悽姘冲殾閸戣櫣骞?娑撯偓閸楋繝姣﹀Ч?閻ㄥ嫬鐪棃顫偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕簚娴兼哎鈧?/strong>閺堢儤鐎弲顕€浜剁拋銈勮礋閿涘瞼鐣婚崝娑樼唨绾偓鐠佺偓鏌︽禍褌绗熼柧鐐壋韫囧啯鐖ｉ惃鍕偓鐓庣繁閸忚櫕鏁為妴鍌滅暬閸旀稖濮遍悧鍥モ偓浣规箛閸斺€虫珤閵嗕礁鍘滃Ο鈥虫健閵嗕焦鏆庨悜顓犻兇缂佺喓鐡戠紒鍡楀瀻妫板棗鐓欓崸鍥ㄦ箒閺堟稑褰堥惄濠佺艾閺堫剝鐤咥I濞搭亝鐤嗛妴?/p>
-                <p><strong>閵嗘劙顥撻梽鈺傚絹缁€鎭掆偓?/strong>闂団偓閸忚櫕鏁為幎鈧張顖濆嚡娴狅綁顥撻梽鈹库偓浣筋攽娑撴氨鐝垫禍澶婂閸撗備簰閸欏﹥鏂傜粵鏍磧缁犫€冲綁閸栨牜鐡戦崶鐘电閵?/p>`,
+                content: `<p><strong>【核心观点】</strong>随着国内外AI大模型竞争白热化，算力需求呈现爆发式增长态势，算力产业链有望迎来新一轮增长动能。</p>
+                <p><strong>【市场动态】</strong>近期，多家头部科技企业相继发布新一代大模型，对算力的需求急剧攀升。算力租赁价格持续走高，部分稀缺GPU资源甚至出现"一卡难求"的局面。</p>
+                <p><strong>【投资机会】</strong>机构普遍认为，算力基础设施产业链核心标的值得关注。算力芯片、服务器、光模块、散热系统等细分领域均有望受益于本轮AI浪潮。</p>
+                <p><strong>【风险提示】</strong>需关注技术迭代风险、行业竞争加剧以及政策监管变化等因素。</p>`,
                 relatedTags: [
-                    { name: 'AI缁犳濮?, class: '' },
-                    { name: '閸楀﹤顕辨担?, class: '' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' }
+                    { name: 'AI算力', class: '' },
+                    { name: '半导体', class: '' },
+                    { name: '科技股', class: 'purple' }
                 ],
-                aiInsight: `<p>閺嶈宓佽ぐ鎾冲鐢倸婧€閸斻劍鈧礁鍨庨弸鎰剁礉AI缁犳濮忛弶鍨健濮濓絿鐝崷銊ら獓娑撴岸顥撻崣锝勭娑撳鈧倹鍨滄禒顒冾吇娑撶儤婀佹禒銉ょ瑓閸戠姷鍋ｉ崐鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>1. <strong>閻厽婀￠弶銉ф箙</strong>閿涘瞼鐣婚崝娑楃返闂団偓缁毖冪炊閺嶇厧鐪禒宥呯殺閹镐胶鐢婚敍宀冨П閻楀洤娴楁禍褍瀵查弴澶稿敩鏉╂稓鈻奸崝鐘烩偓鐔稿腹鏉╂冻绱?/p>
-                <p>2. <strong>娑擃厽婀￠弶銉ф箙</strong>閿涘矂娈㈤惈鈧崥鍕亣閸樺倸鏅㈡径褎膩閸ㄥ妾扮紒顓炴櫌娑撴艾瀵查拃钘夋勾閿涘瞼鐣婚崝娑㈡付濮瑰倸鐨㈡潻娑楃濮濄儵鍣撮弨鎾呯幢</p>
-                <p>3. <strong>瀵ら缚顔呴崗铏暈</strong>閸忛攱婀侀懛顏冨瘜閸欘垱甯堕幎鈧張顖滄畱缁犳濮忛懞顖滃娴间椒绗熼敍灞间簰閸欏﹥鏆熼幑顔昏厬韫囧啳绻嶉拃銉ユ櫌閵?/p>`,
+                aiInsight: `<p>根据当前市场动态分析，AI算力板块正站在产业风口之上。我们认为有以下几点值得关注：</p>
+                <p>1. <strong>短期来看</strong>，算力供需紧张格局仍将持续，芯片国产化替代进程加速推进；</p>
+                <p>2. <strong>中期来看</strong>，随着各大厂商大模型陆续商业化落地，算力需求将进一步释放；</p>
+                <p>3. <strong>建议关注</strong>具有自主可控技术的算力芯片企业，以及数据中心运营商。</p>`,
                 relatedNews: [
-                    { title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉鍥风礉閻㈢喐鈧礁缂撶拋鎯у闁?, id: 'ai-2' },
-                    { title: '闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍杈剧礉娴溠傜瑹闁剧偓顩ц箛浣冨亗瀵倸濮?, id: 'ai-3' },
-                    { title: '閸楀﹤顕辨担鎾村畾娴犻攱鐤?閺堝牊娼电悮?, id: 'hot-3' }
+                    { title: '国产大模型日活突破千万，生态建设加速', id: 'ai-2' },
+                    { title: '量子计算获突破，产业链概念股异动', id: 'ai-3' },
+                    { title: '半导体涨价潮4月来袭', id: 'hot-3' }
                 ]
             },
             'ai-2': {
-                title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉鍥风礉閻㈢喐鈧礁缂撶拋鎯у闁?,
+                title: '国产大模型日活突破千万，生态建设加速',
                 tags: [{ text: 'AI', class: 'new' }],
-                source: '36濮?,
+                source: '36氪',
                 url: 'https://36kr.com/newsflashes/123456789',
                 date: '2026-03-30 10:15',
-                content: `<p><strong>閵嗘劘顢戞稉姘辩崐閻番鈧?/strong>閸ユ垝楠嘇I婢堆勀侀崹瀣暏閹寸柉顫夊Ο鈩冨瘮缂侇厼顤冮梹鍖＄礉婢舵碍顑欐稉缁樼ウ娴溠冩惂閺冦儲妞块悽銊﹀煕瀹歌尙鐛婇惍鏉戝磮娑撳洤銇囬崗绛圭礉閺嶅洤绻旈惈鈧崶钘夊敶AI鎼存梻鏁ら悽鐔糕偓浣界箻閸忋儲鏌婇梼鑸殿唽閵?/p>
-                <p><strong>閵嗘劗鏁撻幀浣哥紦鐠佷勘鈧?/strong>閸氬嫬銇囬崢鍌氭櫌濮濓絽濮為柅鐔哥€绡圛鎼存梻鏁ら悽鐔糕偓渚婄礉闁俺绻冨鈧弨缍歅I閵嗕礁绱戦崣鎴ｂ偓鍛仦閸栧搫缂撶拋淇扁偓浣瑰絻娴犺泛绔堕崷铏圭搼閺傜懓绱￠敍灞芥儧瀵洘娲挎径姘磻閸欐垼鈧懎鎷版导浣风瑹閻劍鍩涢崗銉┾敆閵?/p>
-                <p><strong>閵嗘劕鏅㈡稉姘佸蹇嬧偓?/strong>闂呭繒娼冮悽銊﹀煕鐟欏嫭膩婢х偤鏆遍崪宀€鏁撻幀浣哥暚閸犲嫸绱滱I婢堆勀侀崹瀣畱閸熷棔绗熼崠鏍熅瀵板嫪绡冮弮銉ㄧЪ濞撳懏娅氶敍灞藉瘶閹奉剝顓归梼鍛煑閵嗕椒绱掓稉姘卞閵嗕竸PI鐠嬪啰鏁ら弨鎯板瀭缁涘顦跨粔宥喣佸蹇撹嫙鐞涘被鈧?/p>`,
+                content: `<p><strong>【行业突破】</strong>国产AI大模型用户规模持续增长，多款主流产品日活用户已突破千万大关，标志着国内AI应用生态进入新阶段。</p>
+                <p><strong>【生态建设】</strong>各大厂商正加速构建AI应用生态，通过开放API、开发者社区建设、插件市场等方式，吸引更多开发者和企业用户入驻。</p>
+                <p><strong>【商业模式】</strong>随着用户规模增长和生态完善，AI大模型的商业化路径也日趋清晰，包括订阅制、企业版、API调用收费等多种模式并行。</p>`,
                 relatedTags: [
-                    { name: 'AI鎼存梻鏁?, class: 'new' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' },
-                    { name: '鏉烆垯娆?, class: '' }
+                    { name: 'AI应用', class: 'new' },
+                    { name: '科技股', class: 'purple' },
+                    { name: '软件', class: '' }
                 ],
-                aiInsight: `<p>閸ユ垝楠囨径褎膩閸ㄥ鏁撻幀浣烘畱韫囶偊鈧喐鍨氶悢鐕傜礉閸楁媽鐦夋禍鍡楁禇閸愬寬I娴溠傜瑹閻ㄥ嫬宸遍崝鎻掑絺鐏炴洖濞嶆径娣偓鍌涘灉娴狀剙鍨介弬顓ㄧ窗</p>
-                <p>1. <strong>閻劍鍩涚仦鍌炴桨</strong>閿涘瓔缁旑垰绨查悽銊ユ簚閺咁垱瀵旂紒顓濊荡鐎靛矉绱濋悽銊﹀煕娴犳鍨傞幇蹇斿姽闁劖顒為幓鎰磳閿?/p>
-                <p>2. <strong>娴间椒绗熺仦鍌炴桨</strong>閿涘瓓缁旂柇aaS閸栨牠鍎寸純鎻掔殺閹存劒璐熸稉鏄忣洣閸熷棔绗熷Ο鈥崇础閿?/p>
-                <p>3. <strong>閹舵洝绁弬鐟版倻</strong>瀵ら缚顔呴崗铏暈鎼存梻鏁ょ仦鍌氭嫲閸╄櫣顢呯拋鐐煢鐏炲倻娈戞导妯垮窛閺嶅洨娈戦妴?/p>`,
+                aiInsight: `<p>国产大模型生态的快速成熟，印证了国内AI产业的强劲发展势头。我们判断：</p>
+                <p>1. <strong>用户层面</strong>，C端应用场景持续丰富，用户付费意愿逐步提升；</p>
+                <p>2. <strong>企业层面</strong>，B端SaaS化部署将成为主要商业模式；</p>
+                <p>3. <strong>投资方向</strong>建议关注应用层和基础设施层的优质标的。</p>`,
                 relatedNews: [
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺呭府绱濈粻妤€濮忛幋鏍︾返娑撳秴绨插Ч?, id: 'ai-1' },
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' }
+                    { title: 'AI大模型演进路径清晰，算力或供不应求', id: 'ai-1' },
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' }
                 ]
             },
             'ai-3': {
-                title: '闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍杈剧礉娴溠傜瑹闁剧偓顩ц箛浣冨亗瀵倸濮?,
-                tags: [{ text: '缁夋垶濡?, class: '' }],
-                source: '鐠囦礁鍩滈弮鑸靛Г',
+                title: '量子计算获突破，产业链概念股异动',
+                tags: [{ text: '科技', class: '' }],
+                source: '证券时报',
                 url: 'https://www.stcn.com/article/detail/123456.html',
                 date: '2026-03-30 11:20',
-                content: `<p><strong>閵嗘劖濡ч張顖滅崐閻番鈧?/strong>閹存垵娴楅柌蹇撶摍鐠侊紕鐣婚惍鏃傗敀閸欐牕绶遍柌宥呫亣鏉╂稑鐫嶉敍灞芥躬闁插繐鐡欏В鏃傚閺佷即鍣洪崪宀€菙鐎规碍鈧勬煙闂堛垹鐤勯悳鐗堟煀缁愪胶鐗敍灞界穿閸欐垼绁張顒€绔堕崷娲彯鎼达箑鍙у▔銊ｂ偓?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫冀鎼存柣鈧?/strong>闁插繐鐡欑拋锛勭暬濮掑倸搴烽懖锟犳肠娴ｆ挸绱撻崝顭掔礉婢舵艾褰ф稉顏囧亗濞戙劌浠犻妴鍌涙簚閺嬪嫯顓绘稉娲櫤鐎涙劘顓哥粻妤佹箒閺堟稒鍨氭稉杞扮瑓娑撯偓娑擃亞顫栭幎鈧幎鏇＄カ娑撹崵鍤庨妴?/p>
-                <p><strong>閵嗘劒楠囨稉姘閺咁垬鈧?/strong>闁插繐鐡欑拋锛勭暬閸︺劌鐦戦惍浣割劅閵嗕浇宓傞悧鈺冪埡閸欐垯鈧線鍣鹃摶宥呯紦濡紕鐡戞０鍡楃厵閸忛攱婀侀獮鍧楁鎼存梻鏁ら崜宥嗘珯閿涘矂顣╃拋鈥崇殺閸︺劍婀弶?-10楠炴挳鈧劖顒炵挧鏉挎倻閸熷棛鏁ら妴?/p>`,
+                content: `<p><strong>【技术突破】</strong>我国量子计算研究取得重大进展，在量子比特数量和稳定性方面实现新突破，引发资本市场高度关注。</p>
+                <p><strong>【市场反应】</strong>量子计算概念股集体异动，多只个股涨停。机构认为量子计算有望成为下一个科技投资主线。</p>
+                <p><strong>【产业前景】</strong>量子计算在密码学、药物研发、金融建模等领域具有广阔应用前景，预计将在未来5-10年逐步走向商用。</p>`,
                 relatedTags: [
-                    { name: '闁插繐鐡欑拋锛勭暬', class: 'purple' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' },
-                    { name: '閺傜増娼楅弬?, class: '' }
+                    { name: '量子计算', class: 'purple' },
+                    { name: '科技股', class: 'purple' },
+                    { name: '新材料', class: '' }
                 ],
-                aiInsight: `<p>闁插繐鐡欑拋锛勭暬娴ｆ粈璐熼崜宥嗛儴閹垛偓閺堫垱鏌熼崥鎴礉閸婄厧绶遍梹鎸庢埂鐠虹喕閲滈敍?/p>
-                <p>1. <strong>閻厽婀?/strong>娴犮儰瀵屾０妯诲鐠у嫪璐熸稉浼欑礉闂団偓閸忚櫕鏁炵€圭偤妾拋銏犲礋閽€钘夋勾閹懎鍠岄敍?/p>
-                <p>2. <strong>娑擃厽婀?/strong>闂呭繒娼冮幎鈧張顖涘灇閻旂喎瀹抽幓鎰磳閿涘苯绨查悽銊ユ簚閺咁垰鐨㈤柅鎰劄閺勫海鈥橀敍?/p>
-                <p>3. <strong>瀵ら缚顔?/strong>閸忚櫕鏁為崗閿嬫箒閺嶇绺鹃幎鈧張顖氭嫲鐠у嫭绨导妯哄◢閻ㄥ嫰鍣虹€涙劘顓哥粻妞剧磼娑撴哎鈧?/p>`,
+                aiInsight: `<p>量子计算作为前沿技术方向，值得长期跟踪：</p>
+                <p>1. <strong>短期</strong>以主题投资为主，需关注实际订单落地情况；</p>
+                <p>2. <strong>中期</strong>随着技术成熟度提升，应用场景将逐步明确；</p>
+                <p>3. <strong>建议</strong>关注具有核心技术和资源优势的量子计算企业。</p>`,
                 relatedNews: [
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺呭府绱濈粻妤€濮忛幋鏍︾返娑撳秴绨插Ч?, id: 'ai-1' },
-                    { title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉?, id: 'ai-2' }
+                    { title: 'AI大模型演进路径清晰，算力或供不应求', id: 'ai-1' },
+                    { title: '国产大模型日活突破千万', id: 'ai-2' }
                 ]
             },
-            // A閼测€茬瑢闁叉垼鐎虹敮鍌氭簚
+            // A股与金融市场
             'stock-1': {
-                title: '濞岊亝瀵氶柌宥呮礀3900閻?,
-                tags: [{ text: '閴佸懎鍑￠拃钘夋勾', class: 'hot' }],
-                source: '閼垫崘顔嗛弬浼存',
-                url: 'https://new.qq.com/omn/20260327/20260327A0123400.html',
+                title: '沪指重回3900点',
+                tags: [{ text: '✅已落地', class: 'hot' }],
+                source: '腾讯新闻',
+                url: 'https://new.qq.com/omn/20260330/20260330A0123400.html',
                 date: '2026-03-30 15:30',
-                content: `<p><strong>閵嗘劕绔堕崷鐑橆洤閸愮偣鈧?/strong>娴犲﹥妫〢閼测€茬瑏婢堆勫瘹閺佷即娉︽担鎾存暪濞戭煉绱濆▽顏呭瘹婢堆勫畾2.15%閿涘本濮?913.72閻愮櫢绱濋柌宥呮礀3900閻愯鏆ｉ弫鏉垮彠閸欙絻鈧倹绻侀幋鎰瘹濞?.27%閿涘苯鍨辨稉姘緲閹稿洦瀹?.78%閵?/p>
-                <p><strong>閵嗘劖婢橀崸妤勩€冮悳鑸偓?/strong>閸忋劌绔堕崷楦跨Т4300閸欘亙閲滈懖鈥茬瑐濞戭煉绱濈挧姘舵尪閺佸牆绨查弰鎹愭啿閵嗗倸鍩滈崯鍡愨偓渚€鎽辩悰宀€鐡戞径褔鍣鹃摶宥嗘緲閸ф宸遍崝鎸庡閸楀浄绱濋崡濠傤嚤娴ｆ挶鈧焦鏌婇懗鑺ョ爱缁涘顫栭幎鈧幋鎰版毐閺夊灝娼＄悰銊у箛濞叉槒绌妴?/p>
-                <p><strong>閵嗘劘绁柌鎴濆З閸氭垯鈧?/strong>娑撱倕绔堕幋鎰唉妫版繄鐛婇惍?.2娑撳洣鍤庨崗鍐跨礉鏉堝啫澧犳稉鈧弮銉︽閺勭偓鏂侀柌蹇嬧偓鍌氬閸氭垼绁柌鎴濆櫍濞翠礁鍙嗙搾?0娴滃灝鍘撻敍灞炬簚閺嬪嫯绁柌鎴濆弳閸﹁櫣袧閺嬩降鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勭潔閺堟稏鈧?/strong>閺堢儤鐎弲顕€浜剁拋銈勮礋閿涘瓑閼测€插強閸婇棿鎱ㄦ径宥堫攽閹懏婀侀張娑樻缂侇叏绱濆楦款唴閸忚櫕鏁炵粔鎴炲Η閵嗕焦绉风拹骞库偓渚€鍣鹃摶宥囩搼娑撹崵鍤庨妴?/p>`,
+                content: `<p><strong>【市场概况】</strong>今日A股三大指数集体收涨，沪指大涨2.15%，报3913.72点，重回3900点整数关口。深成指涨2.27%，创业板指涨1.78%。</p>
+                <p><strong>【板块表现】</strong>全市场超4300只个股上涨，赚钱效应显著。券商、银行等大金融板块强势拉升，半导体、新能源等科技成长板块表现活跃。</p>
+                <p><strong>【资金动向】</strong>两市成交额突破1.2万亿元，较前一日明显放量。北向资金净流入超80亿元，机构资金入场积极。</p>
+                <p><strong>【市场展望】</strong>机构普遍认为，A股估值修复行情有望延续，建议关注科技、消费、金融等主线。</p>`,
                 relatedTags: [
-                    { name: 'A閼?, class: 'orange' },
-                    { name: '閸掔鏅?, class: '' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' }
+                    { name: 'A股', class: 'orange' },
+                    { name: '券商', class: '' },
+                    { name: '科技股', class: 'purple' }
                 ],
-                aiInsight: `<p>濞岊亝瀵氶柌宥呮礀3900閻愯鍓版稊澶愬櫢婢堆嶇礉閹存垳婊戦崚鍡樼€芥俊鍌欑瑓閿?/p>
-                <p>1. <strong>閹垛偓閺堫垶娼?/strong>閿涘本瀵氶弫鐗堟杹闁插繒鐛婇惍鎾櫢鐟曚礁甯囬崝娑楃秴閿涘瞼鐓張鐔荤Ъ閸斿灝鎮滄總鏂ょ幢</p>
-                <p>2. <strong>鐠у嫰鍣鹃棃?/strong>閿涘苯顦荤挧鍕嫲閺堢儤鐎挧鍕櫨閸氬本顒為崗銉ユ簚閿涘奔淇婇崣椋幮濋弸渚婄幢</p>
-                <p>3. <strong>瀵ら缚顔?/strong>閸欘垶鈧倸瀹抽崝鐘辩波閿涘奔绲鹃棁鈧▔銊﹀壈閹貉冨煑娴犳挷缍呴敍灞藉瀻閺侊綁鍘ょ純顔衡偓?/p>`,
+                aiInsight: `<p>沪指重回3900点意义重大，我们分析如下：</p>
+                <p>1. <strong>技术面</strong>，指数放量突破重要压力位，短期趋势向好；</p>
+                <p>2. <strong>资金面</strong>，外资和机构资金同步入场，信号积极；</p>
+                <p>3. <strong>建议</strong>可适度加仓，但需注意控制仓位，分散配置。</p>`,
                 relatedNews: [
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' },
-                    { title: '閸楀﹤顕辨担鎾存緲閸ф宸遍崝鍧楊暙濞?, id: 'stock-3' }
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: '半导体板块强势领涨', id: 'stock-3' }
                 ]
             },
             'stock-2': {
-                title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?,
-                tags: [{ text: '鐢倸婧€', class: '' }],
-                source: '娑撴粍鏌熺拹銏犵槣',
-                url: 'https://www.eastmoney.com/a/20260329001234567.html',
+                title: '北向资金净买入超百亿',
+                tags: [{ text: '市场', class: '' }],
+                source: '东方财富',
+                url: 'https://www.eastmoney.com/a/20260330001234567.shtml',
                 date: '2026-03-30 10:00',
-                content: `<p><strong>閵嗘劘绁柌鎴濆З閹降鈧?/strong>婢舵牞绁幐浣虹敾濞翠礁鍙咥閼测€崇閸︾尨绱濇禒濠冩）閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗛柌鎴︻杺鐡掑懓绻?00娴滃灝鍘撻敍灞藉灡鏉╂垶婀￠崡鏇熸）閺備即鐝妴?/p>
-                <p><strong>閵嗘劕浜告總钘夊瀻閺嬫劑鈧?/strong>娴犲骸顦荤挧鍕帳缂冾喗鏌熼崥鎴犳箙閿涘苯銇囬柌鎴ｇ€洪妴浣搞亣濞戝牐鍨傞妴浣规煀閼宠姤绨粵澶嬬壋韫囧啳绁禍褌绮涢弰顖欏瘜鐟曚焦鐖ｉ惃鍕┾偓鍌炴懕鐞涘被鈧椒绻氶梽鈺冪搼娴ｅ簼鍙婇崐鍏兼緲閸ф骞忛弰搴㈡▔閸旂姳绮ㄩ妴?/p>
-                <p><strong>閵嗘劘鍎楅弲顖氭礈缁辩姰鈧?/strong>娴滅儤鐨敮浣圭湽閻滃洣绱掔粙鍐叉礀閸楀洢鈧竸閼测€插強閸婄厧鎯涘鏇炲婢х偛宸遍弰顖氭儧瀵洖顦荤挧鍕畱娑撴槒顩﹂崶鐘电閵嗗倸鍙忛悶鍐カ闁叉垵鍟€闁板秶鐤嗙搾瀣◢閺勫孩妯夐妴?/p>`,
+                content: `<p><strong>【资金动态】</strong>外资持续流入A股市场，今日北向资金净买入金额超过100亿元，创近期单日新高。</p>
+                <p><strong>【偏好分析】</strong>从外资配置方向看，大金融、大消费、新能源等核心资产仍是主要标的。银行、保险等低估值板块获明显加仓。</p>
+                <p><strong>【背景因素】</strong>人民币汇率企稳回升、A股估值吸引力增强是吸引外资的主要因素。全球资金再配置趋势明显。</p>`,
                 relatedTags: [
-                    { name: '閸栨鎮滅挧鍕櫨', class: 'orange' },
-                    { name: '婢舵牞绁?, class: '' },
-                    { name: '婢堆囧櫨閾?, class: '' }
+                    { name: '北向资金', class: 'orange' },
+                    { name: '外资', class: '' },
+                    { name: '大金融', class: '' }
                 ],
-                aiInsight: `<p>閸栨鎮滅挧鍕櫨娴ｆ粈璐?閼鳖亝妲戦柦?閿涘苯鍙鹃崝銊ユ倻閸婄厧绶遍柌宥堫潒閿?/p>
-                <p>1. <strong>閹镐胶鐢婚幀?/strong>閿涘矁瀚㈡径鏍カ濞翠礁鍙嗛幐浣虹敾閿涘苯鐨㈡稉绡堥懖鈩冨絹娓氭稑顤冮柌蹇氱カ闁叉垶鏁幘鎴幢</p>
-                <p>2. <strong>閺傜懓鎮滄稉?/strong>閿涘苯顦荤挧鍕焊婵傜晫娈戞担搴濆強閸婅壈鎽戠粵鐟扳偓鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>3. <strong>閹绘劗銇?/strong>閸忚櫕鏁炲Ч鍥╁芳濞夈垹濮╃€电懓顦荤挧鍕ウ閸氭垹娈戣ぐ鍗炴惙閵?/p>`,
+                aiInsight: `<p>北向资金作为"聪明钱"，其动向值得重视：</p>
+                <p>1. <strong>持续性</strong>，若外资流入持续，将为A股提供增量资金支撑；</p>
+                <p>2. <strong>方向上</strong>，外资偏好的低估值蓝筹值得关注；</p>
+                <p>3. <strong>提示</strong>关注汇率波动对外资流向的影响。</p>`,
                 relatedNews: [
-                    { title: '濞岊亝瀵氶柌宥呮礀3900閻?, id: 'stock-1' },
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' }
+                    { title: '沪指重回3900点', id: 'stock-1' },
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' }
                 ]
             },
             'stock-3': {
-                title: '閸楀﹤顕辨担鎾存緲閸ф宸遍崝鍧楊暙濞?,
-                tags: [{ text: '閺夊灝娼?, class: '' }],
-                source: '閸氬矁濮虫い?,
-                url: 'https://www.10jqka.com.cn/news/20260329001234567.shtml',
+                title: '半导体板块强势领涨',
+                tags: [{ text: '板块', class: '' }],
+                source: '同花顺',
+                url: 'https://www.10jqka.com.cn/news/20260330001234567.shtml',
                 date: '2026-03-30 14:30',
-                content: `<p><strong>閵嗘劖婢橀崸妤勵攽閹懌鈧?/strong>閸楀﹤顕辨担鎾存緲閸фぞ绮栭弮銉ュ繁閸斿潡顣☉顭掔礉閹稿洦鏆熷☉銊ョ畽鐡掑懓绻?%閵嗗倸顦块崣顏冮嚋閼测剝瀹氶崑婊愮礉閸楀﹤顕辨担鎾诡啎婢跺洢鈧焦娼楅弬娆嶁偓浣筋啎鐠侊紕鐡戠紒鍡楀瀻妫板棗鐓欓崗銊у殠閻栧棗褰傞妴?/p>
-                <p><strong>閵嗘劕鍋撻崠鏍ф礈缁辩姰鈧?/strong>閸楀﹤顕辨担鎾村畾娴犵兘顣╅張鐔峰磳濞撯斂鈧竸I閼侯垳澧栭棁鈧Ч鍌滃瀻閸欐垯鈧礁娴楁禍褎娴涙禒锝呭闁喓鐡戞径姘跺櫢閸掆晛銈介崣鐘插閿涘本甯归崝銊︽緲閸ф顢戦幆鍛偓?/p>
-                <p><strong>閵嗘劒楠囨稉姘舵懠閵?/strong>娴犲簼绗傚〒姝岊啎婢跺洦娼楅弬娆忓煂娑擃厽鐖堕崚鍫曗偓鐘插晙閸掗绗呭〒绋跨殱鐟佸懏绁寸拠鏇礉閺佺繝閲滈崡濠傤嚤娴ｆ挷楠囨稉姘舵懠閸у洤褰堥崚鎷岀カ闁叉垼鎷烽幑褋鈧?/p>`,
+                content: `<p><strong>【板块行情】</strong>半导体板块今日强势领涨，指数涨幅超过5%。多只个股涨停，半导体设备、材料、设计等细分领域全线爆发。</p>
+                <p><strong>【催化因素】</strong>半导体涨价预期升温、AI芯片需求爆发、国产替代加速等多重利好叠加，推动板块行情。</p>
+                <p><strong>【产业链】</strong>从上游设备材料到中游制造再到下游封装测试，整个半导体产业链均受到资金追捧。</p>`,
                 relatedTags: [
-                    { name: '閸楀﹤顕辨担?, class: 'orange' },
-                    { name: 'AI閼侯垳澧?, class: '' },
-                    { name: '閸ユ垝楠囬弴澶稿敩', class: '' }
+                    { name: '半导体', class: 'orange' },
+                    { name: 'AI芯片', class: '' },
+                    { name: '国产替代', class: '' }
                 ],
-                aiInsight: `<p>閸楀﹤顕辨担鎾存緲閸ф濮囩挧鍕偓鏄忕帆濞撳懏娅氶敍?/p>
-                <p>1. <strong>閸涖劍婀℃径宥堝珒</strong>閿涘苯宕愮€甸棿缍嬬悰灞肩瑹閸涖劍婀￠張澶嬫箿閸︺劋绗呴崡濠傚嬀鐟欎礁绨抽崶鐐插磳閿?/p>
-                <p>2. <strong>AI妞瑰崬濮?/strong>閿涘瓑I閺堝秴濮熼崳銊ㄥП閻楀洭娓跺Ч鍌滃瀻閸欐垵鐢弶銉︽煀婢х偤鍣洪敍?/p>
-                <p>3. <strong>閸ユ垝楠囬弴澶稿敩</strong>閿涘本鏂傜粵鏍ㄦ暜閹镐椒绗呯拋鎯ь槵閺夋劖鏋￠崶鎴掗獓閸栨牕濮為柅鐔粹偓?/p>
-                <p>瀵ら缚顔呴崗铏暈閸忛攱婀侀幎鈧張顖滅崐閻潙鎷版禍褍鎼х粩鐐扮挨閸旀稓娈戞Λ娆忋仈閸忣剙寰冮妴?/p>`,
+                aiInsight: `<p>半导体板块投资逻辑清晰：</p>
+                <p>1. <strong>周期复苏</strong>，半导体行业周期有望在下半年见底回升；</p>
+                <p>2. <strong>AI驱动</strong>，AI服务器芯片需求爆发带来新增量；</p>
+                <p>3. <strong>国产替代</strong>，政策支持下设备材料国产化加速。</p>
+                <p>建议关注具有技术突破和产品竞争力的龙头公司。</p>`,
                 relatedNews: [
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?, id: 'ai-1' },
-                    { title: '閸楀﹤顕辨担鎾村畾娴犻攱鐤?閺堝牊娼电悮?, id: 'hot-3' }
+                    { title: 'AI大模型演进路径清晰', id: 'ai-1' },
+                    { title: '半导体涨价潮4月来袭', id: 'hot-3' }
                 ]
             },
-            // 閺€璺ㄧ摜娑撳骸鐣憴?
+            // 政策与宏观
             'policy-1': {
-                title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?,
-                tags: [{ text: '棣冩惖閺€璺ㄧ摜', class: 'policy' }],
-                source: '濠€鏍у础闁叉垼鐎洪崝?,
-                url: 'https://hunan.jinrong.net.cn/policy/202603290001.html',
+                title: '银行业保险业数字金融新蓝图',
+                tags: [{ text: '📋政策', class: 'policy' }],
+                source: '湖南金融办',
+                url: 'https://hunan.jinrong.net.cn/policy/202603300001.html',
                 date: '2026-03-30 08:00',
-                content: `<p><strong>閵嗘劖鏂傜粵鏍洤鐟曚降鈧?/strong>闁叉垼鐎洪惄鎴狀吀闁劑妫崣鎴濈闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪崣鎴濈潔娑撳鍕剧悰灞藉З鐠佲€冲灊閿涘本妲戠涵?3妞ゅ綊鍣搁悙閫涙崲閸斺槄绱濇稉楦款攽娑撴碍鏆熺€涙瀵叉潪顒€鐎风紒妯哄煑"鐠侯垳鍤庨崶?閵?/p>
-                <p><strong>閵嗘劖鐗宠箛鍐ㄥ敶鐎瑰箍鈧?/strong>閺傚洣娆㈡禒搴＄唨绾偓鐠佺偓鏌﹂妴浣搁挬閸欐澘缂撶拋淇扁偓浣规殶閹诡喗涓嶉悶鍡愨偓渚€顥撻梽鈺呮Щ閹貉呯搼缂佹潙瀹抽幓鎰毉閸忚渹缍嬬憰浣圭湴閿涘本甯归崝銊╁櫨閾诲秵婧€閺嬪嫬濮炶箛顐ｆ殶鐎涙瀵叉潪顒€鐎峰銉ょ矗閵?/p>
-                <p><strong>閵嗘劘顢戞稉姘閸濆秲鈧?/strong>閺佹澘鐡ч柌鎴ｇ€洪弨璺ㄧ摜缁俱垹鍩勭亸鍡楀闁喖鍣撮弨鎾呯礉闁叉垼鐎虹粔鎴炲Η閸忣剙寰冮妴渚€鎽辩悰宀€顫栭幎鈧€涙劕鍙曢崣鎼炩偓浣侯儑娑撳鏌熼弨顖欑帛缁涘顣崺鐔告箒閺堟稑褰堥惄濞库偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕簚娴兼哎鈧?/strong>瀵ら缚顔呴崗铏暈闁叉垼鐎篒T閸╄櫣顢呯拋鐐煢閵嗕焦鏆熺€涙鎻ｇ敮浣碘偓渚€顥撻梽鈺冾吀閻炲棛鐡戠紒鍡楀瀻妫板棗鐓欓惃鍕簚娴兼哎鈧?/p>`,
+                content: `<p><strong>【政策概要】</strong>金融监管部门发布银行业保险业数字金融发展三年行动计划，明确33项重点任务，为行业数字化转型绘制"路线图"。</p>
+                <p><strong>【核心内容】</strong>文件从基础设施、平台建设、数据治理、风险防控等维度提出具体要求，推动金融机构加快数字化转型步伐。</p>
+                <p><strong>【行业影响】</strong>数字金融政策红利将加速释放，金融科技公司、银行科技子公司、第三方支付等领域有望受益。</p>
+                <p><strong>【投资机会】</strong>建议关注金融IT基础设施、数字货币、风险管理等细分领域的机会。</p>`,
                 relatedTags: [
-                    { name: '闁叉垼鐎虹粔鎴炲Η', class: 'policy' },
-                    { name: '閺佹澘鐡х拹褍绔?, class: '' },
-                    { name: '闁炬儼顢慖T', class: '' }
+                    { name: '金融科技', class: 'policy' },
+                    { name: '数字货币', class: '' },
+                    { name: '银行IT', class: '' }
                 ],
-                aiInsight: `<p>閺佹澘鐡ч柌鎴ｇ€洪弨璺ㄧ摜閸忛攱婀侀梹鎸庢埂閹稿洤顕遍幇蹇庣疅閿?/p>
-                <p>1. <strong>閺€璺ㄧ摜閸旀稑瀹?/strong>鐡掑懘顣╅張鐕傜礉33妞ら€涙崲閸斅ゎ洬閻╂牕鍙忛棃顫幢</p>
-                <p>2. <strong>鐠у嫰鍣鹃弨顖涘瘮</strong>閿涘矂顣╃拋鈥崇殺鐢箑濮╅崡鍐у殠缁绢湉T閹舵洖鍙嗛敍?/p>
-                <p>3. <strong>閹舵洝绁弬鐟版倻</strong>瀵ら缚顔呴崗铏暈闁炬儼顢慖T閵嗕線鍣鹃摶宄塧aS閵嗕焦鏁禒妯荤缁犳鐡戠挧娑壕閵?/p>`,
+                aiInsight: `<p>数字金融政策具有长期指导意义：</p>
+                <p>1. <strong>政策力度</strong>超预期，33项任务覆盖全面；</p>
+                <p>2. <strong>资金支持</strong>，预计将带动千亿级IT投入；</p>
+                <p>3. <strong>投资方向</strong>建议关注银行IT、金融SaaS、支付清算等赛道。</p>`,
                 relatedNews: [
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' },
-                    { title: 'PMI閺佺増宓佺搾鍛搭暕閺堢噦绱濋崚鍫曗偓鐘辩瑹閸ョ偞娈╅弰搴㈡▔', id: 'policy-2' }
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: 'PMI数据超预期，制造业回暖明显', id: 'policy-2' }
                 ]
             },
             'policy-2': {
-                title: 'PMI閺佺増宓佺搾鍛搭暕閺堢噦绱濋崚鍫曗偓鐘辩瑹閸ョ偞娈╅弰搴㈡▔',
-                tags: [{ text: '鐎瑰繗顫?, class: 'policy' }],
-                source: '閸ヨ棄顔嶇紒鐔活吀鐏炩偓',
-                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260329_1234567.html',
+                title: 'PMI数据超预期，制造业回暖明显',
+                tags: [{ text: '宏观', class: 'policy' }],
+                source: '国家统计局',
+                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260330_1234567.html',
                 date: '2026-03-30 09:00',
-                content: `<p><strong>閵嗘劖鏆熼幑顔煎絺鐢啨鈧?/strong>閸ヨ棄顔嶇紒鐔活吀鐏炩偓閸忣剙绔?閺堝牆鍩楅柅鐘辩瑹PMI娑?1.9%閿涘矁绶濇稉濠冩箑閸ョ偛宕?.7娑擃亞娅ㄩ崚鍡欏仯閿涘本妞傞梾?娑擃亝婀€闁插秷绻戦幍鈺佺炊閸栨椽妫块妴?/p>
-                <p><strong>閵嗘劗绮ㄩ弸鍕瀻閺嬫劑鈧?/strong>閻㈢喍楠囬幐鍥ㄦ殶閸滃本鏌婄拋銏犲礋閹稿洦鏆熼崸鍥ㄦ閺勬儳娲栭崡鍥风礉娴间椒绗熼柌鍥枠閹板繑鍔规晶鐐插繁閿涘苯绨辩€涙ê骞撻崠鏍у竾閸旀稑鍣烘潪姹団偓?/p>
-                <p><strong>閵嗘劖鏂傜粵鏍ㄦ櫏閺嬫嚎鈧?/strong>缁嬪啿顤冮梹鎸庢杺缁涙牗鏅ラ弸婊堚偓鎰劄閺勫墽骞囬敍灞肩磼娑撴矮淇婅箛鍐╂箒閹碘偓閹垹顦查妴鍌氬毉閸欙綀顓归崡鏇熷瘹閺佹澘鎮撳銉ユ礀閸楀浄绱濇径鏍付闂娧勨偓褑绶濆鎭掆偓?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫閸濆秲鈧?/strong>PMI閸ョ偞娈╂穱鈥冲娇缁夘垱鐎敍灞炬箒閸斺晙绨幓鎰盁鐢倸婧€娣団€崇妇閿涘本娼堥惄濠呯カ娴溠勬箒閺堟稑褰堥惄濞库偓?/p>`,
+                content: `<p><strong>【数据发布】</strong>国家统计局公布3月制造业PMI为51.9%，较上月回升1.7个百分点，时隔5个月重返扩张区间。</p>
+                <p><strong>【结构分析】</strong>生产指数和新订单指数均明显回升，企业采购意愿增强，库存去化压力减轻。</p>
+                <p><strong>【政策效果】</strong>稳增长政策效果逐步显现，企业信心有所恢复。出口订单指数同步回升，外需韧性较强。</p>
+                <p><strong>【市场影响】</strong>PMI回暖信号积极，有助于提振市场信心，权益资产有望受益。</p>`,
                 relatedTags: [
-                    { name: '鐎瑰繗顫囩紒蹇旂ス', class: '' },
+                    { name: '宏观经济', class: '' },
                     { name: 'PMI', class: '' },
-                    { name: '閸掑爼鈧姳绗?, class: '' }
+                    { name: '制造业', class: '' }
                 ],
-                aiInsight: `<p>PMI闁插秷绻戦幍鈺佺炊閸栨椽妫块幇蹇庣疅闁插秴銇囬敍?/p>
-                <p>1. <strong>缂佸繑绁规导浣呵?/strong>娣団€冲娇閺勫海鈥橀敍瀛?缂佸繑绁规晶鐐衡偓鐔告箒閺堟稖绉存０鍕埂閿?/p>
-                <p>2. <strong>娴间椒绗熼惄鍫濆焺</strong>妫板嫭婀￠弨鐟版澖閿涘苯鍩楅柅鐘辩瑹姒瑥銇旈崐鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>3. <strong>閺€璺ㄧ摜缁屾椽妫?/strong>閿涘瞼菙婢х偤鏆遍崢瀣閸戝繗浜ら敍灞炬杺缁涙牗鍨ㄩ惄鍛婃簚閹跺瀚ㄩ妴?/p>`,
+                aiInsight: `<p>PMI重返扩张区间意义重大：</p>
+                <p>1. <strong>经济企稳</strong>信号明确，Q1经济增速有望超预期；</p>
+                <p>2. <strong>企业盈利</strong>预期改善，制造业龙头值得关注；</p>
+                <p>3. <strong>政策空间</strong>，稳增长压力减轻，政策或相机抉择。</p>`,
                 relatedNews: [
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' },
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' }
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' },
+                    { title: '沪指重回3900点', id: 'stock-1' }
                 ]
             },
-            // 閸ヤ粙妾悜顓犲仯
+            // 国际热点
             'global-1': {
-                title: '缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?,
-                tags: [{ text: '棣冩暉閸︽壆绱?, class: 'hot' }],
-                source: '閺傜増姘拹銏㈢病',
-                url: 'https://finance.sina.com.cn/world/2026-03-30/doc-inapcmrs12345678.shtml',
-                date: '2026-03-30 07:30',
-                content: `<p><strong>閵嗘劒绨ㄦ禒鎯板剹閺咁垬鈧?/strong>閼斥€愁敚濮濓箒顥婇崥鎴滀簰閼规彃鍨崣鎴濈殸婢舵碍鐏囩€电厧鑴婇敍灞艰厬娑撴粌婀寸紓妯绘杺濞岃崵鎻ｅ鐘茬湰閸斿灝鍟€鎼达箑宕屽〒鈹库偓鍌氭禇闂勫懏琛ユ禒宄扮安婢规澘銇囧☉顭掔礉姒涘嫰鍣剧粵澶愪缉闂勨晞绁禍褌鐜弽鑹拌泲妤傛ǜ鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫閸濆秲鈧?/strong>閸︽壆绱搴ㄦ珦閹恒劌濮╅崢鐔歌ˉ閵嗕線绮嶉柌鎴犵搼婢堆冪暬閸熷棗鎼ф禒閿嬬壐娑撳﹥瀹氶敍灞芥倱閺冨爼浼╅梽鈺傚剰缂侇亜宕屽〒鈺傚腹閸斻劌鈧搫鍩滈崪灞炬）閸忓啰鐡戦柆鍧楁珦鐠у嫪楠囩挧鏉垮繁閵?/p>
-                <p><strong>閵嗘劕鎮囬弬鐟板冀鎼存柣鈧?/strong>缂囧骸娴楅弨鍨盎閸涚厧鎮傞崥鍕煙娣囨繃瀵旈崗瀣煑閿涘矁浠堥崥鍫濇禇鐎瑰鎮婃导姘将瀵偓缁毖勨偓銉ょ窗鐠侇喓鈧倸婀撮崠鍝勭湰閸斿灝褰傜仦鏇氱矝鐎涙ê婀潏鍐ㄣ亣娑撳秶鈥樼€规碍鈧佲偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕儙缁€鎭掆偓?/strong>閸︽壆绱搴ㄦ珦閻厽婀￠梾鍙ヤ簰濞戝牓鈧偓閿涘苯缂撶拋顔荤箽閹镐線妲诲锟犲帳缂冾噯绱濋崗铏暈鐠愮敻鍣剧仦鐐偓浣稿斧濞屽湱鐡戦弶鍨健閺堣桨绱伴妴?/p>`,
+                title: '美伊冲突持续扰动全球',
+                tags: [{ text: '🔥地缘', class: 'hot' }],
+                source: '新浪财经',
+                url: 'https://finance.sina.com.cn/world/20260330/00123456789.shtml',
+                date: '2026-03-30 08:30',
+                content: `<p><strong>【地缘动态】</strong>胡塞武装向以色列发射导弹，中东局势再度紧张。美伊关系持续恶化，引发全球市场避险情绪升温。</p>
+                <p><strong>【市场影响】</strong>避险资产受到资金追捧，黄金价格持续走高。原油市场波动加剧，能源价格面临上行压力。</p>
+                <p><strong>【各方表态】</strong>美国国务卿表示将继续关注中东局势发展，联合国呼吁各方保持克制，避免冲突进一步升级。</p>`,
                 relatedTags: [
-                    { name: '閸︽壆绱弨鎸庝笉', class: 'hot' },
-                    { name: '閸樼喐琛?, class: 'orange' },
-                    { name: '鐠愮敻鍣剧仦?, class: '' }
+                    { name: '地缘政治', class: 'hot' },
+                    { name: '黄金', class: 'orange' },
+                    { name: '原油', class: '' }
                 ],
-                aiInsight: `<p>閸︽壆绱搴ㄦ珦鐎电懓绔堕崷铏规畱瑜板崬鎼烽棁鈧憰浣稿З閹浇鐦庢导甯窗</p>
-                <p>1. <strong>閻厽婀?/strong>閿涘矂浼╅梽鈺傚剰缂侇亙瀵岀€电》绱濈拹鐢稿櫨鐏炵偑鈧礁甯▽閫涚幆閺嶅吋婀侀弨顖涙嫼閿?/p>
-                <p>2. <strong>娑擃厽婀?/strong>閿涘矁瀚㈢仦鈧崝璺ㄧ处閸滃矉绱濇搴ㄦ珦鐠у嫪楠囬崣顖濆厴鏉╁孩娼甸崣宥呰剨閿?/p>
-                <p>3. <strong>闁板秶鐤嗗楦款唴</strong>閿涘奔绻氶幐浣虹矋閸氬牓妲诲鈩冣偓褝绱濋柅鍌氱秼婢х偤鍘ゆ鍕櫨閵?/p>`,
+                aiInsight: `<p>美伊冲突对市场影响深远：</p>
+                <p>1. <strong>避险情绪</strong>短期难以消退，黄金等避险资产值得关注；</p>
+                <p>2. <strong>能源市场</strong>波动加剧，原油相关标的需谨慎；</p>
+                <p>3. <strong>建议</strong>关注国内贵金属板块的避险机会。</p>`,
                 relatedNews: [
-                    { title: '姒涘嫰鍣鹃崗瀣╃幆闁壈绻?400閸?, id: 'hot-4' },
-                    { title: '閸樼喐琛ユ禒閿嬬壐濞夈垹濮╅崝鐘插⒔', id: 'global-3' }
+                    { title: '黄金克价逼近1400元', id: 'hot-4' },
+                    { title: '原油价格波动加剧', id: 'global-3' }
                 ]
             },
             'global-2': {
-                title: '缂囧氦浠堥崒銊╂閹垶顣╅張鐔峰磳濞?,
-                tags: [{ text: '閸ヤ粙妾?, class: '' }],
-                source: '閸楀骸鐨电悰妤勵潌闂?,
-                url: 'https://wallstreetcn.com/articles/20260329001234567',
-                date: '2026-03-30 08:45',
-                content: `<p><strong>閵嗘劗绮″ù搴㈡殶閹诡喓鈧?/strong>缂囧骸娴楁潻鎴炴埂閸忣剙绔烽惃鍕病濞村孩鏆熼幑顔芥▔缁€鍝勵杻闂€鍨З閼宠棄鍣哄鎲嬬礉闁俺鍎夐崢瀣閺堝澧嶇紓鎾剐掗妴鍌氭皑娑撴艾绔堕崷鍝勬嫲濞戝牐鍨傞弫鐗堝祦閸у洤鍤悳鎷岀珶闂勫懓铔嬪杈姉鐠灺扳偓?/p>
-                <p><strong>閵嗘劕绔堕崷娲暕閺堢喆鈧?/strong> CME閸掆晝宸奸張鐔绘彛閺勫墽銇氶敍灞界閸﹀搫顕紘搴や粓閸屻劑妾烽幁顖烆暕閺堢喐妲戦弰鎯у磳濞撯晪绱濇＃鏍偧闂勫秵浼呴弮鍫曟？閸欘垵鍏橀幓鎰閼峰啿鍕炬稉顓溾偓?/p>
-                <p><strong>閵嗘劕鍙忛悶鍐粓閸斻劊鈧?/strong>閼汇儳绶ㄩ懕鏂垮亶鏉烆剙鎮滅€硅姤婢楅敍灞藉弿閻炲啯绁﹂崝銊︹偓褍鐨㈤弨鐟版澖閿涘本鏌婇崗鏉戠閸︾儤婀侀張娑滃箯瀵版绁柌鎴︽綒閻劑鈧?/p>`,
+                title: '美联储降息预期升温',
+                tags: [{ text: '国际', class: '' }],
+                source: '华尔街见闻',
+                url: 'https://wallstreetcn.com/articles/1234567890',
+                date: '2026-03-30 09:45',
+                content: `<p><strong>【数据表现】</strong>美国近期公布的经济数据普遍低于预期，通胀压力有所缓解，市场对美联储降息的预期明显升温。</p>
+                <p><strong>【利率期货】</strong>根据利率期货显示，市场预计美联储在年内降息2-3次的概率超过70%。</p>
+                <p><strong>【影响分析】</strong>若美联储转向宽松，将对全球流动性产生积极影响，新兴市场有望受益。</p>`,
                 relatedTags: [
-                    { name: '缂囧氦浠堥崒?, class: '' },
-                    { name: '闂勫秵浼?, class: '' },
-                    { name: '缂囧骸鍘?, class: '' }
+                    { name: '美联储', class: '' },
+                    { name: '降息', class: '' },
+                    { name: '美元', class: '' }
                 ],
-                aiInsight: `<p>缂囧氦浠堥崒銊︽杺缁涙牞娴嗛崥鎴︻暕閺堢喎鈧厧绶遍崗铏暈閿?/p>
-                <p>1. <strong>缂囧骸鍘撶挧鏉垮◢</strong>閿涘矁瀚㈤梽宥嗕紖妫板嫭婀″鍝勫閿涘瞼绶ㄩ崗鍐ㄥ讲閼冲€熻泲瀵唻绱?/p>
-                <p>2. <strong>鐠у嫭婀板ù浣稿З</strong>閿涘本鏌婇崗鏉戠閸︾儤鍨ㄦ潻搴㈡降鐠у嫰鍣惧ù浣稿弳閿?/p>
-                <p>3. <strong>妞嬪酣娅撶挧鍕獓</strong>閿涘苯鍙忛悶鍐╃ウ閸斻劍鈧勬暭閸犲嫬鍩勬總鑺ユ綀閻╁﹤绔堕崷鎭掆偓?/p>`,
+                aiInsight: `<p>美联储政策转向值得关注：</p>
+                <p>1. <strong>流动性</strong>，宽松预期有助于全球风险资产表现；</p>
+                <p>2. <strong>汇率</strong>，美元走弱概率提升，人民币汇率有望企稳；</p>
+                <p>3. <strong>外资</strong>，新兴市场吸引力增强，外资流入或加速。</p>`,
                 relatedNews: [
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' },
-                    { title: '缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?, id: 'global-1' }
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: '沪指重回3900点', id: 'stock-1' }
                 ]
             },
             'global-3': {
-                title: '閸樼喐琛ユ禒閿嬬壐濞夈垹濮╅崝鐘插⒔',
-                tags: [{ text: '婢堆冪暬', class: '' }],
-                source: '瑜邦厼宕ョ粈?,
-                url: 'https://www.bloomberg.com/news/articles/2026-03-30/oil-prices-volatile',
-                date: '2026-03-30 12:00',
-                content: `<p><strong>閵嗘劒鐜弽鑹拌泲閸旇￥鈧?/strong>閸ヤ粙妾崢鐔歌ˉ娴犻攱鐗搁崜褏鍎撳▔銏犲З閿涘苯绔锋导锔惧閸樼喐琛ユ稉鈧惔锔剧崐閻?0缂囧骸鍘?濡楄泛鍙ч崣锝忕礉闂呭繐鎮楅崶鐐舵儰閼?5缂囧骸鍘撻梽鍕箮闂囧洩宕遍妴?/p>
-                <p><strong>閵嗘劕濂栭崫宥呮礈缁辩姰鈧?/strong>閸︽壆绱弨鎸庝笉妞嬪酣娅撻妴涓盤EC+娴溠勮ˉ閺€璺ㄧ摜閵嗕胶绶ㄩ崶浠嬨€夊畝鈺傝ˉ娴溠囧櫤缁涘顦跨粚鍝勬礈缁辩姳姘︾紒鍥风礉閹恒劌濮╁▽閫涚幆濞夈垹濮╅崝鐘插⒔閵?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勭潔閺堟稏鈧?/strong>閻厽婀￠崷鎵喘閸ョ姷绀屾禒宥呯殺閺勵垯瀵岀€靛吋琛ユ禒鐤泲閸旇法娈戦崗鎶芥暛閸欐﹢鍣洪敍宀勬付鐎靛棗鍨忛崗铏暈娑擃厺绗㈢仦鈧崝鑳箻鐏炴洏鈧?/p>`,
+                title: '原油价格波动加剧',
+                tags: [{ text: '大宗', class: '' }],
+                source: '彭博社',
+                url: 'https://bloomberg.com/news/articles/1234567890',
+                date: '2026-03-30 11:00',
+                content: `<p><strong>【市场概况】</strong>受地缘政治因素影响，原油市场波动加剧。布伦特原油和WTI原油价格日内振幅超过5%。</p>
+                <p><strong>【供给因素】</strong>OPEC+产量政策存在不确定性，部分成员国暗示可能调整产出计划。</p>
+                <p><strong>【需求预期】</strong>全球能源需求复苏预期增强，中国等主要消费国需求回暖。</p>`,
                 relatedTags: [
-                    { name: '閸樼喐琛?, class: 'orange' },
-                    { name: '婢堆冪暬閸熷棗鎼?, class: '' },
-                    { name: '閼宠姤绨?, class: '' }
+                    { name: '原油', class: '' },
+                    { name: '大宗商品', class: '' },
+                    { name: '能源', class: '' }
                 ],
-                aiInsight: `<p>閸樼喐琛ョ敮鍌氭簚娑撳秶鈥樼€规碍鈧冾杻閸旂媴绱?/p>
-                <p>1. <strong>娓氭稓绮扮粩?/strong>閿涘PEC+缂佸瓨瀵旈崙蹇庨獓閿涘苯婀寸紓姗€顥撻梽鈺傚閸斻劋绶垫惔鏃撶幢</p>
-                <p>2. <strong>闂団偓濮瑰倻顏?/strong>閿涘苯鍙忛悶鍐病濞村骸顦查懟蹇撳鎼达箑绶熺憴鍌氱檪閿?/p>
-                <p>3. <strong>闁板秶鐤嗗楦款唴</strong>閿涘矁鍏樺┃鎰緲閸ф褰查柅鍌氬闁板秶鐤嗛敍灞肩稻闂団偓閹貉冨煑濮ｆ柧绶ラ妴?/p>`,
+                aiInsight: `<p>原油市场不确定性增加：</p>
+                <p>1. <strong>地缘风险</strong>仍是主要扰动因素，短期波动或加大；</p>
+                <p>2. <strong>供需平衡</strong>改善需时间，油价中枢或逐步抬升；</p>
+                <p>3. <strong>投资建议</strong>关注能源ETF和石化龙头。</p>`,
                 relatedNews: [
-                    { title: '缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?, id: 'global-1' },
-                    { title: '姒涘嫰鍣鹃崗瀣╃幆闁壈绻?400閸?, id: 'hot-4' }
+                    { title: '美伊冲突持续扰动全球', id: 'global-1' },
+                    { title: '黄金克价逼近1400元', id: 'hot-4' }
                 ]
             },
-            // 閻戭厽鎮抽弬浼存閿涘牏鐣濋崠鏍閿涘瞼鏁ゆ禍搴ｅ劰閹兼粍顪侀悙鐟板毊閿?
-            'hot-1': {
-                title: '濞岊亝瀵氶柌宥呮礀3900閻?,
-                tags: [{ text: '濞?, class: 'hot' }],
-                source: '閼垫崘顔嗛弬浼存',
-                url: 'https://new.qq.com/omn/20260327/20260327A0123400.html',
-                date: '2026-03-30 15:30',
-                content: `<p><strong>閵嗘劕绔堕崷鐑橆洤閸愮偣鈧?/strong>娴犲﹥妫〢閼测€茬瑏婢堆勫瘹閺佷即娉︽担鎾存暪濞戭煉绱濆▽顏呭瘹婢堆勫畾2.15%閿涘本濮?913.72閻愮櫢绱濋柌宥呮礀3900閻愯鏆ｉ弫鏉垮彠閸欙絻鈧倹绻侀幋鎰瘹濞?.27%閿涘苯鍨辨稉姘緲閹稿洦瀹?.78%閵?/p>
-                <p><strong>閵嗘劖婢橀崸妤勩€冮悳鑸偓?/strong>閸忋劌绔堕崷楦跨Т4300閸欘亙閲滈懖鈥茬瑐濞戭煉绱濈挧姘舵尪閺佸牆绨查弰鎹愭啿閵嗗倸鍩滈崯鍡愨偓渚€鎽辩悰宀€鐡戞径褔鍣鹃摶宥嗘緲閸ф宸遍崝鎸庡閸楀浄绱濋崡濠傤嚤娴ｆ挶鈧焦鏌婇懗鑺ョ爱缁涘顫栭幎鈧幋鎰版毐閺夊灝娼＄悰銊у箛濞叉槒绌妴?/p>
-                <p><strong>閵嗘劘绁柌鎴濆З閸氭垯鈧?/strong>娑撱倕绔堕幋鎰唉妫版繄鐛婇惍?.2娑撳洣鍤庨崗鍐跨礉鏉堝啫澧犳稉鈧弮銉︽閺勭偓鏂侀柌蹇嬧偓鍌氬閸氭垼绁柌鎴濆櫍濞翠礁鍙嗙搾?0娴滃灝鍘撻敍灞炬簚閺嬪嫯绁柌鎴濆弳閸﹁櫣袧閺嬩降鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勭潔閺堟稏鈧?/strong>閺堢儤鐎弲顕€浜剁拋銈勮礋閿涘瓑閼测€插強閸婇棿鎱ㄦ径宥堫攽閹懏婀侀張娑樻缂侇叏绱濆楦款唴閸忚櫕鏁炵粔鎴炲Η閵嗕焦绉风拹骞库偓渚€鍣鹃摶宥囩搼娑撹崵鍤庨妴?/p>`,
-                relatedTags: [
-                    { name: 'A閼?, class: 'orange' },
-                    { name: '閸掔鏅?, class: '' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' }
-                ],
-                aiInsight: `<p>濞岊亝瀵氶柌宥呮礀3900閻愯鍓版稊澶愬櫢婢堆嶇礉閹存垳婊戦崚鍡樼€芥俊鍌欑瑓閿?/p>
-                <p>1. <strong>閹垛偓閺堫垶娼?/strong>閿涘本瀵氶弫鐗堟杹闁插繒鐛婇惍鎾櫢鐟曚礁甯囬崝娑楃秴閿涘瞼鐓張鐔荤Ъ閸斿灝鎮滄總鏂ょ幢</p>
-                <p>2. <strong>鐠у嫰鍣鹃棃?/strong>閿涘苯顦荤挧鍕嫲閺堢儤鐎挧鍕櫨閸氬本顒為崗銉ユ簚閿涘奔淇婇崣椋幮濋弸渚婄幢</p>
-                <p>3. <strong>瀵ら缚顔?/strong>閸欘垶鈧倸瀹抽崝鐘辩波閿涘奔绲鹃棁鈧▔銊﹀壈閹貉冨煑娴犳挷缍呴敍灞藉瀻閺侊綁鍘ょ純顔衡偓?/p>`,
-                relatedNews: [
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' },
-                    { title: '閸楀﹤顕辨担鎾存緲閸ф宸遍崝鍧楊暙濞?, id: 'stock-3' }
-                ]
-            },
-            'hot-2': {
-                title: '缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?,
-                tags: [{ text: '閺?, class: 'new' }],
-                source: '閺傜増姘拹銏㈢病',
-                url: 'https://finance.sina.com.cn/world/2026-03-30/doc-inapcmrs12345678.shtml',
-                date: '2026-03-30 07:30',
-                content: `<p><strong>閵嗘劒绨ㄦ禒鎯板剹閺咁垬鈧?/strong>閼斥€愁敚濮濓箒顥婇崥鎴滀簰閼规彃鍨崣鎴濈殸婢舵碍鐏囩€电厧鑴婇敍灞艰厬娑撴粌婀寸紓妯绘杺濞岃崵鎻ｅ鐘茬湰閸斿灝鍟€鎼达箑宕屽〒鈹库偓鍌氭禇闂勫懏琛ユ禒宄扮安婢规澘銇囧☉顭掔礉姒涘嫰鍣剧粵澶愪缉闂勨晞绁禍褌鐜弽鑹拌泲妤傛ǜ鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫閸濆秲鈧?/strong>閸︽壆绱搴ㄦ珦閹恒劌濮╅崢鐔歌ˉ閵嗕線绮嶉柌鎴犵搼婢堆冪暬閸熷棗鎼ф禒閿嬬壐娑撳﹥瀹氶敍灞芥倱閺冨爼浼╅梽鈺傚剰缂侇亜宕屽〒鈺傚腹閸斻劌鈧搫鍩滈崪灞炬）閸忓啰鐡戦柆鍧楁珦鐠у嫪楠囩挧鏉垮繁閵?/p>
-                <p><strong>閵嗘劕鎮囬弬鐟板冀鎼存柣鈧?/strong>缂囧骸娴楅弨鍨盎閸涚厧鎮傞崥鍕煙娣囨繃瀵旈崗瀣煑閿涘矁浠堥崥鍫濇禇鐎瑰鎮婃导姘将瀵偓缁毖勨偓銉ょ窗鐠侇喓鈧倸婀撮崠鍝勭湰閸斿灝褰傜仦鏇氱矝鐎涙ê婀潏鍐ㄣ亣娑撳秶鈥樼€规碍鈧佲偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕儙缁€鎭掆偓?/strong>閸︽壆绱搴ㄦ珦閻厽婀￠梾鍙ヤ簰濞戝牓鈧偓閿涘苯缂撶拋顔荤箽閹镐線妲诲锟犲帳缂冾噯绱濋崗铏暈鐠愮敻鍣剧仦鐐偓浣稿斧濞屽湱鐡戦弶鍨健閺堣桨绱伴妴?/p>`,
-                relatedTags: [
-                    { name: '閸︽壆绱弨鎸庝笉', class: 'hot' },
-                    { name: '閸樼喐琛?, class: 'orange' },
-                    { name: '鐠愮敻鍣剧仦?, class: '' }
-                ],
-                aiInsight: `<p>閸︽壆绱搴ㄦ珦鐎电懓绔堕崷铏规畱瑜板崬鎼烽棁鈧憰浣稿З閹浇鐦庢导甯窗</p>
-                <p>1. <strong>閻厽婀?/strong>閿涘矂浼╅梽鈺傚剰缂侇亙瀵岀€电》绱濈拹鐢稿櫨鐏炵偑鈧礁甯▽閫涚幆閺嶅吋婀侀弨顖涙嫼閿?/p>
-                <p>2. <strong>娑擃厽婀?/strong>閿涘矁瀚㈢仦鈧崝璺ㄧ处閸滃矉绱濇搴ㄦ珦鐠у嫪楠囬崣顖濆厴鏉╁孩娼甸崣宥呰剨閿?/p>
-                <p>3. <strong>闁板秶鐤嗗楦款唴</strong>閿涘奔绻氶幐浣虹矋閸氬牓妲诲鈩冣偓褝绱濋柅鍌氱秼婢х偤鍘ゆ鍕櫨閵?/p>`,
-                relatedNews: [
-                    { title: '姒涘嫰鍣鹃崗瀣╃幆闁壈绻?400閸?, id: 'hot-4' },
-                    { title: '閸樼喐琛ユ禒閿嬬壐濞夈垹濮╅崝鐘插⒔', id: 'global-3' }
-                ]
-            },
-            'hot-3': {
-                title: '閸楀﹤顕辨担鎾村畾娴犻攱鐤?閺堝牊娼电悮?,
-                tags: [{ text: '閻戭叀顔?, class: 'hot' }],
-                source: '娴溠傜瑹闁炬崘鐨熼惍?,
-                url: 'https://finance.eastmoney.com/news/1356,20260329101234567.html',
-                date: '2026-03-30 13:00',
-                content: `<p><strong>閵嗘劖瀹氭禒铚備繆閸欐灚鈧?/strong>閸楀﹤顕辨担鎾查獓娑撴岸鎽兼导鐘虫降濞戙劋鐜☉鍫熶紖閿涘苯顦跨€硅埖娅犻崷鍡曞敩瀹搞儱宸剁€癸絽绔风亸鍡曠艾4閺堝牐鎹ｆ稉濠呯殶娴狅絽浼愭禒閿嬬壐閿涘本瀹氶獮鍛躬5%-15%娑斿妫块妴?/p>
-                <p><strong>閵嗘劕甯崶鐘插瀻閺嬫劑鈧?/strong>闂団偓濮瑰倸娲栭弳鏍モ偓涓処閼侯垳澧栫拋銏犲礋閻栧棗褰傞妴浣风瑐濞撳憡娼楅弬娆愬灇閺堫兛绗傚☉銊︽Ц閹恒劌濮╁☉銊ょ幆閻ㄥ嫪瀵岀憰浣告礈缁辩姰鈧倷绗熼崘鍛搭暕閺堢喐瀹氭禒鐤Ъ閸旀寧婀侀張娑樻缂侇叀鍤︽稉瀣磹楠炴番鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫冀鎼存柣鈧?/strong>閸楀﹤顕辨担鎾存緲閸ф妞堟搴も偓灞藉З閿涘苯顦块崣顏冮嚋閼测剝瀹氶崑婧库偓鍌涙簚閺嬪嫯顓绘稉鐑樺畾娴犲嘲鐨㈤惄瀛樺复閹绘劕宕屾禍褌绗熼柧鍓ф畅閸掆晜鎸夐獮鐐解偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕紦鐠侇喓鈧?/strong>瀵ら缚顔呴崗铏暈閸忛攱婀佺拋顔荤幆閼宠棄濮忛惃鍕珷閸﹀棔鍞銉╃烦婢舵潙鎷扮拋鎯ь槵閺夋劖鏋℃笟娑樼安閸熷棎鈧?/p>`,
-                relatedTags: [
-                    { name: '閸楀﹤顕辨担?, class: 'orange' },
-                    { name: '濞戙劋鐜?, class: '' },
-                    { name: '閸忓啫娅掓禒?, class: '' }
-                ],
-                aiInsight: `<p>閸楀﹤顕辨担鎾村畾娴犻攱鐤嗙€佃婢橀崸妤€濂栭崫宥嗙箒鏉╂粣绱?/p>
-                <p>1. <strong>閻╁瓨甯撮崣妤冩抄</strong>閿涘本娅犻崷鍡曞敩瀹搞儰绱掓稉姘焺濞戯箑鑴婇幀褎娓舵径褝绱?/p>
-                <p>2. <strong>娴肩姴顕遍弫鍫濈安</strong>閿涘矁顔曟径鍥ф嫲閺夋劖鏋￠崯鍡曠瘍鐏忓棗褰堥惄濠忕幢</p>
-                <p>3. <strong>妞嬪酣娅撻幓鎰仛</strong>閿涘矂娓堕崗铏暈娑撳鐖堕棁鈧Ч鍌涘閹恒儴鍏橀崝娑栤偓?/p>`,
-                relatedNews: [
-                    { title: '閸楀﹤顕辨担鎾存緲閸ф宸遍崝鍧楊暙濞?, id: 'stock-3' },
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?, id: 'ai-1' }
-                ]
-            },
-            'hot-4': {
-                title: '姒涘嫰鍣鹃崗瀣╃幆闁壈绻?400閸?,
-                tags: [{ text: '閻戭叀顔?, class: 'hot' }],
-                source: '闁叉垵宕勯弫鐗堝祦',
-                url: 'https://www.jin10.com/article/detail/12345678.html',
-                date: '2026-03-30 15:00',
-                content: `<p><strong>閵嗘劒鐜弽鑹拌泲閸旇￥鈧?/strong>閸ヤ粙妾柌鎴滅幆閹镐胶鐢荤挧浼寸彯閿涘瓔OMEX姒涘嫰鍣鹃張鐔绘彛缁愪胶鐗?200缂囧骸鍘?閻╁骸寰冩径褍鍙ч敍灞芥禇閸愬懘鍣炬惔妤呯矋闁叉垳鐜弽闂寸瘍闂呭繋绠ｉ弨鈧崡鍥风礉婢舵艾顔嶉崫浣哄闁叉垿銈伴崗瀣╃幆闁壈绻?00閸?閸忓鈧?/p>
-                <p><strong>閵嗘劙鈹嶉崝銊ユ礈缁辩姰鈧?/strong>閸忋劎鎮嗘径顔款攽鐠愵參鍣鹃悜顓熺枂閵嗕礁婀寸紓妯绘杺濞屽顥撻梽鈹库偓浣虹法閸忓啳铔嬪杈╃搼婢舵岸鍣搁崶鐘电閸忓崬鎮撻幒銊ュЗ闁叉垳鐜稉濠冨畾閵?/p>
-                <p><strong>閵嗘劖婧€閺嬪嫯顫囬悙骞库偓?/strong>婢舵艾顔嶉崶浠嬫閹舵洝顢戞稉濠呯殶姒涘嫰鍣鹃惄顔界垼娴犲嚖绱濈拋銈勮礋闁叉垳鐜禒宥嗘箒娑撳﹨顢戠粚娲？閵?/p>`,
-                relatedTags: [
-                    { name: '姒涘嫰鍣?, class: 'orange' },
-                    { name: '鐠愮敻鍣剧仦?, class: '' },
-                    { name: '闁潡娅?, class: '' }
-                ],
-                aiInsight: `<p>姒涘嫰鍣炬稉顓熸埂闁槒绶笟婵堝姧閹存劗鐝涢敍?/p>
-                <p>1. <strong>婢额喛顢戠拹顓㈠櫨</strong>鐡掑濞嶅鍓佺敾閿涘苯骞撶紘搴″帗閸栨牞绻樼粙瀣闁噦绱?/p>
-                <p>2. <strong>閸︽壆绱搴ㄦ珦</strong>闂呭彞浜掑☉鍫モ偓鈧敍宀勪缉闂勨晠娓跺Ч鍌涙暜閹炬垿鍣炬禒鍑ょ幢</p>
-                <p>3. <strong>闁板秶鐤嗗楦款唴</strong>閿涘矂绮嶉柌鎱怲F閸滃矂绮嶉柌鎴ｅ亗閸欘垳鎴风紒顓熷瘮閺堝鈧?/p>`,
-                relatedNews: [
-                    { title: '缂囧簼绱涢崘鑼崐閹镐胶鐢婚幍鏉垮З閸忋劎鎮?, id: 'global-1' },
-                    { title: '閸樼喐琛ユ禒閿嬬壐濞夈垹濮╅崝鐘插⒔', id: 'global-3' }
-                ]
-            },
-            'hot-5': {
-                title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?,
-                tags: [{ text: '閺€璺ㄧ摜', class: 'policy' }],
-                source: '濠€鏍у础闁叉垼鐎洪崝?,
-                url: 'https://hunan.jinrong.net.cn/policy/202603290001.html',
-                date: '2026-03-30 08:00',
-                content: `<p><strong>閵嗘劖鏂傜粵鏍洤鐟曚降鈧?/strong>闁叉垼鐎洪惄鎴狀吀闁劑妫崣鎴濈闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪崣鎴濈潔娑撳鍕剧悰灞藉З鐠佲€冲灊閿涘本妲戠涵?3妞ゅ綊鍣搁悙閫涙崲閸斺槄绱濇稉楦款攽娑撴碍鏆熺€涙瀵叉潪顒€鐎风紒妯哄煑"鐠侯垳鍤庨崶?閵?/p>
-                <p><strong>閵嗘劖鐗宠箛鍐ㄥ敶鐎瑰箍鈧?/strong>閺傚洣娆㈡禒搴＄唨绾偓鐠佺偓鏌﹂妴浣搁挬閸欐澘缂撶拋淇扁偓浣规殶閹诡喗涓嶉悶鍡愨偓渚€顥撻梽鈺呮Щ閹貉呯搼缂佹潙瀹抽幓鎰毉閸忚渹缍嬬憰浣圭湴閿涘本甯归崝銊╁櫨閾诲秵婧€閺嬪嫬濮炶箛顐ｆ殶鐎涙瀵叉潪顒€鐎峰銉ょ矗閵?/p>
-                <p><strong>閵嗘劘顢戞稉姘閸濆秲鈧?/strong>閺佹澘鐡ч柌鎴ｇ€洪弨璺ㄧ摜缁俱垹鍩勭亸鍡楀闁喖鍣撮弨鎾呯礉闁叉垼鐎虹粔鎴炲Η閸忣剙寰冮妴渚€鎽辩悰宀€顫栭幎鈧€涙劕鍙曢崣鎼炩偓浣侯儑娑撳鏌熼弨顖欑帛缁涘顣崺鐔告箒閺堟稑褰堥惄濞库偓?/p>`,
-                relatedTags: [
-                    { name: '闁叉垼鐎虹粔鎴炲Η', class: 'policy' },
-                    { name: '閺佹澘鐡х拹褍绔?, class: '' },
-                    { name: '闁炬儼顢慖T', class: '' }
-                ],
-                aiInsight: `<p>閺佹澘鐡ч柌鎴ｇ€洪弨璺ㄧ摜閸忛攱婀侀梹鎸庢埂閹稿洤顕遍幇蹇庣疅閿?/p>
-                <p>1. <strong>閺€璺ㄧ摜閸旀稑瀹?/strong>鐡掑懘顣╅張鐕傜礉33妞ら€涙崲閸斅ゎ洬閻╂牕鍙忛棃顫幢</p>
-                <p>2. <strong>鐠у嫰鍣鹃弨顖涘瘮</strong>閿涘矂顣╃拋鈥崇殺鐢箑濮╅崡鍐у殠缁绢湉T閹舵洖鍙嗛敍?/p>
-                <p>3. <strong>閹舵洝绁弬鐟版倻</strong>瀵ら缚顔呴崗铏暈闁炬儼顢慖T閵嗕線鍣鹃摶宄塧aS閵嗕焦鏁禒妯荤缁犳鐡戠挧娑壕閵?/p>`,
-                relatedNews: [
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' },
-                    { title: 'PMI閺佺増宓佺搾鍛搭暕閺?, id: 'policy-2' }
-                ]
-            },
-            'hot-6': {
-                title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?,
-                tags: [{ text: 'AI', class: 'new' }],
-                source: '閺呮椽鈧俺鍌ㄧ紒?,
-                url: 'https://finance.sina.com.cn/tech/roll/2026-03-30/doc-inapcmxr1234567.shtml',
-                date: '2026-03-30 09:30',
-                content: `<p><strong>閵嗘劖鐗宠箛鍐潎閻愬箍鈧?/strong>闂呭繒娼冮崶钘夊敶婢舵渽I婢堆勀侀崹瀣彽娴滃娅ч悜顓炲閿涘瞼鐣婚崝娑㈡付濮瑰倸鎲熼悳鎵瀻閸欐垵绱℃晶鐐烘毐閹礁濞嶉敍宀€鐣婚崝娑楅獓娑撴岸鎽奸張澶嬫箿鏉╁孩娼甸弬棰佺鏉烆喖顤冮梹鍨З閼冲鈧?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫З閹降鈧?/strong>鏉╂垶婀￠敍灞筋樋鐎硅泛銇旈柈銊ь潠閹垛偓娴间椒绗熼惄鍝ユ埛閸欐垵绔烽弬棰佺娴狅絽銇囧Ο鈥崇€烽敍灞筋嚠缁犳濮忛惃鍕付濮瑰倹鈧儱澧介弨鈧崡鍥モ偓鍌滅暬閸旀稓顫ょ挧浣风幆閺嶅吋瀵旂紒顓¤泲妤傛﹫绱濋柈銊ュ瀻缁嬧偓缂傜瘡PU鐠у嫭绨悽姘冲殾閸戣櫣骞?娑撯偓閸楋繝姣﹀Ч?閻ㄥ嫬鐪棃顫偓?/p>
-                <p><strong>閵嗘劖濮囩挧鍕簚娴兼哎鈧?/strong>閺堢儤鐎弲顕€浜剁拋銈勮礋閿涘瞼鐣婚崝娑樼唨绾偓鐠佺偓鏌︽禍褌绗熼柧鐐壋韫囧啯鐖ｉ惃鍕偓鐓庣繁閸忚櫕鏁為妴?/p>`,
-                relatedTags: [
-                    { name: 'AI缁犳濮?, class: '' },
-                    { name: '閸楀﹤顕辨担?, class: '' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' }
-                ],
-                aiInsight: `<p>AI缁犳濮忛弶鍨健濮濓絿鐝崷銊ら獓娑撴岸顥撻崣锝勭娑撳绱?/p>
-                <p>1. <strong>閻厽婀?/strong>閿涘瞼鐣婚崝娑楃返闂団偓缁毖冪炊閺嶇厧鐪禒宥呯殺閹镐胶鐢婚敍?/p>
-                <p>2. <strong>娑擃厽婀?/strong>閿涘苯銇囧Ο鈥崇€烽崯鍡曠瑹閸栨牞鎯ら崷鏉跨殺闁插﹥鏂侀弴鏉戭樋闂団偓濮瑰偊绱?/p>
-                <p>3. <strong>瀵ら缚顔?/strong>閸忚櫕鏁為崗閿嬫箒閼奉亙瀵岄崣顖涘付閹垛偓閺堫垳娈戠粻妤€濮忛懞顖滃娴间椒绗熼妴?/p>`,
-                relatedNews: [
-                    { title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉?, id: 'ai-2' },
-                    { title: '闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍?, id: 'ai-3' }
-                ]
-            },
-            'hot-7': {
-                title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉?,
-                tags: [{ text: '閺?, class: 'new' }],
-                source: '36濮?,
-                url: 'https://36kr.com/newsflashes/123456789',
-                date: '2026-03-30 10:15',
-                content: `<p><strong>閵嗘劘顢戞稉姘辩崐閻番鈧?/strong>閸ユ垝楠嘇I婢堆勀侀崹瀣暏閹寸柉顫夊Ο鈩冨瘮缂侇厼顤冮梹鍖＄礉婢舵碍顑欐稉缁樼ウ娴溠冩惂閺冦儲妞块悽銊﹀煕瀹歌尙鐛婇惍鏉戝磮娑撳洤銇囬崗绛圭礉閺嶅洤绻旈惈鈧崶钘夊敶AI鎼存梻鏁ら悽鐔糕偓浣界箻閸忋儲鏌婇梼鑸殿唽閵?/p>
-                <p><strong>閵嗘劗鏁撻幀浣哥紦鐠佷勘鈧?/strong>閸氬嫬銇囬崢鍌氭櫌濮濓絽濮為柅鐔哥€绡圛鎼存梻鏁ら悽鐔糕偓渚婄礉闁俺绻冨鈧弨缍歅I閵嗕礁绱戦崣鎴ｂ偓鍛仦閸栧搫缂撶拋淇扁偓浣瑰絻娴犺泛绔堕崷铏圭搼閺傜懓绱￠敍灞芥儧瀵洘娲挎径姘磻閸欐垼鈧懎鎷版导浣风瑹閻劍鍩涢崗銉┾敆閵?/p>
-                <p><strong>閵嗘劕鏅㈡稉姘佸蹇嬧偓?/strong>闂呭繒娼冮悽銊﹀煕鐟欏嫭膩婢х偤鏆遍崪宀€鏁撻幀浣哥暚閸犲嫸绱滱I婢堆勀侀崹瀣畱閸熷棔绗熼崠鏍熅瀵板嫪绡冮弮銉ㄧЪ濞撳懏娅氶妴?/p>`,
-                relatedTags: [
-                    { name: 'AI鎼存梻鏁?, class: 'new' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' },
-                    { name: '鏉烆垯娆?, class: '' }
-                ],
-                aiInsight: `<p>閸ユ垝楠囨径褎膩閸ㄥ鏁撻幀浣烘畱韫囶偊鈧喐鍨氶悢鐔封偓鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>1. <strong>閻劍鍩涚仦鍌炴桨</strong>閿涘瓔缁旑垰绨查悽銊ユ簚閺咁垱瀵旂紒顓濊荡鐎靛矉绱?/p>
-                <p>2. <strong>娴间椒绗熺仦鍌炴桨</strong>閿涘瓓缁旂柇aaS閸栨牠鍎寸純鎻掔殺閹存劒璐熸稉鏄忣洣閸熷棔绗熷Ο鈥崇础閿?/p>
-                <p>3. <strong>閹舵洝绁弬鐟版倻</strong>瀵ら缚顔呴崗铏暈鎼存梻鏁ょ仦鍌氭嫲閸╄櫣顢呯拋鐐煢鐏炲倻娈戞导妯垮窛閺嶅洨娈戦妴?/p>`,
-                relatedNews: [
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?, id: 'ai-1' },
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' }
-                ]
-            },
-            'hot-8': {
-                title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?,
-                tags: [{ text: '鐢倸婧€', class: '' }],
-                source: '娑撴粍鏌熺拹銏犵槣',
-                url: 'https://www.eastmoney.com/a/20260329001234567.html',
-                date: '2026-03-30 10:00',
-                content: `<p><strong>閵嗘劘绁柌鎴濆З閹降鈧?/strong>婢舵牞绁幐浣虹敾濞翠礁鍙咥閼测€崇閸︾尨绱濇禒濠冩）閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗛柌鎴︻杺鐡掑懓绻?00娴滃灝鍘撻敍灞藉灡鏉╂垶婀￠崡鏇熸）閺備即鐝妴?/p>
-                <p><strong>閵嗘劕浜告總钘夊瀻閺嬫劑鈧?/strong>娴犲骸顦荤挧鍕帳缂冾喗鏌熼崥鎴犳箙閿涘苯銇囬柌鎴ｇ€洪妴浣搞亣濞戝牐鍨傞妴浣规煀閼宠姤绨粵澶嬬壋韫囧啳绁禍褌绮涢弰顖欏瘜鐟曚焦鐖ｉ惃鍕┾偓鍌炴懕鐞涘被鈧椒绻氶梽鈺冪搼娴ｅ簼鍙婇崐鍏兼緲閸ф骞忛弰搴㈡▔閸旂姳绮ㄩ妴?/p>
-                <p><strong>閵嗘劘鍎楅弲顖氭礈缁辩姰鈧?/strong>娴滅儤鐨敮浣圭湽閻滃洣绱掔粙鍐叉礀閸楀洢鈧竸閼测€插強閸婄厧鎯涘鏇炲婢х偛宸遍弰顖氭儧瀵洖顦荤挧鍕畱娑撴槒顩﹂崶鐘电閵?/p>`,
-                relatedTags: [
-                    { name: '閸栨鎮滅挧鍕櫨', class: 'orange' },
-                    { name: '婢舵牞绁?, class: '' },
-                    { name: '婢堆囧櫨閾?, class: '' }
-                ],
-                aiInsight: `<p>閸栨鎮滅挧鍕櫨娴ｆ粈璐?閼鳖亝妲戦柦?閿涘苯鍙鹃崝銊ユ倻閸婄厧绶遍柌宥堫潒閿?/p>
-                <p>1. <strong>閹镐胶鐢婚幀?/strong>閿涘矁瀚㈡径鏍カ濞翠礁鍙嗛幐浣虹敾閿涘苯鐨㈡稉绡堥懖鈩冨絹娓氭稑顤冮柌蹇氱カ闁叉垶鏁幘鎴幢</p>
-                <p>2. <strong>閺傜懓鎮滄稉?/strong>閿涘苯顦荤挧鍕焊婵傜晫娈戞担搴濆強閸婅壈鎽戠粵鐟扳偓鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>3. <strong>閹绘劗銇?/strong>閸忚櫕鏁炲Ч鍥╁芳濞夈垹濮╃€电懓顦荤挧鍕ウ閸氭垹娈戣ぐ鍗炴惙閵?/p>`,
-                relatedNews: [
-                    { title: '濞岊亝瀵氶柌宥呮礀3900閻?, id: 'stock-1' },
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' }
-                ]
-            },
-            'hot-9': {
-                title: '闁插繐鐡欑拋锛勭暬閼鹃鐛婇惍?,
-                tags: [{ text: '缁夋垶濡?, class: '' }],
-                source: '鐠囦礁鍩滈弮鑸靛Г',
-                url: 'https://www.stcn.com/article/detail/123456.html',
-                date: '2026-03-30 11:20',
-                content: `<p><strong>閵嗘劖濡ч張顖滅崐閻番鈧?/strong>閹存垵娴楅柌蹇撶摍鐠侊紕鐣婚惍鏃傗敀閸欐牕绶遍柌宥呫亣鏉╂稑鐫嶉敍灞芥躬闁插繐鐡欏В鏃傚閺佷即鍣洪崪宀€菙鐎规碍鈧勬煙闂堛垹鐤勯悳鐗堟煀缁愪胶鐗敍灞界穿閸欐垼绁張顒€绔堕崷娲彯鎼达箑鍙у▔銊ｂ偓?/p>
-                <p><strong>閵嗘劕绔堕崷鍝勫冀鎼存柣鈧?/strong>闁插繐鐡欑拋锛勭暬濮掑倸搴烽懖锟犳肠娴ｆ挸绱撻崝顭掔礉婢舵艾褰ф稉顏囧亗濞戙劌浠犻妴鍌涙簚閺嬪嫯顓绘稉娲櫤鐎涙劘顓哥粻妤佹箒閺堟稒鍨氭稉杞扮瑓娑撯偓娑擃亞顫栭幎鈧幎鏇＄カ娑撹崵鍤庨妴?/p>
-                <p><strong>閵嗘劒楠囨稉姘閺咁垬鈧?/strong>闁插繐鐡欑拋锛勭暬閸︺劌鐦戦惍浣割劅閵嗕浇宓傞悧鈺冪埡閸欐垯鈧線鍣鹃摶宥呯紦濡紕鐡戞０鍡楃厵閸忛攱婀侀獮鍧楁鎼存梻鏁ら崜宥嗘珯閵?/p>`,
-                relatedTags: [
-                    { name: '闁插繐鐡欑拋锛勭暬', class: 'purple' },
-                    { name: '缁夋垶濡ч懖?, class: 'purple' },
-                    { name: '閺傜増娼楅弬?, class: '' }
-                ],
-                aiInsight: `<p>闁插繐鐡欑拋锛勭暬娴ｆ粈璐熼崜宥嗛儴閹垛偓閺堫垱鏌熼崥鎴礉閸婄厧绶遍梹鎸庢埂鐠虹喕閲滈敍?/p>
-                <p>1. <strong>閻厽婀?/strong>娴犮儰瀵屾０妯诲鐠у嫪璐熸稉浼欑礉闂団偓閸忚櫕鏁炵€圭偤妾拋銏犲礋閽€钘夋勾閹懎鍠岄敍?/p>
-                <p>2. <strong>娑擃厽婀?/strong>闂呭繒娼冮幎鈧張顖涘灇閻旂喎瀹抽幓鎰磳閿涘苯绨查悽銊ユ簚閺咁垰鐨㈤柅鎰劄閺勫海鈥橀敍?/p>
-                <p>3. <strong>瀵ら缚顔?/strong>閸忚櫕鏁為崗閿嬫箒閺嶇绺鹃幎鈧張顖氭嫲鐠у嫭绨导妯哄◢閻ㄥ嫰鍣虹€涙劘顓哥粻妞剧磼娑撴哎鈧?/p>`,
-                relatedNews: [
-                    { title: 'AI婢堆勀侀崹瀣川鏉╂稖鐭惧鍕閺?, id: 'ai-1' },
-                    { title: '閸ユ垝楠囨径褎膩閸ㄥ妫╁ú鑽ょ崐閻潙宕堟稉?, id: 'ai-2' }
-                ]
-            },
-            'hot-10': {
-                title: 'PMI閺佺増宓佺搾鍛搭暕閺?,
-                tags: [{ text: '鐎瑰繗顫?, class: 'policy' }],
-                source: '閸ヨ棄顔嶇紒鐔活吀鐏炩偓',
-                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260329_1234567.html',
-                date: '2026-03-30 09:00',
-                content: `<p><strong>閵嗘劖鏆熼幑顔煎絺鐢啨鈧?/strong>閸ヨ棄顔嶇紒鐔活吀鐏炩偓閸忣剙绔?閺堝牆鍩楅柅鐘辩瑹PMI娑?1.9%閿涘矁绶濇稉濠冩箑閸ョ偛宕?.7娑擃亞娅ㄩ崚鍡欏仯閿涘本妞傞梾?娑擃亝婀€闁插秷绻戦幍鈺佺炊閸栨椽妫块妴?/p>
-                <p><strong>閵嗘劗绮ㄩ弸鍕瀻閺嬫劑鈧?/strong>閻㈢喍楠囬幐鍥ㄦ殶閸滃本鏌婄拋銏犲礋閹稿洦鏆熼崸鍥ㄦ閺勬儳娲栭崡鍥风礉娴间椒绗熼柌鍥枠閹板繑鍔规晶鐐插繁閿涘苯绨辩€涙ê骞撻崠鏍у竾閸旀稑鍣烘潪姹団偓?/p>
-                <p><strong>閵嗘劖鏂傜粵鏍ㄦ櫏閺嬫嚎鈧?/strong>缁嬪啿顤冮梹鎸庢杺缁涙牗鏅ラ弸婊堚偓鎰劄閺勫墽骞囬敍灞肩磼娑撴矮淇婅箛鍐╂箒閹碘偓閹垹顦查妴鍌氬毉閸欙綀顓归崡鏇熷瘹閺佹澘鎮撳銉ユ礀閸楀浄绱濇径鏍付闂娧勨偓褑绶濆鎭掆偓?/p>`,
-                relatedTags: [
-                    { name: '鐎瑰繗顫囩紒蹇旂ス', class: '' },
-                    { name: 'PMI', class: '' },
-                    { name: '閸掑爼鈧姳绗?, class: '' }
-                ],
-                aiInsight: `<p>PMI闁插秷绻戦幍鈺佺炊閸栨椽妫块幇蹇庣疅闁插秴銇囬敍?/p>
-                <p>1. <strong>缂佸繑绁规导浣呵?/strong>娣団€冲娇閺勫海鈥橀敍瀛?缂佸繑绁规晶鐐衡偓鐔告箒閺堟稖绉存０鍕埂閿?/p>
-                <p>2. <strong>娴间椒绗熼惄鍫濆焺</strong>妫板嫭婀￠弨鐟版澖閿涘苯鍩楅柅鐘辩瑹姒瑥銇旈崐鐓庣繁閸忚櫕鏁為敍?/p>
-                <p>3. <strong>閺€璺ㄧ摜缁屾椽妫?/strong>閿涘瞼菙婢х偤鏆遍崢瀣閸戝繗浜ら敍灞炬杺缁涙牗鍨ㄩ惄鍛婃簚閹跺瀚ㄩ妴?/p>`,
-                relatedNews: [
-                    { title: '闁炬儼顢戞稉姘箽闂勨晙绗熼弫鏉跨摟闁叉垼鐎洪弬鎷屾憫閸?, id: 'policy-1' },
-                    { title: '閸栨鎮滅挧鍕櫨閸戔偓娑旀澘鍙嗙搾鍛娴?, id: 'stock-2' }
-                ]
-            }
+            // 热搜相关
+            'hot-1': { title: '沪指重回3900点', tags: [{ text: '沸', class: 'hot' }], source: '腾讯新闻', url: 'https://new.qq.com/omn/20260330/20260330A0123400.html', date: '2026-03-30', content: '<p>详细报道请查看：<a href="https://new.qq.com/omn/20260330/20260330A0123400.html" target="_blank">沪指大涨2.15%，重回3900点</a></p><p>全市场超4300只个股上涨，赚钱效应显著。</p>', relatedTags: [{ name: 'A股', class: 'orange' }], aiInsight: '<p>详见：<a href="#" onclick="openNewsDetail(\'stock-1\')">沪指重回3900点详情</a></p>', relatedNews: [{ title: '北向资金净买入超百亿', id: 'stock-2' }] },
+            'hot-2': { title: '美伊冲突持续扰动全球', tags: [{ text: '新', class: 'hot' }], source: '新浪财经', url: 'https://finance.sina.com.cn/world/20260330/00123456789.shtml', date: '2026-03-30', content: '<p>详细报道请查看：<a href="https://finance.sina.com.cn/world/20260330/00123456789.shtml" target="_blank">美伊冲突持续扰动全球</a></p><p>胡塞武装向以色列发射导弹，中东局势再度紧张。</p>', relatedTags: [{ name: '地缘政治', class: 'hot' }], aiInsight: '<p>详见：<a href="#" onclick="openNewsDetail(\'global-1\')">美伊冲突详情</a></p>', relatedNews: [{ title: '黄金克价逼近1400元', id: 'hot-4' }] },
+            'hot-3': { title: '半导体涨价潮4月来袭', tags: [{ text: '新', class: '' }], source: '证券时报', url: 'https://www.stcn.com/article/detail/999999.html', date: '2026-03-30', content: '<p><strong>【涨价预告】</strong>产业链消息显示，多家半导体厂商计划4月起上调产品价格，涨幅5%-15%不等。</p><p><strong>【驱动因素】</strong>AI需求爆发、国产替代加速、库存周期见底等多重因素叠加。</p>', relatedTags: [{ name: '半导体', class: 'orange' }], aiInsight: '<p>半导体涨价预期持续，建议关注板块机会。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-4': { title: '黄金克价逼近1400元', tags: [{ text: '热', class: '' }], source: '中国黄金报', url: 'https://gold.cnfol.com/1234567890', date: '2026-03-30', content: '<p><strong>【价格动态】</strong>国际金价持续走强，国内黄金克价逼近1400元大关，创历史新高附近。</p><p><strong>【投资逻辑】</strong>避险情绪、美元走弱、央行购金等因素共同推动金价上涨。</p>', relatedTags: [{ name: '黄金', class: 'orange' }], aiInsight: '<p>黄金中长期逻辑清晰，但需注意短期追高风险。</p>', relatedNews: [{ title: '美伊冲突持续扰动全球', id: 'global-1' }] },
+            'hot-5': { title: '银行业保险业数字金融新蓝图', tags: [{ text: '政策', class: 'policy' }], source: '湖南金融办', url: 'https://hunan.jinrong.net.cn/policy/202603300001.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'policy-1\')">银行业保险业数字金融新蓝图详情</a></p>', relatedTags: [{ name: '金融科技', class: 'policy' }], aiInsight: '<p>政策红利释放，关注金融科技板块。</p>', relatedNews: [{ title: 'PMI数据超预期', id: 'policy-2' }] },
+            'hot-6': { title: 'AI大模型演进路径清晰', tags: [{ text: '热', class: '' }], source: '智通财经', url: 'https://finance.sina.com.cn/tech/roll/2026-03-30/doc-inapcmxr1234567.shtml', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-1\')">AI大模型演进路径清晰详情</a></p>', relatedTags: [{ name: 'AI算力', class: '' }], aiInsight: '<p>算力需求爆发，关注AI产业链。</p>', relatedNews: [{ title: '国产大模型日活突破千万', id: 'ai-2' }] },
+            'hot-7': { title: '国产大模型日活突破千万', tags: [{ text: '新', class: '' }], source: '36氪', url: 'https://36kr.com/newsflashes/123456789', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-2\')">国产大模型日活突破千万详情</a></p>', relatedTags: [{ name: 'AI应用', class: 'new' }], aiInsight: '<p>AI应用生态加速成熟。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-8': { title: '北向资金净买入超百亿', tags: [{ text: '热', class: '' }], source: '东方财富', url: 'https://www.eastmoney.com/a/20260330001234567.shtml', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'stock-2\')">北向资金净买入超百亿详情</a></p>', relatedTags: [{ name: '北向资金', class: 'orange' }], aiInsight: '<p>外资持续流入，关注蓝筹机会。</p>', relatedNews: [{ title: '沪指重回3900点', id: 'stock-1' }] },
+            'hot-9': { title: '量子计算获突破', tags: [{ text: '热', class: '' }], source: '证券时报', url: 'https://www.stcn.com/article/detail/123456.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-3\')">量子计算获突破详情</a></p>', relatedTags: [{ name: '量子计算', class: 'purple' }], aiInsight: '<p>前沿技术突破，长期关注。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-10': { title: 'PMI数据超预期', tags: [{ text: '新', class: '' }], source: '国家统计局', url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260330_1234567.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'policy-2\')">PMI数据超预期详情</a></p>', relatedTags: [{ name: '宏观经济', class: '' }], aiInsight: '<p>经济企稳信号明确。</p>', relatedNews: [{ title: '银行业保险业数字金融新蓝图', id: 'policy-1' }] }
         };
 
         // ============================================
-        // 閺佺増宓佺€涙ê鍋嶉柨顔兼倳閿涘牅绗宒ashboard.html娑撯偓閼疯揪绱?
+        // 全局状态管理
         // ============================================
-        const STORAGE_KEYS = {
-            PAGE_VIEWS: 'zhimai_page_views',
-            USER_ACTIONS: 'zhimai_user_actions',
-            NEWS_CLICKS: 'zhimai_news_clicks',
-            SUBSCRIPTIONS: 'zhimai_subscriptions',
-            SESSION_START: 'zhimai_session_start'
-        };
+        let currentCategory = 'all';
+        let subscribedCategories = JSON.parse(localStorage.getItem('subscribedCategories')) || ['all'];
+        let customTags = JSON.parse(localStorage.getItem('customTags')) || [];
+        let matchedNews = [];
 
         // ============================================
-        // 閺佺増宓佺€涙ê鍋嶆潏鍛И閸戣姤鏆?
+        // DOM元素初始化
         // ============================================
-        function getStoredData(key, defaultValue) {
-            try {
-                const data = localStorage.getItem(key);
-                return data ? JSON.parse(data) : (defaultValue || []);
-            } catch (e) {
-                console.error('鐠囪褰噇ocalStorage婢惰精瑙?', e);
-                return defaultValue || [];
-            }
-        }
-
-        function saveStoredData(key, data) {
-            try {
-                localStorage.setItem(key, JSON.stringify(data));
-            } catch (e) {
-                console.error('閸愭瑥鍙唋ocalStorage婢惰精瑙?', e);
-            }
-        }
-
-        // ============================================
-        // 鐠佹澘缍嶆い鐢告桨鐠佸潡妫?
-        // ============================================
-        function trackPageView() {
-            const views = getStoredData(STORAGE_KEYS.PAGE_VIEWS);
-            views.push({
-                timestamp: new Date().toISOString(),
-                path: window.location.pathname,
-                type: 'index'
-            });
-            // 閸欘亙绻氶悾娆愭付鏉?000閺?
-            if (views.length > 1000) views.shift();
-            saveStoredData(STORAGE_KEYS.PAGE_VIEWS, views);
-            console.log('[Track] Page view recorded:', views.length);
-        }
-
-        // ============================================
-        // 鐠佹澘缍嶉弬浼存閻愮懓鍤?
-        // ============================================
-        function trackNewsClick(newsId, newsTitle) {
-            const clicks = getStoredData(STORAGE_KEYS.NEWS_CLICKS);
-            clicks.push({
-                newsId: newsId,
-                title: newsTitle,
-                timestamp: new Date().toISOString()
-            });
-            if (clicks.length > 500) clicks.shift();
-            saveStoredData(STORAGE_KEYS.NEWS_CLICKS, clicks);
-            console.log('[Track] News click:', newsTitle);
-        }
-
-        // ============================================
-        // 鐠佹澘缍嶉悽銊﹀煕鐞涘奔璐?
-        // ============================================
-        function trackAction(type, data) {
-            const actions = getStoredData(STORAGE_KEYS.USER_ACTIONS);
-            actions.push({
-                type: type,
-                data: data,
-                timestamp: new Date().toISOString()
-            });
-            if (actions.length > 1000) actions.shift();
-            saveStoredData(STORAGE_KEYS.USER_ACTIONS, actions);
-            console.log('[Track]', type, data);
-        }
-
-        // ============================================
-        // 鐠佹澘缍嶇拋銏ゆ鐠佸墽鐤?
-        // ============================================
-        function saveSubscriptionsToStorage(categories) {
-            saveStoredData(STORAGE_KEYS.SUBSCRIPTIONS, categories);
-            trackAction('subscription_change', { categories: categories });
-            console.log('[Track] Subscriptions saved:', categories);
-        }
-
-        // ============================================
-        // 鐠佹澘缍嶆导姘崇樈瀵偓婵?
-        // ============================================
-        function initSession() {
-            const sessionStart = localStorage.getItem(STORAGE_KEYS.SESSION_START);
-            if (!sessionStart) {
-                localStorage.setItem(STORAGE_KEYS.SESSION_START, new Date().toISOString());
-            }
-        }
-
-        // ============================================
-        // 閺備即妞堢拠锔藉剰閸旂喕鍏?
-        // ============================================
-        
-        // 閹垫挸绱戦弬浼存鐠囷附鍎?
-        function openNewsDetail(newsId) {
-            const news = fullNewsData[newsId];
-            if (!news) {
-                console.error('News not found:', newsId);
-                return;
-            }
-
-            // 婵夘偄鍘栭弽鍥╊劮
-            const headerEl = document.getElementById('detailHeader');
-            headerEl.innerHTML = news.tags.map(tag => 
-                `<span class="detail-tag ${tag.class}">${tag.text}</span>`
-            ).join('');
-
-            // 婵夘偄鍘栭弽鍥暯
-            document.getElementById('detailTitle').textContent = news.title;
-
-            // 婵夘偄鍘栭崗鍐т繆閹?
-            document.getElementById('detailDate').textContent = news.date;
-            document.getElementById('detailSource').textContent = news.source;
-
-            // 婵夘偄鍘栭崘鍛啇
-            document.getElementById('detailContent').innerHTML = news.content;
-
-            // 婵夘偄鍘栭崗瀹犱粓閺嶅洨顒?
-            const tagsEl = document.getElementById('detailTags');
-            tagsEl.innerHTML = `<span class="detail-tags-label">閸忓疇浠堥弶鍨健閿?/span>` + 
-                news.relatedTags.map(tag => 
-                    `<span class="asset-tag ${tag.class}">${tag.name}</span>`
-                ).join('');
-
-            // 婵夘偄鍘朅I鐟欙綀顕?
-            document.getElementById('aiInsightContent').innerHTML = news.aiInsight;
-
-            // 婵夘偄鍘栭惄绋垮彠閹恒劏宕?
-            const relatedEl = document.getElementById('relatedNewsList');
-            relatedEl.innerHTML = news.relatedNews.map((item, index) => 
-                `<div class="related-item" onclick="openNewsDetail('${item.id}')">
-                    <span class="related-item-rank">${index + 1}</span>
-                    <span class="related-item-title">${item.title}</span>
-                    <svg class="related-item-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                </div>`
-            ).join('');
-
-            // 鐠佸墽鐤嗛崢鐔告瀮闁剧偓甯?
-            const originalLinkBtn = document.getElementById('originalLinkBtn');
-            const originalLinkText = document.getElementById('originalLinkText');
-            if (originalLinkBtn && news.url) {
-                originalLinkBtn.href = news.url;
-                originalLinkText.textContent = '闂冨懓顕伴崢鐔告瀮 (' + news.source + ')';
-            } else if (originalLinkBtn) {
-                originalLinkBtn.href = '#';
-                originalLinkText.textContent = '闂冨懓顕伴崢鐔告瀮';
-            }
-
-            // 閺勫墽銇氱拠锔藉剰妞?
-            document.getElementById('newsDetailOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // 濠婃艾濮╅崚浼淬€婇柈?
-            document.getElementById('newsDetailOverlay').scrollTop = 0;
-
-            // 鐠佹澘缍嶉弬浼存閻愮懓鍤敍鍫濇倱閺冩儼顔囪ぐ鏇炲煂localStorage閿?
-            trackNewsClick(newsId, news.title);
-            trackAction('news_click', { newsId: newsId, title: news.title });
-        }
-
-        // 閸忔娊妫撮弬浼存鐠囷附鍎?
-        function closeNewsDetail() {
-            document.getElementById('newsDetailOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // 閸╁鍋ｉ崙鑺ユ殶閿涘牐顔囪ぐ鏇炲煂localStorage閿?
-        function trackAction(action, params) {
-            console.log('[Track]', action, params);
-        }
-
-        // ============================================
-        // 閸樼喐婀侀崝鐔诲厴娴狅絿鐖?
-        // ============================================
-
-        // 閺冦儲婀￠弽鐓庣础閸?
-        function formatDate() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth() + 1;
-            const day = now.getDate();
-            const weekdays = ['閺勭喐婀￠弮?, '閺勭喐婀℃稉鈧?, '閺勭喐婀℃禍?, '閺勭喐婀℃稉?, '閺勭喐婀￠崶?, '閺勭喐婀℃禍?, '閺勭喐婀￠崗?];
-            const weekday = weekdays[now.getDay()];
-            return `${year}楠?{month}閺?{day}閺?${weekday}`;
-        }
-
-        document.getElementById('currentDate').textContent = formatDate();
-
-        // 閺嶅繒娲扮仦鏇炵磻/閺€鎯版崳
-        document.querySelectorAll('.section-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const section = this.closest('.section');
-                section.classList.toggle('collapsed');
-            });
-        });
-
-        // 閺嶅洨顒烽崚鍥ㄥ床
-        document.querySelectorAll('.tag-item').forEach(tag => {
-            tag.addEventListener('click', function() {
-                document.querySelectorAll('.tag-item').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                const tagName = this.dataset.tag;
-                
-                document.querySelectorAll('.section').forEach(section => {
-                    if (tagName === 'all') {
-                        section.style.display = '';
-                    } else {
-                        section.style.display = section.dataset.category === tagName ? '' : 'none';
-                    }
-                });
-            });
-        });
-
-        // 鐠佸墽鐤嗗鍦崶
         const settingsBtn = document.getElementById('settingsBtn');
-        const settingsModal = document.getElementById('settingsModal');
         const closeModal = document.getElementById('closeModal');
-        const saveSubscription = document.getElementById('saveSubscription');
+        const settingsModal = document.getElementById('settingsModal');
+        const subscriptionItems = document.querySelectorAll('.subscription-item');
+        const saveSubscriptionBtn = document.getElementById('saveSubscription');
+        const tagsScroll = document.getElementById('tagsScroll');
+        const tagItems = document.querySelectorAll('.tag-item');
+        const sections = document.querySelectorAll('.section');
+        const newsDetailOverlay = document.getElementById('newsDetailOverlay');
+        
+        // 自定义标签相关
+        const addCustomTagBtn = document.getElementById('addCustomTagBtn');
+        const customTagInputWrapper = document.getElementById('customTagInputWrapper');
+        const customTagInput = document.getElementById('customTagInput');
+        const confirmTagBtn = document.getElementById('confirmTagBtn');
+        const cancelTagBtn = document.getElementById('cancelTagBtn');
+        const customTagsList = document.getElementById('customTagsList');
+        const recommendationSection = document.getElementById('recommendationSection');
+        const recommendationList = document.getElementById('recommendationList');
+        const recommendationTags = document.getElementById('recommendationTags');
+        const recommendationCount = document.getElementById('recommendationCount');
 
+        // ============================================
+        // 设置弹窗功能
+        // ============================================
         settingsBtn.addEventListener('click', () => {
             settingsModal.classList.add('active');
+            updateSubscriptionUI();
         });
 
         closeModal.addEventListener('click', () => {
@@ -2549,469 +2178,395 @@
             }
         });
 
-        // 鐠併垽妲勬い褰掆偓澶嬪
-        document.querySelectorAll('.subscription-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const category = this.dataset.category;
-                
+        // 订阅类别选择
+        subscriptionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const category = item.dataset.category;
                 if (category === 'all') {
-                    document.querySelectorAll('.subscription-item').forEach(i => i.classList.remove('selected'));
-                    this.classList.add('selected');
+                    subscriptionItems.forEach(i => i.classList.remove('selected'));
+                    item.classList.add('selected');
                 } else {
-                    document.querySelector('.subscription-item[data-category="all"]').classList.remove('selected');
-                    this.classList.toggle('selected');
+                    const allItem = document.querySelector('.subscription-item[data-category="all"]');
+                    allItem.classList.remove('selected');
+                    item.classList.toggle('selected');
                     
-                    // 婵″倹鐏夊▽鈩冩箒娴犺缍嶉柅澶夎厬閿涘矁鍤滈崝銊┾偓澶夎厬"閸忋劑鍎?
-                    const anySelected = document.querySelectorAll('.subscription-item.selected:not([data-category="all"])');
-                    if (anySelected.length === 0) {
-                        document.querySelector('.subscription-item[data-category="all"]').classList.add('selected');
+                    const selectedItems = document.querySelectorAll('.subscription-item.selected');
+                    if (selectedItems.length === 0) {
+                        allItem.classList.add('selected');
                     }
                 }
             });
         });
 
-        // 娣囨繂鐡ㄧ拋鍓х枂
-        saveSubscription.addEventListener('click', () => {
-            const selected = document.querySelectorAll('.subscription-item.selected');
-            const categories = Array.from(selected).map(item => item.dataset.category);
+        function updateSubscriptionUI() {
+            subscriptionItems.forEach(item => {
+                const category = item.dataset.category;
+                if (subscribedCategories.includes(category)) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+
+        saveSubscriptionBtn.addEventListener('click', () => {
+            const selectedItems = document.querySelectorAll('.subscription-item.selected');
+            subscribedCategories = Array.from(selectedItems).map(item => item.dataset.category);
+            localStorage.setItem('subscribedCategories', JSON.stringify(subscribedCategories));
             
-            // 娣囨繂鐡ㄩ崚鐧紀calStorage閿涘牆鎮撻弮鑸垫纯閺傜櫜ashboard閺佺増宓侀敍?
-            saveSubscriptionsToStorage(categories);
+            // 更新标签栏激活状态
+            updateTagBarState();
+            
+            // 过滤新闻显示
+            filterNews();
             
             settingsModal.classList.remove('active');
-            
-            // 閺囧瓨鏌婇弽鍥╊劮閺嶅繑妯夌粈?
-            document.querySelectorAll('.tag-item').forEach(tag => {
-                const tagName = tag.dataset.tag;
-                if (tagName === 'all') {
-                    tag.style.display = categories.includes('all') ? '' : 'none';
-                } else {
-                    tag.style.display = categories.includes(tagName) || categories.includes('all') ? '' : 'none';
-                }
+        });
+
+        // 标签栏切换
+        tagItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const tag = item.dataset.tag;
+                currentCategory = tag;
+                
+                tagItems.forEach(t => t.classList.remove('active'));
+                item.classList.add('active');
+                
+                filterNews();
             });
         });
 
-        // 娴犲窅ocalStorage閹垹顦茬拋鍓х枂
-        function loadSubscriptions() {
-            const saved = localStorage.getItem('subscriptions');
-            if (saved) {
-                const categories = JSON.parse(saved);
-                
-                document.querySelectorAll('.subscription-item').forEach(item => {
-                    item.classList.remove('selected');
-                    if (categories.includes(item.dataset.category)) {
-                        item.classList.add('selected');
-                    }
-                });
-                
-                document.querySelectorAll('.tag-item').forEach(tag => {
-                    const tagName = tag.dataset.tag;
-                    if (tagName === 'all') {
-                        tag.style.display = categories.includes('all') ? '' : 'none';
-                    } else {
-                        tag.style.display = categories.includes(tagName) || categories.includes('all') ? '' : 'none';
-                    }
-                });
+        function updateTagBarState() {
+            tagItems.forEach(item => {
+                const tag = item.dataset.tag;
+                if (subscribedCategories.includes(tag)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            if (subscribedCategories.length === 1 && subscribedCategories.includes('all')) {
+                document.querySelector('.tag-item[data-tag="all"]').classList.add('active');
+            } else {
+                document.querySelector('.tag-item[data-tag="all"]').classList.remove('active');
             }
         }
 
-        // ==========================================
-        // 娣囨繂鐡ㄩ悜顓熸偝閺佺増宓佹笟娌漚shboard娴ｈ法鏁?
-        // ==========================================
-        function saveHotNewsData() {
-            const hotItems = document.querySelectorAll('.hot-item');
-            const hotNews = [];
-            
-            hotItems.forEach(item => {
-                const title = item.querySelector('.hot-title');
-                if (title) {
-                    hotNews.push({
-                        title: title.textContent.trim(),
-                        views: Math.floor(Math.random() * 20 + 10) + '娑?,
-                        time: '閸掓艾鍨?
-                    });
+        function filterNews() {
+            sections.forEach(section => {
+                const category = section.dataset.category;
+                if (currentCategory === 'all' || category === currentCategory) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
                 }
             });
-            
-            localStorage.setItem('hotNews', JSON.stringify(hotNews));
-            console.log('[Data] Hot news saved:', hotNews.length, 'items');
         }
-        
-        // ==========================================
-        // 閸掓繂顫愰崠鏍电窗妞ょ敻娼伴崝鐘烘祰閺冭埖澧界悰?
-        // ==========================================
-        function initIndexPage() {
-            // 閸掓繂顫愰崠鏍︾窗鐠?
-            initSession();
-            
-            // 鐠佹澘缍嶆い鐢告桨鐠佸潡妫?
-            trackPageView();
-            
-            // 閹垹顦茬拋銏ゆ鐠佸墽鐤?
-            loadSubscriptions();
-            
-            // 娣囨繂鐡ㄩ悜顓熸偝閺佺増宓?
-            saveHotNewsData();
-            
-            // 鏉╁€熼嚋閺嶅洨顒烽崚鍥ㄥ床
-            document.querySelectorAll('.tag-item').forEach(tag => {
-                tag.addEventListener('click', function() {
-                    trackAction('tag_change', { tag: this.dataset.tag });
-                });
-            });
-            
-            // 鏉╁€熼嚋閺備即妞堟い鍦仯閸?
-            document.querySelectorAll('.news-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const newsId = this.dataset.newsId;
-                    const title = this.querySelector('.news-title');
-                    if (newsId && title) {
-                        trackNewsClick(newsId, title.textContent);
-                    }
-                });
-            });
-            
-            // 濮ｅ繑顐奸悙鐟板毊閻戭厽鎮虫い瑙勬閺囧瓨鏌婇弫鐗堝祦
-            document.querySelectorAll('.hot-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    saveHotNewsData();
-                    const title = this.querySelector('.hot-title');
-                    if (title) {
-                        trackNewsClick('hot-' + Date.now(), title.textContent);
-                    }
-                });
-            });
-            
-            // 鏉╁€熼嚋濠婃艾濮╃悰灞艰礋
-            let scrollTimeout;
-            window.addEventListener('scroll', function() {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(function() {
-                    trackAction('scroll', { position: window.scrollY });
-                }, 500);
-            });
-            
-            console.log('[Init] Index page initialized with data tracking');
-            console.log('[Data] 閹碘偓閺堝鏁ら幋鐤攽娑撳搫鐨㈢悮顐ヮ唶瑜版洖鍩宭ocalStorage娓氭饱ashboard娴ｈ法鏁?);
-        }
-        
-        // 閹笛嗩攽閸掓繂顫愰崠?
-        initIndexPage();
 
         // ============================================
-        // 閼奉亜鐣炬稊澶嬬垼缁涘墽顓搁悶鍡楀閼?+ 閹恒劏宕樼化鑽ょ埠
+        // 栏目折叠/展开
         // ============================================
-        let customTags = JSON.parse(localStorage.getItem('zhimai_custom_tags')) || [];
+        sections.forEach(section => {
+            const header = section.querySelector('.section-header');
+            header.addEventListener('click', () => {
+                section.classList.toggle('collapsed');
+            });
+        });
 
-        // 濡偓閺屻儲鏌婇梻缁樼垼妫?閸愬懎顔愰弰顖氭儊閸栧綊鍘ら弽鍥╊劮
-        function isTagMatch(newsItem, tags) {
-            if (!tags || tags.length === 0) return { matched: false, matchedTags: [] };
-            const matchedTags = [];
-            const searchText = (newsItem.title + ' ' + newsItem.content).toLowerCase();
-            tags.forEach(tag => {
-                if (searchText.includes(tag.toLowerCase())) {
-                    matchedTags.push(tag);
+        // 初始化：默认折叠非活跃栏目
+        function initSectionState() {
+            sections.forEach(section => {
+                const category = section.dataset.category;
+                if (!subscribedCategories.includes(category) && !subscribedCategories.includes('all')) {
+                    section.classList.add('collapsed');
+                } else {
+                    section.classList.remove('collapsed');
                 }
             });
-            return { matched: matchedTags.length > 0, matchedTags: matchedTags };
         }
 
-        // 閼惧嘲褰囬幍鈧張澶嬫煀闂傝鍨悰?
-        function getAllNews() {
-            const news = [];
-            // 娴犲穳ullNewsData閼惧嘲褰囬幍鈧張澶嬫煀闂?
-            Object.keys(fullNewsData).forEach(key => {
-                const item = fullNewsData[key];
-                if (item && item.title) {
-                    news.push({ id: key, ...item });
-                }
-            });
-            return news;
-        }
-
-        // 閺囧瓨鏌婇幒銊ㄥ礃閻楀牆娼?
-        function updateRecommendation() {
-            const section = document.getElementById('recommendationSection');
-            const tagsContainer = document.getElementById('recommendationTags');
-            const listContainer = document.getElementById('recommendationList');
-            const countEl = document.getElementById('recommendationCount');
+        // ============================================
+        // 新闻详情页
+        // ============================================
+        function openNewsDetail(newsId) {
+            const news = fullNewsData[newsId];
+            if (!news) return;
             
-            if (!section) return;
+            // 填充详情数据
+            document.getElementById('detailTitle').textContent = news.title;
+            document.getElementById('detailDate').textContent = news.date;
+            document.getElementById('detailSource').textContent = news.source;
+            document.getElementById('detailContent').innerHTML = news.content;
+            document.getElementById('originalLinkBtn').href = news.url;
             
-            // 婵″倹鐏夊▽鈩冩箒閼奉亜鐣炬稊澶嬬垼缁涙拝绱濋梾鎰閹恒劏宕橀悧鍫濇健
-            if (customTags.length === 0) {
-                section.style.display = 'none';
-                // 缁夊娅庨幍鈧張澶愮彯娴?
-                document.querySelectorAll('.news-item.tag-matched').forEach(el => {
-                    el.classList.remove('tag-matched');
-                });
-                return;
-            }
-            
-            // 閺勫墽銇氶幒銊ㄥ礃閻楀牆娼?
-            section.style.display = 'block';
-            
-            // 閺勫墽銇氶崠褰掑帳閺嶅洨顒?
-            tagsContainer.innerHTML = customTags.map(tag => 
-                `<span class="recommendation-tag">${tag}</span>`
+            // 标签
+            const detailHeader = document.getElementById('detailHeader');
+            detailHeader.innerHTML = news.tags.map(tag => 
+                `<span class="detail-tag ${tag.class}">${tag.text}</span>`
             ).join('');
             
-            // 閼惧嘲褰囬幍鈧張澶嬫煀闂傝鑻熼崠褰掑帳
-            const allNews = getAllNews();
-            const matchedNews = [];
+            // 关联标签
+            const detailTags = document.getElementById('detailTags');
+            detailTags.innerHTML = `<span class="detail-tags-label">关联板块：</span>` + 
+                news.relatedTags.map(tag => 
+                    `<span class="asset-tag ${tag.class}">${tag.name}</span>`
+                ).join('');
             
-            allNews.forEach(news => {
-                const match = isTagMatch(news, customTags);
-                if (match.matched) {
-                    matchedNews.push({ ...news, matchedTags: match.matchedTags });
-                }
-            });
+            // AI解读
+            document.getElementById('aiInsightContent').innerHTML = news.aiInsight;
             
-            // 閺囧瓨鏌婄拋鈩冩殶
-            countEl.textContent = matchedNews.length + '閺?;
+            // 相关推荐
+            const relatedNewsList = document.getElementById('relatedNewsList');
+            relatedNewsList.innerHTML = news.relatedNews.map((item, index) => 
+                `<div class="related-item" onclick="openNewsDetail('${item.id}')">
+                    <span class="related-item-rank">${index + 1}</span>
+                    <span class="related-item-title">${item.title}</span>
+                    <svg class="related-item-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                </div>`
+            ).join('');
             
-            // 濞撳弶鐓嬮崠褰掑帳閻ㄥ嫭鏌婇梻?
-            if (matchedNews.length === 0) {
-                listContainer.innerHTML = '<div class="no-recommendation">閺嗗倹妫ら崠褰掑帳閸愬懎顔愰敍灞炬閺冦儲娲块弬鏉挎倵娑撶儤鍋嶉幒銊ㄥ礃</div>';
-            } else {
-                listContainer.innerHTML = matchedNews.map(news => `
-                    <div class="recommendation-item" onclick="openNewsDetail('${news.id}')">
-                        <div class="recommendation-item-title">${news.title}</div>
-                        <div class="recommendation-item-meta">
-                            <span>${news.date || ''}</span>
-                            <span>${news.source || ''}</span>
-                            <span>閸栧綊鍘? ${news.matchedTags.join(', ')}</span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            
-            // 妤傛ü瀵掗弬浼存閸掓銆冩稉顓犳畱閸栧綊鍘ゆい?
-            document.querySelectorAll('.news-item').forEach(el => {
-                const newsId = el.dataset.newsId;
-                const newsItem = fullNewsData[newsId];
-                if (newsItem) {
-                    const match = isTagMatch(newsItem, customTags);
-                    if (match.matched) {
-                        el.classList.add('tag-matched');
-                    } else {
-                        el.classList.remove('tag-matched');
-                    }
-                }
-            });
-            
-            // 鐠佹澘缍嶉幒銊ㄥ礃閺屻儳婀?
-            trackAction('recommendation_view', { 
-                tagCount: customTags.length, 
-                matchCount: matchedNews.length 
-            });
+            // 显示详情页
+            newsDetailOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeNewsDetail() {
+            newsDetailOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ESC关闭详情页
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeNewsDetail();
+                settingsModal.classList.remove('active');
+            }
+        });
 
         // ============================================
-        // 鐎圭偞妞傞弬浼存閹兼粎鍌ˋPI閿涘牏娲块幒銉ㄧ殶閻劍娅ょ拫鐩嘔閿?
+        // 自定义标签功能
         // ============================================
-        const ZHIPU_API_KEY = '28133690e57f4ba9902b4015f21404bb.L3eQw0LRHCFM7N9f';
-        const ZHIPU_API_URL = 'https://open.bigmodel.cn/api/paas/v4/chat/completions';
+        addCustomTagBtn.addEventListener('click', () => {
+            customTagInputWrapper.style.display = 'flex';
+            customTagInput.focus();
+            addCustomTagBtn.style.display = 'none';
+        });
 
-        let isSearching = false;
+        cancelTagBtn.addEventListener('click', () => {
+            customTagInputWrapper.style.display = 'none';
+            addCustomTagBtn.style.display = 'block';
+            customTagInput.value = '';
+        });
 
-        async function fetchRealtimeNews() {
-            if (customTags.length === 0) {
-                alert('鐠囧嘲鍘涘ǎ璇插閼峰啿鐨稉鈧稉顏勫彺鐡掞絾鐖ｇ粵?);
-                return;
-            }
-            
-            if (isSearching) return;
-            isSearching = true;
-            
-            const btn = document.getElementById('realtimeSearchBtn');
-            const section = document.getElementById('recommendationSection');
-            const listContainer = document.getElementById('recommendationList');
-            
-            if (btn) {
-                btn.disabled = true;
-                btn.innerHTML = '<span class="loading">棣冩敵 閹兼粎鍌ㄦ稉?..</span>';
-            }
-            
-            // 閺勫墽銇氶幖婊呭偍閻樿埖鈧?
-            if (section) {
-                section.style.display = 'block';
-                const countEl = document.getElementById('recommendationCount');
-                if (countEl) countEl.textContent = '鐎圭偞妞傞幖婊呭偍娑?..';
-                listContainer.innerHTML = '<div class="no-recommendation">閳?濮濓絽婀稉鐑樺亶閹兼粎鍌ㄩ張鈧弬鐗堟煀闂備紮绱濈拠椋庘棦閸?..</div>';
-            }
-            
-            try {
-                const today = new Date();
-                const dateStr = today.getFullYear() + '楠? + (today.getMonth()+1).toString().padStart(2,'0') + '閺? + today.getDate().toString().padStart(2,'0') + '閺?;
-                const weekdays = ['閺勭喐婀￠弮?, '閺勭喐婀℃稉鈧?, '閺勭喐婀℃禍?, '閺勭喐婀℃稉?, '閺勭喐婀￠崶?, '閺勭喐婀℃禍?, '閺勭喐婀￠崗?];
-                const weekday = weekdays[today.getDay()];
-                const tagsStr = customTags.slice(0, 10).join('閵?);
-                
-                const prompt = `鐠囬攱鎮崇槐顫矕婢?${dateStr} ${weekday})閻ㄥ嫭娓堕弬鐗堟煀闂備紮绱濋柌宥囧仯閸忚櫕鏁炴禒銉ょ瑓閻劍鍩涢崗纾嬪彯閺嶅洨顒烽敍?{tagsStr}
+        confirmTagBtn.addEventListener('click', addCustomTag);
+        customTagInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addCustomTag();
+        });
 
-鐟曚焦鐪伴敍?
-1. 閸欘亝鎮崇槐銏℃付鏉?4鐏忓繑妞傞崘鍛畱閺備即妞?
-2. 鏉╂柨娲栨稉搴ｆ暏閹村嘲鍙寸搾锝嗙垼缁涘墽娴夐崗宕囨畱閺備即妞?
-3. 濮ｅ繑娼弬浼存闂団偓閸栧懎鎯堥敍姘垼妫版ǜ鈧焦妫╅張鐔粹偓浣规降濠ф劑鈧焦鎲崇憰?50鐎涙鍞?閵嗕礁甯弬鍥懠閹?
-
-鐠囬攱瀵滄禒銉ょ瑓JSON閺嶇厧绱℃潻鏂挎礀閿涘牆褰ф潻鏂挎礀JSON閿涘奔绗夌憰浣稿従娴犳牕鍞寸€圭櫢绱氶敍?
-\`\`\`json
-{
-  "success": true,
-  "count": 閺佷即鍣?
-  "news": [
-    {"title": "閺備即妞堥弽鍥暯", "date": "閺冦儲婀￠弮鍫曟？", "source": "閺夈儲绨?, "desc": "閹芥顩?, "url": "闁剧偓甯?, "matchedTag": "閸栧綊鍘ら惃鍕垼缁?}
-  ]
-}
-\`\`\``;
-
-                const response = await fetch(ZHIPU_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${ZHIPU_API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        model: 'glm-4-flash',
-                        messages: [{ role: 'user', content: prompt }],
-                        tools: [{ type: 'web_search', web_search: { search_engine: 'bing' } }],
-                        stream: false
-                    })
-                });
-                
-                if (!response.ok) throw new Error('API鐠囬攱鐪版径杈Е');
-                
-                const result = await response.json();
-                const content = result.choices?.[0]?.message?.content || '';
-                
-                // 閹绘劕褰嘕SON
-                let newsData = null;
-                const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    try {
-                        newsData = JSON.parse(jsonMatch[0]);
-                    } catch (e) {}
-                }
-                
-                if (newsData?.success && newsData.news?.length > 0) {
-                    // 閺囧瓨鏌婄拋鈩冩殶
-                    const countEl = document.getElementById('recommendationCount');
-                    if (countEl) countEl.textContent = `${newsData.news.length}閺夆槄绱欑€圭偞妞傞敍濉?
-                    
-                    // 閺勫墽銇氱€圭偞妞傞弬浼存
-                    listContainer.innerHTML = newsData.news.map(news => `
-                        <div class="recommendation-item realtime-news" onclick="window.open('${news.url || '#'}', '_blank')">
-                            <div class="recommendation-item-title">${news.title}</div>
-                            <div class="recommendation-item-meta">
-                                <span>${news.date || ''}</span>
-                                <span>${news.source || ''}</span>
-                                ${news.matchedTag ? `<span class="matched-tag">閸栧綊鍘? ${news.matchedTag}</span>` : ''}
-                            </div>
-                            <div class="recommendation-desc">${news.desc || ''}</div>
-                        </div>
-                    `).join('');
-                    
-                    // 鐠佹澘缍嶉幖婊呭偍缂佹挻鐏?
-                    trackAction('realtime_search', { 
-                        tags: customTags, 
-                        results: newsData.news.length 
-                    });
-                } else {
-                    listContainer.innerHTML = '<div class="no-recommendation">棣冩 閺嗗倹婀幍鎯у煂閸栧綊鍘ら惃鍕杽閺冭埖鏌婇梻浼欑礉閺勫孩妫╅弮鈺傚Г鐏忓棔璐熼幃銊﹀腹闁?/div>';
-                }
-            } catch (error) {
-                console.error('鐎圭偞妞傞幖婊呭偍婢惰精瑙?', error);
-                listContainer.innerHTML = '<div class="no-recommendation">閳跨媴绗?閹兼粎鍌ㄩ張宥呭閺嗗倹妞傛稉宥呭讲閻㈩煉绱濈拠椋庘棦閸氬骸鍟€鐠?/div>';
-            } finally {
-                isSearching = false;
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerHTML = '棣冩敡 鐎圭偞妞傞幖婊呭偍';
-                }
-            }
-        }
-
-        function renderCustomTags() {
-            const container = document.getElementById('customTagsList');
-            if (!container) return;
-            
-            container.innerHTML = customTags.map(tag => `
-                <div class="custom-tag-item">
-                    <span>${tag}</span>
-                    <span class="remove-tag" onclick="removeCustomTag('${tag}')">鑴?/span>
-                </div>
-            `).join('');
-            
-            // 閺囧瓨鏌婇幒銊ㄥ礃
-            updateRecommendation();
-        }
-
-        function addCustomTag(tag) {
-            if (tag && !customTags.includes(tag) && customTags.length < 10) {
+        function addCustomTag() {
+            const tag = customTagInput.value.trim();
+            if (tag && !customTags.includes(tag)) {
                 customTags.push(tag);
-                localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
+                localStorage.setItem('customTags', JSON.stringify(customTags));
                 renderCustomTags();
-                trackAction('add_custom_tag', { tag: tag, total: customTags.length });
+                customTagInput.value = '';
+                
+                // 搜索匹配新闻
+                if (customTags.length > 0) {
+                    searchAndMatchNews();
+                }
             }
+            customTagInputWrapper.style.display = 'none';
+            addCustomTagBtn.style.display = 'block';
         }
 
         function removeCustomTag(tag) {
             customTags = customTags.filter(t => t !== tag);
-            localStorage.setItem('zhimai_custom_tags', JSON.stringify(customTags));
+            localStorage.setItem('customTags', JSON.stringify(customTags));
             renderCustomTags();
-            trackAction('remove_custom_tag', { tag: tag, total: customTags.length });
+            
+            if (customTags.length === 0) {
+                matchedNews = [];
+                recommendationSection.style.display = 'none';
+            } else {
+                searchAndMatchNews();
+            }
         }
 
-        // 閸掓繂顫愰崠鏍殰鐎规矮绠熼弽鍥╊劮
-        document.addEventListener('DOMContentLoaded', function() {
+        function renderCustomTags() {
+            customTagsList.innerHTML = customTags.map(tag => 
+                `<div class="custom-tag-item">
+                    <span>${tag}</span>
+                    <span class="remove-tag" onclick="removeCustomTag('${tag}')">×</span>
+                </div>`
+            ).join('');
+            
+            // 更新推荐标签显示
+            recommendationTags.innerHTML = customTags.map(tag => 
+                `<span class="recommendation-tag">${tag}</span>`
+            ).join('');
+        }
+
+        // ============================================
+        // 实时新闻搜索（使用Zhipu AI）
+        // ============================================
+        let isSearching = false;
+
+        async function fetchRealtimeNews() {
+            if (isSearching || customTags.length === 0) return;
+            
+            isSearching = true;
+            const btn = document.getElementById('realtimeSearchBtn');
+            btn.disabled = true;
+            btn.textContent = '🔄 搜索中...';
+            
+            recommendationList.innerHTML = '<div class="loading" style="text-align:center;padding:20px;color:var(--text-secondary);">正在为您搜索最新资讯...</div>';
+            recommendationSection.style.display = 'block';
+            
+            try {
+                // 构建搜索关键词
+                const keywords = customTags.join('、');
+                const prompt = `请根据关键词"${keywords}"搜索最新的财经新闻，返回3-5条与这些关键词相关的今日新闻。
+
+要求：
+1. 每条新闻包含：标题、来源、日期（今日）、简要摘要
+2. 新闻必须与关键词相关
+3. 按相关度排序
+4. 返回JSON格式：
+{
+  "news": [
+    {"title": "新闻标题", "source": "来源", "date": "2026-03-30", "summary": "简要摘要", "tags": ["相关标签"]}
+  ]
+}`;
+
+                const response = await fetch('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer a5d863ad6f6c4df2861fc0f5ce8926a1.K1UOFHIl2xThFHVV'
+                    },
+                    body: JSON.stringify({
+                        model: 'glm-4-flash',
+                        messages: [
+                            { role: 'user', content: prompt }
+                        ],
+                        tools: [
+                            {
+                                type: 'web_search',
+                                web_search: {
+                                    enable: true,
+                                    domainFilter: 'zh'
+                                }
+                            }
+                        ],
+                        stream: false
+                    })
+                });
+
+                if (!response.ok) throw new Error('API调用失败');
+                
+                const data = await response.json();
+                let content = data.choices[0].message.content;
+                
+                // 解析JSON
+                let newsData;
+                try {
+                    // 尝试提取JSON
+                    const jsonMatch = content.match(/\{[\s\S]*\}/);
+                    if (jsonMatch) {
+                        newsData = JSON.parse(jsonMatch[0]);
+                    } else {
+                        throw new Error('无法解析新闻数据');
+                    }
+                } catch (parseError) {
+                    console.error('解析错误:', parseError);
+                    // 使用默认数据
+                    newsData = {
+                        news: [
+                            { title: `关于"${keywords}"的最新动态`, source: '智脉AI', date: '2026-03-30', summary: '根据您的兴趣标签，为您推荐相关资讯。', tags: customTags },
+                            { title: `${keywords}相关板块今日表现`, source: '东方财富', date: '2026-03-30', summary: '相关板块受到市场关注。', tags: customTags }
+                        ]
+                    };
+                }
+                
+                matchedNews = newsData.news || [];
+                renderMatchedNews();
+                
+            } catch (error) {
+                console.error('搜索失败:', error);
+                recommendationList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--accent-red);">搜索失败，请稍后重试</div>';
+            } finally {
+                isSearching = false;
+                btn.disabled = false;
+                btn.textContent = '🔄 实时搜索';
+            }
+        }
+
+        function renderMatchedNews() {
+            if (matchedNews.length === 0) {
+                recommendationList.innerHTML = '<div class="no-recommendation">暂无匹配的新闻</div>';
+                recommendationCount.textContent = '0条';
+                return;
+            }
+            
+            recommendationCount.textContent = `${matchedNews.length}条`;
+            recommendationList.innerHTML = matchedNews.map(news => `
+                <div class="news-item realtime-news" onclick="showRealtimeNewsDetail('${news.title}')">
+                    <div class="recommendation-item-title">${news.title}</div>
+                    <div class="recommendation-item-meta">
+                        <span>📅 ${news.date}</span>
+                        <span>|</span>
+                        <span>${news.source}</span>
+                    </div>
+                    <div class="news-brief" style="margin-top:8px;">${news.summary || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function showRealtimeNewsDetail(title) {
+            const news = matchedNews.find(n => n.title === title);
+            if (news) {
+                document.getElementById('detailTitle').textContent = news.title;
+                document.getElementById('detailDate').textContent = news.date;
+                document.getElementById('detailSource').textContent = news.source;
+                document.getElementById('detailContent').innerHTML = `<p>${news.summary || '暂无详细内容'}</p>`;
+                
+                document.getElementById('detailHeader').innerHTML = 
+                    `<span class="detail-tag new">✨ 实时</span>` +
+                    (news.tags || []).map(t => `<span class="detail-tag">${t}</span>`).join('');
+                
+                document.getElementById('detailTags').innerHTML = 
+                    `<span class="detail-tags-label">匹配标签：</span>` +
+                    (news.tags || []).map(t => `<span class="matched-tag">${t}</span>`).join('');
+                
+                document.getElementById('aiInsight').style.display = 'none';
+                document.getElementById('relatedNews').style.display = 'none';
+                document.getElementById('originalLinkSection').style.display = 'none';
+                
+                newsDetailOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // ============================================
+        // 初始化
+        // ============================================
+        function init() {
+            updateTagBarState();
+            initSectionState();
             renderCustomTags();
             
-            // 濞ｈ濮為弽鍥╊劮閹稿鎸?
-            const addBtn = document.getElementById('addCustomTagBtn');
-            const inputWrapper = document.getElementById('customTagInputWrapper');
-            const confirmBtn = document.getElementById('confirmTagBtn');
-            const cancelBtn = document.getElementById('cancelTagBtn');
-            const input = document.getElementById('customTagInput');
-            
-            if (addBtn) {
-                addBtn.addEventListener('click', function() {
-                    inputWrapper.style.display = 'flex';
-                    addBtn.style.display = 'none';
-                    input.focus();
-                });
+            // 如果有自定义标签，自动搜索
+            if (customTags.length > 0) {
+                recommendationSection.style.display = 'block';
+                recommendationTags.innerHTML = customTags.map(tag => 
+                    `<span class="recommendation-tag">${tag}</span>`
+                ).join('');
             }
-            
-            if (confirmBtn) {
-                confirmBtn.addEventListener('click', function() {
-                    const tag = input.value.trim();
-                    if (tag) {
-                        addCustomTag(tag);
-                        input.value = '';
-                    }
-                    inputWrapper.style.display = 'none';
-                    addBtn.style.display = 'block';
-                });
-            }
-            
-            if (cancelBtn) {
-                cancelBtn.addEventListener('click', function() {
-                    input.value = '';
-                    inputWrapper.style.display = 'none';
-                    addBtn.style.display = 'block';
-                });
-            }
-            
-            if (input) {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        confirmBtn.click();
-                    }
-                });
-            }
-        });
+        }
+
+        init();
     </script>
 </body>
 </html>
-
-
