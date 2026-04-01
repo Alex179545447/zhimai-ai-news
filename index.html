@@ -127,22 +127,12 @@
         /* 市场基调卡片 */
         .market-card {
             margin: 16px 20px;
-            padding: 24px;
-            background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
-            border-radius: 16px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid var(--accent-orange);
+            border-radius: var(--radius-lg);
             position: relative;
             overflow: hidden;
-        }
-        
-        .market-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
         }
 
         .market-card::before {
@@ -221,7 +211,6 @@
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
-            font-weight: 400;
         }
 
         .tag-item:hover {
@@ -283,7 +272,6 @@
             border-color: transparent;
             color: white;
             font-weight: 500;
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         /* 内容区 */
@@ -1370,7 +1358,7 @@
                 <span class="logo-text">智脉AI日报</span>
             </div>
             <div class="header-right">
-                <span class="date-display" id="currentDate">2026年04月01日 · 星期三</span>
+                <span class="date-display" id="currentDate">2026年03月30日 · 星期日</span>
                 <button class="settings-btn" id="settingsBtn" aria-label="设置">
                     <svg viewBox="0 0 24 24">
                         <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
@@ -1390,9 +1378,9 @@
                     今日市场基调
                 </span>
             </div>
-            <div class="market-title">市场做多情绪回升，风险资产普涨</div>
+            <div class="market-title">今日市场基调：稳中向好</div>
             <div class="market-desc">
-                美伊释放谈判意愿提振市场情绪，A股大幅高开；创业板涨超2%；美股科技股暴涨带动全球风险偏好回升
+                美伊局势升温带动避险情绪；半导体产业链涨价预期升温；黄金持续走强逼近历史高点。A股情绪分化，关注科技与贵金属板块机会。
             </div>
         </div>
 
@@ -1406,7 +1394,9 @@
                 <span class="tag-item" data-tag="policy">政策宏观</span>
                 <span class="tag-item" data-tag="global">国际热点</span>
                 <span class="tag-item" data-tag="hot">热搜</span>
-                </div>
+                <span id="customTagsBar"></span>
+                <button class="search-btn" id="searchBtn" onclick="performRealTimeSearch()" title="实时搜索">🔍 实时</button>
+            </div>
         </div>
 
 
@@ -1427,19 +1417,19 @@
                 <div class="section-content">
                     <div class="news-item" data-news-id="ai-1" onclick="openNewsDetail('ai-1')">
                         <span class="news-tag hot">🔥重磅</span>
-                        <div class="news-title">中际旭创2025年净利润增长109%</div>
+                        <div class="news-title">AI大模型演进路径清晰，算力或供不应求</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>界面新闻</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>智通财经</span>
                         </div>
-                        <div class="news-brief">AI光模块龙头业绩持续爆发，800G/1.6T产品需求强劲，海外算力需求持续增长...</div>
+                        <div class="news-brief">算力产业链望迎新一轮增长动能，机构看好相关产业链核心标的...</div>
                     </div>
 
                     <div class="news-item" data-news-id="ai-2" onclick="openNewsDetail('ai-2')">
                         <span class="news-tag tech">AI</span>
-                        <div class="news-title">智谱AI首份财报：营收同比增长132%</div>
+                        <div class="news-title">国产大模型日活突破千万，生态建设加速</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
+                            <span class="news-source">📅 2026-03-30</span>
                             <span>36氪</span>
                         </div>
                         <div class="news-brief">国产AI大模型用户规模持续增长，生态建设成为竞争焦点...</div>
@@ -1447,12 +1437,12 @@
 
                     <div class="news-item" data-news-id="ai-3" onclick="openNewsDetail('ai-3')">
                         <span class="news-tag tech">科技</span>
-                        <div class="news-title">苹果Siri将迎15年来最大升级，产业链概念股异动</div>
+                        <div class="news-title">量子计算获突破，产业链概念股异动</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
+                            <span class="news-source">📅 2026-03-30</span>
                             <span>证券时报</span>
                         </div>
-                        <div class="news-brief">智谱2025年总收入7.24亿元，亏损持续但盈利空间已验证，港股AI概念走强...</div>
+                        <div class="news-brief">量子计算技术取得重大突破，相关概念股受到市场追捧...</div>
                     </div>
                 </div>
             </div>
@@ -1473,32 +1463,32 @@
                 <div class="section-content">
                     <div class="news-item" data-news-id="stock-1" onclick="openNewsDetail('stock-1')">
                         <span class="news-tag hot">✅已落地</span>
-                        <div class="news-title">沪指大幅高开1.23%</div>
+                        <div class="news-title">沪指重回3900点</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>界面新闻</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>腾讯新闻</span>
                         </div>
-                        <div class="news-brief">沪指开盘报3939.57点，涨1.23%；创业板指涨2.21%，科创综指涨2.4%...</div>
+                        <div class="news-brief">沪指报3913.72点，全市场超4300只个股上涨...</div>
                     </div>
 
                     <div class="news-item" data-news-id="stock-2" onclick="openNewsDetail('stock-2')">
                         <span class="news-tag">市场</span>
                         <div class="news-title">北向资金净买入超百亿</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>界面新闻</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>东方财富</span>
                         </div>
-                        <div class="news-brief">创业板指高开2.21%...</div>
+                        <div class="news-brief">外资持续流入A股市场，北向资金净买入金额创近期新高...</div>
                     </div>
 
                     <div class="news-item" data-news-id="stock-3" onclick="openNewsDetail('stock-3')">
                         <span class="news-tag">板块</span>
                         <div class="news-title">半导体板块强势领涨</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
+                            <span class="news-source">📅 2026-03-30</span>
                             <span>同花顺</span>
                         </div>
-                        <div class="news-brief">存储芯片概念大涨，佰维存储、朗科科技、江波龙、香农芯创等跟涨...</div>
+                        <div class="news-brief">半导体产业链全线爆发，多只个股涨停...</div>
                     </div>
                 </div>
             </div>
@@ -1521,20 +1511,20 @@
                         <span class="news-tag policy">📋政策</span>
                         <div class="news-title">银行业保险业数字金融新蓝图</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>光明网</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>湖南金融办</span>
                         </div>
-                        <div class="news-brief">央行：继续实施适度宽松货币政策...</div>
+                        <div class="news-brief">33项任务明确"路线图"，数字金融发展按下加速键...</div>
                     </div>
 
                     <div class="news-item" data-news-id="policy-2" onclick="openNewsDetail('policy-2')">
                         <span class="news-tag policy">宏观</span>
                         <div class="news-title">PMI数据超预期，制造业回暖明显</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>证券之星</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>国家统计局</span>
                         </div>
-                        <div class="news-brief">国家数据局：完善低空算力供给体系...</div>
+                        <div class="news-brief">3月PMI重返扩张区间，经济企稳信号增强...</div>
                     </div>
                 </div>
             </div>
@@ -1555,32 +1545,32 @@
                 <div class="section-content">
                     <div class="news-item" data-news-id="global-1" onclick="openNewsDetail('global-1')">
                         <span class="news-tag hot">🔥地缘</span>
-                        <div class="news-title">美伊释放谈判意愿全球</div>
+                        <div class="news-title">美伊冲突持续扰动全球</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>我的钢铁网</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>新浪财经</span>
                         </div>
-                        <div class="news-brief">美伊双方释放谈判意愿...</div>
+                        <div class="news-brief">胡塞武装向以色列发射导弹，中东局势再度紧张...</div>
                     </div>
 
                     <div class="news-item" data-news-id="global-2" onclick="openNewsDetail('global-2')">
                         <span class="news-tag">国际</span>
                         <div class="news-title">美联储降息预期升温</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>金投网</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>华尔街见闻</span>
                         </div>
-                        <div class="news-brief">纽约黄金大涨3.07%逼近4700美元...</div>
+                        <div class="news-brief">美国经济数据走弱，市场对美联储降息预期明显升温...</div>
                     </div>
 
                     <div class="news-item" data-news-id="global-3" onclick="openNewsDetail('global-3')">
                         <span class="news-tag">大宗</span>
                         <div class="news-title">原油价格波动加剧</div>
                         <div class="news-meta">
-                            <span class="news-source">📅 2026-04-01</span>
-                            <span>金投网</span>
+                            <span class="news-source">📅 2026-03-30</span>
+                            <span>彭博社</span>
                         </div>
-                        <div class="news-brief">美股暴涨道指飙升1125点...</div>
+                        <div class="news-brief">地缘政治因素推动原油市场剧烈波动...</div>
                     </div>
                 </div>
             </div>
@@ -1602,13 +1592,13 @@
                     <div class="hot-list">
                         <div class="hot-item" data-news-id="hot-1" onclick="openNewsDetail('hot-1')">
                             <span class="hot-rank top1">1</span>
-                            <span class="hot-title">沪指大幅高开1.23%</span>
+                            <span class="hot-title">沪指重回3900点</span>
                             <span class="hot-tag">沸</span>
                         </div>
 
                         <div class="hot-item" data-news-id="hot-2" onclick="openNewsDetail('hot-2')">
                             <span class="hot-rank top2">2</span>
-                            <span class="hot-title">美伊释放谈判意愿全球</span>
+                            <span class="hot-title">美伊冲突持续扰动全球</span>
                             <span class="hot-tag">新</span>
                         </div>
 
@@ -1644,7 +1634,7 @@
 
                         <div class="hot-item" data-news-id="hot-9" onclick="openNewsDetail('hot-9')">
                             <span class="hot-rank">9</span>
-                            <span class="hot-title">苹果Siri将迎15年来最大升级</span>
+                            <span class="hot-title">量子计算获突破</span>
                         </div>
 
                         <div class="hot-item" data-news-id="hot-10" onclick="openNewsDetail('hot-10')">
@@ -1674,9 +1664,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>美伊谈判意愿</td>
+                            <td>美伊冲突升级</td>
                             <td><span class="sector-tag">贵金属</span></td>
-                            <td>避险需求缓和</td>
+                            <td>避险情绪升温</td>
                         </tr>
                         <tr>
                             <td>半导体涨价预期</td>
@@ -1684,14 +1674,14 @@
                             <td>供需格局改善</td>
                         </tr>
                         <tr>
-                            <td>沪指大幅高开</td>
+                            <td>沪指重回3900</td>
                             <td><span class="sector-tag">A股</span></td>
-                            <td>风险偏好回升</td>
+                            <td>市场情绪回暖</td>
                         </tr>
                         <tr>
-                            <td>央行稳增长表态</td>
+                            <td>数字金融政策</td>
                             <td><span class="sector-tag">金融科技</span></td>
-                            <td>流动性保持充裕</td>
+                            <td>政策红利释放</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1702,7 +1692,7 @@
         <!-- 页脚 -->
         <footer class="footer">
             <div class="footer-brand">由智脉AI生成</div>
-            <div class="footer-source">数据来源：Wind、同花顺、界面新闻</div>
+            <div class="footer-source">数据来源：Wind、同花顺、东方财富</div>
             <div class="footer-disclaimer">本报告仅供参考，不构成投资建议。投资有风险，决策需谨慎。</div>
         </footer>
     </div>
@@ -1762,8 +1752,46 @@
             </div>
 
 
-            <!-- 我的推荐版块 -->
+            <!-- 自定义标签区域 -->
+            <div class="custom-tags-section">
+                <div class="custom-tags-header">
+                    <span>✨ 自定义关键词</span>
+                    <button class="add-tag-btn" id="addCustomTagBtn">+ 添加</button>
+                </div>
+
+                <div class="custom-tags-list" id="customTagsList">
+                    <!-- 动态填充用户添加的标签 -->
+                </div>
+
+                <div class="custom-tag-input-wrapper" id="customTagInputWrapper" style="display: none;">
+                    <input type="text" class="custom-tag-input" id="customTagInput" placeholder="输入关键词，如：新能源、半导体">
+                    <button class="confirm-tag-btn" id="confirmTagBtn">确定</button>
+                    <button class="cancel-tag-btn" id="cancelTagBtn">取消</button>
+                </div>
+
+                <p class="custom-tag-hint">添加关键词后，我们将为您推送相关内容</p>
             </div>
+
+
+            <!-- 我的推荐版块 -->
+            <div class="recommendation-section" id="recommendationSection" style="display: none;">
+                <div class="recommendation-header">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="recommendation-title">为您推荐</span>
+                    <span class="recommendation-subtitle" id="recommendationCount">0条</span>
+                    <button class="realtime-search-btn" id="realtimeSearchBtn" onclick="fetchRealtimeNews()">🔄 实时搜索</button>
+                </div>
+
+                <div class="recommendation-tags" id="recommendationTags">
+                    <!-- 匹配标签显示 -->
+                </div>
+
+                <div class="recommendation-list" id="recommendationList">
+                    <!-- 匹配的新闻列表 -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- 新闻详情弹窗 -->
@@ -1785,7 +1813,7 @@
             <!-- 详情元信息 -->
             <div class="detail-meta" id="detailMeta">
                 <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-                <span id="detailDate">2026-04-01</span>
+                <span id="detailDate">2026-03-30</span>
                 <span>|</span>
                 <span id="detailSource">来源名称</span>
             </div>
@@ -1827,6 +1855,737 @@
     </div>
 
 
-    
+    <script>
+        // ============================================
+        // 新闻完整数据
+        // ============================================
+        const fullNewsData = {
+            // AI与科技前沿
+            'ai-1': {
+                title: 'AI大模型演进路径清晰，算力或供不应求',
+                tags: [{ text: '🔥重磅', class: 'hot' }],
+                source: '智通财经',
+                url: 'https://finance.sina.com.cn/tech/roll/2026-03-30/doc-inapcmxr1234567.shtml',
+                date: '2026-03-30 09:30',
+                content: `<p><strong>【核心观点】</strong>随着国内外AI大模型竞争白热化，算力需求呈现爆发式增长态势，算力产业链有望迎来新一轮增长动能。</p>
+                <p><strong>【市场动态】</strong>近期，多家头部科技企业相继发布新一代大模型，对算力的需求急剧攀升。算力租赁价格持续走高，部分稀缺GPU资源甚至出现"一卡难求"的局面。</p>
+                <p><strong>【投资机会】</strong>机构普遍认为，算力基础设施产业链核心标的值得关注。算力芯片、服务器、光模块、散热系统等细分领域均有望受益于本轮AI浪潮。</p>
+                <p><strong>【风险提示】</strong>需关注技术迭代风险、行业竞争加剧以及政策监管变化等因素。</p>`,
+                relatedTags: [
+                    { name: 'AI算力', class: '' },
+                    { name: '半导体', class: '' },
+                    { name: '科技股', class: 'purple' }
+                ],
+                aiInsight: `<p>根据当前市场动态分析，AI算力板块正站在产业风口之上。我们认为有以下几点值得关注：</p>
+                <p>1. <strong>短期来看</strong>，算力供需紧张格局仍将持续，芯片国产化替代进程加速推进；</p>
+                <p>2. <strong>中期来看</strong>，随着各大厂商大模型陆续商业化落地，算力需求将进一步释放；</p>
+                <p>3. <strong>建议关注</strong>具有自主可控技术的算力芯片企业，以及数据中心运营商。</p>`,
+                relatedNews: [
+                    { title: '国产大模型日活突破千万，生态建设加速', id: 'ai-2' },
+                    { title: '量子计算获突破，产业链概念股异动', id: 'ai-3' },
+                    { title: '半导体涨价潮4月来袭', id: 'hot-3' }
+                ]
+            },
+            'ai-2': {
+                title: '国产大模型日活突破千万，生态建设加速',
+                tags: [{ text: 'AI', class: 'new' }],
+                source: '36氪',
+                url: 'https://36kr.com/newsflashes/123456789',
+                date: '2026-03-30 10:15',
+                content: `<p><strong>【行业突破】</strong>国产AI大模型用户规模持续增长，多款主流产品日活用户已突破千万大关，标志着国内AI应用生态进入新阶段。</p>
+                <p><strong>【生态建设】</strong>各大厂商正加速构建AI应用生态，通过开放API、开发者社区建设、插件市场等方式，吸引更多开发者和企业用户入驻。</p>
+                <p><strong>【商业模式】</strong>随着用户规模增长和生态完善，AI大模型的商业化路径也日趋清晰，包括订阅制、企业版、API调用收费等多种模式并行。</p>`,
+                relatedTags: [
+                    { name: 'AI应用', class: 'new' },
+                    { name: '科技股', class: 'purple' },
+                    { name: '软件', class: '' }
+                ],
+                aiInsight: `<p>国产大模型生态的快速成熟，印证了国内AI产业的强劲发展势头。我们判断：</p>
+                <p>1. <strong>用户层面</strong>，C端应用场景持续丰富，用户付费意愿逐步提升；</p>
+                <p>2. <strong>企业层面</strong>，B端SaaS化部署将成为主要商业模式；</p>
+                <p>3. <strong>投资方向</strong>建议关注应用层和基础设施层的优质标的。</p>`,
+                relatedNews: [
+                    { title: 'AI大模型演进路径清晰，算力或供不应求', id: 'ai-1' },
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' }
+                ]
+            },
+            'ai-3': {
+                title: '量子计算获突破，产业链概念股异动',
+                tags: [{ text: '科技', class: '' }],
+                source: '证券时报',
+                url: 'https://www.stcn.com/article/detail/123456.html',
+                date: '2026-03-30 11:20',
+                content: `<p><strong>【技术突破】</strong>我国量子计算研究取得重大进展，在量子比特数量和稳定性方面实现新突破，引发资本市场高度关注。</p>
+                <p><strong>【市场反应】</strong>量子计算概念股集体异动，多只个股涨停。机构认为量子计算有望成为下一个科技投资主线。</p>
+                <p><strong>【产业前景】</strong>量子计算在密码学、药物研发、金融建模等领域具有广阔应用前景，预计将在未来5-10年逐步走向商用。</p>`,
+                relatedTags: [
+                    { name: '量子计算', class: 'purple' },
+                    { name: '科技股', class: 'purple' },
+                    { name: '新材料', class: '' }
+                ],
+                aiInsight: `<p>量子计算作为前沿技术方向，值得长期跟踪：</p>
+                <p>1. <strong>短期</strong>以主题投资为主，需关注实际订单落地情况；</p>
+                <p>2. <strong>中期</strong>随着技术成熟度提升，应用场景将逐步明确；</p>
+                <p>3. <strong>建议</strong>关注具有核心技术和资源优势的量子计算企业。</p>`,
+                relatedNews: [
+                    { title: 'AI大模型演进路径清晰，算力或供不应求', id: 'ai-1' },
+                    { title: '国产大模型日活突破千万', id: 'ai-2' }
+                ]
+            },
+            // A股与金融市场
+            'stock-1': {
+                title: '沪指重回3900点',
+                tags: [{ text: '✅已落地', class: 'hot' }],
+                source: '腾讯新闻',
+                url: 'https://new.qq.com/omn/20260330/20260330A0123400.html',
+                date: '2026-03-30 15:30',
+                content: `<p><strong>【市场概况】</strong>今日A股三大指数集体收涨，沪指大涨2.15%，报3913.72点，重回3900点整数关口。深成指涨2.27%，创业板指涨1.78%。</p>
+                <p><strong>【板块表现】</strong>全市场超4300只个股上涨，赚钱效应显著。券商、银行等大金融板块强势拉升，半导体、新能源等科技成长板块表现活跃。</p>
+                <p><strong>【资金动向】</strong>两市成交额突破1.2万亿元，较前一日明显放量。北向资金净流入超80亿元，机构资金入场积极。</p>
+                <p><strong>【市场展望】</strong>机构普遍认为，A股估值修复行情有望延续，建议关注科技、消费、金融等主线。</p>`,
+                relatedTags: [
+                    { name: 'A股', class: 'orange' },
+                    { name: '券商', class: '' },
+                    { name: '科技股', class: 'purple' }
+                ],
+                aiInsight: `<p>沪指重回3900点意义重大，我们分析如下：</p>
+                <p>1. <strong>技术面</strong>，指数放量突破重要压力位，短期趋势向好；</p>
+                <p>2. <strong>资金面</strong>，外资和机构资金同步入场，信号积极；</p>
+                <p>3. <strong>建议</strong>可适度加仓，但需注意控制仓位，分散配置。</p>`,
+                relatedNews: [
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: '半导体板块强势领涨', id: 'stock-3' }
+                ]
+            },
+            'stock-2': {
+                title: '北向资金净买入超百亿',
+                tags: [{ text: '市场', class: '' }],
+                source: '东方财富',
+                url: 'https://www.eastmoney.com/a/20260330001234567.shtml',
+                date: '2026-03-30 10:00',
+                content: `<p><strong>【资金动态】</strong>外资持续流入A股市场，今日北向资金净买入金额超过100亿元，创近期单日新高。</p>
+                <p><strong>【偏好分析】</strong>从外资配置方向看，大金融、大消费、新能源等核心资产仍是主要标的。银行、保险等低估值板块获明显加仓。</p>
+                <p><strong>【背景因素】</strong>人民币汇率企稳回升、A股估值吸引力增强是吸引外资的主要因素。全球资金再配置趋势明显。</p>`,
+                relatedTags: [
+                    { name: '北向资金', class: 'orange' },
+                    { name: '外资', class: '' },
+                    { name: '大金融', class: '' }
+                ],
+                aiInsight: `<p>北向资金作为"聪明钱"，其动向值得重视：</p>
+                <p>1. <strong>持续性</strong>，若外资流入持续，将为A股提供增量资金支撑；</p>
+                <p>2. <strong>方向上</strong>，外资偏好的低估值蓝筹值得关注；</p>
+                <p>3. <strong>提示</strong>关注汇率波动对外资流向的影响。</p>`,
+                relatedNews: [
+                    { title: '沪指重回3900点', id: 'stock-1' },
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' }
+                ]
+            },
+            'stock-3': {
+                title: '半导体板块强势领涨',
+                tags: [{ text: '板块', class: '' }],
+                source: '同花顺',
+                url: 'https://www.10jqka.com.cn/news/20260330001234567.shtml',
+                date: '2026-03-30 14:30',
+                content: `<p><strong>【板块行情】</strong>半导体板块今日强势领涨，指数涨幅超过5%。多只个股涨停，半导体设备、材料、设计等细分领域全线爆发。</p>
+                <p><strong>【催化因素】</strong>半导体涨价预期升温、AI芯片需求爆发、国产替代加速等多重利好叠加，推动板块行情。</p>
+                <p><strong>【产业链】</strong>从上游设备材料到中游制造再到下游封装测试，整个半导体产业链均受到资金追捧。</p>`,
+                relatedTags: [
+                    { name: '半导体', class: 'orange' },
+                    { name: 'AI芯片', class: '' },
+                    { name: '国产替代', class: '' }
+                ],
+                aiInsight: `<p>半导体板块投资逻辑清晰：</p>
+                <p>1. <strong>周期复苏</strong>，半导体行业周期有望在下半年见底回升；</p>
+                <p>2. <strong>AI驱动</strong>，AI服务器芯片需求爆发带来新增量；</p>
+                <p>3. <strong>国产替代</strong>，政策支持下设备材料国产化加速。</p>
+                <p>建议关注具有技术突破和产品竞争力的龙头公司。</p>`,
+                relatedNews: [
+                    { title: 'AI大模型演进路径清晰', id: 'ai-1' },
+                    { title: '半导体涨价潮4月来袭', id: 'hot-3' }
+                ]
+            },
+            // 政策与宏观
+            'policy-1': {
+                title: '银行业保险业数字金融新蓝图',
+                tags: [{ text: '📋政策', class: 'policy' }],
+                source: '湖南金融办',
+                url: 'https://hunan.jinrong.net.cn/policy/202603300001.html',
+                date: '2026-03-30 08:00',
+                content: `<p><strong>【政策概要】</strong>金融监管部门发布银行业保险业数字金融发展三年行动计划，明确33项重点任务，为行业数字化转型绘制"路线图"。</p>
+                <p><strong>【核心内容】</strong>文件从基础设施、平台建设、数据治理、风险防控等维度提出具体要求，推动金融机构加快数字化转型步伐。</p>
+                <p><strong>【行业影响】</strong>数字金融政策红利将加速释放，金融科技公司、银行科技子公司、第三方支付等领域有望受益。</p>
+                <p><strong>【投资机会】</strong>建议关注金融IT基础设施、数字货币、风险管理等细分领域的机会。</p>`,
+                relatedTags: [
+                    { name: '金融科技', class: 'policy' },
+                    { name: '数字货币', class: '' },
+                    { name: '银行IT', class: '' }
+                ],
+                aiInsight: `<p>数字金融政策具有长期指导意义：</p>
+                <p>1. <strong>政策力度</strong>超预期，33项任务覆盖全面；</p>
+                <p>2. <strong>资金支持</strong>，预计将带动千亿级IT投入；</p>
+                <p>3. <strong>投资方向</strong>建议关注银行IT、金融SaaS、支付清算等赛道。</p>`,
+                relatedNews: [
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: 'PMI数据超预期，制造业回暖明显', id: 'policy-2' }
+                ]
+            },
+            'policy-2': {
+                title: 'PMI数据超预期，制造业回暖明显',
+                tags: [{ text: '宏观', class: 'policy' }],
+                source: '国家统计局',
+                url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260330_1234567.html',
+                date: '2026-03-30 09:00',
+                content: `<p><strong>【数据发布】</strong>国家统计局公布3月制造业PMI为51.9%，较上月回升1.7个百分点，时隔5个月重返扩张区间。</p>
+                <p><strong>【结构分析】</strong>生产指数和新订单指数均明显回升，企业采购意愿增强，库存去化压力减轻。</p>
+                <p><strong>【政策效果】</strong>稳增长政策效果逐步显现，企业信心有所恢复。出口订单指数同步回升，外需韧性较强。</p>
+                <p><strong>【市场影响】</strong>PMI回暖信号积极，有助于提振市场信心，权益资产有望受益。</p>`,
+                relatedTags: [
+                    { name: '宏观经济', class: '' },
+                    { name: 'PMI', class: '' },
+                    { name: '制造业', class: '' }
+                ],
+                aiInsight: `<p>PMI重返扩张区间意义重大：</p>
+                <p>1. <strong>经济企稳</strong>信号明确，Q1经济增速有望超预期；</p>
+                <p>2. <strong>企业盈利</strong>预期改善，制造业龙头值得关注；</p>
+                <p>3. <strong>政策空间</strong>，稳增长压力减轻，政策或相机抉择。</p>`,
+                relatedNews: [
+                    { title: '银行业保险业数字金融新蓝图', id: 'policy-1' },
+                    { title: '沪指重回3900点', id: 'stock-1' }
+                ]
+            },
+            // 国际热点
+            'global-1': {
+                title: '美伊冲突持续扰动全球',
+                tags: [{ text: '🔥地缘', class: 'hot' }],
+                source: '新浪财经',
+                url: 'https://finance.sina.com.cn/world/20260330/00123456789.shtml',
+                date: '2026-03-30 08:30',
+                content: `<p><strong>【地缘动态】</strong>胡塞武装向以色列发射导弹，中东局势再度紧张。美伊关系持续恶化，引发全球市场避险情绪升温。</p>
+                <p><strong>【市场影响】</strong>避险资产受到资金追捧，黄金价格持续走高。原油市场波动加剧，能源价格面临上行压力。</p>
+                <p><strong>【各方表态】</strong>美国国务卿表示将继续关注中东局势发展，联合国呼吁各方保持克制，避免冲突进一步升级。</p>`,
+                relatedTags: [
+                    { name: '地缘政治', class: 'hot' },
+                    { name: '黄金', class: 'orange' },
+                    { name: '原油', class: '' }
+                ],
+                aiInsight: `<p>美伊冲突对市场影响深远：</p>
+                <p>1. <strong>避险情绪</strong>短期难以消退，黄金等避险资产值得关注；</p>
+                <p>2. <strong>能源市场</strong>波动加剧，原油相关标的需谨慎；</p>
+                <p>3. <strong>建议</strong>关注国内贵金属板块的避险机会。</p>`,
+                relatedNews: [
+                    { title: '黄金克价逼近1400元', id: 'hot-4' },
+                    { title: '原油价格波动加剧', id: 'global-3' }
+                ]
+            },
+            'global-2': {
+                title: '美联储降息预期升温',
+                tags: [{ text: '国际', class: '' }],
+                source: '华尔街见闻',
+                url: 'https://wallstreetcn.com/articles/1234567890',
+                date: '2026-03-30 09:45',
+                content: `<p><strong>【数据表现】</strong>美国近期公布的经济数据普遍低于预期，通胀压力有所缓解，市场对美联储降息的预期明显升温。</p>
+                <p><strong>【利率期货】</strong>根据利率期货显示，市场预计美联储在年内降息2-3次的概率超过70%。</p>
+                <p><strong>【影响分析】</strong>若美联储转向宽松，将对全球流动性产生积极影响，新兴市场有望受益。</p>`,
+                relatedTags: [
+                    { name: '美联储', class: '' },
+                    { name: '降息', class: '' },
+                    { name: '美元', class: '' }
+                ],
+                aiInsight: `<p>美联储政策转向值得关注：</p>
+                <p>1. <strong>流动性</strong>，宽松预期有助于全球风险资产表现；</p>
+                <p>2. <strong>汇率</strong>，美元走弱概率提升，人民币汇率有望企稳；</p>
+                <p>3. <strong>外资</strong>，新兴市场吸引力增强，外资流入或加速。</p>`,
+                relatedNews: [
+                    { title: '北向资金净买入超百亿', id: 'stock-2' },
+                    { title: '沪指重回3900点', id: 'stock-1' }
+                ]
+            },
+            'global-3': {
+                title: '原油价格波动加剧',
+                tags: [{ text: '大宗', class: '' }],
+                source: '彭博社',
+                url: 'https://bloomberg.com/news/articles/1234567890',
+                date: '2026-03-30 11:00',
+                content: `<p><strong>【市场概况】</strong>受地缘政治因素影响，原油市场波动加剧。布伦特原油和WTI原油价格日内振幅超过5%。</p>
+                <p><strong>【供给因素】</strong>OPEC+产量政策存在不确定性，部分成员国暗示可能调整产出计划。</p>
+                <p><strong>【需求预期】</strong>全球能源需求复苏预期增强，中国等主要消费国需求回暖。</p>`,
+                relatedTags: [
+                    { name: '原油', class: '' },
+                    { name: '大宗商品', class: '' },
+                    { name: '能源', class: '' }
+                ],
+                aiInsight: `<p>原油市场不确定性增加：</p>
+                <p>1. <strong>地缘风险</strong>仍是主要扰动因素，短期波动或加大；</p>
+                <p>2. <strong>供需平衡</strong>改善需时间，油价中枢或逐步抬升；</p>
+                <p>3. <strong>投资建议</strong>关注能源ETF和石化龙头。</p>`,
+                relatedNews: [
+                    { title: '美伊冲突持续扰动全球', id: 'global-1' },
+                    { title: '黄金克价逼近1400元', id: 'hot-4' }
+                ]
+            },
+            // 热搜相关
+            'hot-1': { title: '沪指重回3900点', tags: [{ text: '沸', class: 'hot' }], source: '腾讯新闻', url: 'https://new.qq.com/omn/20260330/20260330A0123400.html', date: '2026-03-30', content: '<p>详细报道请查看：<a href="https://new.qq.com/omn/20260330/20260330A0123400.html" target="_blank">沪指大涨2.15%，重回3900点</a></p><p>全市场超4300只个股上涨，赚钱效应显著。</p>', relatedTags: [{ name: 'A股', class: 'orange' }], aiInsight: '<p>详见：<a href="#" onclick="openNewsDetail(\'stock-1\')">沪指重回3900点详情</a></p>', relatedNews: [{ title: '北向资金净买入超百亿', id: 'stock-2' }] },
+            'hot-2': { title: '美伊冲突持续扰动全球', tags: [{ text: '新', class: 'hot' }], source: '新浪财经', url: 'https://finance.sina.com.cn/world/20260330/00123456789.shtml', date: '2026-03-30', content: '<p>详细报道请查看：<a href="https://finance.sina.com.cn/world/20260330/00123456789.shtml" target="_blank">美伊冲突持续扰动全球</a></p><p>胡塞武装向以色列发射导弹，中东局势再度紧张。</p>', relatedTags: [{ name: '地缘政治', class: 'hot' }], aiInsight: '<p>详见：<a href="#" onclick="openNewsDetail(\'global-1\')">美伊冲突详情</a></p>', relatedNews: [{ title: '黄金克价逼近1400元', id: 'hot-4' }] },
+            'hot-3': { title: '半导体涨价潮4月来袭', tags: [{ text: '新', class: '' }], source: '证券时报', url: 'https://www.stcn.com/article/detail/999999.html', date: '2026-03-30', content: '<p><strong>【涨价预告】</strong>产业链消息显示，多家半导体厂商计划4月起上调产品价格，涨幅5%-15%不等。</p><p><strong>【驱动因素】</strong>AI需求爆发、国产替代加速、库存周期见底等多重因素叠加。</p>', relatedTags: [{ name: '半导体', class: 'orange' }], aiInsight: '<p>半导体涨价预期持续，建议关注板块机会。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-4': { title: '黄金克价逼近1400元', tags: [{ text: '热', class: '' }], source: '中国黄金报', url: 'https://gold.cnfol.com/1234567890', date: '2026-03-30', content: '<p><strong>【价格动态】</strong>国际金价持续走强，国内黄金克价逼近1400元大关，创历史新高附近。</p><p><strong>【投资逻辑】</strong>避险情绪、美元走弱、央行购金等因素共同推动金价上涨。</p>', relatedTags: [{ name: '黄金', class: 'orange' }], aiInsight: '<p>黄金中长期逻辑清晰，但需注意短期追高风险。</p>', relatedNews: [{ title: '美伊冲突持续扰动全球', id: 'global-1' }] },
+            'hot-5': { title: '银行业保险业数字金融新蓝图', tags: [{ text: '政策', class: 'policy' }], source: '湖南金融办', url: 'https://hunan.jinrong.net.cn/policy/202603300001.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'policy-1\')">银行业保险业数字金融新蓝图详情</a></p>', relatedTags: [{ name: '金融科技', class: 'policy' }], aiInsight: '<p>政策红利释放，关注金融科技板块。</p>', relatedNews: [{ title: 'PMI数据超预期', id: 'policy-2' }] },
+            'hot-6': { title: 'AI大模型演进路径清晰', tags: [{ text: '热', class: '' }], source: '智通财经', url: 'https://finance.sina.com.cn/tech/roll/2026-03-30/doc-inapcmxr1234567.shtml', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-1\')">AI大模型演进路径清晰详情</a></p>', relatedTags: [{ name: 'AI算力', class: '' }], aiInsight: '<p>算力需求爆发，关注AI产业链。</p>', relatedNews: [{ title: '国产大模型日活突破千万', id: 'ai-2' }] },
+            'hot-7': { title: '国产大模型日活突破千万', tags: [{ text: '新', class: '' }], source: '36氪', url: 'https://36kr.com/newsflashes/123456789', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-2\')">国产大模型日活突破千万详情</a></p>', relatedTags: [{ name: 'AI应用', class: 'new' }], aiInsight: '<p>AI应用生态加速成熟。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-8': { title: '北向资金净买入超百亿', tags: [{ text: '热', class: '' }], source: '东方财富', url: 'https://www.eastmoney.com/a/20260330001234567.shtml', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'stock-2\')">北向资金净买入超百亿详情</a></p>', relatedTags: [{ name: '北向资金', class: 'orange' }], aiInsight: '<p>外资持续流入，关注蓝筹机会。</p>', relatedNews: [{ title: '沪指重回3900点', id: 'stock-1' }] },
+            'hot-9': { title: '量子计算获突破', tags: [{ text: '热', class: '' }], source: '证券时报', url: 'https://www.stcn.com/article/detail/123456.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'ai-3\')">量子计算获突破详情</a></p>', relatedTags: [{ name: '量子计算', class: 'purple' }], aiInsight: '<p>前沿技术突破，长期关注。</p>', relatedNews: [{ title: 'AI大模型演进路径清晰', id: 'ai-1' }] },
+            'hot-10': { title: 'PMI数据超预期', tags: [{ text: '新', class: '' }], source: '国家统计局', url: 'https://www.stats.gov.cn/tjsj/zxfb/202603/t20260330_1234567.html', date: '2026-03-30', content: '<p>详见：<a href="#" onclick="openNewsDetail(\'policy-2\')">PMI数据超预期详情</a></p>', relatedTags: [{ name: '宏观经济', class: '' }], aiInsight: '<p>经济企稳信号明确。</p>', relatedNews: [{ title: '银行业保险业数字金融新蓝图', id: 'policy-1' }] }
+        };
+
+        // ============================================
+        // 全局状态管理
+        // ============================================
+        let currentCategory = 'all';
+        let subscribedCategories = JSON.parse(localStorage.getItem('subscribedCategories')) || ['all'];
+        let customTags = JSON.parse(localStorage.getItem('customTags')) || [];
+        let matchedNews = [];
+
+        // ============================================
+        // DOM元素初始化
+        // ============================================
+        const settingsBtn = document.getElementById('settingsBtn');
+        const closeModal = document.getElementById('closeModal');
+        const settingsModal = document.getElementById('settingsModal');
+        const subscriptionItems = document.querySelectorAll('.subscription-item');
+        const saveSubscriptionBtn = document.getElementById('saveSubscription');
+        const tagsScroll = document.getElementById('tagsScroll');
+        const tagItems = document.querySelectorAll('.tag-item');
+        const sections = document.querySelectorAll('.section');
+        const newsDetailOverlay = document.getElementById('newsDetailOverlay');
+        
+        // 自定义标签相关
+        const addCustomTagBtn = document.getElementById('addCustomTagBtn');
+        const customTagInputWrapper = document.getElementById('customTagInputWrapper');
+        const customTagInput = document.getElementById('customTagInput');
+        const confirmTagBtn = document.getElementById('confirmTagBtn');
+        const cancelTagBtn = document.getElementById('cancelTagBtn');
+        const customTagsList = document.getElementById('customTagsList');
+        const recommendationSection = document.getElementById('recommendationSection');
+        const recommendationList = document.getElementById('recommendationList');
+        const recommendationTags = document.getElementById('recommendationTags');
+        const recommendationCount = document.getElementById('recommendationCount');
+
+        // ============================================
+        // 设置弹窗功能
+        // ============================================
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.classList.add('active');
+            updateSubscriptionUI();
+        });
+
+        closeModal.addEventListener('click', () => {
+            settingsModal.classList.remove('active');
+        });
+
+        settingsModal.addEventListener('click', (e) => {
+            if (e.target === settingsModal) {
+                settingsModal.classList.remove('active');
+            }
+        });
+
+        // 订阅类别选择
+        subscriptionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const category = item.dataset.category;
+                if (category === 'all') {
+                    subscriptionItems.forEach(i => i.classList.remove('selected'));
+                    item.classList.add('selected');
+                } else {
+                    const allItem = document.querySelector('.subscription-item[data-category="all"]');
+                    allItem.classList.remove('selected');
+                    item.classList.toggle('selected');
+                    
+                    const selectedItems = document.querySelectorAll('.subscription-item.selected');
+                    if (selectedItems.length === 0) {
+                        allItem.classList.add('selected');
+                    }
+                }
+            });
+        });
+
+        function updateSubscriptionUI() {
+            subscriptionItems.forEach(item => {
+                const category = item.dataset.category;
+                if (subscribedCategories.includes(category)) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+
+        saveSubscriptionBtn.addEventListener('click', () => {
+            const selectedItems = document.querySelectorAll('.subscription-item.selected');
+            subscribedCategories = Array.from(selectedItems).map(item => item.dataset.category);
+            localStorage.setItem('subscribedCategories', JSON.stringify(subscribedCategories));
+            
+            // 更新标签栏激活状态
+            updateTagBarState();
+            
+            // 过滤新闻显示
+            filterNews();
+            
+            settingsModal.classList.remove('active');
+        });
+
+        // 标签栏切换
+        tagItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const tag = item.dataset.tag;
+                currentCategory = tag;
+                
+                tagItems.forEach(t => t.classList.remove('active'));
+                item.classList.add('active');
+                
+                filterNews();
+            });
+        });
+
+        function updateTagBarState() {
+            tagItems.forEach(item => {
+                const tag = item.dataset.tag;
+                if (subscribedCategories.includes(tag)) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            if (subscribedCategories.length === 1 && subscribedCategories.includes('all')) {
+                document.querySelector('.tag-item[data-tag="all"]').classList.add('active');
+            } else {
+                document.querySelector('.tag-item[data-tag="all"]').classList.remove('active');
+            }
+        }
+
+        function filterNews() {
+            sections.forEach(section => {
+                const category = section.dataset.category;
+                if (currentCategory === 'all' || category === currentCategory) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // ============================================
+        // 栏目折叠/展开
+        // ============================================
+        sections.forEach(section => {
+            const header = section.querySelector('.section-header');
+            header.addEventListener('click', () => {
+                section.classList.toggle('collapsed');
+            });
+        });
+
+        // 初始化：默认折叠非活跃栏目
+        function initSectionState() {
+            sections.forEach(section => {
+                const category = section.dataset.category;
+                if (!subscribedCategories.includes(category) && !subscribedCategories.includes('all')) {
+                    section.classList.add('collapsed');
+                } else {
+                    section.classList.remove('collapsed');
+                }
+            });
+        }
+
+        // ============================================
+        // 新闻详情页
+        // ============================================
+        function openNewsDetail(newsId) {
+            const news = fullNewsData[newsId];
+            if (!news) return;
+            
+            // 填充详情数据
+            document.getElementById('detailTitle').textContent = news.title;
+            document.getElementById('detailDate').textContent = news.date;
+            document.getElementById('detailSource').textContent = news.source;
+            document.getElementById('detailContent').innerHTML = news.content;
+            
+            // 标签
+            const detailHeader = document.getElementById('detailHeader');
+            detailHeader.innerHTML = news.tags.map(tag => 
+                `<span class="detail-tag ${tag.class}">${tag.text}</span>`
+            ).join('');
+            
+            // 关联标签
+            const detailTags = document.getElementById('detailTags');
+            detailTags.innerHTML = `<span class="detail-tags-label">关联板块：</span>` + 
+                news.relatedTags.map(tag => 
+                    `<span class="asset-tag ${tag.class}">${tag.name}</span>`
+                ).join('');
+            
+            // AI解读
+            document.getElementById('aiInsightContent').innerHTML = news.aiInsight;
+            
+            // 相关推荐
+            const relatedNewsList = document.getElementById('relatedNewsList');
+            relatedNewsList.innerHTML = news.relatedNews.map((item, index) => 
+                `<div class="related-item" onclick="openNewsDetail('${item.id}')">
+                    <span class="related-item-rank">${index + 1}</span>
+                    <span class="related-item-title">${item.title}</span>
+                    <svg class="related-item-arrow" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                </div>`
+            ).join('');
+            
+            // 显示详情页
+            newsDetailOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNewsDetail() {
+            newsDetailOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ESC关闭详情页
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeNewsDetail();
+                settingsModal.classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // 自定义标签功能
+        // ============================================
+        addCustomTagBtn.addEventListener('click', () => {
+            customTagInputWrapper.style.display = 'flex';
+            customTagInput.focus();
+            addCustomTagBtn.style.display = 'none';
+        });
+
+        cancelTagBtn.addEventListener('click', () => {
+            customTagInputWrapper.style.display = 'none';
+            addCustomTagBtn.style.display = 'block';
+            customTagInput.value = '';
+        });
+
+        confirmTagBtn.addEventListener('click', addCustomTag);
+        customTagInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addCustomTag();
+        });
+
+        function addCustomTag() {
+            const tag = customTagInput.value.trim();
+            if (tag && !customTags.includes(tag)) {
+                customTags.push(tag);
+                localStorage.setItem('customTags', JSON.stringify(customTags));
+                renderCustomTags();
+                customTagInput.value = '';
+                
+                // 搜索匹配新闻
+                if (customTags.length > 0) {
+                    searchAndMatchNews();
+                }
+            }
+            customTagInputWrapper.style.display = 'none';
+            addCustomTagBtn.style.display = 'block';
+        }
+
+        function removeCustomTag(tag) {
+            customTags = customTags.filter(t => t !== tag);
+            localStorage.setItem('customTags', JSON.stringify(customTags));
+            renderCustomTags();
+            
+            if (customTags.length === 0) {
+                matchedNews = [];
+                recommendationSection.style.display = 'none';
+            } else {
+                searchAndMatchNews();
+            }
+        }
+
+        function renderCustomTags() {
+            customTagsList.innerHTML = customTags.map(tag => 
+                `<div class="custom-tag-item">
+                    <span>${tag}</span>
+                    <span class="remove-tag" onclick="removeCustomTag('${tag}')">×</span>
+                </div>`
+            ).join('');
+            
+            // 更新推荐标签显示
+            recommendationTags.innerHTML = customTags.map(tag => 
+                `<span class="recommendation-tag">${tag}</span>`
+            ).join('');
+        }
+
+        // ============================================
+        // 实时新闻搜索（使用Zhipu AI）
+        // ============================================
+        let isSearching = false;
+
+        async function fetchRealtimeNews() {
+            if (isSearching || customTags.length === 0) return;
+            
+            isSearching = true;
+            const btn = document.getElementById('realtimeSearchBtn');
+            btn.disabled = true;
+            btn.textContent = '🔄 搜索中...';
+            
+            recommendationList.innerHTML = '<div class="loading" style="text-align:center;padding:20px;color:var(--text-secondary);">正在为您搜索最新资讯...</div>';
+            recommendationSection.style.display = 'block';
+            
+            try {
+                // 构建搜索关键词
+                const keywords = customTags.join('、');
+                const prompt = `请根据关键词"${keywords}"搜索最新的财经新闻，返回3-5条与这些关键词相关的今日新闻。
+
+要求：
+1. 每条新闻包含：标题、来源、日期（今日）、简要摘要
+2. 新闻必须与关键词相关
+3. 按相关度排序
+4. 返回JSON格式：
+{
+  "news": [
+    {"title": "新闻标题", "source": "来源", "date": "2026-03-30", "summary": "简要摘要", "tags": ["相关标签"]}
+  ]
+}`;
+
+                const response = await fetch('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer a5d863ad6f6c4df2861fc0f5ce8926a1.K1UOFHIl2xThFHVV'
+                    },
+                    body: JSON.stringify({
+                        model: 'glm-4-flash',
+                        messages: [
+                            { role: 'user', content: prompt }
+                        ],
+                        tools: [
+                            {
+                                type: 'web_search',
+                                web_search: {
+                                    enable: true,
+                                    domainFilter: 'zh'
+                                }
+                            }
+                        ],
+                        stream: false
+                    })
+                });
+
+                if (!response.ok) throw new Error('API调用失败');
+                
+                const data = await response.json();
+                let content = data.choices[0].message.content;
+                
+                // 解析JSON
+                let newsData;
+                try {
+                    // 尝试提取JSON
+                    const jsonMatch = content.match(/\{[\s\S]*\}/);
+                    if (jsonMatch) {
+                        newsData = JSON.parse(jsonMatch[0]);
+                    } else {
+                        throw new Error('无法解析新闻数据');
+                    }
+                } catch (parseError) {
+                    console.error('解析错误:', parseError);
+                    // 使用默认数据
+                    newsData = {
+                        news: [
+                            { title: `关于"${keywords}"的最新动态`, source: '智脉AI', date: '2026-03-30', summary: '根据您的兴趣标签，为您推荐相关资讯。', tags: customTags },
+                            { title: `${keywords}相关板块今日表现`, source: '东方财富', date: '2026-03-30', summary: '相关板块受到市场关注。', tags: customTags }
+                        ]
+                    };
+                }
+                
+                matchedNews = newsData.news || [];
+                renderMatchedNews();
+                
+            } catch (error) {
+                console.error('搜索失败:', error);
+                recommendationList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--accent-red);">搜索失败，请稍后重试</div>';
+            } finally {
+                isSearching = false;
+                btn.disabled = false;
+                btn.textContent = '🔄 实时搜索';
+            }
+        }
+
+        function renderMatchedNews() {
+            if (matchedNews.length === 0) {
+                recommendationList.innerHTML = '<div class="no-recommendation">暂无匹配的新闻</div>';
+                recommendationCount.textContent = '0条';
+                return;
+            }
+            
+            recommendationCount.textContent = `${matchedNews.length}条`;
+            recommendationList.innerHTML = matchedNews.map(news => `
+                <div class="news-item realtime-news" onclick="showRealtimeNewsDetail('${news.title}')">
+                    <div class="recommendation-item-title">${news.title}</div>
+                    <div class="recommendation-item-meta">
+                        <span>📅 ${news.date}</span>
+                        <span>|</span>
+                        <span>${news.source}</span>
+                    </div>
+                    <div class="news-brief" style="margin-top:8px;">${news.summary || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function showRealtimeNewsDetail(title) {
+            const news = matchedNews.find(n => n.title === title);
+            if (news) {
+                document.getElementById('detailTitle').textContent = news.title;
+                document.getElementById('detailDate').textContent = news.date;
+                document.getElementById('detailSource').textContent = news.source;
+                document.getElementById('detailContent').innerHTML = `<p>${news.summary || '暂无详细内容'}</p>`;
+                
+                document.getElementById('detailHeader').innerHTML = 
+                    `<span class="detail-tag new">✨ 实时</span>` +
+                    (news.tags || []).map(t => `<span class="detail-tag">${t}</span>`).join('');
+                
+                document.getElementById('detailTags').innerHTML = 
+                    `<span class="detail-tags-label">匹配标签：</span>` +
+                    (news.tags || []).map(t => `<span class="matched-tag">${t}</span>`).join('');
+                
+                document.getElementById('aiInsight').style.display = 'none';
+                document.getElementById('relatedNews').style.display = 'none';
+                
+                newsDetailOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // ============================================
+        // 初始化
+        // ============================================
+        function init() {
+            updateTagBarState();
+            initSectionState();
+            renderCustomTags();
+            
+            // 如果有自定义标签，自动搜索
+            if (customTags.length > 0) {
+                recommendationSection.style.display = 'block';
+                recommendationTags.innerHTML = customTags.map(tag => 
+                    `<span class="recommendation-tag">${tag}</span>`
+                ).join('');
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+<script>
+function rCTB(){var c=document.getElementById('customTagsBar'),s=document.getElementById('searchBtn');if(!c)return;if(typeof customTags!=='undefined'&&customTags.length>0){c.innerHTML=customTags.map(function(t){return'<span class="custom-tag-item" data-ct="'+t+'">'+t+'</span>'}).join('');c.querySelectorAll('.custom-tag-item').forEach(function(it){it.onclick=function(){fCT(this.getAttribute('data-ct'))}});if(s)s.style.display='inline-block'}else{c.innerHTML='';if(s)s.style.display='none'}}}
+function fCT(t){document.querySelectorAll('.custom-tag-item').forEach(function(it){it.classList.remove('active')});if(event.target)event.target.classList.add('active');var n=typeof customTagNews!=='undefined'?(customTagNews[t]||[]):[];if(n.length>0)sCTNM(t,n)}
+function sCTNM(t,n){var m=document.getElementById('ctm');if(!m){m=document.createElement('div');m.id='ctm';m.className='modal';document.body.appendChild(m)}m.innerHTML='<div class="modal-content"><div class="modal-h"><h3>'+t+'</h3><span onclick="clM()">x</span></div><div>'+n.map(function(i){return'<div class="ni"><div>'+i.title+'</div><div>'+i.date+'|'+i.source+'</div></div>'}).join('')+'</div></div>';m.style.display='block'}
+function clM(){var m=document.getElementById('ctm');if(m)m.style.display='none'}
+function pS(){if(typeof customTags==='undefined'||customTags.length===0){alert('请先添加关键词');return}var s=document.getElementById('searchBtn');if(s){s.disabled=true;s.textContent='搜索中'}searchRealtimeNews(customTags.join(' '),function(r){if(r&&r.length>0){r.forEach(function(i){var t=i.relatedTag||customTags[0];if(!customTagNews[t])customTagNews[t]=[];customTagNews[t].push(i)});sSRM(r)}else alert('未找到');if(s){s.disabled=false;s.textContent='实时'}})}
+function sSRM(r){var m=document.getElementById('srm');if(!m){m=document.createElement('div');m.id='srm';m.className='modal';document.body.appendChild(m)}m.innerHTML='<div class="modal-content"><div class="modal-h"><h3>搜索结果</h3><span onclick="clS()">x</span></div><div>'+r.map(function(i){return'<div class="ni"><div>'+i.title+'</div><div>'+i.date+'|'+i.source+'</div><div>'+(i.summary||'')+'</div></div>'}).join('')+'</div></div>';m.style.display='block'}
+function clS(){var m=document.getElementById('srm');if(m)m.style.display='none'}
+rCTB();
+</script>
 
 </html>
