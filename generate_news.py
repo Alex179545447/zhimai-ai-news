@@ -14,11 +14,11 @@ from datetime import datetime
 API_KEY = os.environ.get("ZHIPU_API_KEY", "28133690e57f4ba9902b4015f21404bb.L3eQw0LRHCFM7N9f")
 API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 
-
 def get_news_from_glm():
     """调用智谱GLM-4 API获取新闻"""
     today = datetime.now()
     date_str = today.strftime('%Y年%m月%d日')
+    weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][today.weekday()]
     
     prompt = f"""请搜索今天({date_str})的最新财经新闻，要求：
 1. 只搜索最近24小时内的新闻
@@ -26,7 +26,7 @@ def get_news_from_glm():
 
 {{
   "date": "{today.strftime('%Y-%m-%d')}",
-  "weekday": "{['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][today.weekday()]}",
+  "weekday": "{weekday}",
   "marketTitle": "今日市场基调一句话(不超过15字)",
   "marketDesc": "市场基调详细说明(50字以内)",
   "ai": [
@@ -99,11 +99,32 @@ def extract_json(content):
     return None
 
 
-def escape_js(text):
-    """转义JavaScript字符串"""
-    if not text:
-        return ""
-    return text.replace('\\', '\\\\').replace('"', '\\"').replace("'", "\\'").replace('\n', '\\n').replace('\r', '')
+def build_news_item(news, category):
+    """构建新闻条目"""
+    title = news.get('title', '')
+    date = news.get('date', '')
+    source = news.get('source', '')
+    desc = news.get('desc', '')
+    tag = news.get('tag', '')
+    news_id = news.get('id', f'{category}-{hash(title) % 1000}')
+    
+    return f"""            '{news_id}': {{
+                title: '{title.replace("'", "\'")}',
+                tags: [{{ text: '{tag}', class: '' }}],
+                source: '{source}',
+                url: '#',
+                date: '{date}',
+                content: `<p><strong>【摘要】</strong>{desc}</p>`,
+                relatedTags: [],
+                aiInsight: `<p>详见相关新闻</p>`,
+                relatedNews: []
+            }}"""
+
+
+def build_hot_item(title, rank, category='hot'):
+    """构建热搜条目"""
+    news_id = f'{category}-{rank}'
+    return f"""            '{news_id}': {{ title: '{title.replace("'", "\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{datetime.now().strftime('%Y-%m-%d')}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
 
 
 def update_html(news_data):
@@ -115,30 +136,67 @@ def update_html(news_data):
     weekday = news_data.get('weekday', '')
     full_date = f"{today[:4]}年{int(today[5:7])}月{int(today[8:10])}日 · {weekday}"
     
-    # 更新日期
+    # 1. 更新日期显示
     content = re.sub(r'id="currentDate">[^<]+', f'id="currentDate">{full_date}', content)
     
-    # 更新市场基调
+    # 2. 更新市场基调
     if 'marketTitle' in news_data:
         content = re.sub(r'市场基调：[^<]+', f"市场基调：{news_data['marketTitle']}", content)
     if 'marketDesc' in news_data:
         content = re.sub(r'美伊局势升温[^<]+', news_data.get('marketDesc', ''), content)
     
-    # 更新新闻日期
-    content = re.sub(r'\d{4}-\d{2}-\d{2}(?=#_#)', today, content)
+    # 3. 构建新的新闻数据
+    news_items = []
     
-    # 更新fullNewsData
-    news_json = json.dumps(news_data, ensure_ascii=False)
-    content = re.sub(
-        r'var fullNewsData = \{[^}]+\}',
-        f'var fullNewsData = {news_json}',
-        content
-    )
+    # AI新闻
+    for i, news in enumerate(news_data.get('ai', []), 1):
+        news['id'] = f'ai-{i}'
+        news_items.append(build_news_item(news, 'ai'))
+    
+    # 市场新闻
+    for i, news in enumerate(news_data.get('market', []), 1):
+        news['id'] = f'stock-{i}'
+        news_items.append(build_news_item(news, 'stock'))
+    
+    # 政策新闻
+    for i, news in enumerate(news_data.get('policy', []), 1):
+        news['id'] = f'policy-{i}'
+        news_items.append(build_news_item(news, 'policy'))
+    
+    # 国际新闻
+    for i, news in enumerate(news_data.get('global', []), 1):
+        news['id'] = f'global-{i}'
+        news_items.append(build_news_item(news, 'global'))
+    
+    # 热搜
+    for i, title in enumerate(news_data.get('hot', []), 1):
+        news_items.append(build_hot_item(title, i))
+    
+    # 4. 替换新闻数据
+    new_data_block = "        const fullNewsData = {\n" + ",\n".join(news_items) + "\n        };"
+    
+    # 使用标记替换
+    start_marker = '// NEWS_DATA_START'
+    end_marker = '// NEWS_DATA_END'
+    
+    start_idx = content.find(start_marker)
+    end_idx = content.find(end_marker)
+    
+    if start_idx != -1 and end_idx != -1:
+        new_content = content[:start_idx] + start_marker + '\n' + new_data_block + '\n' + end_marker + content[end_idx + len(end_marker):]
+    else:
+        print("❌ 未找到新闻数据标记")
+        return False
     
     with open('index.html', 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(new_content)
     
     print(f"✅ HTML已更新: {full_date}")
+    print(f"   AI新闻: {len(news_data.get('ai', []))}条")
+    print(f"   市场新闻: {len(news_data.get('market', []))}条")
+    print(f"   政策新闻: {len(news_data.get('policy', []))}条")
+    print(f"   全球新闻: {len(news_data.get('global', []))}条")
+    print(f"   热搜: {len(news_data.get('hot', []))}条")
     return True
 
 
@@ -159,11 +217,7 @@ def main():
         if json_str:
             try:
                 news_data = json.loads(json_str)
-                print(f"✅ 解析JSON成功")
-                print(f"   AI新闻: {len(news_data.get('ai', []))}条")
-                print(f"   市场新闻: {len(news_data.get('market', []))}条")
-                print(f"   政策新闻: {len(news_data.get('policy', []))}条")
-                print(f"   全球新闻: {len(news_data.get('global', []))}条")
+                print("✅ 解析JSON成功")
                 
                 if update_html(news_data):
                     print("-" * 50)
