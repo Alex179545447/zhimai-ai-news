@@ -29,178 +29,179 @@ def get_news_from_glm():
     """调用智谱GLM-4 API获取新闻"""
     today = datetime.now()
     date_str = today.strftime('%Y年%m月%d日')
+    date_iso = today.strftime('%Y-%m-%d')
+    yesterday = (today.replace(hour=0, minute=0, second=0)).strftime('%Y-%m-%d')
     weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][today.weekday()]
     
-    prompt = f"""请搜索今天({date_str}，{weekday})的最新财经科技新闻，要求：
+    prompt = f"""重要提示：今天是{date_str}（{weekday}）。请务必搜索{date_str}当天的最新新闻！
 
-1. 只搜索最近24小时内的重大新闻
-2. 新闻必须真实、有具体数据支撑
-3. 按以下详细JSON格式返回：
+请用必应搜索"{date_str} 最新财经新闻 {date_str} 最新科技新闻 {date_str} A股行情"，
+
+然后按以下JSON格式返回今天的新闻（每条新闻的date字段必须全部是：{date_iso}）：
 
 {{
-  "date": "{today.strftime('%Y-%m-%d')}",
+  "date": "{date_iso}",
   "weekday": "{weekday}",
-  "marketTitle": "一句话总结今日市场核心情绪(不超过15字，如：科技股领涨A股)",
-  "marketDesc": "详细说明市场整体表现和关键数据(80字以内，包括具体数字)",
+  "marketTitle": "一句话总结今日市场核心情绪(不超过15字)",
+  "marketDesc": "详细说明市场整体表现和关键数据(60字以内)",
   "ai": [
     {{
       "title": "【AI科技】具体新闻标题，包含公司名或技术名",
-      "date": "{today.strftime('%Y-%m-%d')}",
-      "source": "权威媒体名称(财联社/36氪/证券时报等)",
-      "desc": "详细描述：包含具体数据、百分比、金额等。如：英伟达宣布新一代GPU，算力提升40%，股价大涨5%至920美元。",
+      "date": "{date_iso}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据、百分比、金额等。",
       "tag": "AI芯片"
     }},
     {{
       "title": "【AI科技】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据、影响范围等。",
+      "desc": "详细描述：包含具体数据。",
       "tag": "大模型"
     }},
     {{
       "title": "【AI科技】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据、影响范围等。",
+      "desc": "详细描述：包含具体数据。",
       "tag": "机器人"
     }},
     {{
       "title": "【AI科技】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据、影响范围等。",
+      "desc": "详细描述：包含具体数据。",
       "tag": "科技巨头"
     }}
   ],
   "market": [
     {{
       "title": "【A股】具体新闻标题，包含板块名",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体涨跌幅、市值变化、成交量等。如：半导体板块集体爆发，中芯国际涨8%至52元，成交额突破100亿。",
+      "desc": "详细描述：包含具体涨跌幅、市值等。",
       "tag": "✅已落地"
     }},
     {{
       "title": "【A股】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据变化。",
+      "desc": "详细描述：包含具体数据。",
       "tag": "板块"
     }},
     {{
       "title": "【A股】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
       "desc": "详细描述：包含具体数据。",
       "tag": "大盘"
     }},
     {{
       "title": "【基金/北向】具体新闻标题",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "权威媒体名称",
-      "desc": "详细描述：包含具体资金流向数据。",
+      "desc": "详细描述：包含具体资金数据。",
       "tag": "资金"
     }}
   ],
   "policy": [
     {{
       "title": "【政策】具体政策标题，包含出台部门",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "新华社/中国政府网/证监会官网",
-      "desc": "详细描述：政策核心内容、影响范围、落地时间等。如：国务院发布AI发展新政，明确2025年算力目标超300EFLOPS。",
+      "desc": "详细描述：政策核心内容。",
       "tag": "📋国务院"
     }},
     {{
       "title": "【监管】具体监管动态",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "证监会/央行官网",
-      "desc": "详细描述：监管措施、适用范围等。",
+      "desc": "详细描述：监管措施。",
       "tag": "📋证监会"
     }},
     {{
       "title": "【数据】宏观经济数据发布",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "国家统计局",
-      "desc": "详细描述：具体数据数值、同比环比变化。",
+      "desc": "详细描述：具体数据数值。",
       "tag": "📋宏观"
     }}
   ],
   "global": [
     {{
       "title": "【国际】具体国际新闻，包含国家或地区",
-      "date": "{today.strftime('%Y-%m-%d')}",
-      "source": "路透社/彭博社/美联社",
-      "desc": "详细描述：事件经过、影响范围等。如：美联储宣布维持利率不变，纳指期货跳水2%，黄金突破2400美元。",
+      "date": "{date_iso}",
+      "source": "路透社/彭博社",
+      "desc": "详细描述：事件核心。",
       "tag": "🔥地缘"
     }},
     {{
       "title": "【国际】具体国际新闻",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "路透社/彭博社",
       "desc": "详细描述：事件核心内容。",
       "tag": "🇺🇸美股"
     }},
     {{
       "title": "【国际】具体国际新闻",
-      "date": "{today.strftime('%Y-%m-%d')}",
+      "date": "{date_iso}",
       "source": "路透社/彭博社",
-      "desc": "详细描述：大宗商品或汇率变化。",
+      "desc": "详细描述：大宗商品或汇率。",
       "tag": "📊大宗"
     }}
   ],
   "hot": [
-    "热搜话题1（真实微博热搜）",
-    "热搜话题2（真实微博热搜）",
-    "热搜话题3（真实微博热搜）",
-    "热搜话题4（真实微博热搜）",
-    "热搜话题5（真实微博热搜）",
-    "热搜话题6（真实微博热搜）",
-    "热搜话题7（真实微博热搜）",
-    "热搜话题8（真实微博热搜）",
-    "热搜话题9（真实微博热搜）",
-    "热搜话题10（真实微博热搜）",
-    "热搜话题11（真实微博热搜）",
-    "热搜话题12（真实微博热搜）"
+    "热搜话题1",
+    "热搜话题2",
+    "热搜话题3",
+    "热搜话题4",
+    "热搜话题5",
+    "热搜话题6",
+    "热搜话题7",
+    "热搜话题8",
+    "热搜话题9",
+    "热搜话题10",
+    "热搜话题11",
+    "热搜话题12"
   ],
   "table": [
     {{
       "event": "具体事件名称",
-      "sector": "影响板块（如：半导体/AI/新能源）",
-      "logic": "影响逻辑简述（为什么涨/跌）"
+      "sector": "影响板块",
+      "logic": "影响逻辑"
     }},
     {{
       "event": "具体事件名称",
       "sector": "影响板块",
-      "logic": "影响逻辑简述"
+      "logic": "影响逻辑"
     }},
     {{
       "event": "具体事件名称",
       "sector": "影响板块",
-      "logic": "影响逻辑简述"
+      "logic": "影响逻辑"
     }},
     {{
       "event": "具体事件名称",
       "sector": "影响板块",
-      "logic": "影响逻辑简述"
+      "logic": "影响逻辑"
     }},
     {{
       "event": "具体事件名称",
       "sector": "影响板块",
-      "logic": "影响逻辑简述"
+      "logic": "影响逻辑"
     }}
   ]
 }}
 
 重要要求：
-1. 所有新闻必须是今天({date_str})的真实事件
+1. 所有新闻必须是{date_str}当天的真实事件，date字段必须全部是{date_iso}
 2. 描述必须包含具体数字、数据、百分比
-3. 来源必须是真实存在的媒体
-4. 只返回JSON，不要任何其他文字
+3. 只返回JSON，不要任何其他文字
 """
 
     print(f"📡 开始调用智谱API...")
-    print(f"   API地址: {API_URL}")
-    print(f"   模型: glm-4-flash")
+    print(f"   今天日期: {date_str}")
+    print(f"   ISO日期: {date_iso}")
     print(f"   请求超时: 300秒")
     
     try:
