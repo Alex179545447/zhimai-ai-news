@@ -357,6 +357,46 @@ def update_html(news_data):
         print("❌ 未找到新闻数据标记")
         return False
     
+    # 5. 更新热搜榜HTML
+    hot_titles = news_data.get('hot', [])[:12]
+    if hot_titles:
+        hot_items_html = []
+        for i, title in enumerate(hot_titles, 1):
+            rank_class = f'top{i}' if i <= 3 else ''
+            tag = '沸' if i == 1 else ('新' if i <= 3 else '')
+            tag_html = f'<span class="hot-tag">{tag}</span>' if tag else ''
+            hot_items_html.append(f'''<div class="hot-item" data-news-id="hot-{i}" onclick="openNewsDetail('hot-{i}')">
+                            <span class="hot-rank {rank_class}">{i}</span>
+                            <span class="hot-title">{title}</span>
+                            {tag_html}
+                        </div>''')
+        
+        # 更新热搜榜数量
+        new_content = re.sub(r'(<span class="section-name">热搜榜</span>\s*<span class="section-count">)[^<]+', f'\\1{len(hot_titles)}条', new_content)
+        
+        # 替换热搜列表
+        hot_list_pattern = r'(<div class="hot-list">)\s*.*?\s*(</div>\s*</div>\s*</div>\s*<!-- 底部总结表格)'
+        hot_list_replacement = r'\1\n' + '\n\n'.join(hot_items_html) + r'\n                    \2'
+        new_content = re.sub(hot_list_pattern, hot_list_replacement, new_content, flags=re.DOTALL)
+    
+    # 6. 更新资本市场关键点梳理表格
+    keypoints = news_data.get('table', [])
+    if keypoints:
+        tbody_rows = []
+        for item in keypoints:
+            event = item.get('event', '')
+            sector = item.get('sector', '')
+            logic = item.get('logic', '')
+            tbody_rows.append(f'''<tr>
+                            <td>{event}</td>
+                            <td><span class="sector-tag">{sector}</span></td>
+                            <td>{logic}</td>
+                        </tr>''')
+        
+        keypoints_pattern = r'(<table class="summary-table">\s*<thead>.*?</thead>\s*<tbody>)\s*.*?\s*(</tbody>\s*</table>)'
+        keypoints_replacement = r'\1\n' + '\n'.join(tbody_rows) + r'\n                \2'
+        new_content = re.sub(keypoints_pattern, keypoints_replacement, new_content, flags=re.DOTALL)
+    
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(new_content)
     
