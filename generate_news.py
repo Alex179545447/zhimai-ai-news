@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-智脉AI每日早报 - 智能新闻更新脚本
+智脉AI每日晚报 - 智能新闻更新脚本 V2
 功能：使用智谱GLM-4联网搜索获取最新新闻，自动更新网页内容
 """
 import os
@@ -31,44 +31,171 @@ def get_news_from_glm():
     date_str = today.strftime('%Y年%m月%d日')
     weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][today.weekday()]
     
-    prompt = f"""请搜索今天({date_str})的最新财经新闻，要求：
-1. 只搜索最近24小时内的新闻
-2. 按以下JSON格式返回，包含完整的新闻内容：
+    prompt = f"""请搜索今天({date_str}，{weekday})的最新财经科技新闻，要求：
+
+1. 只搜索最近24小时内的重大新闻
+2. 新闻必须真实、有具体数据支撑
+3. 按以下详细JSON格式返回：
 
 {{
   "date": "{today.strftime('%Y-%m-%d')}",
   "weekday": "{weekday}",
-  "marketTitle": "今日市场基调一句话(不超过15字)",
-  "marketDesc": "市场基调详细说明(50字以内)",
+  "marketTitle": "一句话总结今日市场核心情绪(不超过15字，如：科技股领涨A股)",
+  "marketDesc": "详细说明市场整体表现和关键数据(80字以内，包括具体数字)",
   "ai": [
-    {{"title": "新闻标题1", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "🔥重磅"}},
-    {{"title": "新闻标题2", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "AI"}},
-    {{"title": "新闻标题3", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "科技"}}
+    {{
+      "title": "【AI科技】具体新闻标题，包含公司名或技术名",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称(财联社/36氪/证券时报等)",
+      "desc": "详细描述：包含具体数据、百分比、金额等。如：英伟达宣布新一代GPU，算力提升40%，股价大涨5%至920美元。",
+      "tag": "AI芯片"
+    }},
+    {{
+      "title": "【AI科技】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据、影响范围等。",
+      "tag": "大模型"
+    }},
+    {{
+      "title": "【AI科技】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据、影响范围等。",
+      "tag": "机器人"
+    }},
+    {{
+      "title": "【AI科技】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据、影响范围等。",
+      "tag": "科技巨头"
+    }}
   ],
   "market": [
-    {{"title": "新闻标题1", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "✅已落地"}},
-    {{"title": "新闻标题2", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "市场"}},
-    {{"title": "新闻标题3", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "板块"}}
+    {{
+      "title": "【A股】具体新闻标题，包含板块名",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体涨跌幅、市值变化、成交量等。如：半导体板块集体爆发，中芯国际涨8%至52元，成交额突破100亿。",
+      "tag": "✅已落地"
+    }},
+    {{
+      "title": "【A股】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据变化。",
+      "tag": "板块"
+    }},
+    {{
+      "title": "【A股】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体数据。",
+      "tag": "大盘"
+    }},
+    {{
+      "title": "【基金/北向】具体新闻标题",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "权威媒体名称",
+      "desc": "详细描述：包含具体资金流向数据。",
+      "tag": "资金"
+    }}
   ],
   "policy": [
-    {{"title": "新闻标题1", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "📋政策"}},
-    {{"title": "新闻标题2", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "宏观"}}
+    {{
+      "title": "【政策】具体政策标题，包含出台部门",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "新华社/中国政府网/证监会官网",
+      "desc": "详细描述：政策核心内容、影响范围、落地时间等。如：国务院发布AI发展新政，明确2025年算力目标超300EFLOPS。",
+      "tag": "📋国务院"
+    }},
+    {{
+      "title": "【监管】具体监管动态",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "证监会/央行官网",
+      "desc": "详细描述：监管措施、适用范围等。",
+      "tag": "📋证监会"
+    }},
+    {{
+      "title": "【数据】宏观经济数据发布",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "国家统计局",
+      "desc": "详细描述：具体数据数值、同比环比变化。",
+      "tag": "📋宏观"
+    }}
   ],
   "global": [
-    {{"title": "新闻标题1", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "🔥地缘"}},
-    {{"title": "新闻标题2", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "国际"}},
-    {{"title": "新闻标题3", "date": "{today.strftime('%Y-%m-%d')}", "source": "来源", "desc": "摘要简述", "tag": "大宗"}}
+    {{
+      "title": "【国际】具体国际新闻，包含国家或地区",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "路透社/彭博社/美联社",
+      "desc": "详细描述：事件经过、影响范围等。如：美联储宣布维持利率不变，纳指期货跳水2%，黄金突破2400美元。",
+      "tag": "🔥地缘"
+    }},
+    {{
+      "title": "【国际】具体国际新闻",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "路透社/彭博社",
+      "desc": "详细描述：事件核心内容。",
+      "tag": "🇺🇸美股"
+    }},
+    {{
+      "title": "【国际】具体国际新闻",
+      "date": "{today.strftime('%Y-%m-%d')}",
+      "source": "路透社/彭博社",
+      "desc": "详细描述：大宗商品或汇率变化。",
+      "tag": "📊大宗"
+    }}
   ],
-  "hot": ["热搜1", "热搜2", "热搜3", "热搜4", "热搜5", "热搜6", "热搜7", "热搜8", "热搜9", "热搜10"],
+  "hot": [
+    "热搜话题1（真实微博热搜）",
+    "热搜话题2（真实微博热搜）",
+    "热搜话题3（真实微博热搜）",
+    "热搜话题4（真实微博热搜）",
+    "热搜话题5（真实微博热搜）",
+    "热搜话题6（真实微博热搜）",
+    "热搜话题7（真实微博热搜）",
+    "热搜话题8（真实微博热搜）",
+    "热搜话题9（真实微博热搜）",
+    "热搜话题10（真实微博热搜）",
+    "热搜话题11（真实微博热搜）",
+    "热搜话题12（真实微博热搜）"
+  ],
   "table": [
-    {{"event": "事件1", "sector": "板块", "logic": "影响逻辑"}},
-    {{"event": "事件2", "sector": "板块", "logic": "影响逻辑"}},
-    {{"event": "事件3", "sector": "板块", "logic": "影响逻辑"}},
-    {{"event": "事件4", "sector": "板块", "logic": "影响逻辑"}}
+    {{
+      "event": "具体事件名称",
+      "sector": "影响板块（如：半导体/AI/新能源）",
+      "logic": "影响逻辑简述（为什么涨/跌）"
+    }},
+    {{
+      "event": "具体事件名称",
+      "sector": "影响板块",
+      "logic": "影响逻辑简述"
+    }},
+    {{
+      "event": "具体事件名称",
+      "sector": "影响板块",
+      "logic": "影响逻辑简述"
+    }},
+    {{
+      "event": "具体事件名称",
+      "sector": "影响板块",
+      "logic": "影响逻辑简述"
+    }},
+    {{
+      "event": "具体事件名称",
+      "sector": "影响板块",
+      "logic": "影响逻辑简述"
+    }}
   ]
 }}
 
-只返回JSON，不要其他内容。
+重要要求：
+1. 所有新闻必须是今天({date_str})的真实事件
+2. 描述必须包含具体数字、数据、百分比
+3. 来源必须是真实存在的媒体
+4. 只返回JSON，不要任何其他文字
 """
 
     print(f"📡 开始调用智谱API...")
@@ -90,7 +217,7 @@ def get_news_from_glm():
                 "tools": [{"type": "web_search", "web_search": {"search_engine": "bing"}}],
                 "stream": False
             },
-            timeout=300  # 增加超时时间到300秒
+            timeout=300
         )
         
         print(f"📥 收到响应 - 状态码: {response.status_code}")
@@ -179,27 +306,27 @@ def update_html(news_data):
     # 3. 构建新的新闻数据
     news_items = []
     
-    # AI新闻
+    # AI新闻 - 4条
     for i, news in enumerate(news_data.get('ai', []), 1):
         news['id'] = f'ai-{i}'
         news_items.append(build_news_item(news, 'ai'))
     
-    # 市场新闻
+    # 市场新闻 - 4条
     for i, news in enumerate(news_data.get('market', []), 1):
         news['id'] = f'stock-{i}'
         news_items.append(build_news_item(news, 'stock'))
     
-    # 政策新闻
+    # 政策新闻 - 3条
     for i, news in enumerate(news_data.get('policy', []), 1):
         news['id'] = f'policy-{i}'
         news_items.append(build_news_item(news, 'policy'))
     
-    # 国际新闻
+    # 国际新闻 - 3条
     for i, news in enumerate(news_data.get('global', []), 1):
         news['id'] = f'global-{i}'
         news_items.append(build_news_item(news, 'global'))
     
-    # 热搜
+    # 热搜 - 12条
     for i, title in enumerate(news_data.get('hot', []), 1):
         news_items.append(build_hot_item(title, i))
     
@@ -223,17 +350,17 @@ def update_html(news_data):
         f.write(new_content)
     
     print(f"✅ HTML已更新: {full_date}")
-    print(f"   AI新闻: {len(news_data.get('ai', []))}条")
-    print(f"   市场新闻: {len(news_data.get('market', []))}条")
-    print(f"   政策新闻: {len(news_data.get('policy', []))}条")
-    print(f"   全球新闻: {len(news_data.get('global', []))}条")
-    print(f"   热搜: {len(news_data.get('hot', []))}条")
+    print(f"   🔥 AI科技新闻: {len(news_data.get('ai', []))}条")
+    print(f"   📈 A股市场新闻: {len(news_data.get('market', []))}条")
+    print(f"   📋 政策动态: {len(news_data.get('policy', []))}条")
+    print(f"   🌍 国际热点: {len(news_data.get('global', []))}条")
+    print(f"   🔥 热搜榜单: {len(news_data.get('hot', []))}条")
     return True
 
 
 def main():
     print("=" * 50)
-    print("智脉AI每日早报 - 智能新闻更新任务")
+    print("智脉AI每日晚报 V2 - 智能新闻更新任务")
     print("=" * 50)
     print(f"执行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("-" * 50)
