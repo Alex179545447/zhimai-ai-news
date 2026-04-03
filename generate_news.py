@@ -307,9 +307,12 @@ def update_html(news_data):
     
     # 2. 更新市场基调
     if 'marketTitle' in news_data:
-        content = re.sub(r'市场基调：[^<]+', f"市场基调：{news_data['marketTitle']}", content)
+        content = re.sub(r'(今日市场基调：)[^<]+', f"\\1{news_data['marketTitle']}", content)
     if 'marketDesc' in news_data:
-        content = re.sub(r'美伊局势升温[^<]+', news_data.get('marketDesc', ''), content)
+        # 匹配market-desc div中的所有内容（到</div>为止）
+        pattern = r'(<div class="market-desc">)[^<]*(<)'
+        replacement = f'\\1{news_data.get("marketDesc", "")}\\2'
+        content = re.sub(pattern, replacement, content)
     
     # 3. 构建新的新闻数据（强制使用今天日期）
     news_items = []
