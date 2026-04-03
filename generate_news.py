@@ -282,7 +282,9 @@ def build_news_item(news, category, today_date):
 def build_hot_item(title, rank, today_date, category='hot'):
     """构建热搜条目"""
     news_id = f'{category}-{rank}'
-    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{today_date}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
+    # 热搜生成简短描述
+    hot_desc = f"该话题目前位列热搜第{rank}位，引发广泛讨论。"
+    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{today_date}', content: '<p><strong>【热搜话题】</strong>{title}</p><p>{hot_desc}</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] }}"""
 
 
 def update_html(news_data):
@@ -372,7 +374,7 @@ def update_html(news_data):
                         </div>''')
         
         # 更新热搜榜数量
-        new_content = re.sub(r'(<span class="section-name">热搜榜</span>\s*<span class="section-count">)[^<]+', f'\\1{len(hot_titles)}条', new_content)
+        new_content = re.sub(r'(<span class="section-count">)[^<]+', f'\\1{len(hot_titles)}条', new_content)
         
         # 替换热搜列表
         hot_list_pattern = r'(<div class="hot-list">)\s*.*?\s*(</div>\s*</div>\s*</div>\s*<!-- 底部总结表格)'
