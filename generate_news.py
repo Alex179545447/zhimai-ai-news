@@ -14,6 +14,17 @@ from datetime import datetime
 API_KEY = os.environ.get("ZHIPU_API_KEY", "28133690e57f4ba9902b4015f21404bb.L3eQw0LRHCFM7N9f")
 API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 
+def test_network():
+    """测试网络连接"""
+    print("🔍 测试网络连接...")
+    try:
+        response = requests.get("https://open.bigmodel.cn", timeout=10)
+        print(f"   ✅ 网络正常 - 状态码: {response.status_code}")
+        return True
+    except Exception as e:
+        print(f"   ❌ 网络连接失败: {e}")
+        return False
+
 def get_news_from_glm():
     """调用智谱GLM-4 API获取新闻"""
     today = datetime.now()
@@ -60,7 +71,13 @@ def get_news_from_glm():
 只返回JSON，不要其他内容。
 """
 
+    print(f"📡 开始调用智谱API...")
+    print(f"   API地址: {API_URL}")
+    print(f"   模型: glm-4-flash")
+    print(f"   请求超时: 300秒")
+    
     try:
+        print("⏳ 发送请求中...")
         response = requests.post(
             API_URL,
             headers={
@@ -73,18 +90,32 @@ def get_news_from_glm():
                 "tools": [{"type": "web_search", "web_search": {"search_engine": "bing"}}],
                 "stream": False
             },
-            timeout=180
+            timeout=300  # 增加超时时间到300秒
         )
+        
+        print(f"📥 收到响应 - 状态码: {response.status_code}")
         
         if response.status_code == 200:
             result = response.json()
             content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+            print(f"✅ API调用成功，内容长度: {len(content)} 字符")
             return content
         else:
-            print(f"API错误: {response.status_code}")
+            print(f"❌ API错误: {response.status_code}")
+            print(f"   响应内容: {response.text[:500]}")
             return None
+            
+    except requests.exceptions.Timeout:
+        print("❌ 请求超时 (300秒)")
+        return None
+    except requests.exceptions.ConnectionError as e:
+        print(f"❌ 连接错误: {e}")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"❌ 请求异常: {e}")
+        return None
     except Exception as e:
-        print(f"请求失败: {e}")
+        print(f"❌ 未知错误: {e}")
         return None
 
 
@@ -109,7 +140,7 @@ def build_news_item(news, category):
     news_id = news.get('id', f'{category}-{hash(title) % 1000}')
     
     return f"""            '{news_id}': {{
-                title: '{title.replace("'", "\'")}',
+                title: '{title.replace("'", "\\'")}',
                 tags: [{{ text: '{tag}', class: '' }}],
                 source: '{source}',
                 url: '#',
@@ -124,7 +155,7 @@ def build_news_item(news, category):
 def build_hot_item(title, rank, category='hot'):
     """构建热搜条目"""
     news_id = f'{category}-{rank}'
-    return f"""            '{news_id}': {{ title: '{title.replace("'", "\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{datetime.now().strftime('%Y-%m-%d')}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
+    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{datetime.now().strftime('%Y-%m-%d')}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
 
 
 def update_html(news_data):
@@ -207,7 +238,10 @@ def main():
     print(f"执行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("-" * 50)
     
-    print("📡 正在调用智谱GLM-4获取最新新闻...")
+    # 先测试网络
+    if not test_network():
+        print("❌ 网络测试失败，尝试继续...")
+    
     news_content = get_news_from_glm()
     
     if news_content:
