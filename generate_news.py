@@ -258,10 +258,9 @@ def extract_json(content):
     return None
 
 
-def build_news_item(news, category):
+def build_news_item(news, category, today_date):
     """构建新闻条目"""
     title = news.get('title', '')
-    date = news.get('date', '')
     source = news.get('source', '')
     desc = news.get('desc', '')
     tag = news.get('tag', '')
@@ -272,7 +271,7 @@ def build_news_item(news, category):
                 tags: [{{ text: '{tag}', class: '' }}],
                 source: '{source}',
                 url: '#',
-                date: '{date}',
+                date: '{today_date}',
                 content: `<p><strong>【摘要】</strong>{desc}</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
@@ -280,10 +279,10 @@ def build_news_item(news, category):
             }}"""
 
 
-def build_hot_item(title, rank, category='hot'):
+def build_hot_item(title, rank, today_date, category='hot'):
     """构建热搜条目"""
     news_id = f'{category}-{rank}'
-    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{datetime.now().strftime('%Y-%m-%d')}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
+    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{today_date}', content: '<p>详见：<a href="#">{title}</a></p>', relatedTags: [], aiInsight: '<p>热搜话题</p>', relatedNews: [] }}"""
 
 
 def update_html(news_data):
@@ -291,8 +290,16 @@ def update_html(news_data):
     with open('index.html', 'r', encoding='utf-8') as f:
         content = f.read()
     
-    today = news_data.get('date', datetime.now().strftime('%Y-%m-%d'))
-    weekday = news_data.get('weekday', '')
+    # 强制使用今天的真实日期，不依赖AI返回的日期
+    today_real = datetime.now().strftime('%Y-%m-%d')
+    today = news_data.get('date', today_real)
+    weekday = news_data.get('weekday', ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][datetime.now().weekday()])
+    
+    # 如果AI返回的日期不是今天，强制使用今天日期
+    if today != today_real:
+        print(f"⚠️ AI返回日期 {today}，强制更新为今天 {today_real}")
+        today = today_real
+    
     full_date = f"{today[:4]}年{int(today[5:7])}月{int(today[8:10])}日 · {weekday}"
     
     # 1. 更新日期显示
@@ -304,32 +311,32 @@ def update_html(news_data):
     if 'marketDesc' in news_data:
         content = re.sub(r'美伊局势升温[^<]+', news_data.get('marketDesc', ''), content)
     
-    # 3. 构建新的新闻数据
+    # 3. 构建新的新闻数据（强制使用今天日期）
     news_items = []
     
     # AI新闻 - 4条
     for i, news in enumerate(news_data.get('ai', []), 1):
         news['id'] = f'ai-{i}'
-        news_items.append(build_news_item(news, 'ai'))
+        news_items.append(build_news_item(news, 'ai', today))
     
     # 市场新闻 - 4条
     for i, news in enumerate(news_data.get('market', []), 1):
         news['id'] = f'stock-{i}'
-        news_items.append(build_news_item(news, 'stock'))
+        news_items.append(build_news_item(news, 'stock', today))
     
     # 政策新闻 - 3条
     for i, news in enumerate(news_data.get('policy', []), 1):
         news['id'] = f'policy-{i}'
-        news_items.append(build_news_item(news, 'policy'))
+        news_items.append(build_news_item(news, 'policy', today))
     
     # 国际新闻 - 3条
     for i, news in enumerate(news_data.get('global', []), 1):
         news['id'] = f'global-{i}'
-        news_items.append(build_news_item(news, 'global'))
+        news_items.append(build_news_item(news, 'global', today))
     
     # 热搜 - 12条
     for i, title in enumerate(news_data.get('hot', []), 1):
-        news_items.append(build_hot_item(title, i))
+        news_items.append(build_hot_item(title, i, today))
     
     # 4. 替换新闻数据
     new_data_block = "        const fullNewsData = {\n" + ",\n".join(news_items) + "\n        };"
