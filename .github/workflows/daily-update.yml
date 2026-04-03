@@ -14,39 +14,51 @@ jobs:
   update-news:
     runs-on: ubuntu-latest
     steps:
+      # 1. 检出代码
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # 2. 设置Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
+      # 3. 安装依赖
       - run: pip install requests
 
+      # 4. 调用智谱API生成新闻
       - name: Update news with Zhipu AI
         run: python generate_news.py
 
-      - name: Update admin dashboard
-        run: |
-          mkdir -p admin
-          cp dashboard.html admin/index.html
+      # 5. 配置SSH
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.ECS_SSH_KEY }}
 
-      - name: Commit and push
+      # 6. 复制index.html到ECS服务器
+      - name: Deploy to ECS via SSH
+        env:
+          ECS_HOST: ${{ secrets.ECS_HOST }}
+          ECS_PORT: ${{ secrets.ECS_PORT }}
+          ECS_USER: ${{ secrets.ECS_USER }}
+          ECS_PATH: ${{ secrets.ECS_PATH }}
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add index.html dashboard.html admin/
-          # 检查是否有变更
-          if git diff --staged --quiet; then
-            echo "No changes, skip commit"
-            exit 0
-          fi
-          git commit -m "Auto update $(date +'%Y-%m-%d') - powered by 智脉AI"
-          git push
-
-      - name: Verify deployment
-        run: |
-          echo "✅ 新闻已更新并推送到GitHub"
-          echo "📅 更新日期: $(date +'%Y-%m-%d')"
+          echo "📤 部署到ECS服务器..."
+          
+          # 调试信息
+          echo "主机: $ECS_HOST"
+          echo "端口: $ECS_PORT"
+          echo "路径: $ECS_PATH"
+          
+          # 复制index.html到服务器
+          ssh -o StrictHostKeyChecking=no -p $ECS_PORT $ECS_USER@$ECS_HOST "
+            cp $ECS_PATH/index.html $ECS_PATH/index.html.bak
+          "
+          
+          cat index.html | ssh -o StrictHostKeyChecking=no -p $ECS_PORT $ECS_USER@$ECS_HOST "cat > $ECS_PATH/index.html"
+          
+          echo "✅ 部署完成!"
           echo "🌐 访问地址: https://daily.zhimai-ai.cn"
+          echo "📅 更新日期: $(date +'%Y-%m-%d %H:%M:%S')"
