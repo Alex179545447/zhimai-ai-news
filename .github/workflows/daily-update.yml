@@ -2,7 +2,7 @@ name: Daily News Update
 
 on:
   schedule:
-    # 每天下午17点(北京时间)自动更新 = UTC 9:00
+    # 每天下午5点(北京时间)自动更新 = UTC 9:00
     - cron: '0 9 * * *'
   # 支持手动触发
   workflow_dispatch:
@@ -31,34 +31,11 @@ jobs:
       - name: Update news with Zhipu AI
         run: python generate_news.py
 
-      # 5. 配置SSH
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.ECS_SSH_KEY }}
-
-      # 6. 复制index.html到ECS服务器
-      - name: Deploy to ECS via SSH
-        env:
-          ECS_HOST: ${{ secrets.ECS_HOST }}
-          ECS_PORT: ${{ secrets.ECS_PORT }}
-          ECS_USER: ${{ secrets.ECS_USER }}
-          ECS_PATH: ${{ secrets.ECS_PATH }}
+      # 5. 提交更新
+      - name: Commit and push changes
         run: |
-          echo "📤 部署到ECS服务器..."
-          
-          # 调试信息
-          echo "主机: $ECS_HOST"
-          echo "端口: $ECS_PORT"
-          echo "路径: $ECS_PATH"
-          
-          # 复制index.html到服务器
-          ssh -o StrictHostKeyChecking=no -p $ECS_PORT $ECS_USER@$ECS_HOST "
-            cp $ECS_PATH/index.html $ECS_PATH/index.html.bak
-          "
-          
-          cat index.html | ssh -o StrictHostKeyChecking=no -p $ECS_PORT $ECS_USER@$ECS_HOST "cat > $ECS_PATH/index.html"
-          
-          echo "✅ 部署完成!"
-          echo "🌐 访问地址: https://daily.zhimai-ai.cn"
-          echo "📅 更新日期: $(date +'%Y-%m-%d %H:%M:%S')"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto update: $(date +'%Y-%m-%d %H:%M')"
+          git push
