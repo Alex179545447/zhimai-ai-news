@@ -30,174 +30,44 @@ def get_news_from_glm():
     today = datetime.now()
     date_str = today.strftime('%Y年%m月%d日')
     date_iso = today.strftime('%Y-%m-%d')
-    yesterday = (today.replace(hour=0, minute=0, second=0)).strftime('%Y-%m-%d')
     weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'][today.weekday()]
     
-    prompt = f"""重要提示：今天是{date_str}（{weekday}）。请务必搜索{date_str}当天的最新新闻！
-
-请用必应搜索"{date_str} 最新财经新闻 {date_str} 最新科技新闻 {date_str} A股行情"，
-
-然后按以下JSON格式返回今天的新闻（每条新闻的date字段必须全部是：{date_iso}）：
-
+    prompt = f"""搜索{date_str}的最新财经和科技新闻，返回JSON：
 {{
   "date": "{date_iso}",
   "weekday": "{weekday}",
-  "marketTitle": "一句话总结今日市场核心情绪(不超过15字)",
-  "marketDesc": "详细说明市场整体表现和关键数据(60字以内)",
+  "marketTitle": "一句话市场情绪(15字内)",
+  "marketDesc": "市场表现说明(60字内)",
   "ai": [
-    {{
-      "title": "【AI科技】具体新闻标题，包含公司名或技术名",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据、百分比、金额等。",
-      "tag": "AI芯片"
-    }},
-    {{
-      "title": "【AI科技】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据。",
-      "tag": "大模型"
-    }},
-    {{
-      "title": "【AI科技】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据。",
-      "tag": "机器人"
-    }},
-    {{
-      "title": "【AI科技】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据。",
-      "tag": "科技巨头"
-    }}
+    {{"title": "AI科技新闻1", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "AI"}},
+    {{"title": "AI科技新闻2", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "芯片"}},
+    {{"title": "AI科技新闻3", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "大模型"}},
+    {{"title": "AI科技新闻4", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "机器人"}}
   ],
   "market": [
-    {{
-      "title": "【A股】具体新闻标题，包含板块名",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体涨跌幅、市值等。",
-      "tag": "✅已落地"
-    }},
-    {{
-      "title": "【A股】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据。",
-      "tag": "板块"
-    }},
-    {{
-      "title": "【A股】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体数据。",
-      "tag": "大盘"
-    }},
-    {{
-      "title": "【基金/北向】具体新闻标题",
-      "date": "{date_iso}",
-      "source": "权威媒体名称",
-      "desc": "详细描述：包含具体资金数据。",
-      "tag": "资金"
-    }}
+    {{"title": "A股新闻1", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "板块"}},
+    {{"title": "A股新闻2", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "大盘"}},
+    {{"title": "A股新闻3", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "资金"}},
+    {{"title": "A股新闻4", "date": "{date_iso}", "source": "媒体", "desc": "描述", "tag": "基金"}}
   ],
   "policy": [
-    {{
-      "title": "【政策】具体政策标题，包含出台部门",
-      "date": "{date_iso}",
-      "source": "新华社/中国政府网/证监会官网",
-      "desc": "详细描述：政策核心内容。",
-      "tag": "📋国务院"
-    }},
-    {{
-      "title": "【监管】具体监管动态",
-      "date": "{date_iso}",
-      "source": "证监会/央行官网",
-      "desc": "详细描述：监管措施。",
-      "tag": "📋证监会"
-    }},
-    {{
-      "title": "【数据】宏观经济数据发布",
-      "date": "{date_iso}",
-      "source": "国家统计局",
-      "desc": "详细描述：具体数据数值。",
-      "tag": "📋宏观"
-    }}
+    {{"title": "政策1", "date": "{date_iso}", "source": "政府网", "desc": "描述", "tag": "国务院"}},
+    {{"title": "政策2", "date": "{date_iso}", "source": "证监会", "desc": "描述", "tag": "监管"}},
+    {{"title": "政策3", "date": "{date_iso}", "source": "央行", "desc": "描述", "tag": "宏观"}}
   ],
   "global": [
-    {{
-      "title": "【国际】具体国际新闻，包含国家或地区",
-      "date": "{date_iso}",
-      "source": "路透社/彭博社",
-      "desc": "详细描述：事件核心。",
-      "tag": "🔥地缘"
-    }},
-    {{
-      "title": "【国际】具体国际新闻",
-      "date": "{date_iso}",
-      "source": "路透社/彭博社",
-      "desc": "详细描述：事件核心内容。",
-      "tag": "🇺🇸美股"
-    }},
-    {{
-      "title": "【国际】具体国际新闻",
-      "date": "{date_iso}",
-      "source": "路透社/彭博社",
-      "desc": "详细描述：大宗商品或汇率。",
-      "tag": "📊大宗"
-    }}
+    {{"title": "国际1", "date": "{date_iso}", "source": "路透社", "desc": "描述", "tag": "美股"}},
+    {{"title": "国际2", "date": "{date_iso}", "source": "彭博社", "desc": "描述", "tag": "地缘"}},
+    {{"title": "国际3", "date": "{date_iso}", "source": "新华社", "desc": "描述", "tag": "大宗"}}
   ],
-  "hot": [
-    "热搜话题1",
-    "热搜话题2",
-    "热搜话题3",
-    "热搜话题4",
-    "热搜话题5",
-    "热搜话题6",
-    "热搜话题7",
-    "热搜话题8",
-    "热搜话题9",
-    "热搜话题10",
-    "热搜话题11",
-    "热搜话题12"
-  ],
+  "hot": ["热搜1","热搜2","热搜3","热搜4","热搜5","热搜6","热搜7","热搜8","热搜9","热搜10"],
   "table": [
-    {{
-      "event": "具体事件名称",
-      "sector": "影响板块",
-      "logic": "影响逻辑"
-    }},
-    {{
-      "event": "具体事件名称",
-      "sector": "影响板块",
-      "logic": "影响逻辑"
-    }},
-    {{
-      "event": "具体事件名称",
-      "sector": "影响板块",
-      "logic": "影响逻辑"
-    }},
-    {{
-      "event": "具体事件名称",
-      "sector": "影响板块",
-      "logic": "影响逻辑"
-    }},
-    {{
-      "event": "具体事件名称",
-      "sector": "影响板块",
-      "logic": "影响逻辑"
-    }}
+    {{"event": "事件1", "sector": "板块1", "logic": "逻辑1"}},
+    {{"event": "事件2", "sector": "板块2", "logic": "逻辑2"}},
+    {{"event": "事件3", "sector": "板块3", "logic": "逻辑3"}}
   ]
 }}
-
-重要要求：
-1. 所有新闻必须是{date_str}当天的真实事件，date字段必须全部是{date_iso}
-2. 描述必须包含具体数字、数据、百分比
-3. 只返回JSON，不要任何其他文字
-"""
+只返回JSON，不要其他文字。新闻必须是{date_str}的真实事件。"""
 
     print(f"📡 开始调用智谱API...")
     print(f"   今天日期: {date_str}")
@@ -249,12 +119,17 @@ def get_news_from_glm():
 
 def extract_json(content):
     """提取JSON"""
+    # 尝试从代码块中提取
     match = re.search(r'```json\s*([\s\S]*?)\s*```', content)
     if match:
-        return match.group(1)
+        return match.group(1).strip()
+    # 尝试直接匹配JSON对象
     match = re.search(r'\{[\s\S]*\}', content)
     if match:
-        return match.group(0)
+        json_str = match.group(0)
+        # 清理控制字符
+        json_str = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', json_str)
+        return json_str
     return None
 
 
@@ -307,6 +182,9 @@ def update_html(news_data):
     
     # 1. 更新日期显示
     content = re.sub(r'id="currentDate">[^<]+', f'id="currentDate">{full_date}', content)
+    
+    # 1.5 更新快速浏览列表中的所有日期
+    content = re.sub(r'<span class="news-source">📅 [^<]+</span>', f'<span class="news-source">📅 {today}</span>', content)
     
     # 2. 更新市场基调
     if 'marketTitle' in news_data:
@@ -375,7 +253,8 @@ def update_html(news_data):
                         </div>''')
         
         # 更新热搜榜数量
-        new_content = re.sub(r'(<span class="section-count">)[^<]+', f'\\1{len(hot_titles)}条', new_content)
+        hot_count = str(len(hot_titles)) + '条'
+        new_content = new_content.replace('<span class="section-count">4条', '<span class="section-count">' + hot_count)
         
         # 替换热搜列表
         hot_list_pattern = r'(<div class="hot-list">)\s*.*?\s*(</div>\s*</div>\s*</div>\s*<!-- 底部总结表格)'
