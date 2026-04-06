@@ -260,31 +260,32 @@ def extract_json(content):
 
 def build_news_item(news, category, today_date):
     """构建新闻条目"""
-    title = news.get('title', '')
+    title = news.get('title', '').replace("'", "\\'")
     source = news.get('source', '')
     desc = news.get('desc', '')
     tag = news.get('tag', '')
     news_id = news.get('id', f'{category}-{hash(title) % 1000}')
     
-    return f"""            '{news_id}': {{
-                title: '{title.replace("'", "\\'")}',
-                tags: [{{ text: '{tag}', class: '' }}],
-                source: '{source}',
+    return """            '%s': {
+                title: '%s',
+                tags: [{ text: '%s', class: '' }],
+                source: '%s',
                 url: '#',
-                date: '{today_date}',
-                content: `<p><strong>【摘要】</strong>{desc}</p>`,
+                date: '%s',
+                content: `<p><strong>【摘要】</strong>%s</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
-            }}"""
+            }""" % (news_id, title, tag, source, today_date, desc)
 
 
 def build_hot_item(title, rank, today_date, category='hot'):
     """构建热搜条目"""
     news_id = f'{category}-{rank}'
+    title_escaped = title.replace("'", "\\'")
     # 热搜生成简短描述
-    hot_desc = f"该话题目前位列热搜第{rank}位，引发广泛讨论。"
-    return f"""            '{news_id}': {{ title: '{title.replace("'", "\\'")}', tags: [{{ text: '热', class: '' }}], source: '热搜', url: '#', date: '{today_date}', content: '<p><strong>【热搜话题】</strong>{title}</p><p>{hot_desc}</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] }}"""
+    hot_desc = "该话题目前位列热搜第%d位，引发广泛讨论。" % rank
+    return """            '%s': { title: '%s', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '%s', content: '<p><strong>【热搜话题】</strong>%s</p><p>%s</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] }""" % (news_id, title_escaped, today_date, title, hot_desc)
 
 
 def update_html(news_data):
