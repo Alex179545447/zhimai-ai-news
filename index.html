@@ -1378,8 +1378,8 @@
                     今日市场基调
                 </span>
             </div>
-            <div class="market-title">今日市场基调：市场稳中向好，风险偏好回升</div>
-            <div class="market-desc">今日市场开盘后震荡上行，权重板块表现稳健，题材股活跃，成交量有所放大。</div>
+            <div class="market-title">今日市场基调：市场震荡，科技股领涨</div>
+            <div class="market-desc">今日市场震荡整理，科技股表现强劲，人工智能、芯片概念板块涨幅居前。</div>
         </div>
 
 
@@ -1590,37 +1590,61 @@
                     <div class="hot-list">
 <div class="hot-item" data-news-id="hot-1" onclick="openNewsDetail('hot-1')">
                             <span class="hot-rank top1">1</span>
-                            <span class="hot-title">A股市场回暖</span>
+                            <span class="hot-title">AI芯片突破</span>
                             <span class="hot-tag">沸</span>
                         </div>
 
 <div class="hot-item" data-news-id="hot-2" onclick="openNewsDetail('hot-2')">
                             <span class="hot-rank top2">2</span>
-                            <span class="hot-title">科技股领涨</span>
+                            <span class="hot-title">大模型发布</span>
                             <span class="hot-tag">新</span>
                         </div>
 
 <div class="hot-item" data-news-id="hot-3" onclick="openNewsDetail('hot-3')">
                             <span class="hot-rank top3">3</span>
-                            <span class="hot-title">新能源板块爆发</span>
+                            <span class="hot-title">机器人产业爆发</span>
                             <span class="hot-tag">新</span>
                         </div>
 
 <div class="hot-item" data-news-id="hot-4" onclick="openNewsDetail('hot-4')">
                             <span class="hot-rank ">4</span>
-                            <span class="hot-title">央行货币政策稳健</span>
+                            <span class="hot-title">市场震荡整理</span>
                             
                         </div>
 
 <div class="hot-item" data-news-id="hot-5" onclick="openNewsDetail('hot-5')">
                             <span class="hot-rank ">5</span>
-                            <span class="hot-title">数字经济发展加速</span>
+                            <span class="hot-title">科技股领涨</span>
                             
                         </div>
 
 <div class="hot-item" data-news-id="hot-6" onclick="openNewsDetail('hot-6')">
                             <span class="hot-rank ">6</span>
-                            <span class="hot-title">国际市场波动加剧</span>
+                            <span class="hot-title">基金市场资金流入</span>
+                            
+                        </div>
+
+<div class="hot-item" data-news-id="hot-7" onclick="openNewsDetail('hot-7')">
+                            <span class="hot-rank ">7</span>
+                            <span class="hot-title">政策支持人工智能</span>
+                            
+                        </div>
+
+<div class="hot-item" data-news-id="hot-8" onclick="openNewsDetail('hot-8')">
+                            <span class="hot-rank ">8</span>
+                            <span class="hot-title">监管加强打击违规</span>
+                            
+                        </div>
+
+<div class="hot-item" data-news-id="hot-9" onclick="openNewsDetail('hot-9')">
+                            <span class="hot-rank ">9</span>
+                            <span class="hot-title">央行降准释放流动性</span>
+                            
+                        </div>
+
+<div class="hot-item" data-news-id="hot-10" onclick="openNewsDetail('hot-10')">
+                            <span class="hot-rank ">10</span>
+                            <span class="hot-title">地缘政治紧张</span>
                             
                         </div>
                     </div>
@@ -1795,78 +1819,67 @@
         // NEWS_DATA_START
         const fullNewsData = {
             'ai-1': {
-                title: 'AI芯片研发加速，我国企业领跑全球',
-                tags: [{ text: 'AI芯片', class: '' }],
-                source: '新华社',
+                title: 'AI芯片研发取得突破，性能提升50%',
+                tags: [{ text: 'AI', class: '' }],
+                source: '科技日报',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>我国AI芯片研发取得重要突破，部分产品性能达到国际领先水平。</p>`,
+                content: `<p><strong>【摘要】</strong>我国AI芯片研发取得重大突破，性能较前代提升50%，有望推动人工智能产业发展。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'ai-2': {
-                title: '大模型技术助力金融领域，提高风险管理能力',
+                title: '全球最大AI大模型发布，支持多语言',
                 tags: [{ text: '大模型', class: '' }],
-                source: '人民日报',
+                source: '新华社',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>大模型技术在金融领域的应用日益广泛，有效提升了风险管理的智能化水平。</p>`,
+                content: `<p><strong>【摘要】</strong>某科技公司发布全球最大AI大模型，支持多语言，可应用于翻译、客服等领域。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'ai-3': {
-                title: '机器人产业迎来黄金发展期，市场需求旺盛',
+                title: '机器人产业迎来爆发，市场规模超千亿',
                 tags: [{ text: '机器人', class: '' }],
-                source: '中国日报',
+                source: '经济日报',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>随着技术的不断进步，机器人产业市场需求旺盛，预计未来几年将保持高速增长。</p>`,
+                content: `<p><strong>【摘要】</strong>随着人工智能技术的进步，机器人产业迎来爆发，市场规模已超过千亿。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'stock-1': {
-                title: 'A股市场震荡上扬，科技股表现强劲',
+                title: '上证指数小幅下跌，科技股表现亮眼',
                 tags: [{ text: '大盘', class: '' }],
-                source: '上海证券报',
+                source: '东方财富网',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>今日A股市场震荡上扬，科技股板块表现强劲，其中芯片、5G等概念股领涨。</p>`,
+                content: `<p><strong>【摘要】</strong>今日上证指数小幅下跌，但科技股表现亮眼，人工智能、芯片概念板块涨幅居前。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'stock-2': {
-                title: '资金流入新能源板块，光伏、风电产业链受益',
-                tags: [{ text: '资金', class: '' }],
-                source: '证券时报',
-                url: '#',
-                date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>近期资金持续流入新能源板块，光伏、风电产业链相关股票受益明显。</p>`,
-                relatedTags: [],
-                aiInsight: `<p>详见相关新闻</p>`,
-                relatedNews: []
-            },
-            'stock-3': {
-                title: '基金规模再创新高，投资者信心增强',
+                title: '基金市场资金流入，科技主题基金受热捧',
                 tags: [{ text: '基金', class: '' }],
-                source: '中证网',
+                source: '新浪财经',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>近日基金规模再创新高，反映出投资者对市场的信心增强。</p>`,
+                content: `<p><strong>【摘要】</strong>近期基金市场资金流入明显，科技主题基金受热捧，投资者看好科技板块未来发展。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'policy-1': {
-                title: '国务院发布关于促进数字经济发展的指导意见',
+                title: '国务院发布新政策，支持人工智能产业发展',
                 tags: [{ text: '国务院', class: '' }],
                 source: '政府网',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>国务院发布关于促进数字经济发展的指导意见，提出加快数字产业化、产业数字化。</p>`,
+                content: `<p><strong>【摘要】</strong>国务院发布新政策，提出支持人工智能产业发展，推动产业升级。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
@@ -1874,64 +1887,68 @@
             'policy-2': {
                 title: '证监会加强监管，打击违法违规行为',
                 tags: [{ text: '监管', class: '' }],
-                source: '证监会',
+                source: '证监会官网',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>证监会加强监管，加大对违法违规行为的打击力度，维护市场秩序。</p>`,
+                content: `<p><strong>【摘要】</strong>证监会加强监管，严厉打击违法违规行为，维护市场秩序。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'policy-3': {
-                title: '央行发布一季度货币政策执行报告，强调稳健货币政策',
+                title: '央行降准，释放流动性，支持实体经济',
                 tags: [{ text: '宏观', class: '' }],
-                source: '央行',
+                source: '央行官网',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>央行发布一季度货币政策执行报告，强调继续实施稳健货币政策，保持流动性合理充裕。</p>`,
+                content: `<p><strong>【摘要】</strong>央行降准，释放流动性，支持实体经济，稳定经济增长。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'global-1': {
-                title: '美股市场波动加剧，科技股承压',
+                title: '美股三大股指齐涨，科技股领涨',
                 tags: [{ text: '美股', class: '' }],
                 source: '路透社',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>近日美股市场波动加剧，科技股承压明显。</p>`,
+                content: `<p><strong>【摘要】</strong>今日美股三大股指齐涨，科技股领涨，人工智能、芯片概念板块涨幅居前。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'global-2': {
-                title: '地缘政治风险升温，全球市场担忧情绪升温',
+                title: '地缘政治紧张，全球股市波动加剧',
                 tags: [{ text: '地缘', class: '' }],
                 source: '彭博社',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>地缘政治风险升温，全球市场担忧情绪升温，投资者风险偏好下降。</p>`,
+                content: `<p><strong>【摘要】</strong>近期地缘政治紧张，全球股市波动加剧，投资者谨慎情绪升温。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
             'global-3': {
-                title: '大宗商品价格波动，市场供需格局发生改变',
+                title: '大宗商品价格波动，市场担忧全球经济前景',
                 tags: [{ text: '大宗', class: '' }],
                 source: '新华社',
                 url: '#',
                 date: '2026-04-21',
-                content: `<p><strong>【摘要】</strong>大宗商品价格波动，市场供需格局发生改变，部分商品价格出现上涨。</p>`,
+                content: `<p><strong>【摘要】</strong>近期大宗商品价格波动，市场担忧全球经济前景，投资者情绪谨慎。</p>`,
                 relatedTags: [],
                 aiInsight: `<p>详见相关新闻</p>`,
                 relatedNews: []
             },
-            'hot-1': { title: 'A股市场回暖', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>A股市场回暖</p><p>该话题目前位列热搜第1位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
-            'hot-2': { title: '科技股领涨', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>科技股领涨</p><p>该话题目前位列热搜第2位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
-            'hot-3': { title: '新能源板块爆发', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>新能源板块爆发</p><p>该话题目前位列热搜第3位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
-            'hot-4': { title: '央行货币政策稳健', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>央行货币政策稳健</p><p>该话题目前位列热搜第4位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
-            'hot-5': { title: '数字经济发展加速', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>数字经济发展加速</p><p>该话题目前位列热搜第5位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
-            'hot-6': { title: '国际市场波动加剧', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>国际市场波动加剧</p><p>该话题目前位列热搜第6位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] }
+            'hot-1': { title: 'AI芯片突破', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>AI芯片突破</p><p>该话题目前位列热搜第1位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-2': { title: '大模型发布', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>大模型发布</p><p>该话题目前位列热搜第2位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-3': { title: '机器人产业爆发', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>机器人产业爆发</p><p>该话题目前位列热搜第3位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-4': { title: '市场震荡整理', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>市场震荡整理</p><p>该话题目前位列热搜第4位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-5': { title: '科技股领涨', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>科技股领涨</p><p>该话题目前位列热搜第5位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-6': { title: '基金市场资金流入', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>基金市场资金流入</p><p>该话题目前位列热搜第6位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-7': { title: '政策支持人工智能', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>政策支持人工智能</p><p>该话题目前位列热搜第7位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-8': { title: '监管加强打击违规', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>监管加强打击违规</p><p>该话题目前位列热搜第8位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-9': { title: '央行降准释放流动性', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>央行降准释放流动性</p><p>该话题目前位列热搜第9位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] },
+            'hot-10': { title: '地缘政治紧张', tags: [{ text: '热', class: '' }], source: '热搜', url: '#', date: '2026-04-21', content: '<p><strong>【热搜话题】</strong>地缘政治紧张</p><p>该话题目前位列热搜第10位，引发广泛讨论。</p>', relatedTags: [], aiInsight: '<p>热搜话题实时更新中</p>', relatedNews: [] }
         };
 // NEWS_DATA_END
 
